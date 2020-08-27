@@ -1,14 +1,29 @@
 /**
- * CURP (Clave Única de Registro de Población, Mexican personal ID).
+ * RFC (Registro Federal de Contribuyentes, Mexican tax number).
+ * 
+ * This number is used to identify individuals and companies for tax purposes.
  *
- * The Clave Única de Registro de Población (Population Registry Code) is unique
- * identifier for both citizens and residents of Mexico. The is an 18-character
- * alphanumeric that contains certain letters from the person's name, their
- * gender and birth date and a check digit.
+ * The company number is 12 digits where the first 3 letters or digits are
+ * derived from the name of the company, the following 6 contain the date of
+ * incorporation, followed by 3 check digits.
+ *
+ * Personal numbers consist of 13 digits where the first 4 characters from the
+ * person's name, followed by their birth date and 3 check digits.
+ *
+ * The first two check digits are calculated based on the person's or company's
+ * full name. The last check digit is calculated over all the preceding digits
+ * in the number. However, it seems a lot of numbers (estimated at around 1.5%
+ * of all numbers) are in use with invalid check digits so this test is disabled
+ * by default.
  *
  * More information:
- *   https://en.wikipedia.org/wiki/CURP
- *   https://www.gob.mx/curp/
+ * 
+ * https://www.infomex.org.mx/jspsi/documentos/2005/seguimiento/06101/0610100162005_065.doc
+ * https://es.wikipedia.org/wiki/Registro_Federal_de_Contribuyentes_(M%C3%A9xico)
+ *
+ * An online validation service is available at:
+ *
+ * https://portalsat.plataforma.sat.gob.mx/ConsultaRFC/
  *
  * VAT
  */
