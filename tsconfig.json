@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "importHelpers": false,
+    "target": "es6",
+    "removeComments": true,
+    "module": "commonjs",
+    "outDir": "lib",
+    "strict": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "emitDecoratorMetadata": true,
+    "declaration": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "sourceMap": false,
+    "inlineSourceMap": true,
+    "preserveConstEnums": true,
+    "noImplicitAny": true,
+    "noEmitOnError": true,
+    "noEmitHelpers": false,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "experimentalDecorators": true,
+    "strictNullChecks": true,
+    "pretty": true,
+    "forceConsistentCasingInFileNames": true,
+    "noUnusedLocals": true,
+    "jsx": "react",
+    "lib": ["es2017", "es2016", "dom"],
+    "baseUrl": ".",
+    "paths": {
+      "*": ["src/*", "node_modules/*"]
+    }
+  },
+  "exclude": ["lib", "node_modules", "**/*.spec.*"],
+  "files": ["src/index.ts"]
+}
