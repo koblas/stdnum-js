@@ -1,5 +1,7 @@
 # Country Standard Numbers
 
+![Build](https://github.com/koblas/stdnum-js/workflows/Node.js%20CI/badge.svg)
+
 | Country | Code | Name | Meaning                                                      |
 | ------- | ---- | ---- | ------------------------------------------------------------ |
 | Andorra | AD   | NRT  | Tax Identifier (Número de Registre Tributari)                |
