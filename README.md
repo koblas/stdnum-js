@@ -1,6 +1,6 @@
 # Country Standard Numbers
 
-![Build](https://github.com/koblas/stdnum-js/workflows/Node.js%20CI/badge.svg)
+![Build](https://github.com/koblas/stdnum-js/workflows/.github/workflows/main.yaml/badge.svg)
 
 | Country | Code | Name | Meaning                                                      |
 | ------- | ---- | ---- | ------------------------------------------------------------ |
