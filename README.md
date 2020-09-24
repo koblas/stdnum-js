@@ -9,6 +9,7 @@
 | Mexico   | MX   | RFC   | Tax/Vat | Tax Identifier (Registro Federal de Contribuyentes)          |
 | Mexico   | MX   | CURP  | Person  | Individual Identifier (Clave Única de Registro de Población) |
 | Mexico   | MX   | CLABE | Bank    | Bank Account (Clave Bancaria Estandarizada)                  |
+| Paraguay | PY   | RUC   | Tax/Vat | Tax Identifier (Registro Único de Contribuyentes)            |
 | Russia   | RU   | INN   | Tax/Vat | Tax Identifier (Идентификационный номер налогоплательщика)   |
 
 ### Credits
