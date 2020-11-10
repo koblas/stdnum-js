@@ -40,7 +40,6 @@ class NitSingleton implements Validator {
   }
 
   /**
-   * Check if the number is a valid Andorra NRT number.
    * This checks the length, formatting and other contraints. It does not check
    * for control letter.
    */
