@@ -20,7 +20,7 @@ function clean(input: string): ReturnType<typeof cleanUnicode> {
   return cleanUnicode(input, ",.- ");
 }
 
-class NitSingleton implements Validator {
+const impl: Validator = {
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -29,7 +29,7 @@ class NitSingleton implements Validator {
     }
 
     return value.toLocaleUpperCase();
-  }
+  },
 
   format(input: string): string {
     const [value] = clean(input);
@@ -37,7 +37,7 @@ class NitSingleton implements Validator {
     const [p1, p2, p3, p4] = splitAt(value, 3, 6, 9);
 
     return `${p1}.${p2}.${p3}-${p4}`;
-  }
+  },
 
   /**
    * This checks the length, formatting and other contraints. It does not check
@@ -70,10 +70,9 @@ class NitSingleton implements Validator {
       isIndividual: false,
       isCompany: false,
     };
-  }
+  },
 }
 
-export const Nit = new NitSingleton();
-export const validate = Nit.validate;
-export const format = Nit.format;
-export const compact = Nit.compact;
+export const validate = impl.validate;
+export const format = impl.format;
+export const compact = impl.compact;

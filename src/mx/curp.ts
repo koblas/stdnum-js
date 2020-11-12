@@ -144,7 +144,7 @@ const checkAlphabetDict: Record<string, number> = checkAlphabet
   .split("")
   .reduce((acc, c, idx) => ({ ...acc, [c]: idx }), {});
 
-class CurpSingleton implements Validator {
+const impl: Validator = {
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -153,11 +153,11 @@ class CurpSingleton implements Validator {
     }
 
     return value.toLocaleUpperCase();
-  }
+  },
 
   format(input: string): string {
     return this.compact(input);
-  }
+  },
 
   /**
    * Check if the number is a valid Andorra NRT number.
@@ -206,27 +206,26 @@ class CurpSingleton implements Validator {
       isIndividual: true,
       isCompany: false,
     };
-  }
+  },
+};
 
-  getBirthDate(value: string) {
-    const parts = splitAt(value, 4, 6, 8);
+function getBirthDateImpl(value: string) {
+  const parts = splitAt(value, 4, 6, 8);
 
-    const yyN = parseInt(parts[1], 10);
-    const mmN = parseInt(parts[2], 10) - 1;
-    const ddN = parseInt(parts[3], 10);
+  const yyN = parseInt(parts[1], 10);
+  const mmN = parseInt(parts[2], 10) - 1;
+  const ddN = parseInt(parts[3], 10);
 
-    if (!isNaN(parseInt(value[16], 10))) {
-      return new Date(yyN + 1900, mmN, ddN);
-    } else {
-      return new Date(yyN + 2000, mmN, ddN);
-    }
+  if (!isNaN(parseInt(value[16], 10))) {
+    return new Date(yyN + 1900, mmN, ddN);
+  } else {
+    return new Date(yyN + 2000, mmN, ddN);
   }
 }
 
-export const Curp = new CurpSingleton();
-export const validate = Curp.validate;
-export const format = Curp.format;
-export const compact = Curp.compact;
+export const validate = impl.validate;
+export const format = impl.format;
+export const compact = impl.compact;
 
 export function getGender(input: string): "M" | "F" {
   const value = compact(input);
@@ -237,5 +236,5 @@ export function getGender(input: string): "M" | "F" {
 export function getBirthDate(input: string): Date {
   const value = compact(input);
 
-  return Curp.getBirthDate(value);
+  return getBirthDateImpl(value);
 }

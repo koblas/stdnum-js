@@ -85,7 +85,7 @@ const checkAlphabetDict: Record<string, number> = checkAlphabet
   .split("")
   .reduce((acc, c, idx) => ({ ...acc, [c]: idx }), {});
 
-class RfcSingleton implements Validator {
+const impl: Validator = {
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -94,7 +94,7 @@ class RfcSingleton implements Validator {
     }
 
     return value.toLocaleUpperCase();
-  }
+  },
 
   format(input: string): string {
     const value = this.compact(input);
@@ -106,7 +106,7 @@ class RfcSingleton implements Validator {
     } else {
       return splitAt(value, 4).join(" ");
     }
-  }
+  },
 
   /**
    * Check if the number is a valid Andorra NRT number.
@@ -162,10 +162,9 @@ class RfcSingleton implements Validator {
       isIndividual: value.length !== 12,
       isCompany: value.length === 12,
     };
-  }
+  },
 }
 
-export const Rfc = new RfcSingleton();
-export const validate = Rfc.validate;
-export const format = Rfc.format;
-export const compact = Rfc.compact;
+export const validate = impl.validate;
+export const format = impl.format;
+export const compact = impl.compact;

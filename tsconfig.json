@@ -35,5 +35,5 @@
     }
   },
   "exclude": ["lib", "node_modules", "**/*.spec.*"],
-  "files": ["src/index.ts"]
+  "include": ["src/**/*"]
 }

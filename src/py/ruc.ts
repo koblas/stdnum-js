@@ -26,7 +26,7 @@ function clean(input: string): ReturnType<typeof cleanUnicode> {
   return cleanUnicode(input, " -");
 }
 
-class RucSingleton implements Validator {
+const impl: Validator = {
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -35,13 +35,13 @@ class RucSingleton implements Validator {
     }
 
     return value;
-  }
+  },
 
   format(input: string): string {
     const [value] = clean(input);
 
     return `${value.substr(0, value.length - 1)}-${value.substr(value.length - 1)}`;
-  }
+  },
 
   /**
    * Check if the number is a valid Andorra NRT number.
@@ -81,10 +81,9 @@ class RucSingleton implements Validator {
       isIndividual: parseInt(front, 10) < 80000000,
       isCompany: front.length === 8 && parseInt(front, 10) > 80000000,
     };
-  }
-}
+  },
+};
 
-export const Ruc = new RucSingleton();
-export const validate = Ruc.validate;
-export const format = Ruc.format;
-export const compact = Ruc.compact;
+export const validate = impl.validate;
+export const format = impl.format;
+export const compact = impl.compact;

@@ -19,7 +19,7 @@ function clean(input: string): ReturnType<typeof cleanUnicode> {
   return cleanUnicode(input, " ");
 }
 
-class InnSingleton implements Validator {
+const impl: Validator = {
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -28,11 +28,11 @@ class InnSingleton implements Validator {
     }
 
     return value.toLocaleUpperCase();
-  }
+  },
 
   format(input: string): string {
     return this.compact(input);
-  }
+  },
 
   /**
    * Check if the number is a valid Andorra NRT number.
@@ -76,10 +76,9 @@ class InnSingleton implements Validator {
       isIndividual: value.length === 10,
       isCompany: value.length === 12,
     };
-  }
+  },
 }
 
-export const Inn = new InnSingleton();
-export const validate = Inn.validate;
-export const format = Inn.format;
-export const compact = Inn.compact;
+export const validate = impl.validate;
+export const format = impl.format;
+export const compact = impl.compact;

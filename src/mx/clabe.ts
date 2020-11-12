@@ -21,7 +21,7 @@ function clean(input: string): ReturnType<typeof cleanUnicode> {
   return cleanUnicode(input, "- ");
 }
 
-class ClabeSingleton implements Validator {
+const impl: Validator = {
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -30,11 +30,11 @@ class ClabeSingleton implements Validator {
     }
 
     return value.toLocaleUpperCase();
-  }
+  },
 
   format(input: string): string {
     return this.compact(input);
-  }
+  },
 
   /**
    * Check if the number is a valid Andorra NRT number.
@@ -82,10 +82,9 @@ class ClabeSingleton implements Validator {
       isIndividual: false,
       isCompany: false,
     };
-  }
+  },
 }
 
-export const Clabe = new ClabeSingleton();
-export const validate = Clabe.validate;
-export const format = Clabe.format;
-export const compact = Clabe.compact;
+export const validate = impl.validate;
+export const format = impl.format;
+export const compact = impl.compact;
