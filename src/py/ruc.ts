@@ -19,11 +19,11 @@
  */
 
 import * as exceptions from "../exceptions";
-import { cleanUnicode, isdigits, splitAt } from "../util";
+import { strings } from "../util";
 import { Validator, ValidateReturn } from "../types";
 
-function clean(input: string): ReturnType<typeof cleanUnicode> {
-  return cleanUnicode(input, " -");
+function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
+  return strings.cleanUnicode(input, " -");
 }
 
 const impl: Validator = {
@@ -57,11 +57,11 @@ const impl: Validator = {
     if (value.length < 5 || value.length > 9) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
-    if (!isdigits(value)) {
+    if (!strings.isdigits(value)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
-    const [front, check] = splitAt(value, value.length - 1);
+    const [front, check] = strings.splitAt(value, value.length - 1);
 
     const sum = front
       .split("")

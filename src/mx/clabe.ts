@@ -13,12 +13,12 @@
  */
 
 import * as exceptions from "../exceptions";
-import { cleanUnicode, splitAt, isdigits, weightedChecksum } from "../util";
+import { strings, weightedChecksum } from "../util";
 import { Validator, ValidateReturn } from "../types";
 import { banksMap, cities } from "./banks";
 
-function clean(input: string): ReturnType<typeof cleanUnicode> {
-  return cleanUnicode(input, "- ");
+function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
+  return strings.cleanUnicode(input, "- ");
 }
 
 const impl: Validator = {
@@ -50,11 +50,11 @@ const impl: Validator = {
     if (value.length !== 18) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
-    if (!isdigits(value)) {
+    if (!strings.isdigits(value)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
-    const [bankCode, cityCode, account, checksum] = splitAt(value, 3, 6, 17);
+    const [bankCode, cityCode, account, checksum] = strings.splitAt(value, 3, 6, 17);
 
     if (banksMap[parseInt(bankCode, 10)] === undefined) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
@@ -62,7 +62,7 @@ const impl: Validator = {
     if (cities[parseInt(cityCode, 10)] === undefined) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
-    if (!isdigits(account)) {
+    if (!strings.isdigits(account)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
@@ -83,7 +83,7 @@ const impl: Validator = {
       isCompany: false,
     };
   },
-}
+};
 
 export const validate = impl.validate;
 export const format = impl.format;

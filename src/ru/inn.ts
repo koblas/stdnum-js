@@ -12,11 +12,11 @@
  */
 
 import * as exceptions from "../exceptions";
-import { isdigits, cleanUnicode, weightedChecksum } from "../util";
+import { strings, weightedChecksum } from "../util";
 import { Validator, ValidateReturn } from "../types";
 
-function clean(input: string): ReturnType<typeof cleanUnicode> {
-  return cleanUnicode(input, " ");
+function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
+  return strings.cleanUnicode(input, " ");
 }
 
 const impl: Validator = {
@@ -49,7 +49,7 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
 
-    if (!isdigits(value)) {
+    if (!strings.isdigits(value)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
@@ -77,7 +77,7 @@ const impl: Validator = {
       isCompany: value.length === 12,
     };
   },
-}
+};
 
 export const validate = impl.validate;
 export const format = impl.format;

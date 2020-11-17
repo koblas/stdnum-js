@@ -1,6 +1,6 @@
 /**
  * RFC (Registro Federal de Contribuyentes, Mexican tax number).
- * 
+ *
  * This number is used to identify individuals and companies for tax purposes.
  *
  * The company number is 12 digits where the first 3 letters or digits are
@@ -17,7 +17,7 @@
  * by default.
  *
  * More information:
- * 
+ *
  * https://www.infomex.org.mx/jspsi/documentos/2005/seguimiento/06101/0610100162005_065.doc
  * https://es.wikipedia.org/wiki/Registro_Federal_de_Contribuyentes_(M%C3%A9xico)
  *
@@ -29,11 +29,11 @@
  */
 
 import * as exceptions from "../exceptions";
-import { cleanUnicode, isValidDateCompact, splitAt } from "../util";
+import { isValidDateCompact, strings } from "../util";
 import { Validator, ValidateReturn } from "../types";
 
-function clean(input: string): ReturnType<typeof cleanUnicode> {
-  return cleanUnicode(input, "-_ ");
+function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
+  return strings.cleanUnicode(input, "-_ ");
 }
 
 const nameBlacklist = new Set([
@@ -100,11 +100,11 @@ const impl: Validator = {
     const value = this.compact(input);
 
     if (value.length === 12) {
-      return splitAt(value, 3, 9).join(" ");
+      return strings.splitAt(value, 3, 9).join(" ");
     } else if (value.length === 13) {
-      return splitAt(value, 4, 10).join(" ");
+      return strings.splitAt(value, 4, 10).join(" ");
     } else {
-      return splitAt(value, 4).join(" ");
+      return strings.splitAt(value, 4).join(" ");
     }
   },
 
@@ -163,7 +163,7 @@ const impl: Validator = {
       isCompany: value.length === 12,
     };
   },
-}
+};
 
 export const validate = impl.validate;
 export const format = impl.format;

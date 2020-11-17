@@ -1,30 +1,38 @@
 /**
  *
- * Chile RUT/RUN numbers
+ * CUIT (Código Único de Identificación Tributaria, Argentinian tax number).
  *
- * RUT number (Rol Unico Tributario).
+ * The CUIT is a taxpayer identification number used for VAT (IVA, Impuesto al
+ * Valor Agregado) and other taxes.
  *
- * The RUT, the Chilean national tax number is the same as the RUN (Rol Único
- * Nacional) the Chilean national identification number. The number consists of
- * 8 digits, followed by a check digit.
+ * Sources:
+ *   https://es.wikipedia.org/wiki/Clave_Única_de_Identificación_Tributaria
+ *
+ * TAX
  */
 
 import * as exceptions from "../exceptions";
 import { strings, weightedChecksum } from "../util";
 import { Validator, ValidateReturn } from "../types";
 
+const cuitTypes = [
+  // individuals
+  "20",
+  "23",
+  "24",
+  "27",
+  // companies
+  "30",
+  "33",
+  "34",
+  // international purposes
+  "50",
+  "51",
+  "55",
+];
+
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
-  const [v, err] = strings.cleanUnicode(input, " -");
-
-  if (err) {
-    return ["", err];
-  }
-
-  if (v.startsWith("CL")) {
-    return [v.substr(2), null];
-  }
-
-  return [v, null];
+  return strings.cleanUnicode(input, " -");
 }
 
 const impl: Validator = {
@@ -41,9 +49,7 @@ const impl: Validator = {
   format(input: string): string {
     const [value] = clean(input);
 
-    const [a, b, c, d] = strings.splitAt(value, 2, 5, 8);
-
-    return `${a}.${b}.${c}-${d}`;
+    return strings.splitAt(value, 2, 10).join("-");
   },
 
   /**
@@ -57,29 +63,31 @@ const impl: Validator = {
     if (error) {
       return { isValid: false, error };
     }
-    if (value.length != 8 && value.length !== 9) {
+    if (value.length !== 11) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
+    if (!strings.isdigits(value)) {
+      return { isValid: false, error: new exceptions.InvalidFormat() };
+    }
 
-    const [front, check] = strings.splitAt(value, value.length - 1);
+    const [front, body, check] = strings.splitAt(value, 2, 10);
 
-    if (!strings.isdigits(front)) {
+    if (!cuitTypes.includes(front)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
-    const sum = weightedChecksum(strings.reverse(front), [9, 8, 7, 6, 5, 4, 9, 8, 7], 11);
+    const cs = weightedChecksum(front + body, [5, 4, 3, 2, 7, 6, 5, 4, 3, 2], 11);
+    const digit = "012345678990"[11 - cs];
 
-    const digit = "0123456789K"[sum];
-
-    if (check !== digit) {
+    if (digit !== check) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 
     return {
       isValid: true,
       compact: value,
-      isIndividual: false,
-      isCompany: false,
+      isIndividual: front[0] === "2",
+      isCompany: front[0] === "3",
     };
   },
 };

@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 export function weightedChecksum(value: string, weights: number[], modulus?: number) {
   const weighted = value.split("").reduce((acc, v, idx) => {
     if (idx >= weights.length) {

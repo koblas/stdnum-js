@@ -13,11 +13,11 @@
  */
 
 import * as exceptions from "../exceptions";
-import { cleanUnicode, splitAt, isdigits, weightedChecksum } from "../util";
+import { strings, weightedChecksum } from "../util";
 import { Validator, ValidateReturn } from "../types";
 
-function clean(input: string): ReturnType<typeof cleanUnicode> {
-  return cleanUnicode(input, ",.- ");
+function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
+  return strings.cleanUnicode(input, ",.- ");
 }
 
 const impl: Validator = {
@@ -34,7 +34,7 @@ const impl: Validator = {
   format(input: string): string {
     const [value] = clean(input);
 
-    const [p1, p2, p3, p4] = splitAt(value, 3, 6, 9);
+    const [p1, p2, p3, p4] = strings.splitAt(value, 3, 6, 9);
 
     return `${p1}.${p2}.${p3}-${p4}`;
   },
@@ -52,7 +52,7 @@ const impl: Validator = {
     if (value.length < 8 || value.length > 16) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
-    if (!isdigits(value)) {
+    if (!strings.isdigits(value)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
@@ -71,7 +71,7 @@ const impl: Validator = {
       isCompany: false,
     };
   },
-}
+};
 
 export const validate = impl.validate;
 export const format = impl.format;

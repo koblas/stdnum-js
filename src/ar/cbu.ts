@@ -1,12 +1,16 @@
 /**
  *
- * Chile RUT/RUN numbers
+ * CBU (Clave Bancaria Uniforme, Argentine bank account number).
  *
- * RUT number (Rol Unico Tributario).
+ * CBU it s a code of the Banks of Argentina to identify customer accounts. The
+ * number consists of 22 digits and consists of a 3 digit bank identifier,
+ * followed by a 4 digit branch identifier, a check digit, a 13 digit account
+ * identifier and another check digit.
  *
- * The RUT, the Chilean national tax number is the same as the RUN (Rol Único
- * Nacional) the Chilean national identification number. The number consists of
- * 8 digits, followed by a check digit.
+ * Sources:
+ *   https://es.wikipedia.org/wiki/Clave_Bancaria_Uniforme
+ *
+ * BANK
  */
 
 import * as exceptions from "../exceptions";
@@ -14,17 +18,7 @@ import { strings, weightedChecksum } from "../util";
 import { Validator, ValidateReturn } from "../types";
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
-  const [v, err] = strings.cleanUnicode(input, " -");
-
-  if (err) {
-    return ["", err];
-  }
-
-  if (v.startsWith("CL")) {
-    return [v.substr(2), null];
-  }
-
-  return [v, null];
+  return strings.cleanUnicode(input, " -");
 }
 
 const impl: Validator = {
@@ -40,10 +34,9 @@ const impl: Validator = {
 
   format(input: string): string {
     const [value] = clean(input);
+    const [a, b] = strings.splitAt(value, 8);
 
-    const [a, b, c, d] = strings.splitAt(value, 2, 5, 8);
-
-    return `${a}.${b}.${c}-${d}`;
+    return `${a} ${b}`;
   },
 
   /**
@@ -57,21 +50,22 @@ const impl: Validator = {
     if (error) {
       return { isValid: false, error };
     }
-    if (value.length != 8 && value.length !== 9) {
+    if (value.length !== 22) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
-
-    const [front, check] = strings.splitAt(value, value.length - 1);
-
-    if (!strings.isdigits(front)) {
+    if (!strings.isdigits(value)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
-    const sum = weightedChecksum(strings.reverse(front), [9, 8, 7, 6, 5, 4, 9, 8, 7], 11);
+    const [front, c1, back, c2] = strings.splitAt(value, 7, 8, 21);
 
-    const digit = "0123456789K"[sum];
+    const s1 = String(10 - weightedChecksum(strings.reverse(front), [3, 1, 7, 9, 3, 1, 7], 10));
+    const s2 = String(10 - weightedChecksum(strings.reverse(back), [3, 1, 7, 9, 3, 1, 7, 9, 3, 1, 7, 9, 3, 1], 10));
 
-    if (check !== digit) {
+    if (s1 !== c1) {
+      return { isValid: false, error: new exceptions.InvalidChecksum() };
+    }
+    if (s2 !== c2) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 

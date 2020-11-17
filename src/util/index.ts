@@ -1,6 +1,5 @@
-export { isalpha, isdigits } from "./char";
-export { cleanUnicode } from "./clean";
-export { formatPattern } from "./format";
+import * as strings from "./strings";
 export { weightedChecksum } from "./checksum";
 export { isValidDate, isValidDateCompact } from "./isValidDate";
-export { splitAt } from './splitAt';
+
+export { strings };

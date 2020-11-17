@@ -41,6 +41,6 @@ describe("cl/rut", () => {
   it("validate:2660-4", () => {
     const result = validate("2660-4");
 
-    expect(result.error).toBeInstanceOf(InvalidChecksum);
+    expect(result.error).toBeInstanceOf(InvalidLength);
   });
 });

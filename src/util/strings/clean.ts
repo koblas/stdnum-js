@@ -1,4 +1,4 @@
-import * as exceptions from "../exceptions";
+import * as exceptions from "../../exceptions";
 
 // Map visually similar unicode values to ASCII
 // - solves the cut-n-paste from PDF/Word

@@ -12,11 +12,11 @@
  */
 
 import * as exceptions from "../exceptions";
-import { cleanUnicode, isValidDateCompact, splitAt } from "../util";
+import { isValidDateCompact, strings } from "../util";
 import { Validator, ValidateReturn } from "../types";
 
-function clean(input: string): ReturnType<typeof cleanUnicode> {
-  return cleanUnicode(input, " ");
+function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
+  return strings.cleanUnicode(input, " ");
 }
 
 const nameBlacklist = new Set([
@@ -210,7 +210,7 @@ const impl: Validator = {
 };
 
 function getBirthDateImpl(value: string) {
-  const parts = splitAt(value, 4, 6, 8);
+  const parts = strings.splitAt(value, 4, 6, 8);
 
   const yyN = parseInt(parts[1], 10);
   const mmN = parseInt(parts[2], 10) - 1;

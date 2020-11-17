@@ -14,11 +14,11 @@
  */
 
 import * as exceptions from "../exceptions";
-import { isalpha, isdigits, cleanUnicode, formatPattern } from "../util";
+import { strings } from "../util";
 import { Validator, ValidateReturn } from "../types";
 
-function clean(input: string): ReturnType<typeof cleanUnicode> {
-  return cleanUnicode(input, " -.");
+function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
+  return strings.cleanUnicode(input, " -.");
 }
 
 const impl: Validator = {
@@ -35,7 +35,7 @@ const impl: Validator = {
   format(input: string): string {
     const value = this.compact(input);
 
-    return formatPattern("?-??????-?", value);
+    return strings.formatPattern("?-??????-?", value);
   },
 
   /**
@@ -55,10 +55,10 @@ const impl: Validator = {
 
     const mid = v.substr(1, v.length - 2);
 
-    if (!isalpha(v[0]) || !isalpha(v[v.length - 1])) {
+    if (!strings.isalpha(v[0]) || !strings.isalpha(v[v.length - 1])) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
-    if (!isdigits(mid)) {
+    if (!strings.isdigits(mid)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
     if (!"ACDEFGLOPU".includes(v[0])) {
@@ -78,7 +78,7 @@ const impl: Validator = {
       isCompany: !"AF".includes(v[0]),
     };
   },
-}
+};
 
 export const validate = impl.validate;
 export const format = impl.format;

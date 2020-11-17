@@ -1,30 +1,23 @@
 /**
  *
- * Chile RUT/RUN numbers
+ * DNI (Documento Nacional de Identidad, Argentinian national identity nr.).
  *
- * RUT number (Rol Unico Tributario).
+ * The DNI number is the number that appears on the Argentinian national
+ * identity document and is used to identify citizen and foreigners residing in
+ * the country.
  *
- * The RUT, the Chilean national tax number is the same as the RUN (Rol Único
- * Nacional) the Chilean national identification number. The number consists of
- * 8 digits, followed by a check digit.
+ * Sources:
+ *   https://en.wikipedia.org/wiki/Documento_Nacional_de_Identidad_(Argentina)
+ *
+ * ID
  */
 
 import * as exceptions from "../exceptions";
-import { strings, weightedChecksum } from "../util";
+import { strings } from "../util";
 import { Validator, ValidateReturn } from "../types";
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
-  const [v, err] = strings.cleanUnicode(input, " -");
-
-  if (err) {
-    return ["", err];
-  }
-
-  if (v.startsWith("CL")) {
-    return [v.substr(2), null];
-  }
-
-  return [v, null];
+  return strings.cleanUnicode(input, " .");
 }
 
 const impl: Validator = {
@@ -41,9 +34,7 @@ const impl: Validator = {
   format(input: string): string {
     const [value] = clean(input);
 
-    const [a, b, c, d] = strings.splitAt(value, 2, 5, 8);
-
-    return `${a}.${b}.${c}-${d}`;
+    return strings.splitAt(value, value.length - 6, value.length - 3).join(".");
   },
 
   /**
@@ -57,22 +48,11 @@ const impl: Validator = {
     if (error) {
       return { isValid: false, error };
     }
-    if (value.length != 8 && value.length !== 9) {
+    if (value.length !== 7 && value.length !== 8) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
-
-    const [front, check] = strings.splitAt(value, value.length - 1);
-
-    if (!strings.isdigits(front)) {
+    if (!strings.isdigits(value)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
-    }
-
-    const sum = weightedChecksum(strings.reverse(front), [9, 8, 7, 6, 5, 4, 9, 8, 7], 11);
-
-    const digit = "0123456789K"[sum];
-
-    if (check !== digit) {
-      return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 
     return {
