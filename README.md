@@ -4,10 +4,10 @@
 
 | Country   | Code | Name  | Group   | Meaning                                                      |
 | --------- | ---- | ----- | ------- | ------------------------------------------------------------ |
+| Andorra   | AD   | NRT   | Tax     | Tax Identifier (Número de Registre Tributari)                |
 | Argentina | AR   | CBU   | Bank    | Bank Account (Clave Bancaria Uniforme)                       |
 | Argentina | AR   | CUIT  | Tax     | Tax Identity (Código Único de Identificación Tributaria)     |
 | Argentina | AR   | DNI   | Person  | National Identity (Documento Nacional de Identidad)          |
-| Andorra   | AD   | NRT   | Tax     | Tax Identifier (Número de Registre Tributari)                |
 | Chile     | CL   | RUT   | Tax     | Tax Identifier (Rol Unico Tributario) [RUN]                  |
 | Columbia  | CO   | NIT   | Tax     | Tax Identifier (Número de Identificación Tributaria)         |
 | Mexico    | MX   | RFC   | Tax/Vat | Tax Identifier (Registro Federal de Contribuyentes)          |
