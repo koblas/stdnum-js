@@ -29,7 +29,7 @@
  */
 
 import * as exceptions from "../exceptions";
-import { isValidDateCompact, strings } from "../util";
+import { isValidDateCompactYYMMDD, strings } from "../util";
 import { Validator, ValidateReturn } from "../types";
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
@@ -126,14 +126,14 @@ const impl: Validator = {
       if (nameBlacklist.has(value.substr(0, 4))) {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
-      if (!isValidDateCompact(value.substr(4, 6))) {
+      if (!isValidDateCompactYYMMDD(value.substr(4, 6))) {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
     } else if (value.length === 12) {
       if (!/^[A-Z&Ñ]{3}[0-9]{6}[0-9A-Z]{3}$/.test(value)) {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
-      if (!isValidDateCompact(value.substr(3, 6))) {
+      if (!isValidDateCompactYYMMDD(value.substr(3, 6))) {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
     } else {

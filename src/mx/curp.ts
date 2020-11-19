@@ -12,7 +12,7 @@
  */
 
 import * as exceptions from "../exceptions";
-import { isValidDateCompact, strings } from "../util";
+import { isValidDateCompactYYMMDD, strings } from "../util";
 import { Validator, ValidateReturn } from "../types";
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
@@ -177,7 +177,7 @@ const impl: Validator = {
     if (!/^[A-Z]{4}[0-9]{6}[A-Z]{6}[0-9A-Z][0-9]$/.test(value)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
-    if (!isValidDateCompact(value.substr(4, 6))) {
+    if (!isValidDateCompactYYMMDD(value.substr(4, 6))) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
     if (nameBlacklist.has(value.substr(0, 4))) {

@@ -1,6 +1,10 @@
 /** Check to make sure this is a valid date */
-export function isValidDateCompact(yymmdd: string): boolean {
+export function isValidDateCompactYYMMDD(yymmdd: string): boolean {
   return isValidDate(yymmdd.substr(0, 2), yymmdd.substr(2, 2), yymmdd.substr(4, 2));
+}
+
+export function isValidDateCompactDDMMYY(yymmdd: string): boolean {
+  return isValidDate(yymmdd.substr(4, 2), yymmdd.substr(2, 2), yymmdd.substr(0, 2));
 }
 
 /** Check to make sure this is a valid date */
