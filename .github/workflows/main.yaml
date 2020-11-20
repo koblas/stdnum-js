@@ -1,6 +1,10 @@
 name: Node.js CI
 
-on: [push]
+on: 
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build:
@@ -30,3 +34,5 @@ jobs:
       - run: npm test
         env:
           CI: true
+      - name: Publish to npm
+        uses: pascalgn/npm-publish-action@1.2.0
