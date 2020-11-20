@@ -1,32 +1,25 @@
 /**
+ * CIF (Código de Identificación Fiscal, Spanish company tax number).
  *
- * UID (Umsatzsteuer-Identifikationsnummer, Austrian VAT number).
- *
- * The Austrian UID is a 9-digit number that starts with a U (optionally
- * preceded with AT). The last digit is a check digit.
+ * The CIF is a tax identification number for legal entities. It has 9 digits
+ * where the first digit is a letter (denoting the type of entity) and the
+ * last is a check digit (which may also be a letter).
  *
  * Sources:
- *   https://www.ruc.com.py/
+ *   https://es.wikipedia.org/wiki/Código_de_identificación_fiscal
  *
- * VAT
+ * TAX
  */
 
 import * as exceptions from "../exceptions";
 import { strings } from "../util";
 import { Validator, ValidateReturn } from "../types";
-import { luhnChecksumValue } from "../util/checksum";
+import { luhnChecksumDigit } from "../util/checksum";
+
+const checkDigits = "ABCDEFGHJNPQRSUVW";
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
-  const [value, err] = strings.cleanUnicode(input, " -./");
-
-  if (err) {
-    return [value, err];
-  }
-  if (value.startsWith("AT")) {
-    return [value.substr(2), null];
-  }
-
-  return [value, null];
+  return strings.cleanUnicode(input, " -");
 }
 
 const impl: Validator = {
@@ -43,7 +36,7 @@ const impl: Validator = {
   format(input: string): string {
     const [value] = clean(input);
 
-    return value;
+    return strings.splitAt(value, 1, 8).join("-");
   },
 
   validate(input: string): ValidateReturn {
@@ -55,15 +48,18 @@ const impl: Validator = {
     if (value.length !== 9) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
-    if (!value.startsWith("U") || !strings.isdigits(value.substr(1))) {
+
+    const [first, body, check] = strings.splitAt(value, 1, 8);
+
+    if (!strings.isdigits(body) || !checkDigits.includes(first) || !strings.isdigits(check)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
-    const [, front, check] = strings.splitAt(value, 1, 8);
+    const cs = parseInt(luhnChecksumDigit(body), 10);
+    // Two sysstem of check digits
+    const digits = "JABCDEFGHI"[cs] + String(cs);
 
-    const digit = String((16 - luhnChecksumValue(front)) % 10);
-
-    if (check !== digit) {
+    if (!digits.includes(check)) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 
@@ -71,7 +67,7 @@ const impl: Validator = {
       isValid: true,
       compact: value,
       isIndividual: false,
-      isCompany: false,
+      isCompany: true,
     };
   },
 };

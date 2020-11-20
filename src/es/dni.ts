@@ -1,32 +1,29 @@
 /**
+ * DNI (Documento Nacional de Identidad, Spanish personal identity codes).
  *
- * UID (Umsatzsteuer-Identifikationsnummer, Austrian VAT number).
+ * The DNI is a 9 digit number used to identify Spanish citizens. The last
+ * digit is a checksum letter.
  *
- * The Austrian UID is a 9-digit number that starts with a U (optionally
- * preceded with AT). The last digit is a check digit.
+ * Foreign nationals, since 2010 are issued an NIE (Número de Identificación
+ * de Extranjeros, Foreigner's Identity Number) instead.
  *
  * Sources:
- *   https://www.ruc.com.py/
  *
- * VAT
+ * PERSON
  */
 
 import * as exceptions from "../exceptions";
 import { strings } from "../util";
 import { Validator, ValidateReturn } from "../types";
-import { luhnChecksumValue } from "../util/checksum";
+
+const checkDigits = "TRWAGMYFPDXBNJZSQVHLCKE";
+
+export function calcCheckDigit(value: string): string {
+  return checkDigits[parseInt(value.substr(0, 8), 10) % 23];
+}
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
-  const [value, err] = strings.cleanUnicode(input, " -./");
-
-  if (err) {
-    return [value, err];
-  }
-  if (value.startsWith("AT")) {
-    return [value.substr(2), null];
-  }
-
-  return [value, null];
+  return strings.cleanUnicode(input, " -");
 }
 
 const impl: Validator = {
@@ -43,7 +40,7 @@ const impl: Validator = {
   format(input: string): string {
     const [value] = clean(input);
 
-    return value;
+    return strings.splitAt(value, 8).join("-");
   },
 
   validate(input: string): ValidateReturn {
@@ -55,22 +52,21 @@ const impl: Validator = {
     if (value.length !== 9) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
-    if (!value.startsWith("U") || !strings.isdigits(value.substr(1))) {
+
+    const [body, check] = strings.splitAt(value, 8);
+
+    if (!strings.isdigits(body)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
-    const [, front, check] = strings.splitAt(value, 1, 8);
-
-    const digit = String((16 - luhnChecksumValue(front)) % 10);
-
-    if (check !== digit) {
+    if (calcCheckDigit(body) !== check) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 
     return {
       isValid: true,
       compact: value,
-      isIndividual: false,
+      isIndividual: true,
       isCompany: false,
     };
   },
