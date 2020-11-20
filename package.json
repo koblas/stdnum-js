@@ -5,10 +5,11 @@
   "files": [
     "lib"
   ],
-  "type": "module",
   "exports": {
-    "import": "./lib/esm",
-    "require": "./lib/cjs"
+    "./": {
+      "import": "./lib/esm/",
+      "require": "./lib/cjs/"
+    }
   },
   "scripts": {
     "tsc": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
