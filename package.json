@@ -6,6 +6,7 @@
     "lib",
     "src"
   ],
+  "prepublish": "npm run build",
   "main": "lib/index.js",
   "scripts": {
     "format": "prettier --write \"src/**/*.ts\"",
