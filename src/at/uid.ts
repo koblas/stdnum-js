@@ -11,18 +11,18 @@
  * VAT
  */
 
-import * as exceptions from "../exceptions";
-import { strings } from "../util";
-import { Validator, ValidateReturn } from "../types";
-import { luhnChecksumValue } from "../util/checksum";
+import * as exceptions from '../exceptions';
+import { strings } from '../util';
+import { Validator, ValidateReturn } from '../types';
+import { luhnChecksumValue } from '../util/checksum';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
-  const [value, err] = strings.cleanUnicode(input, " -./");
+  const [value, err] = strings.cleanUnicode(input, ' -./');
 
   if (err) {
     return [value, err];
   }
-  if (value.startsWith("AT")) {
+  if (value.startsWith('AT')) {
     return [value.substr(2), null];
   }
 
@@ -55,7 +55,7 @@ const impl: Validator = {
     if (value.length !== 9) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
-    if (!value.startsWith("U") || !strings.isdigits(value.substr(1))) {
+    if (!value.startsWith('U') || !strings.isdigits(value.substr(1))) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 

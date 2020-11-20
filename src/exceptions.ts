@@ -13,7 +13,7 @@
 export class ValidationError extends Error {
   constructor(msg: string) {
     super(msg);
-    this.name = "ValidationError";
+    this.name = 'ValidationError';
   }
 }
 
@@ -24,9 +24,9 @@ export class ValidationError extends Error {
  *  part of the number or required parts are missing.
  */
 export class InvalidFormat extends ValidationError {
-  constructor(msg: string = "The number has an invlidad format.") {
+  constructor(msg = 'The number has an invlidad format.') {
     super(msg);
-    this.name = "InvalidFormat";
+    this.name = 'InvalidFormat';
   }
 }
 
@@ -34,9 +34,9 @@ export class InvalidFormat extends ValidationError {
  * The number's internal checksum or check digit does not match.
  */
 export class InvalidChecksum extends ValidationError {
-  constructor(msg: string = "The number number's checksum or check digit is invalid.") {
+  constructor(msg = "The number number's checksum or check digit is invalid.") {
     super(msg);
-    this.name = "InvalidChecksum";
+    this.name = 'InvalidChecksum';
   }
 }
 
@@ -44,9 +44,9 @@ export class InvalidChecksum extends ValidationError {
  * The length of the number is wrong
  */
 export class InvalidLength extends ValidationError {
-  constructor(msg: string = "The number has an invalid length.") {
+  constructor(msg = 'The number has an invalid length.') {
     super(msg);
-    this.name = "InvalidLength";
+    this.name = 'InvalidLength';
   }
 }
 
@@ -58,8 +58,8 @@ export class InvalidLength extends ValidationError {
  * some invalid reference.
  */
 export class InvalidComponent extends ValidationError {
-  constructor(msg: string = "One of the parts of the number are invalid or unknown.") {
+  constructor(msg = 'One of the parts of the number are invalid or unknown.') {
     super(msg);
-    this.name = "InvalidComponent";
+    this.name = 'InvalidComponent';
   }
 }

@@ -11,15 +11,15 @@
  * TAX
  */
 
-import * as exceptions from "../exceptions";
-import { strings } from "../util";
-import { Validator, ValidateReturn } from "../types";
-import { luhnChecksumDigit } from "../util/checksum";
+import * as exceptions from '../exceptions';
+import { strings } from '../util';
+import { Validator, ValidateReturn } from '../types';
+import { luhnChecksumDigit } from '../util/checksum';
 
-const checkDigits = "ABCDEFGHJNPQRSUVW";
+const checkDigits = 'ABCDEFGHJNPQRSUVW';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
-  return strings.cleanUnicode(input, " -");
+  return strings.cleanUnicode(input, ' -');
 }
 
 const impl: Validator = {
@@ -36,7 +36,7 @@ const impl: Validator = {
   format(input: string): string {
     const [value] = clean(input);
 
-    return strings.splitAt(value, 1, 8).join("-");
+    return strings.splitAt(value, 1, 8).join('-');
   },
 
   validate(input: string): ValidateReturn {
@@ -51,13 +51,17 @@ const impl: Validator = {
 
     const [first, body, check] = strings.splitAt(value, 1, 8);
 
-    if (!strings.isdigits(body) || !checkDigits.includes(first) || !strings.isdigits(check)) {
+    if (
+      !strings.isdigits(body) ||
+      !checkDigits.includes(first) ||
+      !strings.isdigits(check)
+    ) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
     const cs = parseInt(luhnChecksumDigit(body), 10);
     // Two sysstem of check digits
-    const digits = "JABCDEFGHI"[cs] + String(cs);
+    const digits = 'JABCDEFGHI'[cs] + String(cs);
 
     if (!digits.includes(check)) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };

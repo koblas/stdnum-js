@@ -12,12 +12,12 @@
  * ID
  */
 
-import * as exceptions from "../exceptions";
-import { strings } from "../util";
-import { Validator, ValidateReturn } from "../types";
+import * as exceptions from '../exceptions';
+import { strings } from '../util';
+import { Validator, ValidateReturn } from '../types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
-  return strings.cleanUnicode(input, " .");
+  return strings.cleanUnicode(input, ' .');
 }
 
 const impl: Validator = {
@@ -34,7 +34,7 @@ const impl: Validator = {
   format(input: string): string {
     const [value] = clean(input);
 
-    return strings.splitAt(value, value.length - 6, value.length - 3).join(".");
+    return strings.splitAt(value, value.length - 6, value.length - 3).join('.');
   },
 
   /**

@@ -11,12 +11,12 @@
  * INN == VAT
  */
 
-import * as exceptions from "../exceptions";
-import { strings, weightedChecksum } from "../util";
-import { Validator, ValidateReturn } from "../types";
+import * as exceptions from '../exceptions';
+import { strings, weightedChecksum } from '../util';
+import { Validator, ValidateReturn } from '../types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
-  return strings.cleanUnicode(input, " ");
+  return strings.cleanUnicode(input, ' ');
 }
 
 const impl: Validator = {
@@ -56,12 +56,29 @@ const impl: Validator = {
     let digit: string;
 
     if (value.length === 10) {
-      const d1 = (weightedChecksum(value, [2, 4, 10, 3, 5, 9, 4, 6, 8]) % 11) % 10;
+      const d1 =
+        (weightedChecksum(value, [2, 4, 10, 3, 5, 9, 4, 6, 8]) % 11) % 10;
 
       digit = `${d1}`;
     } else {
-      const d1 = (weightedChecksum(value, [7, 2, 4, 10, 3, 5, 9, 4, 6, 8]) % 11) % 10;
-      const d2 = (weightedChecksum(value.substr(0, 10) + d1, [3, 7, 2, 4, 10, 3, 5, 9, 4, 6, 8]) % 11) % 10;
+      const d1 =
+        (weightedChecksum(value, [7, 2, 4, 10, 3, 5, 9, 4, 6, 8]) % 11) % 10;
+      const d2 =
+        (weightedChecksum(value.substr(0, 10) + d1, [
+          3,
+          7,
+          2,
+          4,
+          10,
+          3,
+          5,
+          9,
+          4,
+          6,
+          8,
+        ]) %
+          11) %
+        10;
 
       digit = `${d1}${d2}`;
     }

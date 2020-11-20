@@ -3,6 +3,8 @@
  *
  * e.g. splitAt('abcdefghijklmnop', 3, 6, 9) => ['abc', 'def', 'ghijklmonop']
  */
-export function splitAt(value: string, ...points: number[]) {
-  return [0, ...points].map((p, idx) => value.substr(p, (points[idx] ?? value.length) - p));
+export function splitAt(value: string, ...points: number[]): string[] {
+  return [0, ...points].map((p, idx) =>
+    value.substr(p, (points[idx] ?? value.length) - p),
+  );
 }

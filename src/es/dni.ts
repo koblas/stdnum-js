@@ -12,18 +12,18 @@
  * PERSON
  */
 
-import * as exceptions from "../exceptions";
-import { strings } from "../util";
-import { Validator, ValidateReturn } from "../types";
+import * as exceptions from '../exceptions';
+import { strings } from '../util';
+import { Validator, ValidateReturn } from '../types';
 
-const checkDigits = "TRWAGMYFPDXBNJZSQVHLCKE";
+const checkDigits = 'TRWAGMYFPDXBNJZSQVHLCKE';
 
 export function calcCheckDigit(value: string): string {
   return checkDigits[parseInt(value.substr(0, 8), 10) % 23];
 }
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
-  return strings.cleanUnicode(input, " -");
+  return strings.cleanUnicode(input, ' -');
 }
 
 const impl: Validator = {
@@ -40,7 +40,7 @@ const impl: Validator = {
   format(input: string): string {
     const [value] = clean(input);
 
-    return strings.splitAt(value, 8).join("-");
+    return strings.splitAt(value, 8).join('-');
   },
 
   validate(input: string): ValidateReturn {

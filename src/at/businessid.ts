@@ -6,19 +6,19 @@
  *
  */
 
-import * as exceptions from "../exceptions";
-import { strings } from "../util";
-import { Validator, ValidateReturn } from "../types";
+import * as exceptions from '../exceptions';
+import { strings } from '../util';
+import { Validator, ValidateReturn } from '../types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
-  let [value, err] = strings.cleanUnicode(input, " -./");
+  const [value, err] = strings.cleanUnicode(input, ' -./');
 
   if (err) {
     return [value, err];
   }
 
-  if (value.startsWith("FN")) {
-    value = value.substring(2);
+  if (value.startsWith('FN')) {
+    return [value.substring(2), null];
   }
 
   return [value, null];

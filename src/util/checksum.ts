@@ -1,8 +1,12 @@
 /**
  *
  */
-export function weightedChecksum(value: string, weights: number[], modulus?: number) {
-  const weighted = value.split("").reduce((acc, v, idx) => {
+export function weightedChecksum(
+  value: string,
+  weights: number[],
+  modulus?: number,
+): number {
+  const weighted = value.split('').reduce((acc, v, idx) => {
     if (idx >= weights.length) {
       return acc;
     }
@@ -14,13 +18,13 @@ export function weightedChecksum(value: string, weights: number[], modulus?: num
   return modulus ? weighted % modulus : weighted;
 }
 
-export function luhnChecksum(value: string, alphabet: string = "0123456789") {
+export function luhnChecksum(value: string, alphabet = '0123456789'): number {
   const parity = value.length % 2;
 
   const sum = value
-    .split("")
+    .split('')
     .reverse()
-    .map((v) => alphabet.indexOf(v))
+    .map(v => alphabet.indexOf(v))
     .reduce((acc, value, idx) => {
       const v = idx % 2 === parity ? value * 2 : value;
 
@@ -31,13 +35,16 @@ export function luhnChecksum(value: string, alphabet: string = "0123456789") {
   return sum % alphabet.length;
 }
 
-export function luhnChecksumValidate(value: string, alphabet: string = "0123456789") {
+export function luhnChecksumValidate(
+  value: string,
+  alphabet = '0123456789',
+): number {
   const parity = value.length % 2;
 
   const sum = value
-    .split("")
+    .split('')
     .reverse()
-    .map((v) => alphabet.indexOf(v))
+    .map(v => alphabet.indexOf(v))
     .reduce((acc, value, idx) => {
       const v = idx % 2 === parity ? value * 2 : value;
 
@@ -52,13 +59,16 @@ export function luhnChecksumValidate(value: string, alphabet: string = "01234567
  * Compute the Luhn checksum over the provider number.  The checksum is returned as
  * a Number.  Valid numbers should be equal to 0
  */
-export function luhnChecksumValue(value: string, alphabet: string = "0123456789"): number {
+export function luhnChecksumValue(
+  value: string,
+  alphabet = '0123456789',
+): number {
   const alen = alphabet.length;
 
   return value
-    .split("")
+    .split('')
     .reverse()
-    .map((v) => alphabet.indexOf(v))
+    .map(v => alphabet.indexOf(v))
     .reduce((acc, v, idx) => {
       if (idx % 2 === 0) {
         return (acc + v) % alen;
@@ -72,7 +82,10 @@ export function luhnChecksumValue(value: string, alphabet: string = "0123456789"
  * Compute the checksum digit that should be provided given the alphabet
  *   (e.g. calc_check_digit)
  */
-export function luhnChecksumDigit(value: string, alphabet: string = "0123456789") {
+export function luhnChecksumDigit(
+  value: string,
+  alphabet = '0123456789',
+): string {
   const cs = luhnChecksumValue(`${value}${alphabet[0]}`);
 
   return alphabet[alphabet.length - cs];

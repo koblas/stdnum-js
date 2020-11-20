@@ -12,20 +12,20 @@
  * VAT
  */
 
-import * as exceptions from "../exceptions";
-import { strings } from "../util";
-import { Validator, ValidateReturn } from "../types";
-import * as nie from "./nie";
-import * as dni from "./dni";
-import * as cif from "./cif";
+import * as exceptions from '../exceptions';
+import { strings } from '../util';
+import { Validator, ValidateReturn } from '../types';
+import * as nie from './nie';
+import * as dni from './dni';
+import * as cif from './cif';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
-  const [value, err] = strings.cleanUnicode(input, " -./");
+  const [value, err] = strings.cleanUnicode(input, ' -./');
 
   if (err) {
     return [value, err];
   }
-  if (value.startsWith("ES")) {
+  if (value.startsWith('ES')) {
     return [value.substr(2), null];
   }
 
@@ -46,7 +46,7 @@ const impl: Validator = {
   format(input: string): string {
     const [value] = clean(input);
 
-    return strings.splitAt(value, 1).join("-");
+    return strings.splitAt(value, 1).join('-');
   },
 
   validate(input: string): ValidateReturn {
@@ -59,7 +59,7 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
 
-    if ("KLM".includes(value[0])) {
+    if ('KLM'.includes(value[0])) {
       // K: Spanish younger than 14 year old
       // L: Spanish living outside Spain without DNI
       // M: granted the tax to foreigners who have no NIE
@@ -67,11 +67,16 @@ const impl: Validator = {
       if (value[value.length - 1] !== dni.calcCheckDigit(value.substr(1))) {
         return { isValid: false, error: new exceptions.InvalidChecksum() };
       }
-      return { isValid: true, compact: value, isIndividual: true, isCompany: false };
+      return {
+        isValid: true,
+        compact: value,
+        isIndividual: true,
+        isCompany: false,
+      };
     } else if (strings.isdigits(value[0])) {
       // Natural resident (DNI)
       return dni.validate(value);
-    } else if ("XYZ".includes(value[0])) {
+    } else if ('XYZ'.includes(value[0])) {
       // Foreign natural person (NIE)
       return nie.validate(value);
     }

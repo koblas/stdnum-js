@@ -12,13 +12,13 @@
  * BANK
  */
 
-import * as exceptions from "../exceptions";
-import { strings, weightedChecksum } from "../util";
-import { Validator, ValidateReturn } from "../types";
-import { banksMap, cities } from "./banks";
+import * as exceptions from '../exceptions';
+import { strings, weightedChecksum } from '../util';
+import { Validator, ValidateReturn } from '../types';
+import { banksMap, cities } from './banks';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
-  return strings.cleanUnicode(input, "- ");
+  return strings.cleanUnicode(input, '- ');
 }
 
 const impl: Validator = {
@@ -54,7 +54,12 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
-    const [bankCode, cityCode, account, checksum] = strings.splitAt(value, 3, 6, 17);
+    const [bankCode, cityCode, account, checksum] = strings.splitAt(
+      value,
+      3,
+      6,
+      17,
+    );
 
     if (banksMap[parseInt(bankCode, 10)] === undefined) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
@@ -66,7 +71,14 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
-    const sum = (10 - weightedChecksum(value, [3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7], 10)) % 10;
+    const sum =
+      (10 -
+        weightedChecksum(
+          value,
+          [3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7],
+          10,
+        )) %
+      10;
 
     if (checksum !== String(sum)) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };

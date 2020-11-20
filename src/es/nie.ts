@@ -11,15 +11,15 @@
  * PERSON
  */
 
-import * as exceptions from "../exceptions";
-import { strings } from "../util";
-import * as dni from "./dni";
-import { Validator, ValidateReturn } from "../types";
+import * as exceptions from '../exceptions';
+import { strings } from '../util';
+import * as dni from './dni';
+import { Validator, ValidateReturn } from '../types';
 
-const checkDigits = "XYZ";
+const checkDigits = 'XYZ';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
-  return strings.cleanUnicode(input, " -");
+  return strings.cleanUnicode(input, ' -');
 }
 
 const impl: Validator = {
@@ -36,7 +36,7 @@ const impl: Validator = {
   format(input: string): string {
     const [value] = clean(input);
 
-    return strings.splitAt(value, 1, 8).join("-");
+    return strings.splitAt(value, 1, 8).join('-');
   },
 
   validate(input: string): ValidateReturn {
@@ -51,7 +51,11 @@ const impl: Validator = {
 
     const [first, body, check] = strings.splitAt(value, 1, 8);
 
-    if (!strings.isdigits(body) || !checkDigits.includes(first) || strings.isdigits(check)) {
+    if (
+      !strings.isdigits(body) ||
+      !checkDigits.includes(first) ||
+      strings.isdigits(check)
+    ) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 

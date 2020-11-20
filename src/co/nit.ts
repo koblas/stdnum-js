@@ -12,12 +12,12 @@
  * BANK
  */
 
-import * as exceptions from "../exceptions";
-import { strings, weightedChecksum } from "../util";
-import { Validator, ValidateReturn } from "../types";
+import * as exceptions from '../exceptions';
+import { strings, weightedChecksum } from '../util';
+import { Validator, ValidateReturn } from '../types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
-  return strings.cleanUnicode(input, ",.- ");
+  return strings.cleanUnicode(input, ',.- ');
 }
 
 const impl: Validator = {
@@ -57,9 +57,14 @@ const impl: Validator = {
     }
 
     const sum =
-      weightedChecksum(value, [71, 67, 59, 53, 47, 43, 41, 37, 29, 23, 19, 17, 13, 7, 3].slice(16 - value.length)) % 11;
+      weightedChecksum(
+        value,
+        [71, 67, 59, 53, 47, 43, 41, 37, 29, 23, 19, 17, 13, 7, 3].slice(
+          16 - value.length,
+        ),
+      ) % 11;
 
-    const digit = "01987654321".split("")[sum];
+    const digit = '01987654321'.split('')[sum];
     if (value[value.length - 1] !== digit) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }

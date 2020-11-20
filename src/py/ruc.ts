@@ -18,12 +18,12 @@
  * BANK
  */
 
-import * as exceptions from "../exceptions";
-import { strings } from "../util";
-import { Validator, ValidateReturn } from "../types";
+import * as exceptions from '../exceptions';
+import { strings } from '../util';
+import { Validator, ValidateReturn } from '../types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
-  return strings.cleanUnicode(input, " -");
+  return strings.cleanUnicode(input, ' -');
 }
 
 const impl: Validator = {
@@ -40,7 +40,9 @@ const impl: Validator = {
   format(input: string): string {
     const [value] = clean(input);
 
-    return `${value.substr(0, value.length - 1)}-${value.substr(value.length - 1)}`;
+    return `${value.substr(0, value.length - 1)}-${value.substr(
+      value.length - 1,
+    )}`;
   },
 
   /**
@@ -64,9 +66,9 @@ const impl: Validator = {
     const [front, check] = strings.splitAt(value, value.length - 1);
 
     const sum = front
-      .split("")
+      .split('')
       .reverse()
-      .map((x) => parseInt(x, 10))
+      .map(x => parseInt(x, 10))
       .reduce((acc, digit, idx) => acc + digit * (idx + 2), 0);
 
     const digit = String((11 - (sum % 11)) % 10);

@@ -9,18 +9,18 @@
  * 8 digits, followed by a check digit.
  */
 
-import * as exceptions from "../exceptions";
-import { strings, weightedChecksum } from "../util";
-import { Validator, ValidateReturn } from "../types";
+import * as exceptions from '../exceptions';
+import { strings, weightedChecksum } from '../util';
+import { Validator, ValidateReturn } from '../types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
-  const [v, err] = strings.cleanUnicode(input, " -");
+  const [v, err] = strings.cleanUnicode(input, ' -');
 
   if (err) {
-    return ["", err];
+    return ['', err];
   }
 
-  if (v.startsWith("CL")) {
+  if (v.startsWith('CL')) {
     return [v.substr(2), null];
   }
 
@@ -67,9 +67,13 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
-    const sum = weightedChecksum(strings.reverse(front), [9, 8, 7, 6, 5, 4, 9, 8, 7], 11);
+    const sum = weightedChecksum(
+      strings.reverse(front),
+      [9, 8, 7, 6, 5, 4, 9, 8, 7],
+      11,
+    );
 
-    const digit = "0123456789K"[sum];
+    const digit = '0123456789K'[sum];
 
     if (check !== digit) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };

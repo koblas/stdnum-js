@@ -10,20 +10,21 @@
  * VAT
  */
 
-import * as exceptions from "../exceptions";
-import { strings } from "../util";
-import { Validator, ValidateReturn } from "../types";
+import * as exceptions from '../exceptions';
+import { strings } from '../util';
+import { Validator, ValidateReturn } from '../types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
-  let [value, err] = strings.cleanUnicode(input, " ");
+  // eslint-disable-next-line prefer-const
+  let [value, err] = strings.cleanUnicode(input, ' ');
 
   if (err) {
     return [value, err];
   }
 
-  if (value.startsWith("AL")) {
+  if (value.startsWith('AL')) {
     value = value.substring(2);
-  } else if (value.startsWith("(AL)")) {
+  } else if (value.startsWith('(AL)')) {
     value = value.substring(4);
   }
 

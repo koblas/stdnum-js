@@ -11,28 +11,28 @@
  * TAX
  */
 
-import * as exceptions from "../exceptions";
-import { strings, weightedChecksum } from "../util";
-import { Validator, ValidateReturn } from "../types";
+import * as exceptions from '../exceptions';
+import { strings, weightedChecksum } from '../util';
+import { Validator, ValidateReturn } from '../types';
 
 const cuitTypes = [
   // individuals
-  "20",
-  "23",
-  "24",
-  "27",
+  '20',
+  '23',
+  '24',
+  '27',
   // companies
-  "30",
-  "33",
-  "34",
+  '30',
+  '33',
+  '34',
   // international purposes
-  "50",
-  "51",
-  "55",
+  '50',
+  '51',
+  '55',
 ];
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
-  return strings.cleanUnicode(input, " -");
+  return strings.cleanUnicode(input, ' -');
 }
 
 const impl: Validator = {
@@ -49,7 +49,7 @@ const impl: Validator = {
   format(input: string): string {
     const [value] = clean(input);
 
-    return strings.splitAt(value, 2, 10).join("-");
+    return strings.splitAt(value, 2, 10).join('-');
   },
 
   /**
@@ -76,8 +76,12 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
-    const cs = weightedChecksum(front + body, [5, 4, 3, 2, 7, 6, 5, 4, 3, 2], 11);
-    const digit = "012345678990"[11 - cs];
+    const cs = weightedChecksum(
+      front + body,
+      [5, 4, 3, 2, 7, 6, 5, 4, 3, 2],
+      11,
+    );
+    const digit = '012345678990'[11 - cs];
 
     if (digit !== check) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
@@ -86,8 +90,8 @@ const impl: Validator = {
     return {
       isValid: true,
       compact: value,
-      isIndividual: front[0] === "2",
-      isCompany: front[0] === "3",
+      isIndividual: front[0] === '2',
+      isCompany: front[0] === '3',
     };
   },
 };

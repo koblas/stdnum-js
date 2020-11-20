@@ -13,12 +13,12 @@
  * NRT == VAT
  */
 
-import * as exceptions from "../exceptions";
-import { strings } from "../util";
-import { Validator, ValidateReturn } from "../types";
+import * as exceptions from '../exceptions';
+import { strings } from '../util';
+import { Validator, ValidateReturn } from '../types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
-  return strings.cleanUnicode(input, " -.");
+  return strings.cleanUnicode(input, ' -.');
 }
 
 const impl: Validator = {
@@ -35,7 +35,7 @@ const impl: Validator = {
   format(input: string): string {
     const value = this.compact(input);
 
-    return strings.formatPattern("?-??????-?", value);
+    return strings.formatPattern('?-??????-?', value);
   },
 
   /**
@@ -61,21 +61,21 @@ const impl: Validator = {
     if (!strings.isdigits(mid)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
-    if (!"ACDEFGLOPU".includes(v[0])) {
+    if (!'ACDEFGLOPU'.includes(v[0])) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
-    if (v[0] === "F" && mid > "699999") {
+    if (v[0] === 'F' && mid > '699999') {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
-    if ("AL".includes(v[0]) && mid > "699999" && mid < "800000") {
+    if ('AL'.includes(v[0]) && mid > '699999' && mid < '800000') {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
     return {
       isValid: true,
       compact: v,
-      isIndividual: "AF".includes(v[0]),
-      isCompany: !"AF".includes(v[0]),
+      isIndividual: 'AF'.includes(v[0]),
+      isCompany: !'AF'.includes(v[0]),
     };
   },
 };

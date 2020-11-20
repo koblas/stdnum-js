@@ -11,137 +11,137 @@
  *   https://www.gob.mx/curp/
  */
 
-import * as exceptions from "../exceptions";
-import { isValidDateCompactYYMMDD, strings } from "../util";
-import { Validator, ValidateReturn } from "../types";
+import * as exceptions from '../exceptions';
+import { isValidDateCompactYYMMDD, strings } from '../util';
+import { Validator, ValidateReturn } from '../types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
-  return strings.cleanUnicode(input, " ");
+  return strings.cleanUnicode(input, ' ');
 }
 
 const nameBlacklist = new Set([
-  "BACA",
-  "BAKA",
-  "BUEI",
-  "BUEY",
-  "CACA",
-  "CACO",
-  "CAGA",
-  "CAGO",
-  "CAKA",
-  "CAKO",
-  "COGE",
-  "COGI",
-  "COJA",
-  "COJE",
-  "COJI",
-  "COJO",
-  "COLA",
-  "CULO",
-  "FALO",
-  "FETO",
-  "GETA",
-  "GUEI",
-  "GUEY",
-  "JETA",
-  "JOTO",
-  "KACA",
-  "KACO",
-  "KAGA",
-  "KAGO",
-  "KAKA",
-  "KAKO",
-  "KOGE",
-  "KOGI",
-  "KOJA",
-  "KOJE",
-  "KOJI",
-  "KOJO",
-  "KOLA",
-  "KULO",
-  "LILO",
-  "LOCA",
-  "LOCO",
-  "LOKA",
-  "LOKO",
-  "MAME",
-  "MAMO",
-  "MEAR",
-  "MEAS",
-  "MEON",
-  "MIAR",
-  "MION",
-  "MOCO",
-  "MOKO",
-  "MULA",
-  "MULO",
-  "NACA",
-  "NACO",
-  "PEDA",
-  "PEDO",
-  "PENE",
-  "PIPI",
-  "PITO",
-  "POPO",
-  "PUTA",
-  "PUTO",
-  "QULO",
-  "RATA",
-  "ROBA",
-  "ROBE",
-  "ROBO",
-  "RUIN",
-  "SENO",
-  "TETA",
-  "VACA",
-  "VAGA",
-  "VAGO",
-  "VAKA",
-  "VUEI",
-  "VUEY",
-  "WUEI",
-  "WUEY",
+  'BACA',
+  'BAKA',
+  'BUEI',
+  'BUEY',
+  'CACA',
+  'CACO',
+  'CAGA',
+  'CAGO',
+  'CAKA',
+  'CAKO',
+  'COGE',
+  'COGI',
+  'COJA',
+  'COJE',
+  'COJI',
+  'COJO',
+  'COLA',
+  'CULO',
+  'FALO',
+  'FETO',
+  'GETA',
+  'GUEI',
+  'GUEY',
+  'JETA',
+  'JOTO',
+  'KACA',
+  'KACO',
+  'KAGA',
+  'KAGO',
+  'KAKA',
+  'KAKO',
+  'KOGE',
+  'KOGI',
+  'KOJA',
+  'KOJE',
+  'KOJI',
+  'KOJO',
+  'KOLA',
+  'KULO',
+  'LILO',
+  'LOCA',
+  'LOCO',
+  'LOKA',
+  'LOKO',
+  'MAME',
+  'MAMO',
+  'MEAR',
+  'MEAS',
+  'MEON',
+  'MIAR',
+  'MION',
+  'MOCO',
+  'MOKO',
+  'MULA',
+  'MULO',
+  'NACA',
+  'NACO',
+  'PEDA',
+  'PEDO',
+  'PENE',
+  'PIPI',
+  'PITO',
+  'POPO',
+  'PUTA',
+  'PUTO',
+  'QULO',
+  'RATA',
+  'ROBA',
+  'ROBE',
+  'ROBO',
+  'RUIN',
+  'SENO',
+  'TETA',
+  'VACA',
+  'VAGA',
+  'VAGO',
+  'VAKA',
+  'VUEI',
+  'VUEY',
+  'WUEI',
+  'WUEY',
 ]);
 
 const validStates = new Set([
-  "AS",
-  "BC",
-  "BS",
-  "CC",
-  "CH",
-  "CL",
-  "CM",
-  "CS",
-  "DF",
-  "DG",
-  "GR",
-  "GT",
-  "HG",
-  "JC",
-  "MC",
-  "MN",
-  "MS",
-  "NE",
-  "NL",
-  "NT",
-  "OC",
-  "PL",
-  "QR",
-  "QT",
-  "SL",
-  "SP",
-  "SR",
-  "TC",
-  "TL",
-  "TS",
-  "VZ",
-  "YN",
-  "ZS",
+  'AS',
+  'BC',
+  'BS',
+  'CC',
+  'CH',
+  'CL',
+  'CM',
+  'CS',
+  'DF',
+  'DG',
+  'GR',
+  'GT',
+  'HG',
+  'JC',
+  'MC',
+  'MN',
+  'MS',
+  'NE',
+  'NL',
+  'NT',
+  'OC',
+  'PL',
+  'QR',
+  'QT',
+  'SL',
+  'SP',
+  'SR',
+  'TC',
+  'TL',
+  'TS',
+  'VZ',
+  'YN',
+  'ZS',
 ]);
 
-const checkAlphabet = "0123456789ABCDEFGHIJKLMN&OPQRSTUVWXYZ";
+const checkAlphabet = '0123456789ABCDEFGHIJKLMN&OPQRSTUVWXYZ';
 const checkAlphabetDict: Record<string, number> = checkAlphabet
-  .split("")
+  .split('')
   .reduce((acc, c, idx) => ({ ...acc, [c]: idx }), {});
 
 const impl: Validator = {
@@ -183,7 +183,7 @@ const impl: Validator = {
     if (nameBlacklist.has(value.substr(0, 4))) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
-    if (!["H", "M"].includes(value[10])) {
+    if (!['H', 'M'].includes(value[10])) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
     if (!validStates.has(value.substr(11, 2))) {
@@ -192,8 +192,11 @@ const impl: Validator = {
 
     const check = value
       .substr(0, 17)
-      .split("")
-      .reduce((acc, c, idx) => acc + (checkAlphabetDict[c] ?? 0) * (18 - idx), 0);
+      .split('')
+      .reduce(
+        (acc, c, idx) => acc + (checkAlphabetDict[c] ?? 0) * (18 - idx),
+        0,
+      );
 
     const checkStr = String((10 - (check % 10)) % 10);
     if (checkStr !== value.substr(17, 1)) {
@@ -227,10 +230,10 @@ export const validate = impl.validate;
 export const format = impl.format;
 export const compact = impl.compact;
 
-export function getGender(input: string): "M" | "F" {
+export function getGender(input: string): 'M' | 'F' {
   const value = compact(input);
 
-  return value[10] === "H" ? "M" : "F";
+  return value[10] === 'H' ? 'M' : 'F';
 }
 
 export function getBirthDate(input: string): Date {

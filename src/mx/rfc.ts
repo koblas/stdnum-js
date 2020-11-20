@@ -28,61 +28,61 @@
  * VAT
  */
 
-import * as exceptions from "../exceptions";
-import { isValidDateCompactYYMMDD, strings } from "../util";
-import { Validator, ValidateReturn } from "../types";
+import * as exceptions from '../exceptions';
+import { isValidDateCompactYYMMDD, strings } from '../util';
+import { Validator, ValidateReturn } from '../types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
-  return strings.cleanUnicode(input, "-_ ");
+  return strings.cleanUnicode(input, '-_ ');
 }
 
 const nameBlacklist = new Set([
-  "BUEI",
-  "BUEY",
-  "CACA",
-  "CACO",
-  "CAGA",
-  "CAGO",
-  "CAKA",
-  "CAKO",
-  "COGE",
-  "COJA",
-  "COJE",
-  "COJI",
-  "COJO",
-  "CULO",
-  "FETO",
-  "GUEY",
-  "JOTO",
-  "KACA",
-  "KACO",
-  "KAGA",
-  "KAGO",
-  "KAKA",
-  "KOGE",
-  "KOJO",
-  "KULO",
-  "MAME",
-  "MAMO",
-  "MEAR",
-  "MEAS",
-  "MEON",
-  "MION",
-  "MOCO",
-  "MULA",
-  "PEDA",
-  "PEDO",
-  "PENE",
-  "PUTA",
-  "PUTO",
-  "QULO",
-  "RATA",
-  "RUIN",
+  'BUEI',
+  'BUEY',
+  'CACA',
+  'CACO',
+  'CAGA',
+  'CAGO',
+  'CAKA',
+  'CAKO',
+  'COGE',
+  'COJA',
+  'COJE',
+  'COJI',
+  'COJO',
+  'CULO',
+  'FETO',
+  'GUEY',
+  'JOTO',
+  'KACA',
+  'KACO',
+  'KAGA',
+  'KAGO',
+  'KAKA',
+  'KOGE',
+  'KOJO',
+  'KULO',
+  'MAME',
+  'MAMO',
+  'MEAR',
+  'MEAS',
+  'MEON',
+  'MION',
+  'MOCO',
+  'MULA',
+  'PEDA',
+  'PEDO',
+  'PENE',
+  'PUTA',
+  'PUTO',
+  'QULO',
+  'RATA',
+  'RUIN',
 ]);
 
-const checkAlphabet = "0123456789ABCDEFGHIJKLMN&OPQRSTUVWXYZ Ñ";
+const checkAlphabet = '0123456789ABCDEFGHIJKLMN&OPQRSTUVWXYZ Ñ';
 const checkAlphabetDict: Record<string, number> = checkAlphabet
-  .split("")
+  .split('')
   .reduce((acc, c, idx) => ({ ...acc, [c]: idx }), {});
 
 const impl: Validator = {
@@ -100,11 +100,11 @@ const impl: Validator = {
     const value = this.compact(input);
 
     if (value.length === 12) {
-      return strings.splitAt(value, 3, 9).join(" ");
+      return strings.splitAt(value, 3, 9).join(' ');
     } else if (value.length === 13) {
-      return strings.splitAt(value, 4, 10).join(" ");
+      return strings.splitAt(value, 4, 10).join(' ');
     } else {
-      return strings.splitAt(value, 4).join(" ");
+      return strings.splitAt(value, 4).join(' ');
     }
   },
 
@@ -147,9 +147,12 @@ const impl: Validator = {
 
       const sum = value
         .substr(0, value.length - 1)
-        .padStart(12, " ")
-        .split("")
-        .reduce((acc, c, idx) => acc + (checkAlphabetDict[c] ?? 0) * (13 - idx), 0);
+        .padStart(12, ' ')
+        .split('')
+        .reduce(
+          (acc, c, idx) => acc + (checkAlphabetDict[c] ?? 0) * (13 - idx),
+          0,
+        );
 
       if (value[value.length - 1] !== String(11 - (sum % 11))) {
         return { isValid: false, error: new exceptions.InvalidChecksum() };

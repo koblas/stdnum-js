@@ -1,33 +1,33 @@
-import { validate, format } from "./nipt";
-import { InvalidLength, InvalidFormat } from "../exceptions";
+import { validate, format } from './nipt';
+import { InvalidLength, InvalidFormat } from '../exceptions';
 
-describe("al/nibt", () => {
-  it("format:AL J 91402501 L", () => {
-    const result = format("AL J 91402501 L");
+describe('al/nibt', () => {
+  it('format:AL J 91402501 L', () => {
+    const result = format('AL J 91402501 L');
 
-    expect(result).toEqual("J91402501L");
+    expect(result).toEqual('J91402501L');
   });
 
-  it("validate:AL J 91402501 L", () => {
-    const result = validate("AL J 91402501 L");
+  it('validate:AL J 91402501 L', () => {
+    const result = validate('AL J 91402501 L');
 
-    expect(result.isValid && result.compact).toEqual("J91402501L");
+    expect(result.isValid && result.compact).toEqual('J91402501L');
   });
 
-  it("validate:(AL) J 91402501L", () => {
-    const result = validate("(AL) J 91402501L");
+  it('validate:(AL) J 91402501L', () => {
+    const result = validate('(AL) J 91402501L');
 
-    expect(result.isValid && result.compact).toEqual("J91402501L");
+    expect(result.isValid && result.compact).toEqual('J91402501L');
   });
 
-  it("validate:(AL) J 91402501", () => {
-    const result = validate("(AL) J 91402501");
+  it('validate:(AL) J 91402501', () => {
+    const result = validate('(AL) J 91402501');
 
     expect(result.error).toBeInstanceOf(InvalidLength);
   });
 
-  it("validate:Z 22218003 V", () => {
-    const result = validate("Z 22218003 V");
+  it('validate:Z 22218003 V', () => {
+    const result = validate('Z 22218003 V');
 
     expect(result.error).toBeInstanceOf(InvalidFormat);
   });
