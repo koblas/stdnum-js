@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
+    "module": "ES2020",
+    "outDir": "./lib/esm",
     "moduleResolution": "node",
     "skipLibCheck": true,
     "importHelpers": false,
     "target": "es6",
     "removeComments": true,
-    "module": "commonjs",
-    "outDir": "lib",
     "strict": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,

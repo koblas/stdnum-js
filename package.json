@@ -3,16 +3,17 @@
   "version": "0.0.1",
   "description": "Standard Number Validation",
   "files": [
-    "lib",
-    "src"
+    "lib"
   ],
-  "prepublish": "npm run build",
-  "main": "lib/index.js",
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
   "scripts": {
+    "tsc": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -c tslint.json -p tsconfig.json",
     "test": "jest",
-    "build": "tsc"
+    "build": "tsc",
+    "prepublishOnly": "npm run tsc"
   },
   "jest": {
     "moduleFileExtensions": [
