@@ -5,7 +5,7 @@ export const banksMap: Record<
     name: string;
   }
 > = {
-  //source: https://es.wikipedia.org/wiki/CLABE#C.C3.B3digo_de_banco (Jan 9, 2017)
+  // source: https://es.wikipedia.org/wiki/CLABE#C.C3.B3digo_de_banco (Jan 9, 2017)
   2: { tag: 'BANAMEX', name: 'Banco Nacional de México, S.A.' },
   6: { tag: 'BANCOMEXT', name: 'Banco Nacional de Comercio Exterior' },
   9: { tag: 'BANOBRAS', name: 'Banco Nacional de Obras y Servicios Públicos' },
@@ -182,7 +182,7 @@ export const banksMap: Record<
 };
 
 const citiesPairs = [
-  //source: https://es.wikipedia.org/wiki/CLABE#C.C3.B3digo_de_plaza (Jan 9, 2017)
+  // source: https://es.wikipedia.org/wiki/CLABE#C.C3.B3digo_de_plaza (Jan 9, 2017)
   [10, 'Aguascalientes'],
   [12, 'Calvillo'],
   [14, 'Jesús María'],
@@ -192,7 +192,7 @@ const citiesPairs = [
   [27, 'Tijuana'],
   [28, 'La Mesa'],
   [28, 'Rosarito'],
-  [28, 'Tijuana [alternate]'], //see first occurrence at 27
+  [28, 'Tijuana [alternate]'], // see first occurrence at 27
   [40, 'La Paz'],
   [41, 'Cabo San Lucas'],
   [42, 'Ciudad Constitución'],
@@ -343,7 +343,7 @@ const citiesPairs = [
   [320, 'Guadalajara'],
   [320, 'San Pedro Tlaquepaque'],
   [320, 'Tlajomulco'],
-  [320, 'Tonala [alternate]'], //see first occurrence at 135
+  [320, 'Tonala [alternate]'], // see first occurrence at 135
   [320, 'Zapopan'],
   [326, 'Ameca'],
   [327, 'Arandas'],
@@ -456,7 +456,7 @@ const citiesPairs = [
   [566, 'Ixtlán del Río'],
   [571, 'San Blas'],
   [573, 'Santiago Ixcuintla'],
-  [575, 'Túxpam [alternate]'], //see first occurrence at 404
+  [575, 'Túxpam [alternate]'], // see first occurrence at 404
   [580, 'Apodaca'],
   [580, 'Cadereyta'],
   [580, 'Cd. Guadalupe'],
@@ -481,7 +481,7 @@ const citiesPairs = [
   [619, 'Loma Bonita'],
   [620, 'Matías Romero'],
   [621, 'Miahuatlán'],
-  [622, 'Ocotlán [alternate]'], //see first occurrence at 370
+  [622, 'Ocotlán [alternate]'], // see first occurrence at 370
   [624, 'Puerto Escondido'],
   [626, 'Salina Cruz'],
   [627, 'Lagunas'],

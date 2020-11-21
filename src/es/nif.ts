@@ -73,10 +73,12 @@ const impl: Validator = {
         isIndividual: true,
         isCompany: false,
       };
-    } else if (strings.isdigits(value[0])) {
+    }
+    if (strings.isdigits(value[0])) {
       // Natural resident (DNI)
       return dni.validate(value);
-    } else if ('XYZ'.includes(value[0])) {
+    }
+    if ('XYZ'.includes(value[0])) {
       // Foreign natural person (NIE)
       return nie.validate(value);
     }
@@ -86,6 +88,4 @@ const impl: Validator = {
   },
 };
 
-export const validate = impl.validate;
-export const format = impl.format;
-export const compact = impl.compact;
+export const { validate, format, compact } = impl;

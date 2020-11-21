@@ -1,3 +1,4 @@
+/* eslint-disable max-classes-per-file */
 /**
  * Collection of exceptions.
  * The validation functions of stdnum should raise one of the below exceptions

@@ -219,25 +219,22 @@ function getBirthDateImpl(value: string) {
   const mmN = parseInt(parts[2], 10) - 1;
   const ddN = parseInt(parts[3], 10);
 
-  if (!isNaN(parseInt(value[16], 10))) {
+  if (!Number.isNaN(parseInt(value[16], 10))) {
     return new Date(yyN + 1900, mmN, ddN);
-  } else {
-    return new Date(yyN + 2000, mmN, ddN);
   }
+  return new Date(yyN + 2000, mmN, ddN);
 }
 
-export const validate = impl.validate;
-export const format = impl.format;
-export const compact = impl.compact;
-
 export function getGender(input: string): 'M' | 'F' {
-  const value = compact(input);
+  const value = impl.compact(input);
 
   return value[10] === 'H' ? 'M' : 'F';
 }
 
 export function getBirthDate(input: string): Date {
-  const value = compact(input);
+  const value = impl.compact(input);
 
   return getBirthDateImpl(value);
 }
+
+export const { validate, format, compact } = impl;

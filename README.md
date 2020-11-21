@@ -2,6 +2,11 @@
 
 ![Build](https://github.com/koblas/stdnum-js/workflows/Node.js%20CI/badge.svg)
 
+JavaScript (TypeScript) package to validate most all national numbers, with a focus on
+VAT, Person and Tax identifiers.
+
+## Supported Countries and Numbers
+
 | Country   | Code | Name       | Group    | Meaning                                                          |
 | --------- | ---- | ---------- | -------- | ---------------------------------------------------------------- |
 | Andorra   | AD   | NRT        | Tax      | Tax Identifier (Número de Registre Tributari)                    |
@@ -13,6 +18,8 @@
 | Austria   | AT   | TIN        | Tax      | Austrian tax identification number (Abgabenkontonummer)          |
 | Austria   | AT   | UID        | VAT      | Austrian VAT number (Umsatzsteuer-Identifikationsnummer)         |
 | Austria   | AT   | VNR        | Person   | Austrian social security number(Versicherungsnummer)             |
+| Brazil    | BR   | CPF        | Person   | Brazilian identity number (Cadastro de Pessoas Físicas)          |
+| Brazil    | BR   | CNPJ       | Company  | Brazilian company number (Cadastro Nacional da Pessoa Jurídica)  |
 | Chile     | CL   | RUT        | Tax      | Tax Identifier (Rol Unico Tributario) [RUN]                      |
 | Columbia  | CO   | NIT        | Tax      | Tax Identifier (Número de Identificación Tributaria)             |
 | Spain     | ES   | CIF        | Tax/Vat  | Tax Identifier (Código de Identificación Fiscal)                 |
@@ -24,6 +31,10 @@
 | Mexico    | MX   | CLABE      | Bank     | Bank Account (Clave Bancaria Estandarizada)                      |
 | Paraguay  | PY   | RUC        | Tax/Vat  | Tax Identifier (Registro Único de Contribuyentes)                |
 | Russia    | RU   | INN        | Tax/Vat  | Tax Identifier (Идентификационный номер налогоплательщика)       |
+
+### Examples
+
+TODO -- Usage examples
 
 ### Credits
 

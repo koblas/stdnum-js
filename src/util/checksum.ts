@@ -25,8 +25,8 @@ export function luhnChecksum(value: string, alphabet = '0123456789'): number {
     .split('')
     .reverse()
     .map(v => alphabet.indexOf(v))
-    .reduce((acc, value, idx) => {
-      const v = idx % 2 === parity ? value * 2 : value;
+    .reduce((acc, val, idx) => {
+      const v = idx % 2 === parity ? val * 2 : val;
 
       return acc + (v > 9 ? v - 9 : v);
     }, 0);
@@ -45,8 +45,8 @@ export function luhnChecksumValidate(
     .split('')
     .reverse()
     .map(v => alphabet.indexOf(v))
-    .reduce((acc, value, idx) => {
-      const v = idx % 2 === parity ? value * 2 : value;
+    .reduce((acc, val, idx) => {
+      const v = idx % 2 === parity ? val * 2 : val;
 
       return acc + (v > 9 ? v - 9 : v);
     }, 0);

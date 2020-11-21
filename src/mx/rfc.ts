@@ -101,11 +101,11 @@ const impl: Validator = {
 
     if (value.length === 12) {
       return strings.splitAt(value, 3, 9).join(' ');
-    } else if (value.length === 13) {
-      return strings.splitAt(value, 4, 10).join(' ');
-    } else {
-      return strings.splitAt(value, 4).join(' ');
     }
+    if (value.length === 13) {
+      return strings.splitAt(value, 4, 10).join(' ');
+    }
+    return strings.splitAt(value, 4).join(' ');
   },
 
   /**
@@ -168,6 +168,4 @@ const impl: Validator = {
   },
 };
 
-export const validate = impl.validate;
-export const format = impl.format;
-export const compact = impl.compact;
+export const { validate, format, compact } = impl;

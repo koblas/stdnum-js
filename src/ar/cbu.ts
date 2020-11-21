@@ -87,6 +87,4 @@ const impl: Validator = {
   },
 };
 
-export const validate = impl.validate;
-export const format = impl.format;
-export const compact = impl.compact;
+export const { validate, format, compact } = impl;

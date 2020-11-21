@@ -1,4 +1,5 @@
 import * as strings from './strings';
+
 export { weightedChecksum } from './checksum';
 export {
   isValidDate,

@@ -57,7 +57,7 @@ const impl: Validator = {
     if (error) {
       return { isValid: false, error };
     }
-    if (value.length != 8 && value.length !== 9) {
+    if (value.length !== 8 && value.length !== 9) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
 
@@ -88,6 +88,4 @@ const impl: Validator = {
   },
 };
 
-export const validate = impl.validate;
-export const format = impl.format;
-export const compact = impl.compact;
+export const { validate, format, compact } = impl;
