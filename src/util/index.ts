@@ -1,6 +1,6 @@
 import * as strings from './strings';
 
-export { weightedChecksum } from './checksum';
+export { weightedSum } from './checksum';
 export {
   isValidDate,
   isValidDateCompactYYMMDD,

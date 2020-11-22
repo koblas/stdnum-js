@@ -13,7 +13,7 @@
  */
 
 import * as exceptions from '../exceptions';
-import { strings, weightedChecksum } from '../util';
+import { strings, weightedSum } from '../util';
 import { Validator, ValidateReturn } from '../types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
@@ -56,16 +56,16 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
-    const sum =
-      weightedChecksum(
-        value,
-        [71, 67, 59, 53, 47, 43, 41, 37, 29, 23, 19, 17, 13, 7, 3].slice(
-          16 - value.length,
-        ),
-      ) % 11;
+    const [front, check] = strings.splitAt(value, -1);
+    const sum = weightedSum(front, {
+      weights: [71, 67, 59, 53, 47, 43, 41, 37, 29, 23, 19, 17, 13, 7, 3].slice(
+        16 - front.length,
+      ),
+      modulus: 11,
+    });
 
-    const digit = '01987654321'.split('')[sum];
-    if (value[value.length - 1] !== digit) {
+    const digit = '01987654321'[sum];
+    if (check !== digit) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 

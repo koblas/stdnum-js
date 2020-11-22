@@ -10,7 +10,7 @@
  */
 
 import * as exceptions from '../exceptions';
-import { strings, weightedChecksum } from '../util';
+import { strings, weightedSum } from '../util';
 import { Validator, ValidateReturn } from '../types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
@@ -67,11 +67,11 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
-    const sum = weightedChecksum(
-      strings.reverse(front),
-      [9, 8, 7, 6, 5, 4, 9, 8, 7],
-      11,
-    );
+    const sum = weightedSum(front, {
+      reverse: true,
+      weights: [9, 8, 7, 6, 5, 4, 9, 8, 7],
+      modulus: 11,
+    });
 
     const digit = '0123456789K'[sum];
 

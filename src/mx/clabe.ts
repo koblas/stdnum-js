@@ -13,7 +13,7 @@
  */
 
 import * as exceptions from '../exceptions';
-import { strings, weightedChecksum } from '../util';
+import { strings, weightedSum } from '../util';
 import { Validator, ValidateReturn } from '../types';
 import { banksMap, cities } from './banks';
 
@@ -73,11 +73,10 @@ const impl: Validator = {
 
     const sum =
       (10 -
-        weightedChecksum(
-          value,
-          [3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7],
-          10,
-        )) %
+        weightedSum(value.substr(0, 17), {
+          weights: [3, 7, 1],
+          modulus: 10,
+        })) %
       10;
 
     if (checksum !== String(sum)) {

@@ -12,7 +12,7 @@
 
 import * as exceptions from '../exceptions';
 import * as ci from './ci';
-import { strings, weightedChecksum } from '../util';
+import { strings, weightedSum } from '../util';
 import { Validator, ValidateReturn } from '../types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
@@ -70,7 +70,12 @@ const impl: Validator = {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
 
-      if (weightedChecksum(front, [3, 2, 7, 6, 5, 4, 3, 2, 1], 11) !== 0) {
+      if (
+        weightedSum(front, {
+          weights: [3, 2, 7, 6, 5, 4, 3, 2, 1],
+          modulus: 11,
+        }) !== 0
+      ) {
         return { isValid: false, error: new exceptions.InvalidChecksum() };
       }
     } else if (value[2] === '9') {
@@ -79,7 +84,12 @@ const impl: Validator = {
       if (end === '000') {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
-      if (weightedChecksum(front, [4, 3, 2, 7, 6, 5, 4, 3, 2, 1], 11) !== 0) {
+      if (
+        weightedSum(front, {
+          weights: [4, 3, 2, 7, 6, 5, 4, 3, 2, 1],
+          modulus: 11,
+        }) !== 0
+      ) {
         return { isValid: false, error: new exceptions.InvalidChecksum() };
       }
     } else {

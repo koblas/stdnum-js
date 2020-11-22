@@ -1,35 +1,21 @@
 /**
+ * RUC (Registro Único de Contribuyentes, Peruvian company tax number).
  *
- * CUIT (Código Único de Identificación Tributaria, Argentinian tax number).
+ * The RUC (Registro Único de Contribuyentes) is the tax number of Peru assigned
+ * to legal and natural persons. The number consists of 11 digits, the first two
+ * indicate the kind of number, for personal numbers it is followed by the DNI
+ * and a check digit.
  *
- * The CUIT is a taxpayer identification number used for VAT (IVA, Impuesto al
- * Valor Agregado) and other taxes.
+ * Source
+ *    http://www.sunat.gob.pe/legislacion/ruc/
+ *    https://consultarelruc.pe/
  *
- * Sources:
- *   https://es.wikipedia.org/wiki/Clave_Única_de_Identificación_Tributaria
- *
- * TAX
+ * COMPANY TAX
  */
 
 import * as exceptions from '../exceptions';
 import { strings, weightedSum } from '../util';
 import { Validator, ValidateReturn } from '../types';
-
-const cuitTypes = [
-  // individuals
-  '20',
-  '23',
-  '24',
-  '27',
-  // companies
-  '30',
-  '33',
-  '34',
-  // international purposes
-  '50',
-  '51',
-  '55',
-];
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -');
@@ -49,14 +35,12 @@ const impl: Validator = {
   format(input: string): string {
     const [value] = clean(input);
 
-    return strings.splitAt(value, 2, 10).join('-');
+    if (value.length === 9) {
+      return strings.splitAt(value, 8).join('-');
+    }
+    return value;
   },
 
-  /**
-   * Check if the number is a valid Andorra NRT number.
-   * This checks the length, formatting and other contraints. It does not check
-   * for control letter.
-   */
   validate(input: string): ValidateReturn {
     const [value, error] = clean(input);
 
@@ -69,28 +53,28 @@ const impl: Validator = {
     if (!strings.isdigits(value)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
-
-    const [front, body, check] = strings.splitAt(value, 2, 10);
-
-    if (!cuitTypes.includes(front)) {
+    if (!['10', '15', '17', '20'].includes(value.substr(0, 2))) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
-    const cs = weightedSum(front + body, {
-      weights: [5, 4, 3, 2, 7, 6, 5, 4, 3, 2],
-      modulus: 11,
-    });
-    const digit = '012345678990'[11 - cs];
+    const [front, check] = strings.splitAt(value, 10);
+    const sum =
+      11 -
+      (weightedSum(front, {
+        weights: [5, 4, 3, 2, 7, 6, 5, 4, 3, 2],
+        modulus: 11,
+      }) %
+        10);
 
-    if (digit !== check) {
+    if (String(sum) !== check) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 
     return {
       isValid: true,
       compact: value,
-      isIndividual: front[0] === '2',
-      isCompany: front[0] === '3',
+      isIndividual: false,
+      isCompany: true,
     };
   },
 };

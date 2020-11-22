@@ -1,21 +1,30 @@
 /**
- *
+ * Compute the weighted sum of a string
  */
-export function weightedChecksum(
+export function weightedSum(
   value: string,
-  weights: number[],
-  modulus?: number,
+  {
+    alphabet = '0123456789',
+    reverse = false,
+    weights = [1],
+    modulus = 0,
+  }: {
+    alphabet?: string;
+    reverse?: boolean;
+    modulus?: number;
+    weights?: number[];
+  },
 ): number {
-  const weighted = value.split('').reduce((acc, v, idx) => {
-    if (idx >= weights.length) {
-      return acc;
-    }
-    const wv = parseInt(v, 10) * weights[idx];
+  const wlen = weights.length;
+  const numbers = value.split('').map(v => alphabet.indexOf(v));
+  const weighted = (reverse ? numbers.reverse() : numbers).map(
+    (v, idx) => v * weights[idx % wlen],
+  );
 
-    return acc + (modulus ? wv % modulus : wv);
-  }, 0);
-
-  return modulus ? weighted % modulus : weighted;
+  return weighted.reduce(
+    (acc, v) => (modulus ? (acc + v) % modulus : acc + v),
+    0,
+  );
 }
 
 export function luhnChecksum(value: string, alphabet = '0123456789'): number {

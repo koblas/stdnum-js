@@ -12,7 +12,7 @@
  */
 
 import * as exceptions from '../exceptions';
-import { strings, weightedChecksum } from '../util';
+import { strings, weightedSum } from '../util';
 import { Validator, ValidateReturn } from '../types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
@@ -54,36 +54,36 @@ const impl: Validator = {
     }
 
     let digit: string;
+    const [front, check] = strings.splitAt(
+      value,
+      value.length === 10 ? -1 : -2,
+    );
 
     if (value.length === 10) {
-      const d1 =
-        (weightedChecksum(value, [2, 4, 10, 3, 5, 9, 4, 6, 8]) % 11) % 10;
-
-      digit = `${d1}`;
+      digit = String(
+        weightedSum(front, {
+          weights: [2, 4, 10, 3, 5, 9, 4, 6, 8],
+          modulus: 11,
+        }) % 10,
+      );
     } else {
-      const d1 =
-        (weightedChecksum(value, [7, 2, 4, 10, 3, 5, 9, 4, 6, 8]) % 11) % 10;
-      const d2 =
-        (weightedChecksum(value.substr(0, 10) + d1, [
-          3,
-          7,
-          2,
-          4,
-          10,
-          3,
-          5,
-          9,
-          4,
-          6,
-          8,
-        ]) %
-          11) %
-        10;
+      const d1 = String(
+        weightedSum(front, {
+          weights: [7, 2, 4, 10, 3, 5, 9, 4, 6, 8],
+          modulus: 11,
+        }) % 10,
+      );
+      const d2 = String(
+        weightedSum(front + d1, {
+          weights: [3, 7, 2, 4, 10, 3, 5, 9, 4, 6, 8],
+          modulus: 11,
+        }) % 10,
+      );
 
       digit = `${d1}${d2}`;
     }
 
-    if (digit !== value.substr(value.length - digit.length)) {
+    if (digit !== check) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 

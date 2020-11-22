@@ -4,7 +4,11 @@
  * e.g. splitAt('abcdefghijklmnop', 3, 6, 9) => ['abc', 'def', 'ghijklmonop']
  */
 export function splitAt(value: string, ...points: number[]): string[] {
-  return [0, ...points].map((p, idx) =>
-    value.substr(p, (points[idx] ?? value.length) - p),
-  );
+  return [0, ...points].map((p, idx) => {
+    const nvalue = idx >= points.length ? value.length : points[idx];
+    const np = nvalue < 0 ? value.length + nvalue : nvalue;
+    const pp = p < 0 ? value.length + p : p;
+
+    return value.substr(pp, np - pp);
+  });
 }

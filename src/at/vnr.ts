@@ -14,7 +14,7 @@
  */
 
 import * as exceptions from '../exceptions';
-import { isValidDateCompactDDMMYY, strings, weightedChecksum } from '../util';
+import { isValidDateCompactDDMMYY, strings, weightedSum } from '../util';
 import { Validator, ValidateReturn } from '../types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
@@ -57,11 +57,10 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
-    const sum = weightedChecksum(
-      `${front}${dob}`,
-      [3, 7, 9, 5, 8, 4, 2, 1, 6],
-      11,
-    );
+    const sum = weightedSum(`${front}${dob}`, {
+      weights: [3, 7, 9, 5, 8, 4, 2, 1, 6],
+      modulus: 11,
+    });
 
     const digit = String(sum % 11);
 
