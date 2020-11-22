@@ -22,6 +22,8 @@ VAT, Person and Tax identifiers.
 | Brazil    | BR   | CNPJ       | Company  | Brazilian company number (Cadastro Nacional da Pessoa Jurídica)  |
 | Chile     | CL   | RUT        | Tax      | Tax Identifier (Rol Unico Tributario) [RUN]                      |
 | Columbia  | CO   | NIT        | Tax      | Tax Identifier (Número de Identificación Tributaria)             |
+| Ecuador   | EC   | CI         | Person   | Ecuadorian person identifier (Cédula de identidad)               |
+| Ecuador   | EC   | RUC        | Tax/Vat  | Ecuadorian company tax number (Registro Único de Contribuyentes) |
 | Spain     | ES   | CIF        | Tax/Vat  | Tax Identifier (Código de Identificación Fiscal)                 |
 | Spain     | ES   | DNI        | Person   | Identity code (Documento Nacional de Identidad)                  |
 | Spain     | ES   | NIE        | Person   | Identity code foreigner (Número de Identificación de Extranjero) |
