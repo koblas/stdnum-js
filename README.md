@@ -35,6 +35,7 @@ VAT, Person and Tax identifiers.
 | Peru      | PE   | RUC        | Tax/Vat  | Tax Identifier (Registro Único de Contribuyentes)                |
 | Paraguay  | PY   | RUC        | Tax/Vat  | Tax Identifier (Registro Único de Contribuyentes)                |
 | Russia    | RU   | INN        | Tax/Vat  | Tax Identifier (Идентификационный номер налогоплательщика)       |
+| Uruguay   | UY   | RUT        | Tax/Vat  | Tax Identifier (Registro Único Tributario)                       |
 
 ### Examples
 
