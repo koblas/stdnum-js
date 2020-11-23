@@ -47,7 +47,7 @@ export function luhnChecksum(value: string, alphabet = '0123456789'): number {
 export function luhnChecksumValidate(
   value: string,
   alphabet = '0123456789',
-): number {
+): boolean {
   const parity = value.length % 2;
 
   const sum = value
@@ -60,8 +60,7 @@ export function luhnChecksumValidate(
       return acc + (v > 9 ? v - 9 : v);
     }, 0);
 
-  // return sum % 10 === 0;
-  return sum % alphabet.length;
+  return sum % alphabet.length === 0;
 }
 
 /**
