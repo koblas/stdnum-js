@@ -97,7 +97,7 @@ const impl: Validator = {
   },
 
   format(input: string): string {
-    const value = this.compact(input);
+    const [value] = clean(input);
 
     if (value.length === 12) {
       return strings.splitAt(value, 3, 9).join(' ');

@@ -156,7 +156,9 @@ const impl: Validator = {
   },
 
   format(input: string): string {
-    return this.compact(input);
+    const [value] = clean(input);
+
+    return value;
   },
 
   /**

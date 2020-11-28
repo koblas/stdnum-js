@@ -33,9 +33,9 @@ const impl: Validator = {
   },
 
   format(input: string): string {
-    const value = this.compact(input);
+    const [value] = clean(input);
 
-    return strings.formatPattern('?-??????-?', value);
+    return strings.splitAt(value, 1, 7).join('-');
   },
 
   /**
