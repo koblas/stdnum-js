@@ -1,5 +1,5 @@
 import { InvalidComponent, InvalidLength } from '../exceptions';
-import { validate, format } from './tin';
+import { validate, format } from './ein';
 
 describe('us/tin', () => {
   it('format:536904399', () => {
