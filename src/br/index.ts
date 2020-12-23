@@ -1,2 +1,2 @@
 export * as cpf from './cpf';
-export * as cnpf from './cnpf';
+export * as cnpj from './cnpj';
