@@ -19,8 +19,8 @@
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src",
     "test": "jest",
     "build": "tsc",
-    "prepublishOnly:msj": "npm run tsc -p tsconfig.json",
-    "prepublishOnly:cjs": "npm run tsc -p tsconfig-cjs.json",
+    "prepublishOnly:esm": "tsc -p tsconfig.json",
+    "prepublishOnly:cjs": "tsc -p tsconfig-cjs.json",
     "prepublishOnly": "npm run prepublishOnly:esm && npm run prepublishOnly:cjs"
   },
   "jest": {
