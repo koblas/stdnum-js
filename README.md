@@ -5,6 +5,14 @@
 JavaScript (TypeScript) package to validate most all national numbers, with a focus on
 VAT, Person and Tax identifiers.
 
+## Quick start
+
+    import { stdnum } from 'stdnum';
+
+    const { isValid } = stdnum.br.cpf.validate('xyzzy');
+
+    // isValid is false
+
 ## Supported Countries and Numbers
 
 | Country            | Code | Name       | Group          | Meaning                                                            |
