@@ -61,6 +61,7 @@ VAT, Person and Tax identifiers.
 | Peru               | PE   | CUI        | Person             | Person Identifier (Cédula Única de Identidad)                                       |
 | Peru               | PE   | RUC        | Tax/Vat            | Tax Identifier (Registro Único de Contribuyentes)                                   |
 | Russia             | RU   | INN        | Tax/Vat            | Tax Identifier (Идентификационный номер налогоплательщика)                          |
+| Singapore          | SG   | UEN        | Company            | Singapore's Unique Entity Number                                                    |
 | Spain              | ES   | CIF        | Tax/Vat            | Tax Identifier (Código de Identificación Fiscal)                                    |
 | Spain              | ES   | DNI        | Person             | Identity code (Documento Nacional de Identidad)                                     |
 | Spain              | ES   | NIE        | Person             | Identity code foreigner (Número de Identificación de Extranjero)                    |

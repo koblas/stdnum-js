@@ -23,6 +23,7 @@ import * as nz from './nz';
 import * as pe from './pe';
 import * as py from './py';
 import * as ru from './ru';
+import * as sg from './sg';
 import * as sv from './sv';
 import * as us from './us';
 import * as uy from './uy';
@@ -56,6 +57,7 @@ export const stdnum = {
   pe,
   py,
   ru,
+  sg,
   sv,
   us,
   uy,
@@ -80,6 +82,7 @@ const entityValidators: Record<string, Validator[]> = {
   id: [id.npwp],
   kr: [kr.brn],
   nz: [nz.ird],
+  sg: [sg.uen],
   us: [us.ein],
   za: [za.tin],
 };
