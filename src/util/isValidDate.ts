@@ -1,3 +1,5 @@
+import { splitAt } from './strings';
+
 /** Check to make sure this is a valid date */
 export function isValidDate(yy: string, mm: string, dd: string): boolean {
   const yyN = parseInt(yy, 10);
@@ -31,17 +33,19 @@ export function isValidDate(yy: string, mm: string, dd: string): boolean {
 
 /** Check to make sure this is a valid date */
 export function isValidDateCompactYYMMDD(yymmdd: string): boolean {
-  return isValidDate(
-    yymmdd.substr(0, 2),
-    yymmdd.substr(2, 2),
-    yymmdd.substr(4, 2),
-  );
+  const [year, mon, day] = splitAt(yymmdd, 2, 4);
+
+  return isValidDate(year, mon, day);
 }
 
-export function isValidDateCompactDDMMYY(yymmdd: string): boolean {
-  return isValidDate(
-    yymmdd.substr(4, 2),
-    yymmdd.substr(2, 2),
-    yymmdd.substr(0, 2),
-  );
+export function isValidDateCompactDDMMYY(ddmmyy: string): boolean {
+  const [day, mon, year] = splitAt(ddmmyy, 2, 4);
+
+  return isValidDate(year, mon, day);
+}
+
+export function isValidDateCompactYYYYMMDD(yyyymmdd: string): boolean {
+  const [year, mon, day] = splitAt(yyyymmdd, 4, 6);
+
+  return isValidDate(year, mon, day);
 }

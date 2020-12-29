@@ -1,3 +1,4 @@
+import { Validator } from './types';
 import * as ad from './ad';
 import * as al from './al';
 import * as ar from './ar';
@@ -6,6 +7,7 @@ import * as br from './br';
 import * as bz from './bz';
 import * as ca from './ca';
 import * as cl from './cl';
+import * as cn from './cn';
 import * as co from './co';
 import * as cr from './cr';
 import * as doV from './do';
@@ -32,6 +34,7 @@ export const stdnum = {
   bz,
   ca,
   cl,
+  cn,
   co,
   cr,
   do: doV,
@@ -47,3 +50,49 @@ export const stdnum = {
   uy,
   ve,
 };
+
+const personValidators: Record<string, Validator[]> = {
+  cn: [cn.ric],
+  us: [us.ssn],
+};
+
+const entityValidators: Record<string, Validator[]> = {
+  cn: [cn.uscc],
+  us: [us.ein],
+};
+
+/**
+ *  Apply the necessary validators for a given country to validate an ID number
+ */
+export function validatePerson(
+  country: string,
+  value: string,
+): { isValid?: boolean; checked: boolean } {
+  const vset = personValidators[country.toLocaleLowerCase()];
+
+  if (!vset || vset.length === 0) {
+    return { checked: false };
+  }
+
+  const match = vset.some(grp => grp.validate(value).isValid);
+
+  return { checked: true, isValid: match };
+}
+
+/**
+ *  Apply the necessary validators for a given country to validate an Entity (Business) ID number
+ */
+export function validateEntity(
+  country: string,
+  value: string,
+): { isValid?: boolean; checked: boolean } {
+  const vset = entityValidators[country.toLocaleLowerCase()];
+
+  if (!vset || vset.length === 0) {
+    return { checked: false };
+  }
+
+  const match = vset.some(grp => grp.validate(value).isValid);
+
+  return { checked: true, isValid: match };
+}
