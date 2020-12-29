@@ -50,6 +50,8 @@ VAT, Person and Tax identifiers.
 | Guatemala          | GT   | CUI        | Person             | Guatemala person (Código Único de Identificación)                                   |
 | Guatemala          | GT   | NIT        | Company            | Guatemala company tax number (Número de Identificación Tributaria)                  |
 | Indonesia          | ID   | NPWP       | Person/Company     | NPWP (Nomor Pokok Wajib Pajak, Indonesian VAT Number).                              |
+| South Korea        | KR   | BRN        | Company            | 사업자 등록 번호, South Korea Business Registration Number)                         |
+| South Korea        | KR   | RRN        | Person             | South Korean resident registration number                                           |
 | Mexico             | MX   | RFC        | Tax/Vat            | Tax Identifier (Registro Federal de Contribuyentes)                                 |
 | Mexico             | MX   | CURP       | Person             | Individual Identifier (Clave Única de Registro de Población)                        |
 | Mexico             | MX   | CLABE      | Bank               | Bank Account (Clave Bancaria Estandarizada)                                         |
