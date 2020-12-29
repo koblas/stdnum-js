@@ -61,6 +61,8 @@ VAT, Person and Tax identifiers.
 | United States      | US   | EIN        | Tax/Company    | Tax Identifier (Employer Identification Number)                                     |
 | United States      | US   | SSN        | Tax/Individual | Tax Identifier (Social Security Number)                                             |
 | Venezuelan         | VE   | RIF        | Vat            | Vat Identifier (Registro de Identificación Fiscal)                                  |
+| South Africa       | ZA   | IDNR       | Person         | ID number (South African Identity Document number).                                 |
+| South Africa       | ZA   | TIN        | Person/Company | TIN (South African Tax Identification Number).                                      |
 
 ### Examples
 

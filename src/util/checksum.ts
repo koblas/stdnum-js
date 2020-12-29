@@ -52,7 +52,7 @@ export function luhnChecksumValidate(
 
   const sum = value
     .split('')
-    .reverse()
+    // .reverse()
     .map(v => alphabet.indexOf(v))
     .reduce((acc, val, idx) => {
       const v = idx % 2 === parity ? val * 2 : val;

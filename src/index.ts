@@ -22,6 +22,7 @@ import * as sv from './sv';
 import * as us from './us';
 import * as uy from './uy';
 import * as ve from './ve';
+import * as za from './za';
 
 export { Validator } from './types';
 
@@ -49,16 +50,19 @@ export const stdnum = {
   us,
   uy,
   ve,
+  za,
 };
 
 const personValidators: Record<string, Validator[]> = {
   cn: [cn.ric],
   us: [us.ssn],
+  za: [za.tin, za.idnr],
 };
 
 const entityValidators: Record<string, Validator[]> = {
   cn: [cn.uscc],
   us: [us.ein],
+  za: [za.tin],
 };
 
 /**
