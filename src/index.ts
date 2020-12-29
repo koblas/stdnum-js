@@ -3,6 +3,7 @@ import * as ad from './ad';
 import * as al from './al';
 import * as ar from './ar';
 import * as at from './at';
+import * as au from './au';
 import * as br from './br';
 import * as bz from './bz';
 import * as ca from './ca';
@@ -32,6 +33,7 @@ export const stdnum = {
   al,
   ar,
   at,
+  au,
   br,
   bz,
   ca,
@@ -63,6 +65,7 @@ const personValidators: Record<string, Validator[]> = {
 };
 
 const entityValidators: Record<string, Validator[]> = {
+  au: [au.abn, au.acn, au.tfn],
   cn: [cn.uscc],
   nz: [nz.ird],
   us: [us.ein],

@@ -11,7 +11,7 @@ export function weightedSum(
   }: {
     alphabet?: string;
     reverse?: boolean;
-    modulus?: number;
+    modulus: number;
     weights?: number[];
   },
 ): number {
@@ -21,10 +21,13 @@ export function weightedSum(
     (v, idx) => v * weights[idx % wlen],
   );
 
-  return weighted.reduce(
-    (acc, v) => (modulus ? (acc + v) % modulus : acc + v),
-    0,
-  );
+  return weighted.reduce((acc, v) => {
+    let vv = v;
+    while (vv < 0) {
+      vv += modulus;
+    }
+    return (acc + vv) % modulus;
+  }, 0);
 }
 
 export function luhnChecksum(value: string, alphabet = '0123456789'): number {
