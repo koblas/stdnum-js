@@ -16,6 +16,7 @@ import * as ec from './ec';
 import * as es from './es';
 import * as gt from './gt';
 import * as id from './id';
+import * as jp from './jp';
 import * as kr from './kr';
 import * as mx from './mx';
 import * as my from './my';
@@ -51,6 +52,7 @@ export const stdnum = {
   es,
   gt,
   id,
+  jp,
   kr,
   mx,
   my,
@@ -82,6 +84,7 @@ const entityValidators: Record<string, Validator[]> = {
   au: [au.abn, au.acn, au.tfn],
   cn: [cn.uscc],
   id: [id.npwp],
+  kr: [jp.cn],
   kr: [kr.brn],
   nz: [nz.ird],
   sg: [sg.uen],
