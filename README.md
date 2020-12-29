@@ -55,6 +55,7 @@ VAT, Person and Tax identifiers.
 | Mexico             | MX   | RFC        | Tax/Vat            | Tax Identifier (Registro Federal de Contribuyentes)                                 |
 | Mexico             | MX   | CURP       | Person             | Individual Identifier (Clave Única de Registro de Población)                        |
 | Mexico             | MX   | CLABE      | Bank               | Bank Account (Clave Bancaria Estandarizada)                                         |
+| Malaysia           | MY   | NRIC       | Person             | Malaysian National Registration Identity Card Number                                |
 | New Zealand        | NZ   | IRD        | Person/Company     | New Zealand Inland Revenue Department (Te Tari Tāke) number                         |
 | Paraguay           | PY   | RUC        | Tax/Vat            | Tax Identifier (Registro Único de Contribuyentes)                                   |
 | Peru               | PE   | CUI        | Person             | Person Identifier (Cédula Única de Identidad)                                       |

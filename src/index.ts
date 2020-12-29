@@ -18,6 +18,7 @@ import * as gt from './gt';
 import * as id from './id';
 import * as kr from './kr';
 import * as mx from './mx';
+import * as my from './my';
 import * as nz from './nz';
 import * as pe from './pe';
 import * as py from './py';
@@ -50,6 +51,7 @@ export const stdnum = {
   id,
   kr,
   mx,
+  my,
   nz,
   pe,
   py,
@@ -65,6 +67,8 @@ const personValidators: Record<string, Validator[]> = {
   cn: [cn.ric],
   id: [id.npwp],
   kr: [kr.rrn],
+  mx: [mx.curp],
+  my: [my.nric],
   nz: [nz.ird],
   us: [us.ssn],
   za: [za.tin, za.idnr],
