@@ -25,6 +25,7 @@ import * as py from './py';
 import * as ru from './ru';
 import * as sg from './sg';
 import * as sv from './sv';
+import * as tw from './tw';
 import * as us from './us';
 import * as uy from './uy';
 import * as ve from './ve';
@@ -59,6 +60,7 @@ export const stdnum = {
   ru,
   sg,
   sv,
+  tw,
   us,
   uy,
   ve,
@@ -83,6 +85,7 @@ const entityValidators: Record<string, Validator[]> = {
   kr: [kr.brn],
   nz: [nz.ird],
   sg: [sg.uen],
+  tw: [tw.ubn],
   us: [us.ein],
   za: [za.tin],
 };
