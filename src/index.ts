@@ -1,96 +1,101 @@
 import { Validator } from './types';
-import * as ad from './ad';
-import * as al from './al';
-import * as ar from './ar';
-import * as at from './at';
-import * as au from './au';
-import * as br from './br';
-import * as bz from './bz';
-import * as ca from './ca';
-import * as cl from './cl';
-import * as cn from './cn';
-import * as co from './co';
-import * as cr from './cr';
-import * as doV from './do';
-import * as ec from './ec';
-import * as es from './es';
-import * as gt from './gt';
-import * as id from './id';
-import * as jp from './jp';
-import * as kr from './kr';
-import * as mx from './mx';
-import * as my from './my';
-import * as nz from './nz';
-import * as pe from './pe';
-import * as py from './py';
-import * as ru from './ru';
-import * as sg from './sg';
-import * as sv from './sv';
-import * as tw from './tw';
-import * as us from './us';
-import * as uy from './uy';
-import * as ve from './ve';
-import * as za from './za';
+import * as AD from './ad';
+import * as AL from './al';
+import * as AR from './ar';
+import * as AT from './at';
+import * as AU from './au';
+import * as BR from './br';
+import * as BZ from './bz';
+import * as CA from './ca';
+import * as CL from './cl';
+import * as CN from './cn';
+import * as CO from './co';
+import * as CR from './cr';
+import * as DO from './do';
+import * as EC from './ec';
+import * as ES from './es';
+import * as GT from './gt';
+import * as ID from './id';
+import * as IN from './in';
+import * as JP from './jp';
+import * as KR from './kr';
+import * as MX from './mx';
+import * as MY from './my';
+import * as NZ from './nz';
+import * as PE from './pe';
+import * as PY from './py';
+import * as RU from './ru';
+import * as SG from './sg';
+import * as SV from './sv';
+import * as TW from './tw';
+import * as US from './us';
+import * as UY from './uy';
+import * as VE from './ve';
+import * as ZA from './za';
 
 export { Validator } from './types';
 
+// Live an uppercase world, to prevent keyword collisions
 export const stdnum = {
-  ad,
-  al,
-  ar,
-  at,
-  au,
-  br,
-  bz,
-  ca,
-  cl,
-  cn,
-  co,
-  cr,
-  do: doV,
-  ec,
-  es,
-  gt,
-  id,
-  jp,
-  kr,
-  mx,
-  my,
-  nz,
-  pe,
-  py,
-  ru,
-  sg,
-  sv,
-  tw,
-  us,
-  uy,
-  ve,
-  za,
+  AD,
+  AL,
+  AR,
+  AT,
+  AU,
+  BR,
+  BZ,
+  CA,
+  CL,
+  CN,
+  CO,
+  CR,
+  DO,
+  EC,
+  ES,
+  GT,
+  ID,
+  IN,
+  JP,
+  KR,
+  MX,
+  MY,
+  NZ,
+  PE,
+  PY,
+  RU,
+  SG,
+  SV,
+  TW,
+  US,
+  UY,
+  VE,
+  ZA,
 };
 
 const personValidators: Record<string, Validator[]> = {
-  cn: [cn.ric],
-  id: [id.npwp],
-  kr: [kr.rrn],
-  mx: [mx.curp],
-  my: [my.nric],
-  nz: [nz.ird],
-  us: [us.ssn],
-  za: [za.tin, za.idnr],
+  CN: [CN.ric],
+  ID: [ID.npwp],
+  IN: [IN.pan],
+  KR: [KR.rrn],
+  MX: [MX.curp],
+  MY: [MY.nric],
+  NZ: [NZ.ird],
+  US: [US.ssn],
+  ZA: [ZA.tin, ZA.idnr],
 };
 
 const entityValidators: Record<string, Validator[]> = {
-  au: [au.abn, au.acn, au.tfn],
-  cn: [cn.uscc],
-  id: [id.npwp],
-  kr: [jp.cn],
-  kr: [kr.brn],
-  nz: [nz.ird],
-  sg: [sg.uen],
-  tw: [tw.ubn],
-  us: [us.ein],
-  za: [za.tin],
+  AU: [AU.abn, AU.acn, AU.tfn],
+  CN: [CN.uscc],
+  IN: [IN.aadhaar],
+  ID: [ID.npwp],
+  JP: [JP.cn],
+  KR: [KR.brn],
+  NZ: [NZ.ird],
+  SG: [SG.uen],
+  TW: [TW.ubn],
+  US: [US.ein],
+  ZA: [ZA.tin],
 };
 
 /**
@@ -100,7 +105,7 @@ export function validatePerson(
   country: string,
   value: string,
 ): { isValid?: boolean; checked: boolean } {
-  const vset = personValidators[country.toLocaleLowerCase()];
+  const vset = personValidators[country.toLocaleUpperCase()];
 
   if (!vset || vset.length === 0) {
     return { checked: false };
@@ -118,7 +123,7 @@ export function validateEntity(
   country: string,
   value: string,
 ): { isValid?: boolean; checked: boolean } {
-  const vset = entityValidators[country.toLocaleLowerCase()];
+  const vset = entityValidators[country.toLocaleUpperCase()];
 
   if (!vset || vset.length === 0) {
     return { checked: false };

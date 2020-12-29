@@ -50,6 +50,8 @@ VAT, Person and Tax identifiers.
 | Guatemala          | GT   | CUI        | Person             | Guatemala person (Código Único de Identificación)                                   |
 | Guatemala          | GT   | NIT        | Company            | Guatemala company tax number (Número de Identificación Tributaria)                  |
 | Indonesia          | ID   | NPWP       | Person/Company     | NPWP (Nomor Pokok Wajib Pajak, Indonesian VAT Number).                              |
+| India              | IN   | AADHAAR    | Company            | Indian digital resident personal identity number                                    |
+| India              | IN   | PAN        | Person             | Permanent Account Number, Indian income tax identifier                              |
 | Japan              | JP   | CN         | Company            | 法人番号, hōjin bangō, Japanese Corporate Number                                    |
 | South Korea        | KR   | BRN        | Company            | 사업자 등록 번호, South Korea Business Registration Number)                         |
 | South Korea        | KR   | RRN        | Person             | South Korean resident registration number                                           |

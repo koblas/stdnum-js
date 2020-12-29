@@ -101,3 +101,69 @@ export function luhnChecksumDigit(
 
   return alphabet[alphabet.length - cs];
 }
+
+/*
+For more info on the algorithm: http://en.wikipedia.org/wiki/Verhoeff_algorithm
+by Sergey Petushkov, 2014
+*/
+
+// multiplication table d
+const verhoeffD = [
+  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+  [1, 2, 3, 4, 0, 6, 7, 8, 9, 5],
+  [2, 3, 4, 0, 1, 7, 8, 9, 5, 6],
+  [3, 4, 0, 1, 2, 8, 9, 5, 6, 7],
+  [4, 0, 1, 2, 3, 9, 5, 6, 7, 8],
+  [5, 9, 8, 7, 6, 0, 4, 3, 2, 1],
+  [6, 5, 9, 8, 7, 1, 0, 4, 3, 2],
+  [7, 6, 5, 9, 8, 2, 1, 0, 4, 3],
+  [8, 7, 6, 5, 9, 3, 2, 1, 0, 4],
+  [9, 8, 7, 6, 5, 4, 3, 2, 1, 0],
+];
+
+// permutation table p
+const verhoeffP = [
+  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+  [1, 5, 7, 6, 2, 8, 3, 0, 9, 4],
+  [5, 8, 0, 3, 7, 9, 6, 1, 4, 2],
+  [8, 9, 1, 6, 0, 4, 3, 5, 2, 7],
+  [9, 4, 5, 3, 1, 2, 6, 8, 7, 0],
+  [4, 2, 8, 6, 5, 7, 3, 9, 0, 1],
+  [2, 7, 9, 3, 8, 0, 6, 4, 1, 5],
+  [7, 0, 4, 6, 9, 1, 3, 2, 5, 8],
+];
+
+// inverse table inv
+const verhoeffInv = [0, 4, 3, 2, 1, 5, 6, 7, 8, 9];
+
+// converts string or number to an array and inverts it
+function invArray(array: string): number[] {
+  return array
+    .split('')
+    .map(v => parseInt(v, 10))
+    .reverse();
+}
+
+// generates checksum
+export function verhoeffGenerate(array: string): number {
+  const invertedArray = invArray(array);
+
+  const value = invertedArray.reduce(
+    (c, v, idx) => verhoeffD[c][verhoeffP[(idx + 1) % 8][v]],
+    0,
+  );
+
+  return verhoeffInv[value];
+}
+
+// validates checksum
+export function verhoeffValidate(array: string): boolean {
+  const invertedArray = invArray(array);
+
+  const sum = invertedArray.reduce(
+    (c, v, idx) => verhoeffD[c][verhoeffP[idx % 8][v]],
+    0,
+  );
+
+  return sum === 0;
+}
