@@ -1,6 +1,6 @@
 {
   "name": "stdnum",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Standard Number Validation",
   "files": [
     "lib"
@@ -40,6 +40,13 @@
     ]
   },
   "author": "David Koblas",
+  "keywords": [
+    "identiy",
+    "company",
+    "vat",
+    "validation",
+    "validator"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/koblas/stdnum-js.git"
