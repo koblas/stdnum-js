@@ -89,6 +89,7 @@ const personValidators: Record<string, Validator[]> = {
   NZ: [NZ.ird],
   TH: [TH.idnr],
   US: [US.ssn],
+  UY: [UY.nie, UY.cedula],
   ZA: [ZA.tin, ZA.idnr],
 };
 
@@ -103,6 +104,7 @@ const entityValidators: Record<string, Validator[]> = {
   SG: [SG.uen],
   TW: [TW.ubn],
   US: [US.ein],
+  UY: [UY.rut],
   VN: [VN.mst],
   ZA: [ZA.tin],
 };

@@ -73,6 +73,8 @@ VAT, Person and Tax identifiers.
 | Spain              | ES   | NIE        | Person             | Identity code foreigner (Número de Identificación de Extranjero)                    |
 | Spain              | ES   | NIF        | Tax                | Tax Identifier (Número de Identificación Fiscal)                                    |
 | Uruguay            | UY   | RUT        | Tax/Vat            | Tax Identifier (Registro Único Tributario)                                          |
+| Uruguay            | UY   | CEDULA     | Person             | Person Identifier (Cédula de Residencia)                                            |
+| Uruguay            | UY   | NIE        | Person             | ForeignersI identification Number                                                   |
 | United States      | US   | EIN        | Tax/Company        | Tax Identifier (Employer Identification Number)                                     |
 | United States      | US   | SSN        | Tax/Individual     | Tax Identifier (Social Security Number)                                             |
 | Venezuelan         | VE   | RIF        | Vat                | Vat Identifier (Registro de Identificación Fiscal)                                  |
