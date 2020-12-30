@@ -38,6 +38,9 @@ const impl: Validator = {
     return strings.splitAt(value, 3, 5).join('-');
   },
 
+  /**
+   * BRN (사업자 등록 번호, South Korea Business Registration Number).
+   */
   validate(input: string): ValidateReturn {
     const [value, error] = clean(input);
 
