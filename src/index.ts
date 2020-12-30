@@ -28,6 +28,7 @@ import * as PY from './py';
 import * as RU from './ru';
 import * as SG from './sg';
 import * as SV from './sv';
+import * as TH from './th';
 import * as TW from './tw';
 import * as US from './us';
 import * as UY from './uy';
@@ -68,6 +69,7 @@ export const stdnum = {
   RU,
   SG,
   SV,
+  TH,
   TW,
   US,
   UY,
@@ -85,6 +87,7 @@ const personValidators: Record<string, Validator[]> = {
   MX: [MX.curp],
   MY: [MY.nric],
   NZ: [NZ.ird],
+  TH: [TH.idnr],
   US: [US.ssn],
   ZA: [ZA.tin, ZA.idnr],
 };

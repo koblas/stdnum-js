@@ -49,6 +49,7 @@ VAT, Person and Tax identifiers.
 | El Salvador        | SV   | NIT        | Tax                | Tax Identifier (Número de Identificación Tributaria)                                |
 | Guatemala          | GT   | CUI        | Person             | Guatemala person (Código Único de Identificación)                                   |
 | Guatemala          | GT   | NIT        | Company            | Guatemala company tax number (Número de Identificación Tributaria)                  |
+| Hong Kong          | HK   | HKID       | Person             | Hong Kong Identity Card                                                             |
 | Indonesia          | ID   | NPWP       | Person/Company     | NPWP (Nomor Pokok Wajib Pajak, Indonesian VAT Number).                              |
 | India              | IN   | AADHAAR    | Company            | Indian digital resident personal identity number                                    |
 | India              | IN   | PAN        | Person             | Permanent Account Number, Indian income tax identifier                              |
@@ -65,6 +66,7 @@ VAT, Person and Tax identifiers.
 | Peru               | PE   | RUC        | Tax/Vat            | Tax Identifier (Registro Único de Contribuyentes)                                   |
 | Russia             | RU   | INN        | Tax/Vat            | Tax Identifier (Идентификационный номер налогоплательщика)                          |
 | Singapore          | SG   | UEN        | Company            | Singapore's Unique Entity Number                                                    |
+| Thailand           | TH   | IDNR       | Person             | Thai National ID (บัตรประจำตัวประชาชนไทย)                                           |
 | Taiwan             | TW   | UBN        | Company            | Unified Business Number, 統一編號, Taiwanese tax number                             |
 | Spain              | ES   | CIF        | Tax/Vat            | Tax Identifier (Código de Identificación Fiscal)                                    |
 | Spain              | ES   | DNI        | Person             | Identity code (Documento Nacional de Identidad)                                     |
