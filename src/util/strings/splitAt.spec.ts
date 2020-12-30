@@ -8,4 +8,8 @@ describe('splitAt', () => {
   it('negative', () => {
     expect(splitAt('abcdefghij', -6, -3)).toEqual(['abcd', 'efg', 'hij']);
   });
+
+  it('short', () => {
+    expect(splitAt('abc', 3)).toEqual(['abc']);
+  });
 });

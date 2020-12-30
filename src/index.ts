@@ -31,6 +31,7 @@ import * as TW from './tw';
 import * as US from './us';
 import * as UY from './uy';
 import * as VE from './ve';
+import * as VN from './vn';
 import * as ZA from './za';
 
 export { Validator } from './types';
@@ -69,6 +70,7 @@ export const stdnum = {
   US,
   UY,
   VE,
+  VN,
   ZA,
 };
 
@@ -95,6 +97,7 @@ const entityValidators: Record<string, Validator[]> = {
   SG: [SG.uen],
   TW: [TW.ubn],
   US: [US.ein],
+  VN: [VN.mst],
   ZA: [ZA.tin],
 };
 
