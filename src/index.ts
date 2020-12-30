@@ -17,6 +17,7 @@ import * as ES from './es';
 import * as GT from './gt';
 import * as HK from './hk';
 import * as ID from './id';
+import * as IL from './il';
 import * as IN from './in';
 import * as JP from './jp';
 import * as KR from './kr';
@@ -58,6 +59,7 @@ export const stdnum = {
   GT,
   HK,
   ID,
+  IL,
   IN,
   JP,
   KR,
@@ -80,8 +82,9 @@ export const stdnum = {
 
 const personValidators: Record<string, Validator[]> = {
   CN: [CN.ric],
-  ID: [ID.npwp],
   HK: [HK.hkid],
+  ID: [ID.npwp],
+  IL: [IL.idnr],
   IN: [IN.pan],
   KR: [KR.rrn],
   MX: [MX.curp],
@@ -96,8 +99,9 @@ const personValidators: Record<string, Validator[]> = {
 const entityValidators: Record<string, Validator[]> = {
   AU: [AU.abn, AU.acn, AU.tfn],
   CN: [CN.uscc],
-  IN: [IN.aadhaar],
   ID: [ID.npwp],
+  IL: [IL.hp],
+  IN: [IN.aadhaar],
   JP: [JP.cn],
   KR: [KR.brn],
   NZ: [NZ.ird],
