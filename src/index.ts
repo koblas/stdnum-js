@@ -15,6 +15,7 @@ import * as DO from './do';
 import * as EC from './ec';
 import * as ES from './es';
 import * as GT from './gt';
+import * as HK from './hk';
 import * as ID from './id';
 import * as IN from './in';
 import * as JP from './jp';
@@ -54,6 +55,7 @@ export const stdnum = {
   EC,
   ES,
   GT,
+  HK,
   ID,
   IN,
   JP,
@@ -77,6 +79,7 @@ export const stdnum = {
 const personValidators: Record<string, Validator[]> = {
   CN: [CN.ric],
   ID: [ID.npwp],
+  HK: [HK.hkid],
   IN: [IN.pan],
   KR: [KR.rrn],
   MX: [MX.curp],

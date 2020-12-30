@@ -14,6 +14,12 @@ describe('cn/ric', () => {
     expect(result.isValid && result.compact).toEqual('360426199101010071');
   });
 
+  it('validate:120103198806018241', () => {
+    const result = validate('120103198806018241');
+
+    expect(result.isValid && result.compact).toEqual('120103198806018241');
+  });
+
   it('validate:12345678', () => {
     const result = validate('12345678');
 
