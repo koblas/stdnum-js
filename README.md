@@ -32,6 +32,9 @@ VAT, Person and Tax identifiers.
 | Bosnia and Herzegovina | BA   | JMBG       | Person             | Unique Master Citizen Number                                                        |
 | Belize                 | BZ   | TIN        | Person/Company     | Brazilian Tax ID ()                                                                 |
 | Belgium                | BE   | VAT        | Company            | Belgian Enterprise Number                                                           |
+| Bulgaria               | BG   | EGN        | Person             | ЕГН, Единен граждански номер, Bulgarian personal identity codes                     |
+| Bulgaria               | BG   | PNF        | Person             | PNF (ЛНЧ, Личен номер на чужденец, Bulgarian number of a foreigner).                |
+| Bulgaria               | BG   | VAT        | Company            | Идентификационен номер по ДДС, Bulgarian VAT number                                 |
 | Brazil                 | BR   | CPF        | Person             | Brazilian identity number (Cadastro de Pessoas Físicas)                             |
 | Brazil                 | BR   | CNPJ       | Company            | Brazilian company number (Cadastro Nacional da Pessoa Jurídica)                     |
 | Canada                 | CA   | BN         | Company            | Company Identifier (Canadian Business Number)                                       |

@@ -6,6 +6,7 @@ import * as AT from './at';
 import * as AU from './au';
 import * as BA from './ba';
 import * as BE from './be';
+import * as BG from './bg';
 import * as BR from './br';
 import * as BZ from './bz';
 import * as CA from './ca';
@@ -50,6 +51,7 @@ export const stdnum = {
   AU,
   BA,
   BE,
+  BG,
   BR,
   BZ,
   CA,
@@ -86,6 +88,7 @@ export const stdnum = {
 
 const personValidators: Record<string, Validator[]> = {
   BA: [BA.jmbg],
+  BG: [BG.vat],
   CN: [CN.ric],
   HK: [HK.hkid],
   ID: [ID.npwp],
@@ -104,6 +107,7 @@ const personValidators: Record<string, Validator[]> = {
 const entityValidators: Record<string, Validator[]> = {
   AU: [AU.abn, AU.acn, AU.tfn],
   BE: [BE.vat],
+  BG: [BG.vat],
   CN: [CN.uscc],
   ID: [ID.npwp],
   IL: [IL.hp],
@@ -120,7 +124,9 @@ const entityValidators: Record<string, Validator[]> = {
 };
 
 const euVat: Record<string, Validator[]> = {
+  AD: [AD.nrt],
   BE: [BE.vat],
+  BG: [BG.vat],
 };
 
 /**
