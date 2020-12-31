@@ -37,6 +37,7 @@ VAT, Person and Tax identifiers.
 | Bulgaria               | BG   | VAT        | Company            | Идентификационен номер по ДДС, Bulgarian VAT number                                 |
 | Brazil                 | BR   | CPF        | Person             | Brazilian identity number (Cadastro de Pessoas Físicas)                             |
 | Brazil                 | BR   | CNPJ       | Company            | Brazilian company number (Cadastro Nacional da Pessoa Jurídica)                     |
+| Belarus                | BY   | UNP        | Person/Company     | Учетный номер плательщика, the Belarus VAT number                                   |
 | Canada                 | CA   | BN         | Company            | Company Identifier (Canadian Business Number)                                       |
 | Canada                 | CA   | SIN        | Person             | Person Identifier (Social Insurance Number)                                         |
 | Chile                  | CL   | RUT        | Tax                | Tax Identifier (Rol Unico Tributario) [RUN]                                         |
