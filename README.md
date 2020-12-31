@@ -31,6 +31,7 @@ VAT, Person and Tax identifiers.
 | Australia              | AU   | TFN        | Tax/Person/Company | Australian Tax File Number                                                          |
 | Bosnia and Herzegovina | BA   | JMBG       | Person             | Unique Master Citizen Number                                                        |
 | Belize                 | BZ   | TIN        | Person/Company     | Brazilian Tax ID ()                                                                 |
+| Belgium                | BE   | VAT        | Company            | Belgian Enterprise Number                                                           |
 | Brazil                 | BR   | CPF        | Person             | Brazilian identity number (Cadastro de Pessoas Físicas)                             |
 | Brazil                 | BR   | CNPJ       | Company            | Brazilian company number (Cadastro Nacional da Pessoa Jurídica)                     |
 | Canada                 | CA   | BN         | Company            | Company Identifier (Canadian Business Number)                                       |
