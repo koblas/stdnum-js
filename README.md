@@ -42,6 +42,8 @@ VAT, Person and Tax identifiers.
 | Canada                 | CA   | SIN        | Person             | Person Identifier (Social Insurance Number)                                         |
 | Cuba                   | CU   | NI         | Person             | Número de identidad, Cuban identity card numbers                                    |
 | Cyprus                 | CY   | VAT        | Company            | Αριθμός Εγγραφής Φ.Π.Α. (Cypriot VAT number)                                        |
+| Czech Republic         | CZ   | DIC        | Company            | Daňové identifikační číslo, Czech VAT number                                        |
+| Czech Republic         | CZ   | RC         | Person             | Rodné číslo, the Czech birth number                                                 |
 | Swisserland            | CH   | SSN        | Person             | Swiss social security number ("Sozialversicherungsnummer")                          |
 | Swisserland            | CH   | UID        | Company            | Unternehmens-Identifikationsnummer, Swiss business identifier                       |
 | Swisserland            | CH   | VAT        | Company            | Mehrwertsteuernummer, the Swiss VAT number                                          |
