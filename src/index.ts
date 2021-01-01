@@ -16,6 +16,7 @@ import * as CL from './cl';
 import * as CN from './cn';
 import * as CO from './co';
 import * as CR from './cr';
+import * as CU from './cu';
 import * as DO from './do';
 import * as EC from './ec';
 import * as ES from './es';
@@ -63,6 +64,7 @@ export const stdnum = {
   CN,
   CO,
   CR,
+  CU,
   DO,
   EC,
   ES,
@@ -96,6 +98,7 @@ const personValidators: Record<string, Validator[]> = {
   BY: [BY.unp],
   CN: [CN.ric],
   CH: [CH.ssn],
+  CU: [CU.ni],
   HK: [HK.hkid],
   ID: [ID.npwp],
   IL: [IL.idnr],
