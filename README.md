@@ -40,6 +40,9 @@ VAT, Person and Tax identifiers.
 | Belarus                | BY   | UNP        | Person/Company     | Учетный номер плательщика, the Belarus VAT number                                   |
 | Canada                 | CA   | BN         | Company            | Company Identifier (Canadian Business Number)                                       |
 | Canada                 | CA   | SIN        | Person             | Person Identifier (Social Insurance Number)                                         |
+| Swisserland            | CH   | SSN        | Person             | Swiss social security number ("Sozialversicherungsnummer")                          |
+| Swisserland            | CH   | UID        | Company            | Unternehmens-Identifikationsnummer, Swiss business identifier                       |
+| Swisserland            | CH   | VAT        | Company            | Mehrwertsteuernummer, the Swiss VAT number                                          |
 | Chile                  | CL   | RUT        | Tax                | Tax Identifier (Rol Unico Tributario) [RUN]                                         |
 | China                  | CN   | RIC        | Person             | Person Identifier (Chinese Resident Identity Card Number)                           |
 | China                  | CN   | USCC       | Company            | Company Identifier (Unified Social Credit Code, 统一社会信用代码, China tax number) |
