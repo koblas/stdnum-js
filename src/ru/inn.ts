@@ -92,8 +92,8 @@ const impl: Validator = {
     return {
       isValid: true,
       compact: value,
-      isIndividual: value.length === 10,
-      isCompany: value.length === 12,
+      isIndividual: value.length === 12,
+      isCompany: value.length === 10,
     };
   },
 };
