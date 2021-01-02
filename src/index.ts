@@ -20,6 +20,7 @@ import * as CU from './cu';
 import * as CY from './cy';
 import * as CZ from './cz';
 import * as DE from './de';
+import * as DK from './dk';
 import * as DO from './do';
 import * as EC from './ec';
 import * as ES from './es';
@@ -131,6 +132,7 @@ const entityValidators: Record<string, Validator[]> = {
   CY: [CH.vat],
   CZ: [CZ.dic],
   DE: [DE.vat, DE.stnr],
+  DK: [DK.cvr],
   ID: [ID.npwp],
   IL: [IL.hp],
   IN: [IN.aadhaar],
@@ -152,6 +154,7 @@ export const euVat: Record<string, Validator[]> = {
   CH: [CH.vat],
   CY: [CY.vat],
   DE: [DE.vat],
+  DK: [DK.cvr],
 };
 
 /**
