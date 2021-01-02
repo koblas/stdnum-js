@@ -19,6 +19,7 @@ import * as CR from './cr';
 import * as CU from './cu';
 import * as CY from './cy';
 import * as CZ from './cz';
+import * as DE from './de';
 import * as DO from './do';
 import * as EC from './ec';
 import * as ES from './es';
@@ -69,6 +70,7 @@ export const stdnum = {
   CU,
   CY,
   CZ,
+  DE,
   DO,
   EC,
   ES,
@@ -104,6 +106,7 @@ const personValidators: Record<string, Validator[]> = {
   CH: [CH.ssn],
   CU: [CU.ni],
   CZ: [CZ.rc],
+  DE: [DE.idnr],
   HK: [HK.hkid],
   ID: [ID.npwp],
   IL: [IL.idnr],
@@ -127,6 +130,7 @@ const entityValidators: Record<string, Validator[]> = {
   CH: [CH.uid, CH.vat],
   CY: [CH.vat],
   CZ: [CZ.dic],
+  DE: [DE.vat, DE.stnr],
   ID: [ID.npwp],
   IL: [IL.hp],
   IN: [IN.aadhaar],
@@ -147,6 +151,7 @@ export const euVat: Record<string, Validator[]> = {
   BG: [BG.vat],
   CH: [CH.vat],
   CY: [CY.vat],
+  DE: [DE.vat],
 };
 
 /**

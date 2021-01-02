@@ -54,6 +54,9 @@ VAT, Person and Tax identifiers.
 | Costa Rica             | CR   | CPF        | Person             | Person Identifier (Cédula de Persona Física)                                        |
 | Costa Rica             | CR   | CPJ        | Company            | Company Identifier (Cédula de Persona Jurídica)                                     |
 | Costa Rica             | CR   | CR         | Person             | Person Identifier (Cédula de Residencia)                                            |
+| Germany                | DE   | IDNR       | Person             | Steuerliche Identifikationsnummer, German personal tax number                       |
+| Germany                | DE   | STNR       | Company            | Steuernummer, German tax number                                                     |
+| Germany                | DE   | VAT        | Company            | Vat identifier                                                                      |
 | Dominican Republic     | DO   | CEDULA     | Person             | Person Identifier (Cédula de Residencia)                                            |
 | Dominican Republic     | DO   | NCF        | Vat                | Tax Receipt Number (Números de Comprobante Fiscal)                                  |
 | Dominican Republic     | DO   | RNC        | Tax                | Person Identifier (Registro Nacional del Contribuyente)                             |
