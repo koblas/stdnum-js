@@ -73,6 +73,8 @@ VAT, Person and Tax identifiers.
 | Finland                | FI   | HETU         | Person             | HETU (Henkilötunnus, Finnish personal identity code)                                |
 | Finland                | FI   | YTUNNUS      | Company            | Y-tunnus (Finnish business identifier)                                              |
 | France                 | FR   | NIF          | Person             | NIF (Numéro d'Immatriculation Fiscale, French tax identification number)            |
+| Great Brittan          | GB   | UTR          | Person             | UTR (United Kingdom Unique Taxpayer Reference)                                      |
+| Great Brittan          | GB   | VAT          | Company            | VAT (United Kingdom (and Isle of Man) VAT registration number)                      |
 | France                 | FR   | NIR          | Person             | NIR (French personal identification number)                                         |
 | France                 | FR   | SIREN        | Company            | SIREN (a French company identification number)                                      |
 | France                 | FR   | SIRET        | Company            | SIRET (a French company establishment identification number)                        |
