@@ -1,7 +1,7 @@
 import { validate, format } from './unp';
 import { InvalidLength, InvalidChecksum } from '../exceptions';
 
-describe('za/tin', () => {
+describe('by/unp', () => {
   it('format:200988541', () => {
     const result = format('200988541');
 

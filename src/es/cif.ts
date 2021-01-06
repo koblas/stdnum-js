@@ -8,7 +8,7 @@
  * Sources:
  *   https://es.wikipedia.org/wiki/Código_de_identificación_fiscal
  *
- * TAX
+ * TAX/ENTITY
  */
 
 import * as exceptions from '../exceptions';

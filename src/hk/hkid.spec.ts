@@ -1,7 +1,7 @@
 import { validate, format } from './hkid';
 import { InvalidLength, InvalidChecksum } from '../exceptions';
 
-describe('za/tin', () => {
+describe('hk/hkid', () => {
   it('format:AB987654(3)', () => {
     const result = format('AB9876543');
 

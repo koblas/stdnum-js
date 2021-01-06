@@ -72,6 +72,11 @@ VAT, Person and Tax identifiers.
 | Finland                | FI   | ALV          | Company            | ALV nro (Arvonlisäveronumero, Finnish VAT number)                                   |
 | Finland                | FI   | HETU         | Person             | HETU (Henkilötunnus, Finnish personal identity code)                                |
 | Finland                | FI   | YTUNNUS      | Company            | Y-tunnus (Finnish business identifier)                                              |
+| France                 | FR   | NIF          | Person             | NIF (Numéro d'Immatriculation Fiscale, French tax identification number)            |
+| France                 | FR   | NIR          | Person             | NIR (French personal identification number)                                         |
+| France                 | FR   | SIREN        | Company            | SIREN (a French company identification number)                                      |
+| France                 | FR   | SIRET        | Company            | SIRET (a French company establishment identification number)                        |
+| France                 | FR   | TVA          | Vat                | VAT Identifier                                                                      |
 | Hong Kong              | HK   | HKID         | Person             | Hong Kong Identity Card                                                             |
 | Indonesia              | ID   | NPWP         | Person/Company     | NPWP (Nomor Pokok Wajib Pajak, Indonesian VAT Number).                              |
 | India                  | IN   | AADHAAR      | Company            | Indian digital resident personal identity number                                    |

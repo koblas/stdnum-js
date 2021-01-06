@@ -1,7 +1,7 @@
 import { validate, format } from './tin';
 import { InvalidLength, InvalidChecksum } from '../exceptions';
 
-describe('za/tin', () => {
+describe('nz/tin', () => {
   it('format:2449/494-16-0', () => {
     const result = format('2449/494-16-0');
 
