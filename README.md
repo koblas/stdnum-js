@@ -69,6 +69,9 @@ VAT, Person and Tax identifiers.
 | El Salvador            | SV   | NIT          | Tax                | Tax Identifier (Número de Identificación Tributaria)                                |
 | Guatemala              | GT   | CUI          | Person             | Guatemala person (Código Único de Identificación)                                   |
 | Guatemala              | GT   | NIT          | Company            | Guatemala company tax number (Número de Identificación Tributaria)                  |
+| Finland                | FI   | ALV          | Company            | ALV nro (Arvonlisäveronumero, Finnish VAT number)                                   |
+| Finland                | FI   | HETU         | Person             | HETU (Henkilötunnus, Finnish personal identity code)                                |
+| Finland                | FI   | YTUNNUS      | Company            | Y-tunnus (Finnish business identifier)                                              |
 | Hong Kong              | HK   | HKID         | Person             | Hong Kong Identity Card                                                             |
 | Indonesia              | ID   | NPWP         | Person/Company     | NPWP (Nomor Pokok Wajib Pajak, Indonesian VAT Number).                              |
 | India                  | IN   | AADHAAR      | Company            | Indian digital resident personal identity number                                    |
