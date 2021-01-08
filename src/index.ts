@@ -31,6 +31,8 @@ import * as GB from './gb';
 import * as GR from './gr';
 import * as GT from './gt';
 import * as HK from './hk';
+import * as HR from './hr';
+import * as HU from './hu';
 import * as ID from './id';
 import * as IL from './il';
 import * as IN from './in';
@@ -87,6 +89,8 @@ export const stdnum = {
   GR,
   GT,
   HK,
+  HR,
+  HU,
   ID,
   IL,
   IN,
@@ -125,6 +129,7 @@ const personValidators: Record<string, Validator[]> = {
   GB: [GB.utr],
   GR: [GR.amka],
   HK: [HK.hkid],
+  HR: [HR.oib],
   ID: [ID.npwp],
   IL: [IL.idnr],
   IN: [IN.pan],
@@ -155,6 +160,7 @@ const entityValidators: Record<string, Validator[]> = {
   FR: [FR.siren, FR.siret, FR.tva],
   GB: [GB.vat],
   GR: [GR.vat],
+  HR: [HU.anum],
   ID: [ID.npwp],
   IL: [IL.hp],
   IN: [IN.aadhaar],
