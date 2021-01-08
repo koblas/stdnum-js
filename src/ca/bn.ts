@@ -7,10 +7,9 @@
  * number) to form a program account (or BN15).
  *
  * Source:
- * https://www.canada.ca/en/services/taxes/business-number.html
- * https://www.ic.gc.ca/app/scr/cc/CorporationsCanada/fdrlCrpSrch.html?locale=en_CA/
+ *   https://www.canada.ca/en/services/taxes/business-number.html
+ *   https://www.ic.gc.ca/app/scr/cc/CorporationsCanada/fdrlCrpSrch.html?locale=en_CA/
  *
- * ENTITY
  *
  * ENTITY
  */
@@ -62,7 +61,7 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 
-    if (rest !== '') {
+    if (rest) {
       const [a, b] = strings.splitAt(rest, 2);
 
       if (!['RC', 'RM', 'RP', 'RT'].includes(a)) {

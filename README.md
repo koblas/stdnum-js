@@ -75,6 +75,8 @@ VAT, Person and Tax identifiers.
 | France                 | FR   | NIF          | Person             | NIF (Numéro d'Immatriculation Fiscale, French tax identification number)            |
 | Great Brittan          | GB   | UTR          | Person             | UTR (United Kingdom Unique Taxpayer Reference)                                      |
 | Great Brittan          | GB   | VAT          | Company            | VAT (United Kingdom (and Isle of Man) VAT registration number)                      |
+| Greece                 | GR   | AMKA         | Company            | AMKA (Αριθμός Μητρώου Κοινωνικής Ασφάλισης, Greek social security number)           |
+| Greece                 | GR   | VAT          | Company            | FPA, ΦΠΑ, ΑΦΜ (Αριθμός Φορολογικού Μητρώου, the Greek VAT number)                   |
 | France                 | FR   | NIR          | Person             | NIR (French personal identification number)                                         |
 | France                 | FR   | SIREN        | Company            | SIREN (a French company identification number)                                      |
 | France                 | FR   | SIRET        | Company            | SIRET (a French company establishment identification number)                        |
