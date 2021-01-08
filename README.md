@@ -81,7 +81,9 @@ VAT, Person and Tax identifiers.
 | France                 | FR   | SIREN        | Company            | SIREN (a French company identification number)                                      |
 | France                 | FR   | SIRET        | Company            | SIRET (a French company establishment identification number)                        |
 | France                 | FR   | TVA          | Vat                | VAT Identifier                                                                      |
+| Croatia                | HR   | OIB          | Person             | Osobni identifikacijski broj, Croatian identification number                        |
 | Hong Kong              | HK   | HKID         | Person             | Hong Kong Identity Card                                                             |
+| Hungaria               | HU   | ANUM         | Vat                | ANUM (Közösségi adószám, Hungarian VAT number)                                      |
 | Indonesia              | ID   | NPWP         | Person/Company     | NPWP (Nomor Pokok Wajib Pajak, Indonesian VAT Number).                              |
 | India                  | IN   | AADHAAR      | Company            | Indian digital resident personal identity number                                    |
 | India                  | IN   | PAN          | Person             | Permanent Account Number, Indian income tax identifier                              |

@@ -273,18 +273,21 @@ const mapped: Record<string, string> = {
 export function cleanUnicode(
   value: string,
   deletechars = ' ',
+  stripPrefix?: string,
 ): [string, exceptions.InvalidFormat | null] {
   if (typeof value !== 'string') {
     return ['', new exceptions.InvalidFormat()];
   }
 
   // Don't use value.split("") -- doesn't work for "high" unicode
-  return [
-    [...value]
-      .map(c => mapped[c] ?? c)
-      .filter(c => !deletechars.includes(c))
-      .join('')
-      .toLocaleUpperCase(),
-    null,
-  ];
+  const cleaned = [...value]
+    .map(c => mapped[c] ?? c)
+    .filter(c => !deletechars.includes(c))
+    .join('')
+    .toLocaleUpperCase();
+
+  if (stripPrefix && cleaned.startsWith(stripPrefix)) {
+    return [cleaned.substr(stripPrefix.length), null];
+  }
+  return [cleaned, null];
 }
