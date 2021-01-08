@@ -9,9 +9,11 @@ VAT, Person and Tax identifiers.
 
     import { stdnum } from 'stdnum';
 
-    const { isValid } = stdnum.br.cpf.validate('xyzzy');
+    const { isValid } = stdnum.BR.cpf.validate('xyzzy');
 
     // isValid is false
+
+All country validators are in the "namespace" of the ISO country code.
 
 ## Supported Countries and Numbers
 
