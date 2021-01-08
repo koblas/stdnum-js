@@ -1,12 +1,13 @@
 /**
- * IDNR (Thai identity card)
- *
- * The South African Tax Identification Number (TIN or Tax Reference Number) is
- * issued to individuals and legal entities for tax purposes. The number
- * consists of 10 digits.
- *
- * Source
- *   https://en.wikipedia.org/wiki/Thai_identity_card
+ * Identity Number (Mispar Zehut, מספר זהות, Israeli identity number).
+ * 
+* The identity number (Mispar Zehut, מספר זהות) is issued at birth to Israeli
+* citizens. The number consists of nine digits and includes a check digit.
+
+* Source
+*   https://en.wikipedia.org/wiki/National_identification_number#Israel
+*   https://en.wikipedia.org/wiki/Israeli_identity_card
+*   https://he.wikipedia.org/wiki/מספר_זהות_(ישראל)
  *
  * PERSON
  */

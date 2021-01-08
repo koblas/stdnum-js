@@ -89,6 +89,8 @@ All country validators are in the "namespace" of the ISO country code.
 | Indonesia              | ID   | NPWP         | Person/Company     | NPWP (Nomor Pokok Wajib Pajak, Indonesian VAT Number).                              |
 | India                  | IN   | AADHAAR      | Company            | Indian digital resident personal identity number                                    |
 | India                  | IN   | PAN          | Person             | Permanent Account Number, Indian income tax identifier                              |
+| Israel                 | IL   | IDNR         | Person             | Identity Number (Mispar Zehut, מספר זהות, Israeli identity number)                  |
+| Israel                 | IL   | HR           | Company            | Company Number (מספר חברה, or short ח.פ. Israeli company number)                    |
 | Japan                  | JP   | CN           | Company            | 法人番号, hōjin bangō, Japanese Corporate Number                                    |
 | South Korea            | KR   | BRN          | Company            | 사업자 등록 번호, South Korea Business Registration Number)                         |
 | South Korea            | KR   | RRN          | Person             | South Korean resident registration number                                           |
