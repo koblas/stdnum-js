@@ -29,7 +29,7 @@
  */
 
 import * as exceptions from '../exceptions';
-import { isValidDateCompactYYMMDD, strings } from '../util';
+import { isValidDateCompactYYMMDD, strings, weightedSum } from '../util';
 import { Validator, ValidateReturn } from '../types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
@@ -81,9 +81,9 @@ const nameBlacklist = new Set([
 ]);
 
 const checkAlphabet = '0123456789ABCDEFGHIJKLMN&OPQRSTUVWXYZ Ñ';
-const checkAlphabetDict: Record<string, number> = checkAlphabet
-  .split('')
-  .reduce((acc, c, idx) => ({ ...acc, [c]: idx }), {});
+// const checkAlphabetDict: Record<string, number> = checkAlphabet
+//   .split('')
+//   .reduce((acc, c, idx) => ({ ...acc, [c]: idx }), {});
 
 const impl: Validator = {
   compact(input: string): string {
@@ -145,16 +145,34 @@ const impl: Validator = {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
 
-      const sum = value
-        .substr(0, value.length - 1)
-        .padStart(12, ' ')
-        .split('')
-        .reduce(
-          (acc, c, idx) => acc + (checkAlphabetDict[c] ?? 0) * (13 - idx),
-          0,
-        );
+      const [front, check] = strings.splitAt(value, -1);
 
-      if (value[value.length - 1] !== String(11 - (sum % 11))) {
+      const sum = weightedSum(front.padStart(12, ' '), {
+        modulus: 11,
+        alphabet: checkAlphabet,
+        weights: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+        reverse: true,
+      });
+
+      // const sum = value
+      //   .substr(0, value.length - 1)
+      //   .padStart(12, ' ')
+      //   .split('')
+      //   .reduce(
+      //     (acc, c, idx) => acc + (checkAlphabetDict[c] ?? 0) * (13 - idx),
+      //     0,
+      //   );
+      const mod = 11 - (sum % 11);
+      let val;
+      if (mod === 11) {
+        val = '0';
+      } else if (mod === 10) {
+        val = 'A';
+      } else {
+        val = String(mod);
+      }
+
+      if (check !== val) {
         return { isValid: false, error: new exceptions.InvalidChecksum() };
       }
     }

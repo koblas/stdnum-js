@@ -14,6 +14,12 @@ describe('co/nit', () => {
     expect(result.isValid && result.compact).toEqual('2131234321');
   });
 
+  it('validate:10184648519', () => {
+    const result = validate('10184648519');
+
+    expect(result.isValid && result.compact).toEqual('10184648519');
+  });
+
   it('validate:21312', () => {
     const result = validate('21312');
 

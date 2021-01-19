@@ -13,6 +13,42 @@ describe('mx/rfc', () => {
     expect(result.isValid && result.compact).toEqual('MAB9307148T4');
   });
 
+  it('validate:MHTR93041179A', () => {
+    const result = validate('MHTR93041179A');
+
+    expect(result.isValid && result.compact).toEqual('MHTR93041179A');
+  });
+
+  it('validate:Ñ&T130705MD6', () => {
+    const result = validate('Ñ&T130705MD6');
+
+    expect(result.isValid && result.compact).toEqual('Ñ&T130705MD6');
+  });
+
+  it('validate:  mhtr-93041179a  ', () => {
+    const result = validate('  mhtr-93041179a  ');
+
+    expect(result.isValid && result.compact).toEqual('MHTR93041179A');
+  });
+
+  it('validate:SALC7304253S0', () => {
+    const result = validate('SALC7304253S0');
+
+    expect(result.isValid && result.compact).toEqual('SALC7304253S0');
+  });
+
+  // it('validate:XEXX010101000', () => {
+  //   const result = validate('XEXX010101000');
+
+  //   expect(result.isValid && result.compact).toEqual('XEXX010101000');
+  // });
+
+  it('validate:RET130705MD5', () => {
+    const result = validate('RET130705MD5');
+
+    expect(result.isValid && result.compact).toEqual('RET130705MD5');
+  });
+
   it('validate:COMG-600703', () => {
     const result = validate('COMG-600703');
 
