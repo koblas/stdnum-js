@@ -4,6 +4,7 @@ import * as AL from './al';
 import * as AR from './ar';
 import * as AT from './at';
 import * as AU from './au';
+import * as AZ from './az';
 import * as BA from './ba';
 import * as BE from './be';
 import * as BG from './bg';
@@ -114,6 +115,7 @@ export const stdnum = {
 };
 
 const personValidators: Record<string, Validator[]> = {
+  AZ: [AZ.tin, AZ.pin],
   BA: [BA.jmbg],
   BG: [BG.vat],
   BY: [BY.unp],

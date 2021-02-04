@@ -14,6 +14,12 @@ describe('ru/inn', () => {
     expect(result.isValid && result.compact).toEqual('1234567894');
   });
 
+  it('validate:366220664163', () => {
+    const result = validate('366220664163');
+
+    expect(result.isValid && result.compact).toEqual('366220664163');
+  });
+
   it('validate:123456789037', () => {
     const result = validate('123456789037');
     expect(result.error).toBeInstanceOf(InvalidChecksum);
