@@ -64,6 +64,7 @@ export const stdnum = {
   AR,
   AT,
   AU,
+  AZ,
   BA,
   BE,
   BG,
