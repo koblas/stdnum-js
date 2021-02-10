@@ -141,7 +141,7 @@ const impl: Validator = {
     }
 
     if (value.length >= 12) {
-      if (!/[1-9A-V][1-9A-V][0-9A]$/.test(value)) {
+      if (!/[1-9A-V][1-9A-Z][0-9A]$/.test(value)) {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
 
