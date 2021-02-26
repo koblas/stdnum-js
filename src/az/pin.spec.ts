@@ -8,12 +8,6 @@ describe('az/pin', () => {
     expect(result).toEqual('1231233');
   });
 
-  it('validate:5vBk5vR', () => {
-    const result = validate('5vBk5vR');
-
-    expect(result.isValid && result.compact).toEqual('5VBK5VR');
-  });
-
   it('validate:12345678', () => {
     const result = validate('12345678');
 
