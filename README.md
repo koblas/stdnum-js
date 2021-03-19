@@ -87,6 +87,8 @@ All country validators are in the "namespace" of the ISO country code.
 | Hong Kong              | HK   | HKID         | Person             | Hong Kong Identity Card                                                             |
 | Hungaria               | HU   | ANUM         | Vat                | ANUM (Közösségi adószám, Hungarian VAT number)                                      |
 | Indonesia              | ID   | NPWP         | Person/Company     | NPWP (Nomor Pokok Wajib Pajak, Indonesian VAT Number).                              |
+| Ireland                | IE   | PPS          | Person             | Personal Public Service Number, Irish personal number                               |
+| Ireland                | IE   | VAT          | Tax/Vat            | Ireland Value Added Tax ID                                                          |
 | India                  | IN   | AADHAAR      | Company            | Indian digital resident personal identity number                                    |
 | India                  | IN   | PAN          | Person             | Permanent Account Number, Indian income tax identifier                              |
 | Israel                 | IL   | IDNR         | Person             | Identity Number (Mispar Zehut, מספר זהות, Israeli identity number)                  |
