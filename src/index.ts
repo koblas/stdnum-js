@@ -39,6 +39,7 @@ import * as IE from './ie';
 import * as IL from './il';
 import * as IN from './in';
 import * as IS from './is';
+import * as IT from './it';
 import * as JP from './jp';
 import * as KR from './kr';
 import * as MX from './mx';
@@ -100,6 +101,7 @@ export const stdnum = {
   IL,
   IN,
   IS,
+  IT,
   JP,
   KR,
   MX,
@@ -142,6 +144,7 @@ const personValidators: Record<string, Validator[]> = {
   IL: [IL.idnr],
   IN: [IN.pan],
   IS: [IS.kennitala],
+  IT: [IT.codicefiscale],
   KR: [KR.rrn],
   MX: [MX.curp],
   MY: [MY.nric],
@@ -176,6 +179,7 @@ const entityValidators: Record<string, Validator[]> = {
   IL: [IL.hp],
   IN: [IN.aadhaar],
   IS: [IS.kennitala, IS.vsk],
+  IT: [IT.iva],
   JP: [JP.cn],
   KR: [KR.brn],
   PE: [PE.ruc],
@@ -201,6 +205,7 @@ export const euVat: Record<string, Validator[]> = {
   // GB: [GB.vat],
   GR: [GR.vat],
   IE: [IE.vat],
+  IT: [IT.iva],
 };
 
 /**
