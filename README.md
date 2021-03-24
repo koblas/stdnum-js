@@ -98,6 +98,7 @@ All country validators are in the "namespace" of the ISO country code.
 | Italy                  | IT   | AIC           | Drug               | Italian code for identification of drugs                                            |
 | Italy                  | IT   | CODICEFISCALE | Person             | Codice Fiscale (Italian tax code for individuals)                                   |
 | Italy                  | IT   | IVA           | Vat                | Partita IVA (Italian VAT number)                                                    |
+| Liechtenstein          | LI   | PEID          | Person/Company     | Personenidentifikationsnummer                                                       |
 | Japan                  | JP   | CN            | Company            | 法人番号, hōjin bangō, Japanese Corporate Number                                    |
 | South Korea            | KR   | BRN           | Company            | 사업자 등록 번호, South Korea Business Registration Number)                         |
 | South Korea            | KR   | RRN           | Person             | South Korean resident registration number                                           |
