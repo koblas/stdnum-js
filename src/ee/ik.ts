@@ -12,7 +12,7 @@
  */
 
 import * as exceptions from '../exceptions';
-import { strings } from '../util';
+import { isValidDateCompactYYYYMMDD, strings } from '../util';
 import { Validator, ValidateReturn } from '../types';
 import { weightedSum } from '../util/checksum';
 
@@ -25,16 +25,43 @@ export function ikCheck(value: string): boolean {
 
   let sum = weightedSum(front, {
     modulus: 11,
-    weights: [1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3],
+    weights: [1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6],
   });
   if (sum === 10) {
     sum = weightedSum(front, {
       modulus: 11,
-      weights: [3, 4, 5, 6, 7, 8, 9, 3, 5, 6],
+      weights: [3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9],
     });
   }
 
   return String(sum % 10) === check;
+}
+
+export function ikCheckDate(value: string): boolean {
+  let century;
+
+  switch (value[0]) {
+    case '1':
+    case '2':
+      century = '18';
+      break;
+    case '3':
+    case '4':
+      century = '19';
+      break;
+    case '5':
+    case '6':
+      century = '20';
+      break;
+    case '7':
+    case '8':
+      century = '21';
+      break;
+    default:
+      return false;
+  }
+
+  return isValidDateCompactYYYYMMDD(`${century}${value.substr(1, 6)}`);
 }
 
 const impl: Validator = {
