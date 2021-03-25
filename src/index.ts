@@ -43,6 +43,7 @@ import * as IT from './it';
 import * as LI from './li';
 import * as LT from './lt';
 import * as LU from './lu';
+import * as LV from './lv';
 import * as JP from './jp';
 import * as KR from './kr';
 import * as MX from './mx';
@@ -108,6 +109,7 @@ export const stdnum = {
   LI,
   LT,
   LU,
+  LV,
   JP,
   KR,
   MX,
@@ -153,6 +155,7 @@ const personValidators: Record<string, Validator[]> = {
   IT: [IT.codicefiscale],
   LI: [LI.peid],
   LT: [LT.asmens],
+  LV: [LV.pvn],
   KR: [KR.rrn],
   MX: [MX.curp],
   MY: [MY.nric],
@@ -191,6 +194,7 @@ const entityValidators: Record<string, Validator[]> = {
   LI: [LI.peid],
   LT: [LT.pvm],
   LU: [LU.tva],
+  LV: [LV.pvn],
   JP: [JP.cn],
   KR: [KR.brn],
   PE: [PE.ruc],
