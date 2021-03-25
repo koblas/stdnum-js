@@ -221,6 +221,9 @@ export const euVat: Record<string, Validator[]> = {
   GR: [GR.vat],
   IE: [IE.vat],
   IT: [IT.iva],
+  LT: [LT.pvm],
+  LU: [LU.tva],
+  LV: [LV.pvn],
 };
 
 /**
