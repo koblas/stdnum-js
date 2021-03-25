@@ -101,6 +101,7 @@ All country validators are in the "namespace" of the ISO country code.
 | Liechtenstein          | LI   | PEID          | Person/Company     | Personenidentifikationsnummer                                                       |
 | Lithuanian             | LT   | ASMENS        | Person             | Asmens kodas (Person Number)                                                        |
 | Lithuanian             | LT   | PVM           | Vat                | Pridėtinės vertės mokestis mokėtojo kodas                                           |
+| Luxembourgian          | LU   | TVA           | Vat                | taxe sur la valeur ajoutée                                                          |
 | Japan                  | JP   | CN            | Company            | 法人番号, hōjin bangō, Japanese Corporate Number                                    |
 | South Korea            | KR   | BRN           | Company            | 사업자 등록 번호, South Korea Business Registration Number)                         |
 | South Korea            | KR   | RRN           | Person             | South Korean resident registration number                                           |
