@@ -46,6 +46,7 @@ import * as LU from './lu';
 import * as LV from './lv';
 import * as JP from './jp';
 import * as KR from './kr';
+import * as MC from './mc';
 import * as MX from './mx';
 import * as MY from './my';
 import * as NZ from './nz';
@@ -112,6 +113,7 @@ export const stdnum = {
   LV,
   JP,
   KR,
+  MC,
   MX,
   MY,
   NZ,
@@ -197,8 +199,9 @@ const entityValidators: Record<string, Validator[]> = {
   LV: [LV.pvn],
   JP: [JP.cn],
   KR: [KR.brn],
-  PE: [PE.ruc],
+  MC: [MC.tva],
   NZ: [NZ.ird],
+  PE: [PE.ruc],
   SG: [SG.uen],
   TW: [TW.ubn],
   US: [US.ein],

@@ -62,8 +62,11 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
     // numbers from Monaco are valid TVA but not SIREN
-    if (value.substr(2, 3) === '000') {
-      return siren.validate(value.substr(2));
+    if (value.substr(2, 3) !== '000') {
+      const r = siren.validate(value.substr(2));
+      if (!r.isValid) {
+        return r;
+      }
     }
     if (strings.isdigits(value)) {
       const [check, back] = strings.splitAt(value, 2);
