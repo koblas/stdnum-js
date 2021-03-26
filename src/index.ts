@@ -49,6 +49,7 @@ import * as KR from './kr';
 import * as MC from './mc';
 import * as MD from './md';
 import * as MT from './mt';
+import * as MU from './mu';
 import * as MX from './mx';
 import * as MY from './my';
 import * as NZ from './nz';
@@ -118,6 +119,7 @@ export const stdnum = {
   MC,
   MD,
   MT,
+  MU,
   MX,
   MY,
   NZ,
@@ -162,6 +164,7 @@ const personValidators: Record<string, Validator[]> = {
   LI: [LI.peid],
   LT: [LT.asmens],
   LV: [LV.pvn],
+  MU: [MU.nid],
   KR: [KR.rrn],
   MX: [MX.curp],
   MY: [MY.nric],

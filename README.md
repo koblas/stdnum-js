@@ -106,6 +106,7 @@ All country validators are in the "namespace" of the ISO country code.
 | Monaco                 | MC   | TVA           | Vat                | taxe sur la valeur ajoutée, Monacan VAT number                                      |
 | Moldavia               | MD   | IDNO          | Vat                | Moldavian VAT number                                                                |
 | Malta                  | MT   | VAT           | Vat                | Maltese VAT number                                                                  |
+| Mauritius              | MU   | NID           | Person             | ID number (Mauritian national identifier)                                           |
 | Japan                  | JP   | CN            | Company            | 法人番号, hōjin bangō, Japanese Corporate Number                                    |
 | South Korea            | KR   | BRN           | Company            | 사업자 등록 번호, South Korea Business Registration Number)                         |
 | South Korea            | KR   | RRN           | Person             | South Korean resident registration number                                           |
