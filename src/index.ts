@@ -48,6 +48,7 @@ import * as JP from './jp';
 import * as KR from './kr';
 import * as MC from './mc';
 import * as MD from './md';
+import * as MT from './mt';
 import * as MX from './mx';
 import * as MY from './my';
 import * as NZ from './nz';
@@ -116,6 +117,7 @@ export const stdnum = {
   KR,
   MC,
   MD,
+  MT,
   MX,
   MY,
   NZ,
@@ -203,6 +205,7 @@ const entityValidators: Record<string, Validator[]> = {
   KR: [KR.brn],
   MC: [MC.tva],
   MD: [MD.idno],
+  MT: [MT.vat],
   NZ: [NZ.ird],
   PE: [PE.ruc],
   SG: [SG.uen],
@@ -230,6 +233,7 @@ export const euVat: Record<string, Validator[]> = {
   LT: [LT.pvm],
   LU: [LU.tva],
   LV: [LV.pvn],
+  MT: [MT.vat],
 };
 
 /**
