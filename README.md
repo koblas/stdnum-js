@@ -118,6 +118,10 @@ All country validators are in the "namespace" of the ISO country code.
 | Netherlands            | NL   | BTW             | Vat                | Btw-identificatienummer (Omzetbelastingnummer, the Dutch VAT number)                |
 | Netherlands            | NL   | Onderwijsnummer | Person             | Onderwijsnummer (the Dutch student identification number)                           |
 | New Zealand            | NZ   | IRD             | Person/Company     | New Zealand Inland Revenue Department (Te Tari Tāke) number                         |
+| Norway                 | NO   | Fodsels         | Person             | Fødselsnummer (Norwegian birth number, the national identity number)                |
+| Norway                 | NO   | Konto           | Bank               | Konto nr. (Norwegian bank account number)                                           |
+| Norway                 | NO   | MVA             | Vat                | Merverdiavgift, Norwegian VAT number                                                |
+| Norway                 | NO   | Orgnr           | Company            | Organisasjonsnummer, Norwegian organisation number                                  |
 | Paraguay               | PY   | RUC             | Tax/Vat            | Tax Identifier (Registro Único de Contribuyentes)                                   |
 | Peru                   | PE   | CUI             | Person             | Person Identifier (Cédula Única de Identidad)                                       |
 | Peru                   | PE   | RUC             | Tax/Vat            | Tax Identifier (Registro Único de Contribuyentes)                                   |
