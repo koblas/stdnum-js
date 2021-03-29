@@ -129,6 +129,7 @@ All country validators are in the "namespace" of the ISO country code.
 | Poland                 | PL   | NIP             | Vat                | Numer Identyfikacji Podatkowej, Polish VAT number                                   |
 | Poland                 | PL   | PESEL           | Person             | Polish national identification number                                               |
 | Poland                 | PL   | REGON           | Company            | Rejestr Gospodarki Narodowej, Polish register of economic units                     |
+| Portugual              | PT   | NIF             | Vat                | Número de identificação fiscal, Portuguese VAT number                               |
 | Russia                 | RU   | INN             | Tax/Vat            | Tax Identifier (Идентификационный номер налогоплательщика)                          |
 | Singapore              | SG   | UEN             | Company            | Singapore's Unique Entity Number                                                    |
 | Thailand               | TH   | IDNR            | Person             | Thai National ID (บัตรประจำตัวประชาชนไทย)                                           |
