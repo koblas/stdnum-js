@@ -210,3 +210,18 @@ export function mod97base10Validate(value: string): boolean {
 
   return modulo(bigValue, 97) === 1;
 }
+
+/**
+ *  The ISO 7064 Mod 11, 10 algorithm.
+ *
+ * The Mod 11, 10 algorithm uses a number of calculations modulo 11 and 10 to
+ * determine a checksum.
+ */
+export function mod11mod10Validate(value: string): boolean {
+  const sum = value
+    .split('')
+    .map(v => parseInt(v, 10))
+    .reduce((acc, n) => ((((acc === 0 ? 10 : acc) * 2) % 11) + n) % 10, 5);
+
+  return sum === 1;
+}

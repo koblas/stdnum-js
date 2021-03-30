@@ -60,6 +60,7 @@ import * as PL from './pl';
 import * as PT from './pt';
 import * as PY from './py';
 import * as RO from './ro';
+import * as RS from './rs';
 import * as RU from './ru';
 import * as SG from './sg';
 import * as SV from './sv';
@@ -135,6 +136,7 @@ export const stdnum = {
   PT,
   PY,
   RO,
+  RS,
   RU,
   SG,
   SV,
@@ -231,6 +233,7 @@ const entityValidators: Record<string, Validator[]> = {
   PL: [PL.nip, PL.regon],
   PT: [PT.nif],
   RO: [RO.onrc, RO.cui],
+  RS: [RS.pib],
   RU: [RU.inn],
   SG: [SG.uen],
   TW: [TW.ubn],

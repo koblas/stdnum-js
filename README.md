@@ -135,6 +135,7 @@ All country validators are in the "namespace" of the ISO country code.
 | Romania                | RO   | CNP             | Person             | Cod Numeric Personal, Romanian Numerical Personal Code)                             |
 | Romania                | RO   | CUI             | Tax                | Codul Unic de Înregistrare, Romanian company identifier                             |
 | Romania                | RO   | ONRC            | Company            | Ordine din Registrul Comerţului, Romanian Trade Register identifier                 |
+| Serbia                 | RS   | PIB             | Vat                | Poreski identifikacioni broj Tax identification number                              |
 | Singapore              | SG   | UEN             | Company            | Singapore's Unique Entity Number                                                    |
 | Thailand               | TH   | IDNR            | Person             | Thai National ID (บัตรประจำตัวประชาชนไทย)                                           |
 | Taiwan                 | TW   | UBN             | Company            | Unified Business Number, 統一編號, Taiwanese tax number                             |
