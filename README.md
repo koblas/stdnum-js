@@ -131,6 +131,10 @@ All country validators are in the "namespace" of the ISO country code.
 | Poland                 | PL   | REGON           | Company            | Rejestr Gospodarki Narodowej, Polish register of economic units                     |
 | Portugual              | PT   | NIF             | Vat                | Número de identificação fiscal, Portuguese VAT number                               |
 | Russia                 | RU   | INN             | Tax/Vat            | Tax Identifier (Идентификационный номер налогоплательщика)                          |
+| Romania                | RO   | CF              | Vat                | Cod de înregistrare în scopuri de TVA, Romanian VAT number                          |
+| Romania                | RO   | CNP             | Person             | Cod Numeric Personal, Romanian Numerical Personal Code)                             |
+| Romania                | RO   | CUI             | Tax                | Codul Unic de Înregistrare, Romanian company identifier                             |
+| Romania                | RO   | ONRC            | Company            | Ordine din Registrul Comerţului, Romanian Trade Register identifier                 |
 | Singapore              | SG   | UEN             | Company            | Singapore's Unique Entity Number                                                    |
 | Thailand               | TH   | IDNR            | Person             | Thai National ID (บัตรประจำตัวประชาชนไทย)                                           |
 | Taiwan                 | TW   | UBN             | Company            | Unified Business Number, 統一編號, Taiwanese tax number                             |
