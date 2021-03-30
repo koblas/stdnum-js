@@ -103,6 +103,7 @@ All country validators are in the "namespace" of the ISO country code.
 | Lithuanian             | LT   | PVM             | Vat                | Pridėtinės vertės mokestis mokėtojo kodas                                           |
 | Luxembourgian          | LU   | TVA             | Vat                | taxe sur la valeur ajoutée                                                          |
 | Latvian                | LV   | PVN             | Person/Vat         | Pievienotās vērtības nodokļa                                                        |
+| Macedonia              | MK   | JMBG            | Person             | Unique Master Citizen Number (Единствен матичен број на граѓанинот)                 |
 | Monaco                 | MC   | TVA             | Vat                | taxe sur la valeur ajoutée, Monacan VAT number                                      |
 | Moldavia               | MD   | IDNO            | Vat                | Moldavian VAT number                                                                |
 | Malta                  | MT   | VAT             | Vat                | Maltese VAT number                                                                  |
@@ -113,6 +114,7 @@ All country validators are in the "namespace" of the ISO country code.
 | Mexico                 | MX   | RFC             | Tax/Vat            | Tax Identifier (Registro Federal de Contribuyentes)                                 |
 | Mexico                 | MX   | CURP            | Person             | Individual Identifier (Clave Única de Registro de Población)                        |
 | Mexico                 | MX   | CLABE           | Bank               | Bank Account (Clave Bancaria Estandarizada)                                         |
+| Montenegro             | ME   | JMBG            | Person             | Unique Master Citizen Number                                                        |
 | Malaysia               | MY   | NRIC            | Person             | Malaysian National Registration Identity Card Number                                |
 | Netherlands            | NL   | BSN             | Person             | Burgerservicenummer, the Dutch citizen identification number                        |
 | Netherlands            | NL   | BTW             | Vat                | Btw-identificatienummer (Omzetbelastingnummer, the Dutch VAT number)                |
@@ -136,9 +138,11 @@ All country validators are in the "namespace" of the ISO country code.
 | Romania                | RO   | CUI             | Tax                | Codul Unic de Înregistrare, Romanian company identifier                             |
 | Romania                | RO   | ONRC            | Company            | Ordine din Registrul Comerţului, Romanian Trade Register identifier                 |
 | Serbia                 | RS   | PIB             | Vat                | Poreski identifikacioni broj Tax identification number                              |
+| Serbia                 | RS   | JMBG            | Person             | Unique Master Citizen Number (Jedinstveni matični broj građana)                     |
 | Singapore              | SG   | UEN             | Company            | Singapore's Unique Entity Number                                                    |
 | Thailand               | TH   | IDNR            | Person             | Thai National ID (บัตรประจำตัวประชาชนไทย)                                           |
 | Taiwan                 | TW   | UBN             | Company            | Unified Business Number, 統一編號, Taiwanese tax number                             |
+| Slovenia               | SI   | JMBG            | Person             | Unique Master Citizen Number (Enotna matična številka občana)                       |
 | Spain                  | ES   | CIF             | Tax/Vat            | Tax Identifier (Código de Identificación Fiscal)                                    |
 | Spain                  | ES   | DNI             | Person             | Identity code (Documento Nacional de Identidad)                                     |
 | Spain                  | ES   | NIE             | Person             | Identity code foreigner (Número de Identificación de Extranjero)                    |
