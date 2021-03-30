@@ -48,6 +48,8 @@ import * as JP from './jp';
 import * as KR from './kr';
 import * as MC from './mc';
 import * as MD from './md';
+import * as ME from './me';
+import * as MK from './mk';
 import * as MT from './mt';
 import * as MU from './mu';
 import * as MX from './mx';
@@ -63,6 +65,7 @@ import * as RO from './ro';
 import * as RS from './rs';
 import * as RU from './ru';
 import * as SG from './sg';
+import * as SI from './si';
 import * as SV from './sv';
 import * as TH from './th';
 import * as TW from './tw';
@@ -124,6 +127,8 @@ export const stdnum = {
   KR,
   MC,
   MD,
+  ME,
+  MK,
   MT,
   MU,
   MX,
@@ -139,6 +144,7 @@ export const stdnum = {
   RS,
   RU,
   SG,
+  SI,
   SV,
   TH,
   TW,
@@ -176,6 +182,8 @@ const personValidators: Record<string, Validator[]> = {
   LI: [LI.peid],
   LT: [LT.asmens],
   LV: [LV.pvn],
+  ME: [ME.jmbg],
+  MK: [MK.jmbg],
   MU: [MU.nid],
   KR: [KR.rrn],
   MX: [MX.curp],
@@ -186,7 +194,9 @@ const personValidators: Record<string, Validator[]> = {
   PE: [PE.cui, PE.ce],
   PL: [PL.pesel],
   RO: [RO.cnp],
+  RS: [RS.jmbg],
   RU: [RU.inn],
+  SI: [SI.jmbg],
   TH: [TH.idnr],
   US: [US.ssn],
   UY: [UY.nie, UY.cedula],
