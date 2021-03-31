@@ -147,6 +147,8 @@ All country validators are in the "namespace" of the ISO country code.
 | Taiwan                 | TW   | UBN             | Company            | Unified Business Number, 統一編號, Taiwanese tax number                             |
 | Slovenia               | SI   | DDV             | Vatl               | ID za DDV (Davčna številka, Slovenian VAT number)                                   |
 | Slovenia               | SI   | JMBG            | Person             | Unique Master Citizen Number (Enotna matična številka občana)                       |
+| Slovakia               | SK   | DPH             | Vat                | IČ DPH (IČ pre daň z pridanej hodnoty, Slovak VAT number)                           |
+| Slovakia               | SK   | RC              | Person             | RČ (Rodné číslo, the Slovak birth number)                                           |
 | Spain                  | ES   | CIF             | Tax/Vat            | Tax Identifier (Código de Identificación Fiscal)                                    |
 | Spain                  | ES   | DNI             | Person             | Identity code (Documento Nacional de Identidad)                                     |
 | Spain                  | ES   | NIE             | Person             | Identity code foreigner (Número de Identificación de Extranjero)                    |
