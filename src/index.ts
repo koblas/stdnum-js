@@ -71,7 +71,9 @@ import * as SK from './sk';
 import * as SM from './sm';
 import * as SV from './sv';
 import * as TH from './th';
+import * as TR from './tr';
 import * as TW from './tw';
+import * as UA from './ua';
 import * as US from './us';
 import * as UY from './uy';
 import * as VE from './ve';
@@ -153,7 +155,9 @@ export const stdnum = {
   SM,
   SV,
   TH,
+  TR,
   TW,
+  UA,
   US,
   UY,
   VE,
@@ -206,6 +210,8 @@ const personValidators: Record<string, Validator[]> = {
   SI: [SI.jmbg],
   SK: [SK.rc],
   TH: [TH.idnr],
+  TR: [TR.tckimlik],
+  UA: [UA.edrpou],
   US: [US.ssn],
   UY: [UY.nie, UY.cedula],
   ZA: [ZA.tin, ZA.idnr],
@@ -258,7 +264,9 @@ const entityValidators: Record<string, Validator[]> = {
   SI: [SI.ddv],
   SK: [SK.dph],
   SM: [SM.coe],
+  TR: [TR.vkn],
   TW: [TW.ubn],
+  UA: [UA.rntrc],
   US: [US.ein],
   UY: [UY.rut],
   VN: [VN.mst],

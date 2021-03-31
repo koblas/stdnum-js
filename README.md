@@ -146,6 +146,8 @@ All country validators are in the "namespace" of the ISO country code.
 | Singapore              | SG   | UEN             | Company            | Singapore's Unique Entity Number                                                    |
 | Thailand               | TH   | IDNR            | Person             | Thai National ID (บัตรประจำตัวประชาชนไทย)                                           |
 | Taiwan                 | TW   | UBN             | Company            | Unified Business Number, 統一編號, Taiwanese tax number                             |
+| Turkey                 | TR   | TCKIMLIK        | Person             | Türkiye Cumhuriyeti Kimlik Numarası (Personal ID)                                   |
+| Turkey                 | TR   | VKN             | Tax                | Vergi Kimlik Numarası, Turkish tax identification number                            |
 | Slovenia               | SI   | DDV             | Vatl               | ID za DDV (Davčna številka, Slovenian VAT number)                                   |
 | Slovenia               | SI   | JMBG            | Person             | Unique Master Citizen Number (Enotna matična številka občana)                       |
 | Slovakia               | SK   | DPH             | Vat                | IČ DPH (IČ pre daň z pridanej hodnoty, Slovak VAT number)                           |
@@ -157,6 +159,8 @@ All country validators are in the "namespace" of the ISO country code.
 | Uruguay                | UY   | RUT             | Tax/Vat            | Tax Identifier (Registro Único Tributario)                                          |
 | Uruguay                | UY   | CEDULA          | Person             | Person Identifier (Cédula de Residencia)                                            |
 | Uruguay                | UY   | NIE             | Person             | ForeignersI identification Number                                                   |
+| Ukraine                | UA   | RNTRC           | Person             | КПП, RNTRC (Individual taxpayer registration number in Ukraine)                     |
+| Ukraine                | UA   | EDRPOU          | Company            | ЄДРПОУ, EDRPOU (Identifier for enterprises and organizations in Ukraine)            |
 | United States          | US   | EIN             | Tax/Company        | Tax Identifier (Employer Identification Number)                                     |
 | United States          | US   | SSN             | Tax/Individual     | Tax Identifier (Social Security Number)                                             |
 | Venezuelan             | VE   | RIF             | Vat                | Vat Identifier (Registro de Identificación Fiscal)                                  |
