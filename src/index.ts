@@ -65,6 +65,7 @@ import * as RO from './ro';
 import * as RS from './rs';
 import * as RU from './ru';
 import * as SG from './sg';
+import * as SE from './se';
 import * as SI from './si';
 import * as SV from './sv';
 import * as TH from './th';
@@ -143,6 +144,7 @@ export const stdnum = {
   RO,
   RS,
   RU,
+  SE,
   SG,
   SI,
   SV,
@@ -196,6 +198,7 @@ const personValidators: Record<string, Validator[]> = {
   RO: [RO.cnp],
   RS: [RS.jmbg],
   RU: [RU.inn],
+  SE: [SE.personnummer],
   SI: [SI.jmbg],
   TH: [TH.idnr],
   US: [US.ssn],
@@ -245,6 +248,7 @@ const entityValidators: Record<string, Validator[]> = {
   RO: [RO.onrc, RO.cui],
   RS: [RS.pib],
   RU: [RU.inn],
+  SE: [SE.orgnr, SE.vat],
   SG: [SG.uen],
   TW: [TW.ubn],
   US: [US.ein],
@@ -274,6 +278,7 @@ export const euVat: Record<string, Validator[]> = {
   NL: [NL.btw],
   PL: [PL.nip],
   PT: [PT.nif],
+  SE: [SE.vat],
 };
 
 /**

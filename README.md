@@ -139,6 +139,9 @@ All country validators are in the "namespace" of the ISO country code.
 | Romania                | RO   | ONRC            | Company            | Ordine din Registrul Comerţului, Romanian Trade Register identifier                 |
 | Serbia                 | RS   | PIB             | Vat                | Poreski identifikacioni broj Tax identification number                              |
 | Serbia                 | RS   | JMBG            | Person             | Unique Master Citizen Number (Jedinstveni matični broj građana)                     |
+| Sweden                 | SE   | ORGNR           | Company            | Organisationsnummer, Swedish company number                                         |
+| Sweden                 | SE   | PERSONNUMMER    | Person             | Personnummer (Swedish personal identity number)                                     |
+| Sweden                 | SE   | VAT             | Vat                | VAT (Moms, Mervärdesskatt, Swedish VAT number)                                      |
 | Singapore              | SG   | UEN             | Company            | Singapore's Unique Entity Number                                                    |
 | Thailand               | TH   | IDNR            | Person             | Thai National ID (บัตรประจำตัวประชาชนไทย)                                           |
 | Taiwan                 | TW   | UBN             | Company            | Unified Business Number, 統一編號, Taiwanese tax number                             |
