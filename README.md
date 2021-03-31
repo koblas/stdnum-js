@@ -145,6 +145,7 @@ All country validators are in the "namespace" of the ISO country code.
 | Singapore              | SG   | UEN             | Company            | Singapore's Unique Entity Number                                                    |
 | Thailand               | TH   | IDNR            | Person             | Thai National ID (บัตรประจำตัวประชาชนไทย)                                           |
 | Taiwan                 | TW   | UBN             | Company            | Unified Business Number, 統一編號, Taiwanese tax number                             |
+| Slovenia               | SI   | DDV             | Vatl               | ID za DDV (Davčna številka, Slovenian VAT number)                                   |
 | Slovenia               | SI   | JMBG            | Person             | Unique Master Citizen Number (Enotna matična številka občana)                       |
 | Spain                  | ES   | CIF             | Tax/Vat            | Tax Identifier (Código de Identificación Fiscal)                                    |
 | Spain                  | ES   | DNI             | Person             | Identity code (Documento Nacional de Identidad)                                     |

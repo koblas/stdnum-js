@@ -250,6 +250,7 @@ const entityValidators: Record<string, Validator[]> = {
   RU: [RU.inn],
   SE: [SE.orgnr, SE.vat],
   SG: [SG.uen],
+  SI: [SI.ddv],
   TW: [TW.ubn],
   US: [US.ein],
   UY: [UY.rut],
