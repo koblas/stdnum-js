@@ -137,6 +137,7 @@ All country validators are in the "namespace" of the ISO country code.
 | Romania                | RO   | CNP             | Person             | Cod Numeric Personal, Romanian Numerical Personal Code)                             |
 | Romania                | RO   | CUI             | Tax                | Codul Unic de Înregistrare, Romanian company identifier                             |
 | Romania                | RO   | ONRC            | Company            | Ordine din Registrul Comerţului, Romanian Trade Register identifier                 |
+| San Marcos             | SM   | COE             | Company            | Codice operatore economico, San Marino national tax number                          |
 | Serbia                 | RS   | PIB             | Vat                | Poreski identifikacioni broj Tax identification number                              |
 | Serbia                 | RS   | JMBG            | Person             | Unique Master Citizen Number (Jedinstveni matični broj građana)                     |
 | Sweden                 | SE   | ORGNR           | Company            | Organisationsnummer, Swedish company number                                         |

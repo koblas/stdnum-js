@@ -68,6 +68,7 @@ import * as SG from './sg';
 import * as SE from './se';
 import * as SI from './si';
 import * as SK from './sk';
+import * as SM from './sm';
 import * as SV from './sv';
 import * as TH from './th';
 import * as TW from './tw';
@@ -149,6 +150,7 @@ export const stdnum = {
   SG,
   SI,
   SK,
+  SM,
   SV,
   TH,
   TW,
@@ -255,6 +257,7 @@ const entityValidators: Record<string, Validator[]> = {
   SG: [SG.uen],
   SI: [SI.ddv],
   SK: [SK.dph],
+  SM: [SM.coe],
   TW: [TW.ubn],
   US: [US.ein],
   UY: [UY.rut],
