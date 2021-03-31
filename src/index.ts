@@ -287,6 +287,8 @@ export const euVat: Record<string, Validator[]> = {
   PL: [PL.nip],
   PT: [PT.nif],
   SE: [SE.vat],
+  SI: [SI.ddv],
+  SK: [SK.dph],
 };
 
 /**
