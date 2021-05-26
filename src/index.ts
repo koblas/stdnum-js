@@ -58,6 +58,7 @@ import * as NL from './nl';
 import * as NO from './no';
 import * as NZ from './nz';
 import * as PE from './pe';
+import * as PK from './pk';
 import * as PL from './pl';
 import * as PT from './pt';
 import * as PY from './py';
@@ -142,6 +143,7 @@ export const stdnum = {
   NO,
   NZ,
   PE,
+  PK,
   PL,
   PT,
   PY,
@@ -202,6 +204,7 @@ const personValidators: Record<string, Validator[]> = {
   NO: [NO.fodselsnummer],
   NZ: [NZ.ird],
   PE: [PE.cui, PE.ce],
+  PK: [PK.cnic],
   PL: [PL.pesel],
   RO: [RO.cnp],
   RS: [RS.jmbg],
@@ -254,6 +257,7 @@ const entityValidators: Record<string, Validator[]> = {
   NO: [NO.mva, NO.orgnr],
   NZ: [NZ.ird],
   PE: [PE.ruc],
+  PK: [PK.ntn],
   PL: [PL.nip, PL.regon],
   PT: [PT.nif],
   RO: [RO.onrc, RO.cui],

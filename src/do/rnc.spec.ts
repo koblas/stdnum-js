@@ -14,6 +14,12 @@ describe('do/rnc', () => {
     expect(result.isValid && result.compact).toEqual('101850043');
   });
 
+  it('validate:401505967', () => {
+    const result = validate('401505967');
+
+    expect(result.isValid && result.compact).toEqual('401505967');
+  });
+
   it('validate:1018A0043', () => {
     const result = validate('1018A0043');
 

@@ -128,6 +128,8 @@ All country validators are in the "namespace" of the ISO country code.
 | Peru                   | PE   | CUI             | Person             | Person Identifier (Cédula Única de Identidad)                                       |
 | Peru                   | PE   | RUC             | Tax/Vat            | Tax Identifier (Registro Único de Contribuyentes)                                   |
 | Peru                   | PE   | CE              | Person             | Person Identifier (Carné de Extranjería)                                            |
+| Pakistan               | PK   | CNIC            | Person             | National Identity Card                                                              |
+| Pakistan               | PK   | NTN             | Company            | Tax Identification Number                                                           |
 | Poland                 | PL   | NIP             | Vat                | Numer Identyfikacji Podatkowej, Polish VAT number                                   |
 | Poland                 | PL   | PESEL           | Person             | Polish national identification number                                               |
 | Poland                 | PL   | REGON           | Company            | Rejestr Gospodarki Narodowej, Polish register of economic units                     |
