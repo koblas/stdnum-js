@@ -71,7 +71,7 @@ const impl: Validator = {
       weights: [1, 3, 7, 1, 3, 7, 1, 3, 5],
     });
     const extra = Math.floor((parseInt(end[3], 10) * 5) / 10);
-    if (String(10 - ((sum + extra) % 10)) !== check) {
+    if (String((10 - ((sum + extra) % 10)) % 10) !== check) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 
