@@ -120,6 +120,7 @@ All country validators are in the "namespace" of the ISO country code.
 | Netherlands            | NL   | BTW             | Vat                | Btw-identificatienummer (Omzetbelastingnummer, the Dutch VAT number)                |
 | Netherlands            | NL   | Onderwijsnummer | Person             | Onderwijsnummer (the Dutch student identification number)                           |
 | New Zealand            | NZ   | IRD             | Person/Company     | New Zealand Inland Revenue Department (Te Tari Tāke) number                         |
+| New Zealand            | NZ   | BANK            | Bank               | New Zealand Bank Account numbers - checkdigit                                       |
 | Norway                 | NO   | Fodsels         | Person             | Fødselsnummer (Norwegian birth number, the national identity number)                |
 | Norway                 | NO   | Konto           | Bank               | Konto nr. (Norwegian bank account number)                                           |
 | Norway                 | NO   | MVA             | Vat                | Merverdiavgift, Norwegian VAT number                                                |

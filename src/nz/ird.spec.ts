@@ -1,7 +1,7 @@
 import { validate, format } from './ird';
 import { InvalidLength, InvalidChecksum } from '../exceptions';
 
-describe('za/ird', () => {
+describe('nz/ird', () => {
   it('format:4909185-0', () => {
     const result = format('4909185-0');
 
