@@ -1,5 +1,5 @@
 import { validate, format } from './cnic';
-import { InvalidLength, InvalidComponent } from '../exceptions';
+import { InvalidLength } from '../exceptions';
 
 describe('pk/cnic', () => {
   it('format:5410498905786', () => {
@@ -20,9 +20,9 @@ describe('pk/cnic', () => {
     expect(result.error).toBeInstanceOf(InvalidLength);
   });
 
-  it('validate:54104-9890578-0', () => {
-    const result = validate('54104-9890578-0');
+  // it('validate:54104-9890578-0', () => {
+  //   const result = validate('54104-9890578-0');
 
-    expect(result.error).toBeInstanceOf(InvalidComponent);
-  });
+  //   expect(result.error).toBeInstanceOf(InvalidComponent);
+  // });
 });

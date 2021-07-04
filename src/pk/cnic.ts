@@ -51,9 +51,9 @@ const impl: Validator = {
     if (!'1234567'.includes(value[0])) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
-    if (value[12] === '0') {
-      return { isValid: false, error: new exceptions.InvalidComponent() };
-    }
+    // if (value[12] === '0') {
+    //   return { isValid: false, error: new exceptions.InvalidComponent() };
+    // }
 
     return {
       isValid: true,
