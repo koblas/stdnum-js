@@ -162,7 +162,7 @@ const impl: Validator = {
   },
 
   /**
-   * Check if the number is a valid Andorra NRT number.
+   * Check if the number is a valid CURP number.
    * This checks the length, formatting and other contraints. It does not check
    * for control letter.
    */
@@ -209,7 +209,7 @@ const impl: Validator = {
       isValid: true,
       compact: value,
       isIndividual: true,
-      isCompany: false,
+      isEntity: false,
     };
   },
 };
@@ -239,4 +239,4 @@ export function getBirthDate(input: string): Date {
   return getBirthDateImpl(value);
 }
 
-export const { validate, format, compact } = impl;
+export const { name, localizedName, validate, format, compact } = impl;

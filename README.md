@@ -19,12 +19,12 @@ All country validators are in the "namespace" of the ISO country code.
 
 | Country                | Code | Name            | Group              | Meaning                                                                             |
 | ---------------------- | ---- | --------------- | ------------------ | ----------------------------------------------------------------------------------- |
-| Albania                | AL   | NIPT            | Vat                | Vat Identifier (Numri i Identifikimit për Personin e Tatueshëm)                     |
-| Andorra                | AD   | NRT             | Tax                | Tax Identifier (Número de Registre Tributari)                                       |
-| Argentina              | AR   | CBU             | Bank               | Bank Account (Clave Bancaria Uniforme)                                              |
-| Argentina              | AR   | CUIT            | Tax                | Tax Identity (Código Único de Identificación Tributaria)                            |
-| Argentina              | AR   | DNI             | Person             | National Identity (Documento Nacional de Identidad)                                 |
-| Austria                | AT   | Businessid      | Company            | Austrian Company Register Numbers                                                   |
+| Andorra                | AD   | NRT             | Tax                | Tax Register Identifier (Número de Registre Tributari)                              |
+| Albania                | AL   | NIPT            | Vat                | Albanian Vat Identifier (Numri i Identifikimit për Personin e Tatueshëm)            |
+| Argentina              | AR   | CBU             | Bank               | Single Banking Code (Clave Bancaria Uniforme)                                       |
+| Argentina              | AR   | CUIT            | Tax                | Unique Tax Identification Code (Código Único de Identificación Tributaria)          |
+| Argentina              | AR   | DNI             | Person             | National Identity Document (Documento Nacional de Identidad)                                 |
+| Austria                | AT   | Businessid      | Company            | Austrian Company Register Number                                                    |
 | Austria                | AT   | TIN             | Tax                | Austrian tax identification number (Abgabenkontonummer)                             |
 | Austria                | AT   | UID             | VAT                | Austrian VAT number (Umsatzsteuer-Identifikationsnummer)                            |
 | Austria                | AT   | VNR             | Person             | Austrian social security number(Versicherungsnummer)                                |
@@ -151,7 +151,7 @@ All country validators are in the "namespace" of the ISO country code.
 | Taiwan                 | TW   | UBN             | Company            | Unified Business Number, 統一編號, Taiwanese tax number                             |
 | Turkey                 | TR   | TCKIMLIK        | Person             | Türkiye Cumhuriyeti Kimlik Numarası (Personal ID)                                   |
 | Turkey                 | TR   | VKN             | Tax                | Vergi Kimlik Numarası, Turkish tax identification number                            |
-| Slovenia               | SI   | DDV             | Vatl               | ID za DDV (Davčna številka, Slovenian VAT number)                                   |
+| Slovenia               | SI   | DDV             | Vat                | ID za DDV (Davčna številka, Slovenian VAT number)                                   |
 | Slovenia               | SI   | JMBG            | Person             | Unique Master Citizen Number (Enotna matična številka občana)                       |
 | Slovakia               | SK   | DPH             | Vat                | IČ DPH (IČ pre daň z pridanej hodnoty, Slovak VAT number)                           |
 | Slovakia               | SK   | RC              | Person             | RČ (Rodné číslo, the Slovak birth number)                                           |

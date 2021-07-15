@@ -1,15 +1,6 @@
 /**
- * TIN (South African Tax Identification Number).
+ * KMKR (Käibemaksukohuslase, Estonian VAT number).
  *
- * The South African Tax Identification Number (TIN or Tax Reference Number) is
- * issued to individuals and legal entities for tax purposes. The number
- * consists of 10 digits.
- *
- * Source
- *   https://www.oecd.org/tax/automatic-exchange/crs-implementation-and-assistance/tax-identification-numbers/South-Africa-TIN.pdf
- *   https://www.sars.gov.za/
- *
- * PERSON/ENTITY
  */
 
 import * as exceptions from '../exceptions';
@@ -29,6 +20,10 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'Estronian VAT Number',
+
+  localizedName: 'Käibemaksukohustuslase Number',
+
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -73,9 +68,9 @@ const impl: Validator = {
       isValid: true,
       compact: value,
       isIndividual: false,
-      isCompany: false,
+      isEntity: false,
     };
   },
 };
 
-export const { validate, format, compact } = impl;
+export const { name, localizedName, validate, format, compact } = impl;

@@ -10,7 +10,7 @@
 import * as exceptions from '../exceptions';
 import { strings } from '../util';
 import { Validator, ValidateReturn } from '../types';
-import { iso7064mod10x11validate } from '../iso/iso7064';
+import { iso7064mod10x11validate } from '../util/iso7064';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   const [value, err] = strings.cleanUnicode(input, ' -./,');
@@ -25,6 +25,8 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'German VAT Number',
+  localizedName: 'Umsatzsteuer-Identifikationsnummer',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -62,9 +64,9 @@ const impl: Validator = {
       isValid: true,
       compact: value,
       isIndividual: false,
-      isCompany: false,
+      isEntity: false,
     };
   },
 };
 
-export const { validate, format, compact } = impl;
+export const { name, localizedName, validate, format, compact } = impl;

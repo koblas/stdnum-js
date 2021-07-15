@@ -1,2 +1,2 @@
 export * as dph from './dph';
-export * as rc from '../cz/rc';
+export * as rc from './rc';

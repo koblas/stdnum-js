@@ -74,9 +74,9 @@ const impl: Validator = {
       isValid: true,
       compact: value,
       isIndividual: false,
-      isCompany: true,
+      isEntity: true,
     };
   },
 };
 
-export const { validate, format, compact } = impl;
+export const { name, localizedName, validate, format, compact } = impl;

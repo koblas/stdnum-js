@@ -46,7 +46,7 @@ const impl: Validator = {
   },
 
   /**
-   * Check if the number is a valid Andorra NRT number.
+   * Check if the number is a valid RUC.
    * This checks the length, formatting and other contraints. It does not check
    * for control letter.
    */
@@ -81,9 +81,9 @@ const impl: Validator = {
       isValid: true,
       compact: value,
       isIndividual: parseInt(front, 10) < 80000000,
-      isCompany: front.length === 8 && parseInt(front, 10) > 80000000,
+      isEntity: front.length === 8 && parseInt(front, 10) > 80000000,
     };
   },
 };
 
-export const { validate, format, compact } = impl;
+export const { name, localizedName, validate, format, compact } = impl;

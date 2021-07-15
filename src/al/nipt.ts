@@ -7,12 +7,12 @@
  *
  * Sources:
  *
- * VAT
+ * https://en.wikipedia.org/wiki/VAT_identification_number
  */
 
 import * as exceptions from '../exceptions';
+import { ValidateReturn, Validator } from '../types';
 import { strings } from '../util';
-import { Validator, ValidateReturn } from '../types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   // eslint-disable-next-line prefer-const
@@ -32,6 +32,10 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: "Albanian VAT Number",
+
+  localizedName: "Numri i Identifikimit për Personin e Tatueshëm",
+
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -49,7 +53,7 @@ const impl: Validator = {
   },
 
   /**
-   * Check if the number is a valid Andorra NRT number.
+   * Check if the number is a valid Algerian NIPT number.
    * This checks the length, formatting and other contraints. It does not check
    * for control letter.
    */
@@ -70,9 +74,8 @@ const impl: Validator = {
       isValid: true,
       compact: value,
       isIndividual: false,
-      isCompany: false,
+      isEntity: false,
     };
   },
 };
-
-export const { validate, format, compact } = impl;
+export const { name, localizedName, validate, format, compact } = impl;

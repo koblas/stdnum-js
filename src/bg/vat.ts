@@ -59,6 +59,10 @@ function checkOther(value: string): boolean {
 }
 
 const impl: Validator = {
+  name: "Bulgarian VAT Number",
+
+  localizedName: "Идентификационен номер по ДДС",
+
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -108,9 +112,9 @@ const impl: Validator = {
       isValid: true,
       compact: value,
       isIndividual: value.length === 10,
-      isCompany: value.length === 9,
+      isEntity: value.length === 9,
     };
   },
 };
 
-export const { validate, format, compact } = impl;
+export const { name, localizedName, validate, format, compact } = impl;

@@ -109,7 +109,7 @@ const impl: Validator = {
   },
 
   /**
-   * Check if the number is a valid Andorra NRT number.
+   * Check if the number is a valid RFC number.
    * This checks the length, formatting and other contraints. It does not check
    * for control letter.
    */
@@ -181,9 +181,9 @@ const impl: Validator = {
       isValid: true,
       compact: value,
       isIndividual: value.length !== 12,
-      isCompany: value.length === 12,
+      isEntity: value.length === 12,
     };
   },
 };
 
-export const { validate, format, compact } = impl;
+export const { name, localizedName, validate, format, compact } = impl;

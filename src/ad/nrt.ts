@@ -8,20 +8,24 @@
  * digits, followed by a check letter.
  *
  * More information:
- *    https://www.oecd.org/tax/automatic-exchange/crs-implementation-and-assistance/tax-identification-numbers/Andorra-TIN.pdf
+ * https://www.oecd.org/tax/automatic-exchange/crs-implementation-and-assistance/tax-identification-numbers/Andorra-TIN.pdf
  *
  * NRT == VAT
  */
 
 import * as exceptions from '../exceptions';
+import { ValidateReturn, Validator } from '../types';
 import { strings } from '../util';
-import { Validator, ValidateReturn } from '../types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -.');
 }
 
 const impl: Validator = {
+  name: 'Andorra Tax Register Number',
+
+  localizedName: 'Número de Registre Tributari',
+
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -74,10 +78,10 @@ const impl: Validator = {
     return {
       isValid: true,
       compact: v,
-      isIndividual: 'AF'.includes(v[0]),
-      isCompany: !'AF'.includes(v[0]),
+      isIndividual: 'FE'.includes(v[0]),
+      isEntity: !'FE'.includes(v[0]),
     };
   },
 };
 
-export const { validate, format, compact } = impl;
+export const { name, localizedName, validate, format, compact } = impl;

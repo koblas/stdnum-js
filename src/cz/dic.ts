@@ -57,6 +57,10 @@ function checkSpecial(value: string): boolean {
 }
 
 const impl: Validator = {
+  name: "Czech VAT number",
+
+  localizedName: "Daňové identifikační číslo",
+
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -99,7 +103,7 @@ const impl: Validator = {
         isValid: true,
         compact: value,
         isIndividual: false,
-        isCompany: true,
+        isEntity: true,
       };
     }
     if (value.length === 9 && value.startsWith('6')) {
@@ -111,7 +115,7 @@ const impl: Validator = {
         isValid: true,
         compact: value,
         isIndividual: false,
-        isCompany: true,
+        isEntity: true,
       };
     }
 
@@ -119,4 +123,4 @@ const impl: Validator = {
   },
 };
 
-export const { validate, format, compact } = impl;
+export const { name, localizedName, validate, format, compact } = impl;

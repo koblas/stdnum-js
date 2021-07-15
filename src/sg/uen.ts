@@ -92,7 +92,7 @@ function validateLocal(value: string): ValidateReturn {
     isValid: true,
     compact: value,
     isIndividual: false,
-    isCompany: true,
+    isEntity: true,
   };
 }
 
@@ -117,7 +117,7 @@ function validateBusiness(value: string): ValidateReturn {
     isValid: true,
     compact: value,
     isIndividual: false,
-    isCompany: true,
+    isEntity: true,
   };
 }
 
@@ -160,7 +160,7 @@ function validateOther(value: string): ValidateReturn {
     isValid: true,
     compact: value,
     isIndividual: false,
-    isCompany: true,
+    isEntity: true,
   };
 }
 
@@ -202,4 +202,4 @@ const impl: Validator = {
   },
 };
 
-export const { validate, format, compact } = impl;
+export const { name, localizedName, validate, format, compact } = impl;

@@ -42,4 +42,4 @@ const impl: Validator = {
   },
 };
 
-export const { validate, format, compact } = impl;
+export const { name, localizedName, validate, format, compact } = impl;

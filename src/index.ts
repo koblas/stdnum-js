@@ -1,4 +1,3 @@
-import { Validator } from './types';
 import * as AD from './ad';
 import * as AL from './al';
 import * as AR from './ar';
@@ -40,12 +39,12 @@ import * as IL from './il';
 import * as IN from './in';
 import * as IS from './is';
 import * as IT from './it';
+import * as JP from './jp';
+import * as KR from './kr';
 import * as LI from './li';
 import * as LT from './lt';
 import * as LU from './lu';
 import * as LV from './lv';
-import * as JP from './jp';
-import * as KR from './kr';
 import * as MC from './mc';
 import * as MD from './md';
 import * as ME from './me';
@@ -65,8 +64,8 @@ import * as PY from './py';
 import * as RO from './ro';
 import * as RS from './rs';
 import * as RU from './ru';
-import * as SG from './sg';
 import * as SE from './se';
+import * as SG from './sg';
 import * as SI from './si';
 import * as SK from './sk';
 import * as SM from './sm';
@@ -80,11 +79,12 @@ import * as UY from './uy';
 import * as VE from './ve';
 import * as VN from './vn';
 import * as ZA from './za';
+import { Validator } from './types';
 
 export { Validator } from './types';
 
 // Live an uppercase world, to prevent keyword collisions
-export const stdnum = {
+export const stdnum: Record<string, Record<string, Validator>> = {
   AD,
   AL,
   AR,
@@ -108,6 +108,7 @@ export const stdnum = {
   CZ,
   DE,
   DO,
+  DK,
   EC,
   EE,
   ES,
@@ -167,7 +168,8 @@ export const stdnum = {
   ZA,
 };
 
-const personValidators: Record<string, Validator[]> = {
+export const personValidators: Record<string, Validator[]> = {
+  AD: [AD.nrt],
   AZ: [AZ.tin, AZ.pin],
   BA: [BA.jmbg],
   BG: [BG.vat],
@@ -177,6 +179,7 @@ const personValidators: Record<string, Validator[]> = {
   CU: [CU.ni],
   CZ: [CZ.rc],
   DE: [DE.idnr],
+  DK: [DK.cpr],
   EE: [EE.ik],
   ES: [ES.dni, ES.nie],
   FI: [FI.hetu],
@@ -220,14 +223,16 @@ const personValidators: Record<string, Validator[]> = {
   ZA: [ZA.tin, ZA.idnr],
 };
 
-const entityValidators: Record<string, Validator[]> = {
+export const entityValidators: Record<string, Validator[]> = {
+  AD: [AD.nrt],
+  // DONE
   AU: [AU.abn, AU.acn, AU.tfn],
   BE: [BE.vat],
   BG: [BG.vat],
   BY: [BY.unp],
   CN: [CN.uscc],
   CH: [CH.uid, CH.vat],
-  CY: [CH.vat],
+  CY: [CY.vat],
   CZ: [CZ.dic],
   DE: [DE.vat, DE.stnr],
   DK: [DK.cvr],
@@ -277,18 +282,27 @@ const entityValidators: Record<string, Validator[]> = {
   ZA: [ZA.tin],
 };
 
+/**
+ * https://en.wikipedia.org/wiki/VAT_identification_number
+ */
 export const euVat: Record<string, Validator[]> = {
-  AD: [AD.nrt],
+  AD: [AD.nrt], // uses Euro
+  AT: [AT.uid],
   BE: [BE.vat],
   BG: [BG.vat],
   CH: [CH.vat],
+  HR: [HR.oib],
   CY: [CY.vat],
   DE: [DE.vat],
+  CZ: [CZ.dic],
   DK: [DK.cvr],
   ES: [ES.nif],
+  EE: [EE.kmkr],
+  FI: [FI.alv],
   FR: [FR.tva],
-  // GB: [GB.vat],
+  // GB: [GB.vat], // No longer part of EU
   GR: [GR.vat],
+  HU: [HU.anum],
   IE: [IE.vat],
   IT: [IT.iva],
   LT: [LT.pvm],
@@ -298,9 +312,14 @@ export const euVat: Record<string, Validator[]> = {
   NL: [NL.btw],
   PL: [PL.nip],
   PT: [PT.nif],
+  RO: [RO.cf],
   SE: [SE.vat],
   SI: [SI.ddv],
   SK: [SK.dph],
+};
+
+export const nonEuVat: Record<string, Validator[]> = {
+  // TODO
 };
 
 /**
@@ -316,7 +335,11 @@ export function validatePerson(
     return { checked: false };
   }
 
-  const match = vset.some(grp => grp.validate(value).isValid);
+  const match = vset.some(grp => {
+    const result = grp.validate(value);
+
+    return result.isValid && result.isIndividual;
+  });
 
   return { checked: true, isValid: match };
 }
@@ -334,7 +357,11 @@ export function validateEntity(
     return { checked: false };
   }
 
-  const match = vset.some(grp => grp.validate(value).isValid);
+  const match = vset.some(grp => {
+    const result = grp.validate(value);
+
+    return result.isValid && result.isEntity;
+  });
 
   return { checked: true, isValid: match };
 }

@@ -3,11 +3,11 @@
  *
  * The NIF (Número de identificação fiscal, NIPC, Número de Identificação de
  * Pessoa Colectiva) is used for VAT purposes. It is a 9-digit number with a
- * simple checksum.
+ * simple checksum. The first digit depends on what the number refers to,
+ * e.g.: 1-3 are regular people, 5 are companies.
  *
  * Source
- *
- * ENTITY
+ * https://www.oecd.org/tax/automatic-exchange/crs-implementation-and-assistance/tax-identification-numbers/Portugal-TIN.pdf
  */
 
 import * as exceptions from '../exceptions';
@@ -19,6 +19,10 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'Portuguese VAT Number',
+
+  localizedName: 'Número de Identificação Fiscal /de Pessoa Colectiva',
+
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -62,10 +66,10 @@ const impl: Validator = {
     return {
       isValid: true,
       compact: value,
-      isIndividual: false,
-      isCompany: true,
+      isIndividual: '1234'.includes(value[0]),
+      isEntity: !'1234'.includes(value[0]),
     };
   },
 };
 
-export const { validate, format, compact } = impl;
+export const { name, localizedName, validate, format, compact } = impl;

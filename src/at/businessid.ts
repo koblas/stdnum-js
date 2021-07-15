@@ -25,6 +25,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: "Austrian Company Register Number",
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -42,7 +43,7 @@ const impl: Validator = {
   },
 
   /**
-   * Check if the number is a valid Andorra NRT number.
+   * Check if the number is a valid Business ID number.
    * This checks the length, formatting and other contraints. It does not check
    * for control letter.
    */
@@ -60,9 +61,9 @@ const impl: Validator = {
       isValid: true,
       compact: value,
       isIndividual: false,
-      isCompany: false,
+      isEntity: false,
     };
   },
 };
 
-export const { validate, format, compact } = impl;
+export const { name, localizedName, validate, format, compact } = impl;
