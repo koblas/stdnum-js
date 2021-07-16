@@ -218,6 +218,7 @@ export const personValidators: Record<string, Validator[]> = {
   TH: [TH.idnr],
   TR: [TR.tckimlik],
   UA: [UA.edrpou],
+  //DONE bELOW
   US: [US.ssn],
   UY: [UY.nie, UY.cedula],
   ZA: [ZA.tin, ZA.idnr],
@@ -276,6 +277,7 @@ export const entityValidators: Record<string, Validator[]> = {
   TR: [TR.vkn],
   TW: [TW.ubn],
   UA: [UA.rntrc],
+  //DONE bELOW
   US: [US.ein],
   UY: [UY.rut],
   VN: [VN.mst],
@@ -319,7 +321,9 @@ export const euVat: Record<string, Validator[]> = {
 };
 
 export const nonEuVat: Record<string, Validator[]> = {
-  // TODO
+  // DONE BELOW
+  UY: [UY.rut],
+  VE: [VE.rif],
 };
 
 /**
@@ -335,11 +339,7 @@ export function validatePerson(
     return { checked: false };
   }
 
-  const match = vset.some(grp => {
-    const result = grp.validate(value);
-
-    return result.isValid && result.isIndividual;
-  });
+  const match = vset.some(grp => grp.validate(value).isValid);
 
   return { checked: true, isValid: match };
 }
@@ -357,11 +357,7 @@ export function validateEntity(
     return { checked: false };
   }
 
-  const match = vset.some(grp => {
-    const result = grp.validate(value);
-
-    return result.isValid && result.isEntity;
-  });
+  const match = vset.some(grp => grp.validate(value).isValid);
 
   return { checked: true, isValid: match };
 }

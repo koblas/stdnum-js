@@ -58,6 +58,10 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: "U.S. Social Security Number",
+
+  localizedName: "Social Security Number",
+
   compact(input: string): string {
     const [value, err] = clean(input);
 

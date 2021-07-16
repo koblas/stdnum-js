@@ -53,7 +53,7 @@ const impl: Validator = {
   },
 
   /**
-   * Check if the number is a valid Algerian NIPT number.
+   * Check if the number is a valid Albanian NIPT number.
    * This checks the length, formatting and other contraints. It does not check
    * for control letter.
    */

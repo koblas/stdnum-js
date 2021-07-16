@@ -123,6 +123,10 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: "U.S. Employer Identification Number",
+
+  localizedName: "Employer Identification Number",
+
   compact(input: string): string {
     const [value, err] = clean(input);
 

@@ -31,6 +31,10 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: "Uruguay Tax Number",
+
+  localizedName: "Registro Único Tributario",
+
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -88,7 +92,7 @@ const impl: Validator = {
       isValid: true,
       compact: value,
       isIndividual: false,
-      isEntity: false,
+      isEntity: true,
     };
   },
 };

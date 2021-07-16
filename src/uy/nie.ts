@@ -22,6 +22,10 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: "Uruguay Foreigners Identification Number",
+
+  localizedName: "Número de Identidad de Extranjero",
+
   compact(input: string): string {
     const [value, err] = clean(input);
 

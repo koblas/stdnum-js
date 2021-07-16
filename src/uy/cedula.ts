@@ -1,5 +1,5 @@
 /**
- * Cedula (Urugual Person number).
+ * Cedula (Uruguay Person number).
  *
  * PERSON
  */
@@ -13,6 +13,10 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: "Uruguay Identity Card Number",
+
+  localizedName: "Cédula de Identidad",
+
   compact(input: string): string {
     const [value, err] = clean(input);
 

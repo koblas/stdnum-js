@@ -7,7 +7,7 @@
  * is a check digit.
  *
  * Source
- *
+ * https://wiki.scn.sap.com/wiki/display/CRM/Venezuela
  * VAT
  */
 
@@ -30,6 +30,10 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: "Venezuelan VAT number",
+
+  localizedName: "Registro de Identificación Fiscal",
+
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -79,8 +83,8 @@ const impl: Validator = {
     return {
       isValid: true,
       compact: value,
-      isIndividual: true,
-      isEntity: false,
+      isIndividual: ["V", "E"].includes(ctype),
+      isEntity: ["J", "G", "P"].includes(ctype),
     };
   },
 };
