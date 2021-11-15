@@ -1,5 +1,5 @@
 import { validate, format } from './ice';
-import { InvalidLength, InvalidChecksum } from '../exceptions';
+import { InvalidLength, InvalidFormat } from '../exceptions';
 
 describe('ma/ice', () => {
   it('format:0015 1257 2000078', () => {
@@ -20,9 +20,9 @@ describe('ma/ice', () => {
     expect(result.error).toBeInstanceOf(InvalidLength);
   });
 
-  it('validate:732829320000753', () => {
-    const result = validate('732829320000753');
+  it('validate:MA0015125720000', () => {
+    const result = validate('MA0015125720000');
 
-    expect(result.error).toBeInstanceOf(InvalidChecksum);
+    expect(result.error).toBeInstanceOf(InvalidFormat);
   });
 });

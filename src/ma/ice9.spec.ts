@@ -1,17 +1,17 @@
 import { validate, format } from './ice9';
-import { InvalidLength, InvalidChecksum } from '../exceptions';
+import { InvalidLength, InvalidFormat } from '../exceptions';
 
 describe('ma/ice9', () => {
-  it('format:552 008 443', () => {
-    const result = format('552008443');
+  it('format:001512572', () => {
+    const result = format('001512572');
 
-    expect(result).toEqual('552 008 443');
+    expect(result).toEqual('001512572');
   });
 
-  it('validate:552 008 443', () => {
-    const result = validate('552 008 443');
+  it('validate:001512572', () => {
+    const result = validate('001512572');
 
-    expect(result.isValid && result.compact).toEqual('552008443');
+    expect(result.isValid && result.compact).toEqual('001512572');
   });
 
   it('validate:12345678', () => {
@@ -20,9 +20,9 @@ describe('ma/ice9', () => {
     expect(result.error).toBeInstanceOf(InvalidLength);
   });
 
-  it('validate:552 008 442', () => {
-    const result = validate('552 008 442');
+  it('validate:MA0015125', () => {
+    const result = validate('MA0015125');
 
-    expect(result.error).toBeInstanceOf(InvalidChecksum);
+    expect(result.error).toBeInstanceOf(InvalidFormat);
   });
 });
