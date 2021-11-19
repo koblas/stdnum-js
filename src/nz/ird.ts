@@ -1,13 +1,12 @@
 /**
- * IRD number (New Zealand Inland Revenue Department (Te Tari Tāke) number).
+ * IRD number (New Zealand Inland Revenue Department (Te Tari Taake) number).
  *
- * The IRD number is used by the New Zealand Inland Revenue Department (Te Tari
- * Tāke in Māori) to identify businesses and individuals for tax purposes. The
- * number consists of 8 or 9 digits where the last digit is a check digit.
+ * The IRD number is used by the New Zealand Inland Revenue Department (Te Tari Taake)
+ * to identify businesses and individuals for tax purposes. The number consists of 8 or 9 digits
+ * where the last digit is a check digit.
  *
  * Source
  *   https://www.ird.govt.nz/
- *   https://www.ird.govt.nz/-/media/Project/IR/PDF/2020RWTNRWTSpecificationDocumentv10.pdf
  *   https://www.oecd.org/tax/automatic-exchange/crs-implementation-and-assistance/tax-identification-numbers/New%20Zealand-TIN.pdf
  *
  * PERSON/ENTITY
@@ -33,6 +32,10 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'Inland Revenue Department Number',
+  localName: 'Te Tari Taake',
+  abbreviation: 'IRD',
+
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -89,10 +92,17 @@ const impl: Validator = {
     return {
       isValid: true,
       compact: value,
-      isIndividual: false,
-      isEntity: false,
+      isIndividual: false, // cannot determine based on ird
+      isEntity: false, // cannot determine based on ird
     };
   },
 };
 
-export const { name, localizedName, validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

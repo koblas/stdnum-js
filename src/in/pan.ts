@@ -10,7 +10,7 @@
  * More information:
  *   https://en.wikipedia.org/wiki/Permanent_account_number
  *
- * PERSON
+ * ENTITY
  */
 
 import * as exceptions from '../exceptions';
@@ -22,6 +22,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'Indian Income Tax Identifier',
+  localName: 'Permanent Account Number',
+  abbreviation: 'PAN',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -57,10 +60,17 @@ const impl: Validator = {
     return {
       isValid: true,
       compact: value,
-      isIndividual: true,
-      isEntity: false,
+      isIndividual: false,
+      isEntity: true,
     };
   },
 };
 
-export const { name, localizedName, validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

@@ -33,10 +33,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
-  name: "Belgium Entreprise Number",
-
-  localizedName: "BTW, TVA, NWSt, ondernemingsnummer",
-
+  name: 'Belgian VAT Number',
+  localName: 'Ondernemingsnummer',
+  abbreviation: 'BTW, NWSt',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -76,9 +75,16 @@ const impl: Validator = {
       isValid: true,
       compact: value,
       isIndividual: false,
-      isEntity: false,
+      isEntity: true,
     };
   },
 };
 
-export const { name, localizedName, validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

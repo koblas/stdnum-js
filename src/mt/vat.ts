@@ -1,15 +1,9 @@
 /**
- * TIN (South African Tax Identification Number).
+ * Maltese VAT Number
  *
- * The South African Tax Identification Number (TIN or Tax Reference Number) is
- * issued to individuals and legal entities for tax purposes. The number
- * consists of 10 digits.
+ * https://www.oecd.org/tax/automatic-exchange/crs-implementation-and-assistance/tax-identification-numbers/Malta-TIN.pdf
+ * https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/395616/ESL-Foreign-Language-Letter-Malta.pdf
  *
- * Source
- *   https://www.oecd.org/tax/automatic-exchange/crs-implementation-and-assistance/tax-identification-numbers/South-Africa-TIN.pdf
- *   https://www.sars.gov.za/
- *
- * PERSON/ENTITY
  */
 
 import * as exceptions from '../exceptions';
@@ -23,7 +17,8 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 
 const impl: Validator = {
   name: 'Maltese VAT Number',
-  localizedName: 'VAT reg. no.',
+  localName: 'Vat Reg. No.',
+  abbreviation: 'Vat No.',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -70,4 +65,11 @@ const impl: Validator = {
   },
 };
 
-export const { name, localizedName, validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

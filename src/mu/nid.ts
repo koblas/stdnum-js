@@ -33,6 +33,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'Mauritian National Identifier',
+  localName: 'National Identifier',
+  abbreviation: 'NID',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -82,4 +85,11 @@ const impl: Validator = {
   },
 };
 
-export const { name, localizedName, validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

@@ -2,7 +2,7 @@
  *
  * Paraguay RUC numbers
  *
- * RUC number (Registro Único de Contribuyentes, Paraguay tax number).
+ * RUC number (Registro Único del Contribuyentes, Paraguay tax number).
  *
  * The Registro Único del Contribuyente (RUC) is the unique taxpayer registry
  * that maintains identification numbers for all persons (national or foreign)
@@ -15,7 +15,7 @@
  * Sources:
  *   https://www.ruc.com.py/
  *
- * BANK
+ * PERSON/ENTITY
  */
 
 import * as exceptions from '../exceptions';
@@ -27,6 +27,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'Paraguay Tax Number',
+  localName: 'Registro Único del Contribuyentes',
+  abbreviation: 'RUC',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -86,4 +89,11 @@ const impl: Validator = {
   },
 };
 
-export const { name, localizedName, validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

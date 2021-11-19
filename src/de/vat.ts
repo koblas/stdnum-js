@@ -1,5 +1,5 @@
 /**
- * Ust ID Nr. (Umsatzsteur Identifikationnummer, German VAT number).
+ * Ust ID Nr. (Umsatzsteuer Identifikationsnummer, German VAT number).
  *
  * The number is 10 digits long and uses the ISO 7064 Mod 11, 10 check digit
  * algorithm.
@@ -26,7 +26,8 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 
 const impl: Validator = {
   name: 'German VAT Number',
-  localizedName: 'Umsatzsteuer-Identifikationsnummer',
+  localName: 'Umsatzsteuer Identifikationsnummer',
+  abbreviation: 'USt ID Nr.',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -64,9 +65,16 @@ const impl: Validator = {
       isValid: true,
       compact: value,
       isIndividual: false,
-      isEntity: false,
+      isEntity: true,
     };
   },
 };
 
-export const { name, localizedName, validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

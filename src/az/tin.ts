@@ -1,8 +1,9 @@
 /**
- * TIN (Azerbaijan).
+ * Vergi identifikasiya nömrəsi (VÖEN) - Azerbaijani Tax Identification Number
  *
  * Source
  *   https://www.oecd.org/tax/automatic-exchange/crs-implementation-and-assistance/tax-identification-numbers/Azerbaijan-TIN.pdf
+ *   https://www.currentschoolnews.com/az/articles/tax-identification-number-application/
  *
  * PERSON/ENTITY
  */
@@ -16,6 +17,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'Azerbaijani Tax Identification Number',
+  localName: 'Vergi Identifikasiya Nömrəsi',
+  abbreviation: 'VÖEN',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -56,4 +60,11 @@ const impl: Validator = {
   },
 };
 
-export const { name, localizedName, validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

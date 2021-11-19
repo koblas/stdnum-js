@@ -18,10 +18,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
-  name: "Croatian Identification Number",
-
-  localizedName: "Osobni Identifikacijski Broj",
-
+  name: 'Croatian Personal Identification Number',
+  localName: 'Osobni Identifikacijski Broj',
+  abbreviation: 'OIB',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -64,4 +63,11 @@ const impl: Validator = {
   },
 };
 
-export const { name, localizedName, validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

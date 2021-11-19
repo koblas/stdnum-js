@@ -1,5 +1,5 @@
 /**
- *  PIN (Azerbaijan).
+ *  PIN - Fərdi İdentifikasiya Nömrəsidir (Azerbaijani Personal Identification Number).
  *
  * Source
  *   https://www.oecd.org/tax/automatic-exchange/crs-implementation-and-assistance/tax-identification-numbers/Azerbaijan-TIN.pdf
@@ -16,6 +16,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'Azerbaijani Personal Identification Number',
+  localName: 'Fərdi İdentifikasiya Nömrəsidir',
+  abbreviation: 'PIN',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -54,4 +57,11 @@ const impl: Validator = {
   },
 };
 
-export const { name, localizedName, validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

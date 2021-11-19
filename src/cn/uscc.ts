@@ -51,6 +51,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 const alphabet = '0123456789ABCDEFGHJKLMNPQRTUWXY';
 
 const impl: Validator = {
+  name: 'Chinese Unified Social Credit Code',
+  localName: '统一社会信用代码',
+  abbreviation: 'USCC',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -98,9 +101,16 @@ const impl: Validator = {
       isValid: true,
       compact: value,
       isIndividual: false,
-      isEntity: false,
+      isEntity: true,
     };
   },
 };
 
-export const { name, localizedName, validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

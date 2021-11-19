@@ -4,6 +4,8 @@
  *
  * Sources:
  *
+ * ENTITY
+ *
  */
 
 import * as exceptions from '../exceptions';
@@ -25,7 +27,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
-  name: "Austrian Company Register Number",
+  name: 'Austrian Company Register Number',
+  localName: 'Company Register Number',
+  abbreviation: '',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -61,9 +65,16 @@ const impl: Validator = {
       isValid: true,
       compact: value,
       isIndividual: false,
-      isEntity: false,
+      isEntity: true,
     };
   },
 };
 
-export const { name, localizedName, validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

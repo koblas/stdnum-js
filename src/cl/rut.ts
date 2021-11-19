@@ -7,6 +7,8 @@
  * The RUT, the Chilean national tax number is the same as the RUN (Rol Único
  * Nacional) the Chilean national identification number. The number consists of
  * 8 digits, followed by a check digit.
+ *
+ * PERSON/ENTITY
  */
 
 import * as exceptions from '../exceptions';
@@ -28,6 +30,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'Chilean National Tax Number',
+  localName: 'Rol Único Tributario ',
+  abbreviation: 'RUT',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -82,10 +87,17 @@ const impl: Validator = {
     return {
       isValid: true,
       compact: value,
-      isIndividual: false,
-      isEntity: false,
+      isIndividual: true,
+      isEntity: true,
     };
   },
 };
 
-export const { name, localizedName, validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

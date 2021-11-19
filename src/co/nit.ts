@@ -9,7 +9,7 @@
  * Sources:
  *   https://es.wikipedia.org/wiki/N%C3%BAmero_de_Identificaci%C3%B3n_Tributaria
  *
- * BANK
+ * PERSON/ENTITY
  */
 
 import * as exceptions from '../exceptions';
@@ -21,6 +21,10 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'Colombian Tax Identification Number',
+  localName: 'Número de Identificación Tributaria',
+  abbreviation: 'NIT',
+
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -71,10 +75,17 @@ const impl: Validator = {
     return {
       isValid: true,
       compact: value,
-      isIndividual: false,
-      isEntity: false,
+      isIndividual: true,
+      isEntity: true,
     };
   },
 };
 
-export const { name, localizedName, validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

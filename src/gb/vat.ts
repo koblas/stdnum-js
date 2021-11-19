@@ -26,6 +26,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'United Kingdom (and Isle of Man) VAT Number',
+  localName: 'Value Added Tax Registration Number',
+  abbreviation: 'VAT Reg No',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -100,9 +103,16 @@ const impl: Validator = {
       isValid: true,
       compact: value,
       isIndividual: false,
-      isEntity: false,
+      isEntity: true,
     };
   },
 };
 
-export const { name, localizedName, validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

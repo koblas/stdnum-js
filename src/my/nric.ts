@@ -37,6 +37,9 @@ const UNASSIGNED = [
 ];
 
 const impl: Validator = {
+  name: 'Malaysian National Registration Identity Card Number',
+  localName: 'National Registration Identity Card Number',
+  abbreviation: 'NRIC No.',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -78,10 +81,17 @@ const impl: Validator = {
     return {
       isValid: true,
       compact: value,
-      isIndividual: false,
+      isIndividual: true,
       isEntity: false,
     };
   },
 };
 
-export const { name, localizedName, validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

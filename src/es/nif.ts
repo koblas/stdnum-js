@@ -9,7 +9,7 @@
  * foreigners) or a CIF (Código de Identificación Fiscal, for legal
  * entities and others).
  *
- * VAT
+ * VAT (PERSON/ENTITY)
  */
 
 import * as exceptions from '../exceptions';
@@ -34,9 +34,8 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 
 const impl: Validator = {
   name: 'Spanish VAT Number',
-
-  localizedName: 'Número de Identificación Fiscal',
-
+  localName: 'Número de Identificación Fiscal',
+  abbreviation: 'NIF',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -92,4 +91,11 @@ const impl: Validator = {
   },
 };
 
-export const { name, localizedName, validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

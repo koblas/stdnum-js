@@ -1,6 +1,18 @@
-import { validate, format, compact } from '../cz/rc';
+import { Validator } from '../types';
+import * as rc from '../cz/rc';
 
-const name = 'Slovak Birth Number';
-const localizedName = 'Rodné číslo';
+const impl: Validator = {
+  ...rc,
+  name: 'Slovak Birth Number',
+  localName: 'Rodné číslo',
+  abbreviation: 'RC',
+};
 
-export { name, localizedName, validate, format, compact };
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

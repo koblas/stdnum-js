@@ -9,6 +9,7 @@
  * Sources:
  *   https://en.wikipedia.org/wiki/Documento_Nacional_de_Identidad_(Argentina)
  *
+ *  PERSON
  */
 
 import * as exceptions from '../exceptions';
@@ -20,9 +21,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
-  name: "National Identity Document",
-
-  localizedName: "Documento Nacional de Identidad",
+  name: 'Argentinian National Identity Document',
+  localName: 'Documento Nacional de Identidad',
+  abbreviation: 'DNI',
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -61,10 +62,17 @@ const impl: Validator = {
     return {
       isValid: true,
       compact: value,
-      isIndividual: false,
+      isIndividual: true,
       isEntity: false,
     };
   },
 };
 
-export const { name, localizedName, validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

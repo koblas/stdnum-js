@@ -8,7 +8,7 @@
  * Sources:
  *   https://es.wikipedia.org/wiki/Clave_Única_de_Identificación_Tributaria
  *
- * TAX
+ * TAX PERSON/ENTITY
  */
 
 import * as exceptions from '../exceptions';
@@ -36,10 +36,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
-  name: "Unique Tax Identification Code",
-
-  localizedName: "Código Único de Identificación Tributaria",
-
+  name: 'Argentinian VAT Number',
+  localName: 'Código Único de Identificación Tributaria',
+  abbreviation: 'CUIT',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -99,4 +98,11 @@ const impl: Validator = {
   },
 };
 
-export const { name, localizedName, validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

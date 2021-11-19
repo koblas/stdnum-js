@@ -22,10 +22,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
-  name: "Uruguay Foreigners Identification Number",
-
-  localizedName: "Número de Identidad de Extranjero",
-
+  name: 'Uruguay Foreigners Identification Number',
+  localName: 'Número de Identidad de Extranjero',
+  abbreviation: 'NIE',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -75,10 +74,17 @@ const impl: Validator = {
     return {
       isValid: true,
       compact: value,
-      isIndividual: false,
+      isIndividual: true,
       isEntity: false,
     };
   },
 };
 
-export const { name, localizedName, validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

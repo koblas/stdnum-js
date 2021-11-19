@@ -22,7 +22,7 @@
  *    https://dgii.gov.do/workshopProveedoresTI-eCE/Documents/Norma05-19.pdf
  *    https://dgii.gov.do/cicloContribuyente/facturacion/comprobantesFiscales/Paginas/tiposComprobantes.aspx
  *
- * VAT
+ * VAT ENTITY
  */
 
 import * as exceptions from '../exceptions';
@@ -59,6 +59,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'Dominican Republic Receipt Number',
+  localName: 'Números de Comprobante Fiscal',
+  abbreviation: 'NCF',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -124,4 +127,11 @@ const impl: Validator = {
   },
 };
 
-export const { name, localizedName, validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

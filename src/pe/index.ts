@@ -1,3 +1,3 @@
 export * as ce from './ce';
-export * as cui from './cui';
+export * as dni from './dni';
 export * as ruc from './ruc';

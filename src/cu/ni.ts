@@ -1,15 +1,7 @@
 /**
- * TIN (South African Tax Identification Number).
+ * NI (Número de identidad, Cuban identity card numbers).
  *
- * The South African Tax Identification Number (TIN or Tax Reference Number) is
- * issued to individuals and legal entities for tax purposes. The number
- * consists of 10 digits.
- *
- * Source
- *   https://www.oecd.org/tax/automatic-exchange/crs-implementation-and-assistance/tax-identification-numbers/South-Africa-TIN.pdf
- *   https://www.sars.gov.za/
- *
- * PERSON/ENTITY
+ * PERSON
  */
 
 import * as exceptions from '../exceptions';
@@ -21,6 +13,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'Cuban Identity Card Number',
+  localName: 'Número de Identidad',
+  abbreviation: 'NI',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -75,4 +70,11 @@ const impl: Validator = {
   },
 };
 
-export const { name, localizedName, validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

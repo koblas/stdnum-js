@@ -31,9 +31,8 @@ const alphabet = '0123456789ABCDEFGHJKLMNPQRSTUVWXYZ';
 
 const impl: Validator = {
   name: 'French VAT Number',
-
-  localizedName: 'Numéro de TVA intracommunautaire',
-
+  localName: "Numéro d'Identification à la Taxe sur la Valeur Ajoutée",
+  abbreviation: 'n°TVA',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -107,4 +106,11 @@ const impl: Validator = {
   },
 };
 
-export const { name, localizedName, validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

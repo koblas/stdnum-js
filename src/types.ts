@@ -2,26 +2,26 @@ import { ValidationError } from './exceptions';
 
 interface ValidateSuccess {
   /**
-   * TIN Is Valid
+   * ID Is Valid
    */
   isValid: true;
 
   /**
-   * Compact version of the TIN
+   * Compact version of the ID
    */
   compact: string;
 
   /**
-   * This TIN identifies an individual
+   * This ID identifies an individual
    *
-   * Note: A TIN may not positivily identify an individual or entity
+   * Note: An ID may not positivily identify an individual or entity
    */
   isIndividual: boolean;
 
   /**
-   * This TIN identifies an entity
+   * This ID identifies an entity
    *
-   * Note: A TIN may not positivily identify an individual or entity
+   * Note: An ID may not positivily identify an individual or entity
    */
   isEntity: boolean;
 }
@@ -45,18 +45,23 @@ export type ValidateReturn = { error?: ValidationError } & (
 
 export interface Validator {
   /**
-   * The type of validation: tin, vat, bank,
+   * The type of validation: ID, tin, vat, bank,
    */
 
   /**
-   * The validator name, or TIN's expansion name in English
+   * The validator name, or ID's expansion name in English
    */
   name: string;
 
   /**
-   * The validator name, or TIN's expansion name its local name
+   * The validator name, or ID's expansion name its local name
    */
-  localizedName: string;
+  localName: string | undefined;
+
+  /**
+   * The short/acronym or abbreviation of the validator
+   */
+  abbreviation: string | undefined;
 
   /**
    * Convert the number to the minimal representation.
@@ -74,5 +79,4 @@ export interface Validator {
    * Validate with error throws subclass of ValidationError
    */
   validate(value: string): ValidateReturn;
-
 }

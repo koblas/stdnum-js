@@ -15,6 +15,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'Finnish Business Identifier',
+  localName: 'Yritys- ja yhteisötunnus',
+  abbreviation: 'Y-tunnus',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -42,4 +45,11 @@ const impl: Validator = {
   },
 };
 
-export const { name, localizedName, validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

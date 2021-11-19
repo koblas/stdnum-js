@@ -65,6 +65,9 @@ export function ikCheckDate(value: string): boolean {
 }
 
 const impl: Validator = {
+  name: 'Estonian Personcal ID Number',
+  localName: 'Isikukood',
+  abbreviation: 'IK',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -101,10 +104,17 @@ const impl: Validator = {
     return {
       isValid: true,
       compact: value,
-      isIndividual: false,
+      isIndividual: true,
       isEntity: false,
     };
   },
 };
 
-export const { name, localizedName, validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

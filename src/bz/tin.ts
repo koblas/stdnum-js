@@ -16,6 +16,10 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'Belize Tax Identification Number',
+  localName: 'Tax Identification Number',
+  abbreviation: 'TIN',
+
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -59,4 +63,11 @@ const impl: Validator = {
   },
 };
 
-export const { name, localizedName, validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

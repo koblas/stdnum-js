@@ -1,9 +1,8 @@
 /**
  * IDNR (Thai identity card)
  *
- * The South African Tax Identification Number (TIN or Tax Reference Number) is
- * issued to individuals and legal entities for tax purposes. The number
- * consists of 10 digits.
+ * The Thai identity card (Thai: บัตรประจำตัวประชาชนไทย)
+ * is an official identity document issued to Thai nationals between the age of 7 and 70 years.
  *
  * Source
  *   https://en.wikipedia.org/wiki/Thai_identity_card
@@ -21,6 +20,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'Thai National Identity Card Number',
+  localName: 'บัตรประจำตัวประชาชนไทย',
+  abbreviation: 'IDNR',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -64,10 +66,17 @@ const impl: Validator = {
     return {
       isValid: true,
       compact: value,
-      isIndividual: false,
+      isIndividual: true,
       isEntity: false,
     };
   },
 };
 
-export const { name, localizedName, validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

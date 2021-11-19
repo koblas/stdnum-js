@@ -16,7 +16,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -');
 }
 
-export function validPrefix(value: string) {
+export function validPrefix(value: string): boolean {
   const prefix = parseInt(value.substr(0, 2), 10);
   if (prefix === 0 || prefix > 24 || prefix === 30 || prefix === 50) {
     // Invalid province
@@ -27,6 +27,9 @@ export function validPrefix(value: string) {
 }
 
 const impl: Validator = {
+  name: 'Ecuadorian Personal Identity Code',
+  localName: 'Cédula de Identidad',
+  abbreviation: 'CI',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -79,10 +82,17 @@ const impl: Validator = {
     return {
       isValid: true,
       compact: value,
-      isIndividual: false,
+      isIndividual: true,
       isEntity: false,
     };
   },
 };
 
-export const { name, localizedName, validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

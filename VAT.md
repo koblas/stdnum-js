@@ -36,37 +36,34 @@ The Value added tax identification number (VATIN) is an identifier used in many 
 
 ## VAT number of non-EU countries
 
-| Country    | Code | Local name | Abbreviation                                                                  | Format                                                                                                                                                        |
-| ---------- | ---- | ---------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Albania    | AL   | NIPT       | Numrin i Identifikimit për Personin e Tatueshëm                               | 10 characters, the first position following the prefix is "J" or "K", and the last character is a letter - e.g. (AL)K99999999L or (AL)J99999999L (L = Letter) |
-| Australia  | AU   | ABN        | Australian Business Number                                                    | 11 digit number (where the first two are check digits)                                                                                                        |
-| Belarus    | BY   | УНП        | Учетный номер плательщика Uchetniy nomer platel'shika                         | 9 digit number (ex. УНП 190190190)                                                                                                                            |
-| Croatia    | HR   | OIB        | Osobni identifikacijski broj Personal identification number                   | 11 digit number (ex. HR123 456 789 01) utilizing ISO 7064, MOD 11-10                                                                                          |
-| Canada     | CA   | BN/NE      | Business Number numéro d'entreprise                                           | 15 characters                                                                                                                                                 |
-| Russia     | RU   | ИНН        | Индивидуальный номер налогоплательщика Individualniy nomer nalogoplatel'shika | 10 digits or 12 digits (for selfemployed)                                                                                                                     |
-| San Marino | SM   | C.O.E.     | Codice operatore economico                                                    |
-| Ukraine    | UA   | ПДВ        | Податок на додану вартість Podatok na dodanu vartìst                          | 8 digits                                                                                                                                                      |
+| Country    | Code | Abbreviation | Local name                                                                    | Format                                                                                                                                                        |
+| ---------- | ---- | ------------ | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Albania    | AL   | NIPT         | Numrin i Identifikimit për Personin e Tatueshëm                               | 10 characters, the first position following the prefix is "J" or "K", and the last character is a letter - e.g. (AL)K99999999L or (AL)J99999999L (L = Letter) |
+| Australia  | AU   | ABN          | Australian Business Number                                                    | 11 digit number (where the first two are check digits)                                                                                                        |
+| Belarus    | BY   | УНП          | Учетный номер плательщика Uchetniy nomer platel'shika                         | 9 digit number (ex. УНП 190190190)                                                                                                                            |
+| Croatia    | HR   | OIB          | Osobni identifikacijski broj Personal identification number                   | 11 digit number (ex. HR123 456 789 01) utilizing ISO 7064, MOD 11-10                                                                                          |
+| Canada     | CA   | BN/NE        | Business Number numéro d'entreprise                                           | 15 characters                                                                                                                                                 |
+| Russia     | RU   | ИНН          | Индивидуальный номер налогоплательщика Individualniy nomer nalogoplatel'shika | 10 digits or 12 digits (for selfemployed)                                                                                                                     |
+| San Marino | SM   | C.O.E.       | Codice operatore economico                                                    |
+| Ukraine    | UA   | ПДВ          | Податок на додану вартість Podatok na dodanu vartìst                          | 8 digits                                                                                                                                                      |
 
 ## VAT numbers of Spanish Latin American countries
 
-| Country            | Code | Local name | Abbreviation                                  | Format    |
-| ------------------ | ---- | ---------- | --------------------------------------------- | --------- |
-| Argentina          | AR   | CUIT       | Código Único de Identificación Tributaria     | 11 digits |
-| Boliva             | BO   | NIT        | Número de Identificación Tributaria           |           |
-| Chile              | CL   | RUT        | Rol Único Tributario                          |           |
-| Colombia           | CO   | NIT        | Número de Identificación Tributaria           |           |
-| Ecuador            |      | RUC        | Número de Registro Unico de Contribuyentes    |           |
-| El Salvador        |      |            |                                               |           |
-| Guatemala          | GT   |            | Número de Identificación de GT Contribuyentes |           |
-| Honduras           | HN   | RTN        | Registro Tributario Nacional                  |           |
-| Mexico             | MX   | RFC        | Registro Federal de Causantes                 |           |
-| Nicaragua          | NI   | RUC        | Registro Unico de Contribuyentes              |           |
-| Panama             | PA   |            |                                               |           |
-| Paraguay           | PY   | RUC        | Registro Unico de Contribuyentes              |           |
-| Peru               | PE   | RUC        | Registro Unico de Contribuyentes              |           |
-| Dominican Republic | PE   | RNC        | Registro Nacional Contribuyente               |           |
-| Uruguay            | UY   | RUC        | Registro Unico de Contribuyentes              |           |
-| Venezuela          | VE   | NIT        | Número de Identificación                      |           |
-
-Source:
-https://www3.kapsch.net/forms/Downloads/Value-20added-20tax-20identification-20number_EN-1.pdf
+| Country            | Code | Abbreviation | Local name                                    | Format    |
+| ------------------ | ---- | ------------ | --------------------------------------------- | --------- |
+| Argentina          | AR   | CUIT         | Código Único de Identificación Tributaria     | 11 digits |
+| Boliva             | BO   | NIT          | Número de Identificación Tributaria           |           |
+| Chile              | CL   | RUT          | Rol Único Tributario                          |           |
+| Colombia           | CO   | NIT          | Número de Identificación Tributaria           |           |
+| Ecuador            |      | RUC          | Número de Registro Unico de Contribuyentes    |           |
+| El Salvador        |      |              |                                               |           |
+| Guatemala          | GT   |              | Número de Identificación de GT Contribuyentes |           |
+| Honduras           | HN   | RTN          | Registro Tributario Nacional                  |           |
+| Mexico             | MX   | RFC          | Registro Federal de Causantes                 |           |
+| Nicaragua          | NI   | RUC          | Registro Unico de Contribuyentes              |           |
+| Panama             | PA   |              |                                               |           |
+| Paraguay           | PY   | RUC          | Registro Unico de Contribuyentes              |           |
+| Peru               | PE   | RUC          | Registro Unico de Contribuyentes              |           |
+| Dominican Republic | PE   | RNC          | Registro Nacional Contribuyente               |           |
+| Uruguay            | UY   | RUC          | Registro Unico de Contribuyentes              |           |
+| Venezuela          | VE   | NIT          | Número de Identificación                      |           |

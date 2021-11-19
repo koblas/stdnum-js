@@ -11,6 +11,7 @@
  * fact is undocumented.
  *
  * Source
+ *  https://www.oecd.org/tax/automatic-exchange/crs-implementation-and-assistance/tax-identification-numbers/Estonia-TIN.pdf
  *   https://ariregister.rik.ee/
  *   https://mtr.mkm.ee/
  *
@@ -27,6 +28,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'Estonian Organisation Registration Code',
+  localName: 'Registrikood',
+  abbreviation: '',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -68,9 +72,16 @@ const impl: Validator = {
       isValid: true,
       compact: value,
       isIndividual: false,
-      isEntity: false,
+      isEntity: true,
     };
   },
 };
 
-export const { name, localizedName, validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

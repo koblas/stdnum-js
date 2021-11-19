@@ -8,6 +8,8 @@
  * Sources:
  *
  * https://en.wikipedia.org/wiki/VAT_identification_number
+ *
+ * PERSON/ENTITY
  */
 
 import * as exceptions from '../exceptions';
@@ -32,9 +34,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
-  name: "Albanian VAT Number",
-
-  localizedName: "Numri i Identifikimit për Personin e Tatueshëm",
+  name: 'Albanian VAT Number',
+  localName: 'Numri i Identifikimit për Personin e Tatueshëm',
+  abbreviation: 'NIPT',
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -73,9 +75,16 @@ const impl: Validator = {
     return {
       isValid: true,
       compact: value,
-      isIndividual: false,
-      isEntity: false,
+      isIndividual: true,
+      isEntity: true,
     };
   },
 };
-export const { name, localizedName, validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;
