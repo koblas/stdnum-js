@@ -45,6 +45,7 @@ import * as LI from './li';
 import * as LT from './lt';
 import * as LU from './lu';
 import * as LV from './lv';
+import * as MA from './ma';
 import * as MC from './mc';
 import * as MD from './md';
 import * as ME from './me';
@@ -132,6 +133,7 @@ export const stdnum: Record<string, Record<string, Validator>> = {
   LV,
   JP,
   KR,
+  MA,
   MC,
   MD,
   ME,
@@ -286,6 +288,7 @@ export const entityValidators: Record<string, Validator[]> = {
   LV: [LV.pvn],
   MC: [MC.tva],
   MD: [MD.idno],
+  MA: [MA.ice, MA.ice9],
   MT: [MT.vat],
   MX: [MX.rfc],
   NL: [NL.btw],
