@@ -9,9 +9,21 @@ VAT, Person and Tax identifiers.
 
     import { stdnum } from 'stdnum';
 
-    const { isValid } = stdnum.BR.cpf.validate('xyzzy');
+    console.log(stdnum.BR.cpf.name); // 'Brazilian National Identifier',
+    console.log(stdnum.BR.cpf.localName); // 'Cadastro de Pessoas Físicas',
+    console.log(stdnum.BR.cpf.abbreviation); // 'CPF',
 
-    // isValid is false
+    const {
+        isValid, // is false
+        error, // InvalidLength: The number has an invalid length...
+    } = stdnum.BR.cpf.validate('xyzzy');
+
+    const {
+        isValid, // true
+        compact, // '39053344705'
+        isIndividual, // true
+        isEntity, // false
+    } = stdnum.BR.cpf.validate("390.533.447-05");
 
 All country validators are in the "namespace" of the ISO country code.
 
@@ -23,7 +35,7 @@ All country validators are in the "namespace" of the ISO country code.
 | Albania                | AL   | NIPT            | Vat                | Albanian Vat Identifier (Numri i Identifikimit për Personin e Tatueshëm)            |
 | Argentina              | AR   | CBU             | Bank               | Single Banking Code (Clave Bancaria Uniforme)                                       |
 | Argentina              | AR   | CUIT            | Tax                | Unique Tax Identification Code (Código Único de Identificación Tributaria)          |
-| Argentina              | AR   | DNI             | Person             | National Identity Document (Documento Nacional de Identidad)                                 |
+| Argentina              | AR   | DNI             | Person             | National Identity Document (Documento Nacional de Identidad)                        |
 | Austria                | AT   | Businessid      | Company            | Austrian Company Register Number                                                    |
 | Austria                | AT   | TIN             | Tax                | Austrian tax identification number (Abgabenkontonummer)                             |
 | Austria                | AT   | UID             | VAT                | Austrian VAT number (Umsatzsteuer-Identifikationsnummer)                            |
