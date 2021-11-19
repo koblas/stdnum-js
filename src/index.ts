@@ -355,16 +355,16 @@ export const euVat: Record<string, Validator[]> = {
 export function validatePerson(
   country: string,
   value: string,
-): { isValid?: boolean; checked: boolean } {
+): { checked: boolean; isValid?: boolean; rules?: Validator[] } {
   const vset = personValidators[country.toLocaleUpperCase()];
 
   if (!vset || vset.length === 0) {
     return { checked: false };
   }
 
-  const match = vset.some(grp => grp.validate(value).isValid);
+  const match = vset.filter(grp => grp.validate(value).isValid);
 
-  return { checked: true, isValid: match };
+  return { checked: true, isValid: match.length > 0, rules: match };
 }
 
 /**
@@ -373,14 +373,14 @@ export function validatePerson(
 export function validateEntity(
   country: string,
   value: string,
-): { isValid?: boolean; checked: boolean } {
+): { checked: boolean; isValid?: boolean; rules?: Validator[] } {
   const vset = entityValidators[country.toLocaleUpperCase()];
 
   if (!vset || vset.length === 0) {
     return { checked: false };
   }
 
-  const match = vset.some(grp => grp.validate(value).isValid);
+  const match = vset.filter(grp => grp.validate(value).isValid);
 
-  return { checked: true, isValid: match };
+  return { checked: true, isValid: match.length > 0, rules: match };
 }
