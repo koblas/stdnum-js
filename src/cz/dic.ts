@@ -103,7 +103,7 @@ const impl: Validator = {
         isValid: true,
         compact: value,
         isIndividual: false,
-        isEntity: true,
+        isCompany: true,
       };
     }
     if (value.length === 9 && value.startsWith('6')) {
@@ -115,7 +115,7 @@ const impl: Validator = {
         isValid: true,
         compact: value,
         isIndividual: false,
-        isEntity: true,
+        isCompany: true,
       };
     }
 

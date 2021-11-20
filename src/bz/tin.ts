@@ -58,7 +58,7 @@ const impl: Validator = {
       isValid: true,
       compact: value,
       isIndividual: code === '10',
-      isEntity: code === '13' || code === '66',
+      isCompany: code === '13' || code === '66',
     };
   },
 };

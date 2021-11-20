@@ -69,7 +69,7 @@ const impl: Validator = {
       isValid: true,
       compact: value,
       isIndividual: '1234'.includes(value[0]),
-      isEntity: !'1234'.includes(value[0]),
+      isCompany: !'1234'.includes(value[0]),
     };
   },
 };

@@ -55,7 +55,7 @@ const impl: Validator = {
       isValid: true,
       compact: value,
       isIndividual: last === '2',
-      isEntity: last === '1',
+      isCompany: last === '1',
     };
   },
 };

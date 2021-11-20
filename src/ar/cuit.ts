@@ -93,7 +93,7 @@ const impl: Validator = {
       isValid: true,
       compact: value,
       isIndividual: front[0] === '2',
-      isEntity: front[0] === '3',
+      isCompany: front[0] === '3',
     };
   },
 };

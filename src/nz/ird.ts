@@ -93,7 +93,7 @@ const impl: Validator = {
       isValid: true,
       compact: value,
       isIndividual: false, // cannot determine based on ird
-      isEntity: false, // cannot determine based on ird
+      isCompany: false, // cannot determine based on ird
     };
   },
 };

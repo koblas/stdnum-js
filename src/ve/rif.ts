@@ -83,7 +83,7 @@ const impl: Validator = {
       isValid: true,
       compact: value,
       isIndividual: ['V', 'E'].includes(ctype),
-      isEntity: ['J', 'G', 'P'].includes(ctype),
+      isCompany: ['J', 'G', 'P'].includes(ctype),
     };
   },
 };

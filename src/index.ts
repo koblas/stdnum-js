@@ -288,7 +288,7 @@ export const entityValidators: Record<string, Validator[]> = {
   LV: [LV.pvn],
   MC: [MC.tva],
   MD: [MD.idno],
-  MA: [MA.ice, MA.ice9],
+  MA: [MA.ice],
   MT: [MT.vat],
   MX: [MX.rfc],
   NL: [NL.btw],
@@ -358,7 +358,7 @@ export const euVat: Record<string, Validator[]> = {
 export function validatePerson(
   country: string,
   value: string,
-): { checked: boolean; isValid?: boolean; rules?: Validator[] } {
+): { checked: boolean; isValid?: boolean; matchedValidators?: Validator[] } {
   const vset = personValidators[country.toLocaleUpperCase()];
 
   if (!vset || vset.length === 0) {
@@ -367,7 +367,7 @@ export function validatePerson(
 
   const match = vset.filter(grp => grp.validate(value).isValid);
 
-  return { checked: true, isValid: match.length > 0, rules: match };
+  return { checked: true, isValid: match.length > 0, matchedValidators: match };
 }
 
 /**
@@ -376,7 +376,7 @@ export function validatePerson(
 export function validateEntity(
   country: string,
   value: string,
-): { checked: boolean; isValid?: boolean; rules?: Validator[] } {
+): { checked: boolean; isValid?: boolean; matchedValidators?: Validator[] } {
   const vset = entityValidators[country.toLocaleUpperCase()];
 
   if (!vset || vset.length === 0) {
@@ -385,5 +385,5 @@ export function validateEntity(
 
   const match = vset.filter(grp => grp.validate(value).isValid);
 
-  return { checked: true, isValid: match.length > 0, rules: match };
+  return { checked: true, isValid: match.length > 0, matchedValidators: match };
 }

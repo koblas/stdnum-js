@@ -23,7 +23,7 @@ interface ValidateSuccess {
    *
    * Note: An ID may not positivily identify an individual or entity
    */
-  isEntity: boolean;
+  isCompany: boolean;
 }
 
 interface ValidateFail {

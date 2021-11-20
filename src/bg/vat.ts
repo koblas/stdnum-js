@@ -111,7 +111,7 @@ const impl: Validator = {
       isValid: true,
       compact: value,
       isIndividual: value.length === 10,
-      isEntity: value.length === 9,
+      isCompany: value.length === 9,
     };
   },
 };

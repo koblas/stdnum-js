@@ -78,7 +78,7 @@ const impl: Validator = {
       isValid: true,
       compact: v,
       isIndividual: 'FE'.includes(v[0]),
-      isEntity: !'FE'.includes(v[0]),
+      isCompany: !'FE'.includes(v[0]),
     };
   },
 };

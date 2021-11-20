@@ -92,7 +92,7 @@ function validateLocal(value: string): ValidateReturn {
     isValid: true,
     compact: value,
     isIndividual: false,
-    isEntity: true,
+    isCompany: true,
   };
 }
 
@@ -117,7 +117,7 @@ function validateBusiness(value: string): ValidateReturn {
     isValid: true,
     compact: value,
     isIndividual: false,
-    isEntity: true,
+    isCompany: true,
   };
 }
 
@@ -160,7 +160,7 @@ function validateOther(value: string): ValidateReturn {
     isValid: true,
     compact: value,
     isIndividual: false,
-    isEntity: true,
+    isCompany: true,
   };
 }
 
