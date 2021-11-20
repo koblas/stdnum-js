@@ -16,7 +16,7 @@ describe('is/kennitala', () => {
     const result = validate('450401-3150');
 
     expect(result.isValid && result.compact).toEqual('4504013150');
-    expect(result.isValid && result.isEntity).toEqual(true);
+    expect(result.isValid && result.isCompany).toEqual(true);
   });
 
   it('validate:120174-3399', () => {
