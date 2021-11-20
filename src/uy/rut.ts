@@ -31,7 +31,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
-  name: 'Uruguay Tax Number',
+  name: 'Uruguayan Tax Number',
   localName: 'Registro Único Tributario',
   abbreviation: 'RUT',
   compact(input: string): string {

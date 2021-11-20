@@ -29,7 +29,6 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 const impl: Validator = {
   name: 'Austrian Company Register Number',
   localName: 'Company Register Number',
-  abbreviation: '',
   compact(input: string): string {
     const [value, err] = clean(input);
 

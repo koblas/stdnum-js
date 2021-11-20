@@ -21,7 +21,6 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 const impl: Validator = {
   name: 'Dominican Republic National Identification Number',
   localName: 'Cedula',
-  abbreviation: '',
   compact(input: string): string {
     const [value, err] = clean(input);
 

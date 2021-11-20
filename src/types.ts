@@ -56,12 +56,12 @@ export interface Validator {
   /**
    * The validator name, or ID's expansion name its local name
    */
-  localName: string | undefined;
+  localName: string;
 
   /**
    * The short/acronym or abbreviation of the validator
    */
-  abbreviation: string | undefined;
+  abbreviation?: string;
 
   /**
    * Convert the number to the minimal representation.

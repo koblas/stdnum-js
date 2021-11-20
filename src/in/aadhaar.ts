@@ -23,7 +23,6 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 const impl: Validator = {
   name: 'Indian Digital Resident Personal Identity Number',
   localName: 'Aadhaar',
-  abbreviation: '',
   compact(input: string): string {
     const [value, err] = clean(input);
 

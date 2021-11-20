@@ -1,5 +1,5 @@
 /**
- * DNI (Documento Nacional de Identidad, Peruvian Personal Identification Card).
+ * CUI (Cédula Única de Identidad, Peruvian Personal Identification Card).
  *
  * The Cédula Única de Identidad is the unique identifier for persons that
  * appears on the Documento Nacional de Identidad (DNI), the national identity
@@ -23,8 +23,8 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 
 const impl: Validator = {
   name: 'Peruvian Personal Identification Card',
-  localName: 'Documento Nacional de Identidad',
-  abbreviation: 'DNI',
+  localName: 'Cédula Única de Identidad',
+  abbreviation: 'CUI',
 
   compact(input: string): string {
     const [value, err] = clean(input);

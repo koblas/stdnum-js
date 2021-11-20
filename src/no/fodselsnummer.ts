@@ -54,7 +54,6 @@ function checkBirthdate(value: string) {
 const impl: Validator = {
   name: 'Norwegian National Identity Number',
   localName: 'Fødselsnummer',
-  abbreviation: '',
   compact(input: string): string {
     const [value, err] = clean(input);
 

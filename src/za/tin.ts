@@ -65,8 +65,8 @@ const impl: Validator = {
     return {
       isValid: true,
       compact: value,
-      isIndividual: true, // TIN can be both. cannot determine
-      isCompany: true, // TIN can be both. cannot determine
+      isIndividual: true, // TIN can be either. cannot determine
+      isCompany: true, // TIN can be either. cannot determine
     };
   },
 };

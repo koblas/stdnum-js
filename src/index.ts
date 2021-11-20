@@ -222,7 +222,7 @@ export const personValidators: Record<string, Validator[]> = {
   NL: [NL.onderwijsnummer, NL.bsn],
   NO: [NO.fodselsnummer],
   NZ: [NZ.ird],
-  PE: [PE.dni, PE.ce],
+  PE: [PE.cui, PE.ce],
   PK: [PK.cnic],
   PL: [PL.pesel],
   PT: [PT.nif],

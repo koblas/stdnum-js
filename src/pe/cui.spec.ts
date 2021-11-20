@@ -1,4 +1,4 @@
-import { validate, format } from './dni';
+import { validate, format } from './cui';
 import { InvalidLength, InvalidChecksum } from '../exceptions';
 
 describe('pe/cui', () => {
