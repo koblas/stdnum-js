@@ -65,7 +65,7 @@ export function ikCheckDate(value: string): boolean {
 }
 
 const impl: Validator = {
-  name: 'Estonian Personcal ID Number',
+  name: 'Estonian Personal ID Number',
   localName: 'Isikukood',
   abbreviation: 'IK',
   compact(input: string): string {

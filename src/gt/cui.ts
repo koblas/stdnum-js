@@ -45,7 +45,7 @@ const citiesPerRegion: Record<string, number> = {
 };
 
 const impl: Validator = {
-  name: 'Guatemala identity Number',
+  name: 'Guatemala Identity Number',
   localName: 'Código Único de Identificación',
   abbreviation: 'CUI',
   compact(input: string): string {
