@@ -288,7 +288,7 @@ export const entityValidators: Record<string, Validator[]> = {
   LV: [LV.pvn],
   MC: [MC.tva],
   MD: [MD.idno],
-  MA: [MA.ice],
+  MA: [MA.ice, MA.ice9],
   MT: [MT.vat],
   MX: [MX.rfc],
   NL: [NL.btw],
