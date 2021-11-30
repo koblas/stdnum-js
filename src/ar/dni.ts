@@ -9,18 +9,22 @@
  * Sources:
  *   https://en.wikipedia.org/wiki/Documento_Nacional_de_Identidad_(Argentina)
  *
- * ID
+ *  PERSON
  */
 
 import * as exceptions from '../exceptions';
+import { ValidateReturn, Validator } from '../types';
 import { strings } from '../util';
-import { Validator, ValidateReturn } from '../types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' .');
 }
 
 const impl: Validator = {
+  name: 'Argentinian National Identity Document',
+  localName: 'Documento Nacional de Identidad',
+  abbreviation: 'DNI',
+
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -38,7 +42,7 @@ const impl: Validator = {
   },
 
   /**
-   * Check if the number is a valid Andorra NRT number.
+   * Check if the number is a valid DNI number.
    * This checks the length, formatting and other contraints. It does not check
    * for control letter.
    */
@@ -58,10 +62,17 @@ const impl: Validator = {
     return {
       isValid: true,
       compact: value,
-      isIndividual: false,
+      isIndividual: true,
       isCompany: false,
     };
   },
 };
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

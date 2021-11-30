@@ -37,6 +37,9 @@ export function calcCheckDigit(valueIn: string): string {
 }
 
 const impl: Validator = {
+  name: 'Irish VAT Number',
+  localName: 'Cáin Bhreisluacha',
+  abbreviation: 'CBL',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -92,4 +95,11 @@ const impl: Validator = {
   },
 };
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

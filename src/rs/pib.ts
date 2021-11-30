@@ -20,6 +20,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'Serbian Tax Identification Number',
+  localName: 'Poreski Identifikacioni Broj',
+  abbreviation: 'PIB',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -57,9 +60,16 @@ const impl: Validator = {
       isValid: true,
       compact: value,
       isIndividual: false,
-      isCompany: false,
+      isCompany: true,
     };
   },
 };
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

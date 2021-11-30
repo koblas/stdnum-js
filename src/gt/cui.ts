@@ -8,7 +8,7 @@
  * Source
  *    https://knowledge.sayari.com/hc/en-us/articles/360033290312-Guatemala-Interpreting-Guatemalan-National-ID-Numbers
  *
- * ENTITY
+ * PERSON
  */
 
 import * as exceptions from '../exceptions';
@@ -45,6 +45,9 @@ const citiesPerRegion: Record<string, number> = {
 };
 
 const impl: Validator = {
+  name: 'Guatemala Identity Number',
+  localName: 'Código Único de Identificación',
+  abbreviation: 'CUI',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -97,10 +100,17 @@ const impl: Validator = {
     return {
       isValid: true,
       compact: value,
-      isIndividual: false,
+      isIndividual: true,
       isCompany: false,
     };
   },
 };
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

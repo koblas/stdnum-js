@@ -2,26 +2,26 @@ import { ValidationError } from './exceptions';
 
 interface ValidateSuccess {
   /**
-   * TIN Is Valid
+   * ID Is Valid
    */
   isValid: true;
 
   /**
-   * Compact version of the TIN
+   * Compact version of the ID
    */
   compact: string;
 
   /**
-   * This TIN identifies an individual
+   * This ID identifies an individual
    *
-   * Note: A TIN may not positivily identify an individual or business
+   * Note: An ID may not positivily identify an individual or entity
    */
   isIndividual: boolean;
 
   /**
-   * This TIN identifies an company
+   * This ID identifies an entity
    *
-   * Note: A TIN may not positivily identify an individual or business
+   * Note: An ID may not positivily identify an individual or entity
    */
   isCompany: boolean;
 }
@@ -44,6 +44,25 @@ export type ValidateReturn = { error?: ValidationError } & (
 );
 
 export interface Validator {
+  /**
+   * The type of validation: ID, tin, vat, bank,
+   */
+
+  /**
+   * The validator name, or ID's expansion name in English
+   */
+  name: string;
+
+  /**
+   * The validator name, or ID's expansion name its local name
+   */
+  localName: string;
+
+  /**
+   * The short/acronym or abbreviation of the validator
+   */
+  abbreviation?: string;
+
   /**
    * Convert the number to the minimal representation.
    * This strips the number of any valid separators and removes surrounding

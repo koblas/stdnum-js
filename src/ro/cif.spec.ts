@@ -1,7 +1,7 @@
-import { validate, format } from './cf';
+import { validate, format } from './cif';
 import { InvalidLength, InvalidChecksum } from '../exceptions';
 
-describe('ro/cf', () => {
+describe('ro/cif', () => {
   it('format:RO 185 472 90', () => {
     const result = format('RO 185 472 90');
 

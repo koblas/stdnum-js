@@ -21,6 +21,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'Turkish Identificatio Number',
+  localName: 'Türkiye Cumhuriyeti Kimlik Numarası',
+  abbreviation: 'T.C. Kimlik No.',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -79,4 +82,11 @@ const impl: Validator = {
   },
 };
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

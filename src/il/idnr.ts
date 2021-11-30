@@ -1,6 +1,6 @@
 /**
  * Identity Number (Mispar Zehut, מספר זהות, Israeli identity number).
- * 
+ *
 * The identity number (Mispar Zehut, מספר זהות) is issued at birth to Israeli
 * citizens. The number consists of nine digits and includes a check digit.
 
@@ -22,6 +22,8 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'Israeli Identify Number',
+  localName: 'Mispar Zehut, מספר זהות',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -64,4 +66,11 @@ const impl: Validator = {
   },
 };
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

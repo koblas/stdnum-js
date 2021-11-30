@@ -1,5 +1,5 @@
 /**
- * CNIC (Pakastan Computerize National Identiy Card)
+ * CNIC (Pakistan Computerize National Identiy Card)
  *
  * Pakastan National Identification Number (CNIC) is issued to individuals and legal entities for
  * tax purposes. The number consists of 11 digits.
@@ -19,6 +19,10 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'Pakistani Computerized National Identification Number',
+  localName: 'Computerized National Identification Number',
+  abbreviation: 'CNIC',
+
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -64,4 +68,11 @@ const impl: Validator = {
   },
 };
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

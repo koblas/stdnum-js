@@ -5,6 +5,7 @@
  * (Organisasjonsnummer) with 'MVA' as suffix.
  *
  * Source
+ *    https://www.oecd.org/tax/automatic-exchange/crs-implementation-and-assistance/tax-identification-numbers/Norway-TIN.pdf
  *
  * PERSON/ENTITY
  */
@@ -19,6 +20,10 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'Norwegian VAT Number',
+  localName: 'Merverdiavgift',
+  abbreviation: 'MVA',
+
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -71,4 +76,11 @@ const impl: Validator = {
   },
 };
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

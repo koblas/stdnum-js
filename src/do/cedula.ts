@@ -6,7 +6,7 @@
  *
  * Source
  *
- * VAT
+ * VAT PERSON
  */
 
 import * as exceptions from '../exceptions';
@@ -19,6 +19,8 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'Dominican Republic National Identification Number',
+  localName: 'Cedula',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -61,4 +63,11 @@ const impl: Validator = {
   },
 };
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

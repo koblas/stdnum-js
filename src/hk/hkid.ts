@@ -27,6 +27,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 const alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 const impl: Validator = {
+  name: 'Hong Kong Identity Card Number',
+  localName: '香港身份證',
+  abbreviation: 'HKID',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -77,10 +80,17 @@ const impl: Validator = {
     return {
       isValid: true,
       compact: value,
-      isIndividual: false,
+      isIndividual: true,
       isCompany: false,
     };
   },
 };
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

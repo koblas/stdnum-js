@@ -10,7 +10,7 @@
  *    http://www.sunat.gob.pe/legislacion/ruc/
  *    https://consultarelruc.pe/
  *
- * COMPANY TAX
+ * ENTITY TAX
  */
 
 import * as exceptions from '../exceptions';
@@ -22,6 +22,10 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'Peruvian Company Tax Number',
+  localName: 'Registro Único de Contribuyentes',
+  abbreviation: 'RUC',
+
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -79,4 +83,11 @@ const impl: Validator = {
   },
 };
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

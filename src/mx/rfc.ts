@@ -25,7 +25,7 @@
  *
  * https://portalsat.plataforma.sat.gob.mx/ConsultaRFC/
  *
- * VAT
+ * VAT  PERSON/ENTITY
  */
 
 import * as exceptions from '../exceptions';
@@ -86,6 +86,9 @@ const checkAlphabet = '0123456789ABCDEFGHIJKLMN&OPQRSTUVWXYZ Ñ';
 //   .reduce((acc, c, idx) => ({ ...acc, [c]: idx }), {});
 
 const impl: Validator = {
+  name: 'Mexican Tax Number',
+  localName: 'Registro Federal de Contribuyentes',
+  abbreviation: 'RFC',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -109,7 +112,7 @@ const impl: Validator = {
   },
 
   /**
-   * Check if the number is a valid Andorra NRT number.
+   * Check if the number is a valid RFC number.
    * This checks the length, formatting and other contraints. It does not check
    * for control letter.
    */
@@ -186,4 +189,11 @@ const impl: Validator = {
   },
 };
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

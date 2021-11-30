@@ -22,6 +22,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'South African Tax Identification Number',
+  localName: 'Tax Identification Number',
+  abbreviation: 'TIN',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -51,7 +54,7 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
-    if (!['0', '1', '2', '3', '9'].includes(value[0])) {
+    if (!'01239'.includes(value[0])) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
@@ -62,10 +65,17 @@ const impl: Validator = {
     return {
       isValid: true,
       compact: value,
-      isIndividual: false,
-      isCompany: false,
+      isIndividual: true, // TIN can be either. cannot determine
+      isCompany: true, // TIN can be either. cannot determine
     };
   },
 };
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

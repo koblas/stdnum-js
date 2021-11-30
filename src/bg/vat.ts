@@ -5,7 +5,7 @@
  * (for legal entities) or 10 digits (for physical persons, foreigners and
  * others) long. Each type of number has its own check digit algorithm.
  *
- * ENTITY
+ * PERSON/ENTITY
  */
 
 import * as exceptions from '../exceptions';
@@ -59,6 +59,9 @@ function checkOther(value: string): boolean {
 }
 
 const impl: Validator = {
+  name: 'Bulgarian VAT Number',
+  localName: 'Идентификационен номер по ДДС',
+  abbreviation: 'ДДС номер',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -113,4 +116,11 @@ const impl: Validator = {
   },
 };
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

@@ -25,7 +25,7 @@
  *    https://tramitesyrequisitos.com/el-salvador/nit/#Estructura_del_NIT
  *    https://www.svcommunity.org/forum/programacioacuten/como-calcular-digito-verificador-del-dui-y-nit/msg951882/#msg951882
  *
- * TAX
+ * PERSON/ENTITY
  */
 
 import * as exceptions from '../exceptions';
@@ -46,6 +46,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'El Salvador Tax Number',
+  localName: 'Número de Identificación Tributaria',
+  abbreviation: 'NIT',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -104,10 +107,17 @@ const impl: Validator = {
     return {
       isValid: true,
       compact: value,
-      isIndividual: false,
-      isCompany: false,
+      isIndividual: true,
+      isCompany: true,
     };
   },
 };
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

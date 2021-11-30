@@ -9,6 +9,8 @@
  * More information:
  *   https://en.wikipedia.org/wiki/CURP
  *   https://www.gob.mx/curp/
+ *
+ * PERSON
  */
 
 import * as exceptions from '../exceptions';
@@ -145,6 +147,9 @@ const checkAlphabetDict: Record<string, number> = checkAlphabet
   .reduce((acc, c, idx) => ({ ...acc, [c]: idx }), {});
 
 const impl: Validator = {
+  name: 'Mexican Personal Identification',
+  localName: 'Clave Única de Registro de Población',
+  abbreviation: 'CURP',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -162,7 +167,7 @@ const impl: Validator = {
   },
 
   /**
-   * Check if the number is a valid Andorra NRT number.
+   * Check if the number is a valid CURP number.
    * This checks the length, formatting and other contraints. It does not check
    * for control letter.
    */
@@ -239,4 +244,11 @@ export function getBirthDate(input: string): Date {
   return getBirthDateImpl(value);
 }
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

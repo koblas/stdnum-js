@@ -1,7 +1,7 @@
 /**
- * CUI (Cédula Única de Identidad, Peruvian identity number).
+ * CUI (Cédula Única de Identidad, Peruvian Personal Identification Card).
  *
- * The Cédula Única de Identidad (CUI) is the unique identifier for persons that
+ * The Cédula Única de Identidad is the unique identifier for persons that
  * appears on the Documento Nacional de Identidad (DNI), the national identity
  * document of Peru. The number consists of 8 digits and an optional extra check
  * digit.
@@ -22,6 +22,10 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'Peruvian Personal Identification Card',
+  localName: 'Cédula Única de Identidad',
+  abbreviation: 'CUI',
+
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -71,10 +75,17 @@ const impl: Validator = {
     return {
       isValid: true,
       compact: value,
-      isIndividual: false,
+      isIndividual: true,
       isCompany: false,
     };
   },
 };
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

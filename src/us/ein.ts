@@ -123,6 +123,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'U.S. Employer Identification Number',
+  localName: 'Employer Identification Number',
+  abbreviation: 'EIN',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -140,7 +143,7 @@ const impl: Validator = {
   },
 
   /**
-   * Check if the number is a valid Andorra NRT number.
+   * Check if the number is a valid EIN number.
    * This checks the length, formatting and other contraints. It does not check
    * for control letter.
    */
@@ -172,4 +175,11 @@ const impl: Validator = {
   },
 };
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

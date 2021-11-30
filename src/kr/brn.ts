@@ -22,6 +22,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'South Korean Business Registration Number',
+  localName: '사업자 등록 번호',
+  abbreviation: 'BRN',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -84,4 +87,11 @@ const impl: Validator = {
   },
 };
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

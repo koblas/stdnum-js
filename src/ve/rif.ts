@@ -1,13 +1,13 @@
 /**
- * RIF (Registro de Identificación Fiscal, Venezuelan VAT number).
+ * RIF (Registro Único de Información Fiscal, Venezuelan VAT number).
  *
- * The Registro de Identificación Fiscal (RIF) is the Venezuelan fiscal
+ * The Registro Único de Información Fiscal  (RIF) is the Venezuelan fiscal
  * registration number. The number consists of 10 digits where the first digit
  * denotes the type of number (person, company or government) and the last digit
  * is a check digit.
  *
  * Source
- *
+ * https://wiki.scn.sap.com/wiki/display/CRM/Venezuela
  * VAT
  */
 
@@ -30,6 +30,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'Venezuelan VAT Number',
+  localName: 'Registro Único de Información Fiscal',
+  abbreviation: 'RIF',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -79,10 +82,17 @@ const impl: Validator = {
     return {
       isValid: true,
       compact: value,
-      isIndividual: true,
-      isCompany: false,
+      isIndividual: ['V', 'E'].includes(ctype),
+      isCompany: ['J', 'G', 'P'].includes(ctype),
     };
   },
 };
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

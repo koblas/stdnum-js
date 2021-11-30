@@ -1,10 +1,10 @@
 /**
  * ICE (a Moroccan company establishment identification number).
  *
- * The ICE (Identifiant Commun des Entreprises)
+ * The ICE (Identifiant Commun de l'Entreprises)
  * is a 15 (9 positions for the company, 4 positions for the establishment and 2 control digits), digit number used to identify Moroccan companies' establishments
  * and facilities. The validation checksum is unknown
- * 
+ *
  *
  * ENTITY
  */
@@ -18,6 +18,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'Moroccan Company Establishment Identification Number',
+  localName: "Identifiant Commun de l'Entreprises",
+  abbreviation: 'ICE',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -43,9 +46,13 @@ const impl: Validator = {
     if (value.length !== 15) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
+
     if (!strings.isdigits(value)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
+
+    // const [company, establishment, checksum] = strings.splitAt(value, 9, 4);
+    // checksum validation is unknown at the moment
 
     return {
       isValid: true,
@@ -56,4 +63,11 @@ const impl: Validator = {
   },
 };
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

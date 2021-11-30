@@ -16,7 +16,7 @@
  *   https://en.wikipedia.org/wiki/Resident_registration_number
  *   https://techscience.org/a/2015092901/
  *
- * PERSON/ENTITY
+ * PERSON
  */
 
 import * as exceptions from '../exceptions';
@@ -42,6 +42,9 @@ const centuryPrefix = {
 };
 
 const impl: Validator = {
+  name: 'South Korean Resident Registration Number',
+  localName: '주민등록번호',
+  abbreviation: 'RRN',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -97,4 +100,11 @@ const impl: Validator = {
   },
 };
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

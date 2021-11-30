@@ -16,13 +16,16 @@
 import * as exceptions from '../exceptions';
 import { strings } from '../util';
 import { Validator, ValidateReturn } from '../types';
-import { iso7064mod10x11validate } from '../iso/iso7064';
+import { iso7064mod10x11validate } from '../util/iso7064';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -./,');
 }
 
 const impl: Validator = {
+  name: 'German Personal Tax Number',
+  localName: 'Steuerliche Identifikationsnummer',
+  abbreviation: 'IdNr',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -78,10 +81,17 @@ const impl: Validator = {
     return {
       isValid: true,
       compact: value,
-      isIndividual: false,
+      isIndividual: true,
       isCompany: false,
     };
   },
 };
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

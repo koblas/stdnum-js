@@ -1,4 +1,3 @@
-import { Validator } from './types';
 import * as AD from './ad';
 import * as AL from './al';
 import * as AR from './ar';
@@ -40,12 +39,12 @@ import * as IL from './il';
 import * as IN from './in';
 import * as IS from './is';
 import * as IT from './it';
+import * as JP from './jp';
+import * as KR from './kr';
 import * as LI from './li';
 import * as LT from './lt';
 import * as LU from './lu';
 import * as LV from './lv';
-import * as JP from './jp';
-import * as KR from './kr';
 import * as MA from './ma';
 import * as MC from './mc';
 import * as MD from './md';
@@ -66,8 +65,8 @@ import * as PY from './py';
 import * as RO from './ro';
 import * as RS from './rs';
 import * as RU from './ru';
-import * as SG from './sg';
 import * as SE from './se';
+import * as SG from './sg';
 import * as SI from './si';
 import * as SK from './sk';
 import * as SM from './sm';
@@ -81,11 +80,12 @@ import * as UY from './uy';
 import * as VE from './ve';
 import * as VN from './vn';
 import * as ZA from './za';
+import { Validator } from './types';
 
 export { Validator } from './types';
 
 // Live an uppercase world, to prevent keyword collisions
-export const stdnum = {
+export const stdnum: Record<string, Record<string, Validator>> = {
   AD,
   AL,
   AR,
@@ -109,6 +109,7 @@ export const stdnum = {
   CZ,
   DE,
   DO,
+  DK,
   EC,
   EE,
   ES,
@@ -169,38 +170,54 @@ export const stdnum = {
   ZA,
 };
 
-const personValidators: Record<string, Validator[]> = {
-  AZ: [AZ.tin, AZ.pin],
+export const personValidators: Record<string, Validator[]> = {
+  AD: [AD.nrt],
+  AL: [AL.nipt],
+  AR: [AR.cuit, AR.dni],
+  AT: [AT.vnr],
+  AU: [AU.tfn],
+  AZ: [AZ.pin, AZ.tin],
   BA: [BA.jmbg],
-  BG: [BG.vat],
+  BG: [BG.egn, BG.pnf, BG.vat],
+  BR: [BR.cpf],
   BY: [BY.unp],
-  CN: [CN.ric],
+  BZ: [BZ.tin],
+  CA: [CA.sin],
   CH: [CH.ssn],
+  CL: [CL.run], // which is the same as RUT
+  CN: [CN.ric],
+  CO: [CO.nit],
+  CR: [CR.cpf, CR.cr],
   CU: [CU.ni],
   CZ: [CZ.rc],
   DE: [DE.idnr],
+  DK: [DK.cpr],
+  DO: [DO.cedula],
+  EC: [EC.ci],
   EE: [EE.ik],
   ES: [ES.dni, ES.nie],
   FI: [FI.hetu],
-  FR: [FR.nir, FR.nif],
+  FR: [FR.nif, FR.nir],
   GB: [GB.utr],
   GR: [GR.amka],
+  GT: [GT.cui],
   HK: [HK.hkid],
   HR: [HR.oib],
+  HU: [HU.anum],
   ID: [ID.npwp],
   IE: [IE.pps],
   IL: [IL.idnr],
-  IN: [IN.pan],
+  IN: [IN.aadhaar],
   IS: [IS.kennitala],
   IT: [IT.codicefiscale],
+  KR: [KR.rrn],
   LI: [LI.peid],
   LT: [LT.asmens],
   LV: [LV.pvn],
   ME: [ME.jmbg],
   MK: [MK.jmbg],
   MU: [MU.nid],
-  KR: [KR.rrn],
-  MX: [MX.curp],
+  MX: [MX.curp, MX.rfc],
   MY: [MY.nric],
   NL: [NL.onderwijsnummer, NL.bsn],
   NO: [NO.fodselsnummer],
@@ -208,12 +225,15 @@ const personValidators: Record<string, Validator[]> = {
   PE: [PE.cui, PE.ce],
   PK: [PK.cnic],
   PL: [PL.pesel],
+  PT: [PT.nif],
+  PY: [PY.ruc],
   RO: [RO.cnp],
   RS: [RS.jmbg],
   RU: [RU.inn],
   SE: [SE.personnummer],
   SI: [SI.jmbg],
   SK: [SK.rc],
+  SV: [SV.nit],
   TH: [TH.idnr],
   TR: [TR.tckimlik],
   UA: [UA.edrpou],
@@ -222,47 +242,63 @@ const personValidators: Record<string, Validator[]> = {
   ZA: [ZA.tin, ZA.idnr],
 };
 
-const entityValidators: Record<string, Validator[]> = {
+export const entityValidators: Record<string, Validator[]> = {
+  AD: [AD.nrt],
+  AL: [AL.nipt],
+  AR: [AR.cuit],
+  AT: [AT.businessid, AT.tin, AT.uid],
   AU: [AU.abn, AU.acn, AU.tfn],
+  AZ: [AZ.tin],
   BE: [BE.vat],
   BG: [BG.vat],
+  BR: [BR.cnpj],
   BY: [BY.unp],
-  CN: [CN.uscc],
+  BZ: [BZ.tin],
+  CA: [CA.bn],
   CH: [CH.uid, CH.vat],
-  CY: [CH.vat],
+  CL: [CL.rut],
+  CN: [CN.uscc],
+  CO: [CO.nit],
+  CR: [CR.cpj],
+  CY: [CY.vat],
   CZ: [CZ.dic],
-  DE: [DE.vat, DE.stnr],
+  DE: [DE.stnr, DE.vat],
   DK: [DK.cvr],
+  DO: [DO.ncf, DO.rnc],
+  EC: [EC.ruc],
   EE: [EE.kmkr, EE.registrikood],
-  ES: [ES.cif, ES.nif],
+  ES: [ES.cif],
   FI: [FI.alv, FI.ytunnus],
   FR: [FR.siren, FR.siret, FR.tva],
   GB: [GB.vat],
   GR: [GR.vat],
-  HR: [HU.anum],
+  GT: [GT.nit],
+  HU: [HU.anum],
   ID: [ID.npwp],
   IE: [IE.vat],
   IL: [IL.hp],
-  IN: [IN.aadhaar],
+  IN: [IN.pan],
   IS: [IS.kennitala, IS.vsk],
   IT: [IT.iva],
+  JP: [JP.cn],
+  KR: [KR.brn],
   LI: [LI.peid],
   LT: [LT.pvm],
   LU: [LU.tva],
   LV: [LV.pvn],
-  JP: [JP.cn],
-  KR: [KR.brn],
   MC: [MC.tva],
   MD: [MD.idno],
   MA: [MA.ice, MA.ice9],
   MT: [MT.vat],
+  MX: [MX.rfc],
   NL: [NL.btw],
   NO: [NO.mva, NO.orgnr],
   NZ: [NZ.ird],
   PE: [PE.ruc],
   PK: [PK.ntn],
   PL: [PL.nip, PL.regon],
-  PT: [PT.nif],
+  PT: [PT.nipc],
+  PY: [PY.ruc],
   RO: [RO.onrc, RO.cui],
   RS: [RS.pib],
   RU: [RU.inn],
@@ -271,6 +307,7 @@ const entityValidators: Record<string, Validator[]> = {
   SI: [SI.ddv],
   SK: [SK.dph],
   SM: [SM.coe],
+  SV: [SV.nit],
   TR: [TR.vkn],
   TW: [TW.ubn],
   UA: [UA.rntrc],
@@ -280,18 +317,26 @@ const entityValidators: Record<string, Validator[]> = {
   ZA: [ZA.tin],
 };
 
+/**
+ * https://en.wikipedia.org/wiki/VAT_identification_number
+ */
 export const euVat: Record<string, Validator[]> = {
   AD: [AD.nrt],
+  AT: [AT.uid],
   BE: [BE.vat],
   BG: [BG.vat],
   CH: [CH.vat],
+  HR: [HR.oib],
   CY: [CY.vat],
   DE: [DE.vat],
+  CZ: [CZ.dic],
   DK: [DK.cvr],
   ES: [ES.nif],
+  EE: [EE.kmkr],
+  FI: [FI.alv],
   FR: [FR.tva],
-  // GB: [GB.vat],
   GR: [GR.vat],
+  HU: [HU.anum],
   IE: [IE.vat],
   IT: [IT.iva],
   LT: [LT.pvm],
@@ -300,7 +345,8 @@ export const euVat: Record<string, Validator[]> = {
   MT: [MT.vat],
   NL: [NL.btw],
   PL: [PL.nip],
-  PT: [PT.nif],
+  PT: [PT.nif], // same as PR.nipc
+  RO: [RO.cif],
   SE: [SE.vat],
   SI: [SI.ddv],
   SK: [SK.dph],
@@ -312,16 +358,16 @@ export const euVat: Record<string, Validator[]> = {
 export function validatePerson(
   country: string,
   value: string,
-): { isValid?: boolean; checked: boolean } {
+): { checked: boolean; isValid?: boolean; matchedValidators?: Validator[] } {
   const vset = personValidators[country.toLocaleUpperCase()];
 
   if (!vset || vset.length === 0) {
     return { checked: false };
   }
 
-  const match = vset.some(grp => grp.validate(value).isValid);
+  const match = vset.filter(grp => grp.validate(value).isValid);
 
-  return { checked: true, isValid: match };
+  return { checked: true, isValid: match.length > 0, matchedValidators: match };
 }
 
 /**
@@ -330,14 +376,14 @@ export function validatePerson(
 export function validateEntity(
   country: string,
   value: string,
-): { isValid?: boolean; checked: boolean } {
+): { checked: boolean; isValid?: boolean; matchedValidators?: Validator[] } {
   const vset = entityValidators[country.toLocaleUpperCase()];
 
   if (!vset || vset.length === 0) {
     return { checked: false };
   }
 
-  const match = vset.some(grp => grp.validate(value).isValid);
+  const match = vset.filter(grp => grp.validate(value).isValid);
 
-  return { checked: true, isValid: match };
+  return { checked: true, isValid: match.length > 0, matchedValidators: match };
 }

@@ -58,6 +58,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'U.S. Social Security Number',
+  localName: 'Social Security Number',
+  abbreviation: 'SSN',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -75,7 +78,7 @@ const impl: Validator = {
   },
 
   /**
-   * Check if the number is a valid Andorra NRT number.
+   * Check if the number is a valid SSN number.
    * This checks the length, formatting and other contraints. It does not check
    * for control letter.
    */
@@ -110,4 +113,11 @@ const impl: Validator = {
   },
 };
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

@@ -1,7 +1,7 @@
 /**
  * SIRET (a French company establishment identification number).
  *
- * The SIRET (Système d'Identification du Répertoire des ETablissements)
+ * The SIRET (Système d'Identification du Répertoire des Établissements)
  * is a 14 digit number used to identify French companies' establishments
  * and facilities. The Luhn checksum is used to validate the numbers.
  *
@@ -18,6 +18,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'French Company Establishment Identification Number',
+  localName: "Système d'Identification du Répertoire des Établissements",
+  abbreviation: 'SIRET',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -60,4 +63,11 @@ const impl: Validator = {
   },
 };
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

@@ -8,10 +8,11 @@
  *
  *
  * Sources:
+ *    https://www.oecd.org/tax/automatic-exchange/crs-implementation-and-assistance/tax-identification-numbers/Austria-TIN.pdf
  *    https://de.wikipedia.org/wiki/Abgabenkontonummer
  *    https://service.bmf.gv.at/Service/Anwend/Behoerden/show_mast.asp
  *
- * TAX
+ * ENTITY
  */
 
 import * as exceptions from '../exceptions';
@@ -71,6 +72,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'Austrian Tax Identification Number',
+  localName: 'Abgabenkontonummer',
+  abbreviation: 'TIN',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -127,9 +131,16 @@ const impl: Validator = {
       isValid: true,
       compact: value,
       isIndividual: false,
-      isCompany: false,
+      isCompany: true,
     };
   },
 };
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

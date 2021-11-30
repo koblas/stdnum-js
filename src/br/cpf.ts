@@ -8,7 +8,7 @@
  * Source
  *     https://en.wikipedia.org/wiki/Cadastro_de_Pessoas_Físicas
  *
- * TAX
+ * PERSON
  */
 
 import * as exceptions from '../exceptions';
@@ -31,6 +31,9 @@ function computeDigit(input: string): number {
 }
 
 const impl: Validator = {
+  name: 'Brazilian National Identifier',
+  localName: 'Cadastro de Pessoas Físicas',
+  abbreviation: 'CPF',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -74,10 +77,17 @@ const impl: Validator = {
     return {
       isValid: true,
       compact: value,
-      isIndividual: false,
+      isIndividual: true,
       isCompany: false,
     };
   },
 };
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

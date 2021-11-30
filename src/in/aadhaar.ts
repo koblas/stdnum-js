@@ -21,6 +21,8 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'Indian Digital Resident Personal Identity Number',
+  localName: 'Aadhaar',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -60,10 +62,17 @@ const impl: Validator = {
     return {
       isValid: true,
       compact: value,
-      isIndividual: false,
-      isCompany: true,
+      isIndividual: true,
+      isCompany: false,
     };
   },
 };
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

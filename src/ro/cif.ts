@@ -1,9 +1,9 @@
 /**
- * CF (Cod de înregistrare în scopuri de TVA, Romanian VAT number).
+ * CIF (Cod de înregistrare în scopuri de TVA, Romanian VAT number).
  *
- * The Romanian CF is used for VAT purposes and can be from 2 to 10 digits long.
+ * The Romanian CIF is used for VAT purposes and can be from 2 to 10 digits long.
  *
- * ENTITY
+ * PERSON/ENTITY
  */
 
 import * as exceptions from '../exceptions';
@@ -17,6 +17,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'Romanian VAT Number',
+  localName: 'Codul de Identificare Fiscală',
+  abbreviation: 'CIF',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -55,4 +58,11 @@ const impl: Validator = {
   },
 };
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

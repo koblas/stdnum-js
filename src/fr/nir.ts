@@ -30,6 +30,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'French Personal Identification Number',
+  localName: 'Numéro d’Inscription au RNIPP',
+  abbreviation: 'NIR',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -91,4 +94,11 @@ const impl: Validator = {
   },
 };
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

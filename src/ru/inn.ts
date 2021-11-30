@@ -8,7 +8,7 @@
  * More information:
  *    https://www.oecd.org/tax/automatic-exchange/crs-implementation-and-assistance/tax-identification-numbers/RussianFederation-TIN.pdf
  *
- * INN == VAT
+ * INN == VAT PERSON/ENTITY
  */
 
 import * as exceptions from '../exceptions';
@@ -20,6 +20,10 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'Russian Tax Identifier',
+  localName: 'Идентификационный номер налогоплательщика',
+  abbreviation: 'ИНН',
+
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -37,7 +41,7 @@ const impl: Validator = {
   },
 
   /**
-   * Check if the number is a valid Andorra NRT number.
+   * Check if the number is a valid INN number.
    * This checks the length, formatting and other contraints. It does not check
    * for control letter.
    */
@@ -98,4 +102,11 @@ const impl: Validator = {
   },
 };
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

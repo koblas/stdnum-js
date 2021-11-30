@@ -25,6 +25,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 const checkDigit = '0123456789K';
 
 const impl: Validator = {
+  name: 'Guatemala Tax Number',
+  localName: 'Número de Identificación Tributaria',
+  abbreviation: 'NIT',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -76,9 +79,16 @@ const impl: Validator = {
       isValid: true,
       compact: value,
       isIndividual: false,
-      isCompany: false,
+      isCompany: true,
     };
   },
 };
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

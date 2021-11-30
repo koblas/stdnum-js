@@ -21,6 +21,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 const alphabet = '0123456789BCDFGHJKLMNPQRSTUVWXYZ';
 
 const impl: Validator = {
+  name: 'Italian Code for Identification of Drugs',
+  localName: 'Autorizzazione all’Immissione in Commercio',
+  abbreviation: 'AIC',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -90,4 +93,11 @@ const impl: Validator = {
   },
 };
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

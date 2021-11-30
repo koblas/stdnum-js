@@ -7,12 +7,14 @@
  *
  * Sources:
  *
- * VAT
+ * https://en.wikipedia.org/wiki/VAT_identification_number
+ *
+ * PERSON/ENTITY
  */
 
 import * as exceptions from '../exceptions';
+import { ValidateReturn, Validator } from '../types';
 import { strings } from '../util';
-import { Validator, ValidateReturn } from '../types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   // eslint-disable-next-line prefer-const
@@ -32,6 +34,10 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'Albanian VAT Number',
+  localName: 'Numri i Identifikimit për Personin e Tatueshëm',
+  abbreviation: 'NIPT',
+
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -49,7 +55,7 @@ const impl: Validator = {
   },
 
   /**
-   * Check if the number is a valid Andorra NRT number.
+   * Check if the number is a valid Albanian NIPT number.
    * This checks the length, formatting and other contraints. It does not check
    * for control letter.
    */
@@ -69,10 +75,16 @@ const impl: Validator = {
     return {
       isValid: true,
       compact: value,
-      isIndividual: false,
-      isCompany: false,
+      isIndividual: true,
+      isCompany: true,
     };
   },
 };
-
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

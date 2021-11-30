@@ -6,7 +6,7 @@
  */
 
 import * as exceptions from '../exceptions';
-import { strings } from '../util';
+import * as strings from '../util/strings';
 import { Validator, ValidateReturn } from '../types';
 import { weightedSum } from '../util/checksum';
 
@@ -15,6 +15,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'International Article Number',
+  localName: 'International Article Number',
+  abbreviation: 'EAN',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -64,4 +67,11 @@ const impl: Validator = {
   },
 };
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

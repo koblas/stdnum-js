@@ -22,6 +22,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
+  name: 'French Tax Identification Number',
+  localName: "Numéro d'Immatriculation Fiscale",
+  abbreviation: 'NIF',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -60,4 +63,11 @@ const impl: Validator = {
   },
 };
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;

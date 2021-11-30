@@ -7,7 +7,7 @@
  *
  * Sources:
  *
- * TAX
+ * ENTITY
  */
 
 import * as exceptions from '../exceptions';
@@ -33,6 +33,9 @@ function computeDigit(input: string): number {
 }
 
 const impl: Validator = {
+  name: 'Brazilian Company Identifier',
+  localName: 'Cadastro Nacional da Pessoa Jurídica',
+  abbreviation: 'CNPJ',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -77,9 +80,16 @@ const impl: Validator = {
       isValid: true,
       compact: value,
       isIndividual: false,
-      isCompany: false,
+      isCompany: true,
     };
   },
 };
 
-export const { validate, format, compact } = impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  validate,
+  format,
+  compact,
+} = impl;
