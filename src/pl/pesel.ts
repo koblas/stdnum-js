@@ -54,22 +54,22 @@ const impl: Validator = {
     }
 
     const [yy, mm, dd] = strings.splitAt(value, 2, 4, 6);
-    const day = parseInt(dd, 10);
+    const month = parseInt(mm, 10);
 
     let century;
-    if (day >= 80) {
+    if (month >= 80) {
       century = '18';
-    } else if (day >= 60) {
+    } else if (month >= 60) {
       century = '22';
-    } else if (day >= 40) {
+    } else if (month >= 40) {
       century = '21';
-    } else if (day >= 20) {
+    } else if (month >= 20) {
       century = '20';
     } else {
       century = '19';
     }
 
-    if (!isValidDate(`${century}${yy}`, mm, String(day % 20))) {
+    if (!isValidDate(`${century}${yy}`, String(month % 20), dd)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
