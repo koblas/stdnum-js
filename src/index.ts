@@ -226,7 +226,7 @@ export const personValidators: Record<string, Validator[]> = {
   PK: [PK.cnic],
   PL: [PL.pesel],
   PT: [PT.nif],
-  PY: [PY.ruc],
+  PY: [PY.ruc, PY.cedula],
   RO: [RO.cnp],
   RS: [RS.jmbg],
   RU: [RU.inn],
