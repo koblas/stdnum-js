@@ -14,10 +14,10 @@ describe('kr/rrn', () => {
     expect(result.isValid && result.compact).toEqual('9710139019902');
   });
 
-  it('validate:850529-5920042', () => {
-    const result = validate('8505295920042');
+  it('validate:850126-6401473', () => {
+    const result = validate('8501266401473');
 
-    expect(result.isValid && result.compact).toEqual('8505295920042');
+    expect(result.isValid && result.compact).toEqual('8501266401473');
   });
 
   it('validate:12345678', () => {
