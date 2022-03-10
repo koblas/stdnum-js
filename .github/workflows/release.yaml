@@ -26,7 +26,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v1
       with:
-        node-version: `lts/*`
+        node-version: 'lts/*'
     - name: Install dependencies
       run: npx ci
     - name: Install semantic-release extra plugins
