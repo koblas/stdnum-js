@@ -196,3 +196,9 @@ many of the checksum algorithm sources
 ### References
 
 https://wiki.scn.sap.com/wiki/display/CRM/Country+Tax+Category+check
+
+### Release Notes
+
+This project is now using https://github.com/semantic-release/semantic-release to manage the
+release process.  Commit messages should use the format specified to handle the major/minor/patch
+versioning information.
