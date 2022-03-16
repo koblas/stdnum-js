@@ -18,6 +18,7 @@
 import * as exceptions from '../exceptions';
 import { strings, weightedSum } from '../util';
 import { Validator, ValidateReturn } from '../types';
+import { pymod } from '../util/pymod';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   const [value, err] = strings.cleanUnicode(input, ' -');
@@ -74,14 +75,12 @@ const impl: Validator = {
 
     const [front, check] = strings.splitAt(value, 11);
 
-    const digit = String(
-      (11 -
-        weightedSum(front, {
-          weights: [4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2],
-          modulus: 11,
-        })) %
-        10,
-    );
+    const sum = weightedSum(front, {
+      weights: [4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2],
+      modulus: 11,
+    });
+
+    const digit = String(pymod(-sum, 11));
 
     if (check !== digit) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };

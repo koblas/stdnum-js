@@ -202,3 +202,6 @@ https://wiki.scn.sap.com/wiki/display/CRM/Country+Tax+Category+check
 This project is now using https://github.com/semantic-release/semantic-release to manage the
 release process.  Commit messages should use the format specified to handle the major/minor/patch
 versioning information.
+
+This is based on the angular commit message format
+    https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-format
