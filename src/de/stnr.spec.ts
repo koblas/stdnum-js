@@ -1,5 +1,5 @@
 import { validate, format } from './stnr';
-import { InvalidChecksum, InvalidLength } from '../exceptions';
+import { InvalidComponent, InvalidLength } from '../exceptions';
 
 describe('de/stnr', () => {
   it('format:18181508155', () => {
@@ -14,10 +14,10 @@ describe('de/stnr', () => {
     expect(result.isValid && result.compact).toEqual('10863924976');
   });
 
-  it('validate:93815/08152', () => {
-    const result = validate('93815/08152');
+  it('validate:36574261809', () => {
+    const result = validate('36574261809');
 
-    expect(result.isValid && result.compact).toEqual('9381508152');
+    expect(result.isValid && result.compact).toEqual('36574261809');
   });
 
   it('validate:136695978', () => {
@@ -26,9 +26,54 @@ describe('de/stnr', () => {
     expect(result.error).toBeInstanceOf(InvalidLength);
   });
 
-  it('validate:93815/08153', () => {
-    const result = validate('93815/08153');
+  it('validate:121/5752/5373', () => {
+    const result = validate('121/5752/5373');
 
-    expect(result.error).toBeInstanceOf(InvalidChecksum);
+    expect(result.isValid && result.compact).toEqual('12157525373');
   });
+
+  it('validate:14/203/31601', () => {
+    const result = validate('14/203/31601');
+
+    expect(result.isValid && result.compact).toEqual('1420331601');
+  });
+
+  // it('validate:36574261808', () => {
+  //   const result = validate('36574261808');
+
+  //   expect(result.error).toBeInstanceOf(InvalidChecksum);
+  // });
+
+  it('validate:1234567890', () => {
+    const result = validate('1234567890');
+
+    expect(result.error).toBeInstanceOf(InvalidComponent);
+  });
+
+  // Test coverage from
+  //  https://de.wikipedia.org/wiki/Steuernummer
+  //  -- Turns out these are not valid numbers
+
+  // test.each([
+  //   '93815/08152',
+  //   '181/815/08155',
+  //   '21/815/08150',
+  //   '48/815/08155',
+  //   '75 815 08152',
+  //   '02/815/08156',
+  //   '013 815 08153',
+  //   '79/815/08151',
+  //   '24/815/08151',
+  //   '133/8150/8159',
+  //   '22/815/08154',
+  //   '10/815/08182',
+  //   '201/123/12340',
+  //   '101/815/08154',
+  //   '29/815/08158	',
+  //   '151/815/08156',
+  // ])('stnr(%s)', num => {
+  //   const result = validate(num);
+
+  //   expect(result.isValid).toEqual(true);
+  // });
 });
