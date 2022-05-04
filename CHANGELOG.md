@@ -1,3 +1,10 @@
+## [1.3.6](https://github.com/koblas/stdnum-js/compare/v1.3.5...v1.3.6) (2022-05-04)
+
+
+### Bug Fixes
+
+* **de_stnr:** disable STNR checksum checking ([726e7ac](https://github.com/koblas/stdnum-js/commit/726e7ac5df26e32709e6bdccdd63be696306cc80))
+
 ## [1.3.5](https://github.com/koblas/stdnum-js/compare/v1.3.4...v1.3.5) (2022-03-16)
 
 
