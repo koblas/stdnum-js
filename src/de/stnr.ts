@@ -18,6 +18,7 @@
 import * as exceptions from '../exceptions';
 import { strings } from '../util';
 import { Validator, ValidateReturn } from '../types';
+// import { mod11mod10Validate } from '../util/checksum';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -./,');
@@ -152,26 +153,27 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
-    const front = value.split('').map(v => parseInt(v, 10));
-    const check = front.pop();
+    // In the first 10 digits exactly one digit must be repeated two or
+    // three times and other digits can appear only once.
+    // Starting at 2017, the rule is, that within the first ten digits one number has to
+    // appear exactly twice or thrice.
+    const counter: Record<string, number> = {};
 
-    const product = front.reduce((acc, v) => {
-      let sum = (v + acc) % 10;
-      if (sum === 0) {
-        sum = 10;
-      }
-
-      return (sum * 2) % 11;
-    }, 10);
-
-    let checksum = 11 - product;
-    if (checksum === 10) {
-      checksum = 0;
+    value
+      .substring(0, 10)
+      .split('')
+      .forEach(v => {
+        counter[v] = (counter[v] ?? 0) + 1;
+      });
+    const more = Object.values(counter); // .filter(v => v > 1);
+    if (!more.some(v => v === 2 || v === 3)) {
+      // if (more.length !== 1 && [2, 3].includes(more[0])) {
+      return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
-    if (checksum !== check) {
-      return { isValid: false, error: new exceptions.InvalidChecksum() };
-    }
+    // if (!mod11mod10Validate(value)) {
+    //   return { isValid: false, error: new exceptions.InvalidChecksum() };
+    // }
 
     return {
       isValid: true,
