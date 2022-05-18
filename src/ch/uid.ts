@@ -65,7 +65,7 @@ const impl: Validator = {
       weights: [5, 4, 3, 2, 7, 6, 5, 4],
     });
 
-    if (String(11 - sum) !== check) {
+    if (String((11 - sum) % 11) !== check) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 
