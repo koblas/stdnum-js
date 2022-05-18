@@ -1,3 +1,10 @@
+## [1.3.7](https://github.com/koblas/stdnum-js/compare/v1.3.6...v1.3.7) (2022-05-18)
+
+
+### Bug Fixes
+
+* **ch_uid:** fix checksum for ch/uid ([2c3477c](https://github.com/koblas/stdnum-js/commit/2c3477c42e19e21378f5f887b306fed79b074aaa))
+
 ## [1.3.6](https://github.com/koblas/stdnum-js/compare/v1.3.5...v1.3.6) (2022-05-04)
 
 
