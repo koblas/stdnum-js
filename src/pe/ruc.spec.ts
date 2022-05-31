@@ -25,4 +25,22 @@ describe('pe/cui', () => {
 
     expect(result.error).toBeInstanceOf(InvalidChecksum);
   });
+
+  it('validate:20480977239', () => {
+    const result = validate('20480977239');
+
+    expect(result.isValid && result.compact).toEqual('20480977239');
+  });
+
+  it('validate:20503644968', () => {
+    const result = validate('20503644968');
+
+    expect(result.isValid && result.compact).toEqual('20503644968');
+  });
+
+  it('validate:20515397290', () => {
+    const result = validate('20515397290');
+
+    expect(result.isValid && result.compact).toEqual('20515397290');
+  });
 });

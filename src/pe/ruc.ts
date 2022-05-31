@@ -57,20 +57,17 @@ const impl: Validator = {
     if (!strings.isdigits(value)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
-    if (!['10', '15', '17', '20'].includes(value.substr(0, 2))) {
+    if (!['10', '15', '16', '17', '20'].includes(value.substr(0, 2))) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
     const [front, check] = strings.splitAt(value, 10);
-    const sum =
-      11 -
-      (weightedSum(front, {
-        weights: [5, 4, 3, 2, 7, 6, 5, 4, 3, 2],
-        modulus: 11,
-      }) %
-        10);
+    const sum = weightedSum(front, {
+      weights: [5, 4, 3, 2, 7, 6, 5, 4, 3, 2],
+      modulus: 11,
+    });
 
-    if (String(sum) !== check) {
+    if (String((11 - sum) % 10) !== check) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 
