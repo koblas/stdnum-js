@@ -1,3 +1,10 @@
+## [1.3.8](https://github.com/koblas/stdnum-js/compare/v1.3.7...v1.3.8) (2022-06-01)
+
+
+### Bug Fixes
+
+* fixed peru RUC checksum logic and added '16' in the first two digits allow list ([d0d5c89](https://github.com/koblas/stdnum-js/commit/d0d5c89c060d33f7918c9a7070b45412c4091edc))
+
 ## [1.3.7](https://github.com/koblas/stdnum-js/compare/v1.3.6...v1.3.7) (2022-05-18)
 
 
