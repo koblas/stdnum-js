@@ -70,6 +70,7 @@ All country validators are in the "namespace" of the ISO country code.
 | Costa Rica             | CR   | CR              | Person             | Person Identifier (Cédula de Residencia)                                            |
 | Germany                | DE   | IDNR            | Person             | Steuerliche Identifikationsnummer, German personal tax number                       |
 | Germany                | DE   | STNR            | Company            | Steuernummer, German tax number                                                     |
+| Germany                | DE   | SVNR            | Person             | Sozialversicherungsnummer, German social security / pension insurance number number |
 | Germany                | DE   | VAT             | Company            | Vat identifier                                                                      |
 | Denmark                | DK   | VAT             | Company            | Momsregistreringsnummer, Danish VAT number                                          |
 | Dominican Republic     | DO   | CEDULA          | Person             | Person Identifier (Cédula de Residencia)                                            |

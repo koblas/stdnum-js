@@ -190,7 +190,7 @@ export const personValidators: Record<string, Validator[]> = {
   CR: [CR.cpf, CR.cr],
   CU: [CU.ni],
   CZ: [CZ.rc],
-  DE: [DE.idnr],
+  DE: [DE.idnr, DE.svnr],
   DK: [DK.cpr],
   DO: [DO.cedula],
   EC: [EC.ci],
