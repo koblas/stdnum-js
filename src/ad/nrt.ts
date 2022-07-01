@@ -58,7 +58,7 @@ const impl: Validator = {
 
     const mid = v.substr(1, v.length - 2);
 
-    if (!strings.isalphanumeric(v[0]) || !strings.isalphanumeric(v[v.length - 1])) {
+    if (!strings.isalpha(v[0]) || !strings.isalpha(v[v.length - 1])) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
     if (!strings.isdigits(mid)) {
