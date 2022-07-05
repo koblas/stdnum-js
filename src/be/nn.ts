@@ -112,11 +112,6 @@ function getValidPastDates(yymmdd: string): Array<string> {
     filter(isInPast);
 }
 
-function getApproximatelyNow() {
-  const ONE_DAY = 1000 * 60 * 60 * 24;
-  return new Date(Date.now() + ONE_DAY);
-}
-
 function validStructure(number: string): boolean {
   const firstSix = getFirstSix(number);
   return isValidFirstSix(firstSix);
@@ -134,19 +129,12 @@ function getChecksumBases(number: string): Array<number> {
 
   if (isCompletelyUnknownDob(firstSix)) return [baseNumber];
 
-  if (isDobWithOnlyYearKnown(firstSix)) return getBaseNumbersForOnlyYearKnown(firstSix, baseNumber);
+  if (isDobWithOnlyYearKnown(firstSix)) return getChecksumBasesForYearOnlyKnown(firstSix, baseNumber);
 
   return getChecksumBasesForStandardDate(firstSix, baseNumber);
 }
 
-function getChecksumBasesForStandardDate(firstSix: string, baseNumber: number): Array<number> {
-  const validPastDates = getValidPastDates(firstSix);
-  const extractYearFromDate = (date: string): number => parseInt(date.split('-')[0], 10);
-  const validPastYears = validPastDates.map(extractYearFromDate);
-  return validPastYears.map(year => toChecksumBasis(year, baseNumber));
-}
-
-function getBaseNumbersForOnlyYearKnown(firstSix: string, baseNumber: number): Array<number> {
+function getChecksumBasesForYearOnlyKnown(firstSix: string, baseNumber: number): Array<number> {
   const [yy] = toDateArray(firstSix);
   const toYear = (prefix: string): number => parseInt(`${prefix}${yy}`, 10);
 
@@ -156,13 +144,25 @@ function getBaseNumbersForOnlyYearKnown(firstSix: string, baseNumber: number): A
     map(year => toChecksumBasis(year, baseNumber));
 }
 
-function isInPast(date: string | number): boolean {
-  return new Date(`${date}`) <= getApproximatelyNow();
+function getChecksumBasesForStandardDate(firstSix: string, baseNumber: number): Array<number> {
+  const validPastDates = getValidPastDates(firstSix);
+  const extractYearFromDate = (date: string): number => parseInt(date.split('-')[0], 10);
+  const validPastYears = validPastDates.map(extractYearFromDate);
+  return validPastYears.map(year => toChecksumBasis(year, baseNumber));
 }
 
 function toChecksumBasis(year: number, baseNumber: number): number {
   const twoPrefixedBaseNumber = parseInt(`${2}${baseNumber}`, 10);
   return year < 2000 ? baseNumber : twoPrefixedBaseNumber
+}
+
+function isInPast(date: string | number): boolean {
+  return new Date(`${date}`) <= getApproximatelyNow();
+}
+
+function getApproximatelyNow() {
+  const ONE_DAY = 1000 * 60 * 60 * 24;
+  return new Date(Date.now() + ONE_DAY);
 }
 
 function getFirstSix(number: string): string {
