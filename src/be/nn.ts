@@ -83,12 +83,11 @@ function isValidDob(dob: string): boolean {
 
 function getValidPastDates(yymmdd: string): Array<string> {
   const [yy, mm, dd] = toDateArray(yymmdd);
-  const approximatelyNow = getApproximatelyNow();
   return ['19', '20'].
     map(c => `${c}${yy}`).
     filter((yyyy) => isValidDateCompactYYYYMMDD(`${yyyy}${mm}${dd}`)).
     map((yyyy) => `${yyyy}-${mm}-${dd}`).
-    filter((date) => new Date(date) <= approximatelyNow);
+    filter(isInPast);
 }
 
 function getApproximatelyNow() {
@@ -122,19 +121,21 @@ function getChecksumBasesForStandardDate(firstSix: string, baseNumber: number): 
   const validPastDates = getValidPastDates(firstSix);
   const extractYearFromDate = (date: string): number => parseInt(date.split('-')[0], 10);
   const validPastYears = validPastDates.map(extractYearFromDate);
-
   return validPastYears.map(year => toChecksumBasis(year, baseNumber));
 }
 
 function getBaseNumbersForOnlyYearKnown(firstSix: string, baseNumber: number): Array<number> {
   const [yy] = toDateArray(firstSix);
   const toYear = (prefix: string): number => parseInt(`${prefix}${yy}`, 10);
-  return ['19', '20'].map(toYear).filter(yearHasStarted).map(year => toChecksumBasis(year, baseNumber));
+
+  return ['19', '20'].
+    map(toYear).
+    filter(isInPast).
+    map(year => toChecksumBasis(year, baseNumber));
 }
 
-function yearHasStarted(year: number): boolean {
-  const startOfYear = new Date(`${year}`);
-  return startOfYear <= getApproximatelyNow();
+function isInPast(date: string | number): boolean {
+  return new Date(`${date}`) <= getApproximatelyNow();
 }
 
 function toChecksumBasis(year: number, baseNumber: number): number {
