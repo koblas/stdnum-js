@@ -85,6 +85,17 @@ export const {
   compact,
 } = impl;
 
+function validStructure(number: string): boolean {
+  const firstSix = getFirstSix(number);
+  return isValidFirstSix(firstSix);
+}
+
+function validChecksum(number: string): boolean {
+  const checksumBases = getChecksumBases(number);
+  const [, checksum] = getBaseNumberAndChecksum(number);
+  return checksumBases.some(csb => csb % 97 + checksum === 97);
+}
+
 function isValidFirstSix(firstSix: string): boolean {
   if (isCompletelyUnknownDob(firstSix) || isDobWithOnlyYearKnown(firstSix)) return true;
   return isValidDob(firstSix);
@@ -110,17 +121,6 @@ function getValidPastDates(yymmdd: string): Array<string> {
     filter((yyyy) => isValidDateCompactYYYYMMDD(`${yyyy}${mm}${dd}`)).
     map((yyyy) => `${yyyy}-${mm}-${dd}`).
     filter(isInPast);
-}
-
-function validStructure(number: string): boolean {
-  const firstSix = getFirstSix(number);
-  return isValidFirstSix(firstSix);
-}
-
-function validChecksum(number: string): boolean {
-  const checksumBases = getChecksumBases(number);
-  const [, checksum] = getBaseNumberAndChecksum(number);
-  return checksumBases.some(csb => csb % 97 + checksum === 97);
 }
 
 function getChecksumBases(number: string): Array<number> {
