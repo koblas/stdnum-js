@@ -104,6 +104,18 @@ describe('be/nn', () => {
     expect(result.error).toBeInstanceOf(InvalidChecksum);
   });
 
+  it('validate:40000100133', () => {
+    const result = validate('40000100133');
+
+    expect(result.isValid && result.compact).toEqual('40000100133');
+  });
+
+  it('validate:40000095579', () => {
+    const result = validate('40000095579');
+
+    expect(result.isValid && result.compact).toEqual('40000095579');
+  });
+
   it('validate:(unspecified date in current year)', () => {
     const yy = new Date().getFullYear() % 100;
     const baseNum = parseInt(`${yy}0000999`, 10);

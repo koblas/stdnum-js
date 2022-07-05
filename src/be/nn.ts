@@ -96,7 +96,7 @@ function isCompletelyUnknownDob(dob: string): boolean {
 
 function isDobWithOnlyYearKnown(dob: string): boolean {
   const [yy, mm, dd] = toDateArray(dob);
-  return (strings.isdigits(yy) && mm === '00' && dd === '00');
+  return (strings.isdigits(yy) && mm === '00' && strings.isdigits(dd));
 }
 
 function isValidDob(dob: string): boolean {
