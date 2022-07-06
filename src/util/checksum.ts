@@ -1,5 +1,6 @@
 /**
  * Compute the weighted sum of a string
+ * @param {boolean} sumByDigit - ex) if checksum entry is 18, add 9 (sum of digits) to the sum (instead of 18).
  */
 export function weightedSum(
   value: string,
@@ -8,11 +9,13 @@ export function weightedSum(
     reverse = false,
     weights = [1],
     modulus = 0,
+    sumByDigit = false,
   }: {
     alphabet?: string;
     reverse?: boolean;
     modulus: number;
     weights?: number[];
+    sumByDigit?: boolean;
   },
 ): number {
   const wlen = weights.length;
@@ -26,8 +29,29 @@ export function weightedSum(
     while (vv < 0) {
       vv += modulus;
     }
+
+    if(sumByDigit && vv > 9) {
+      return (acc + (sumAllDigits(vv))) % modulus;
+    }
+
     return (acc + vv) % modulus;
   }, 0);
+}
+
+/**
+ * From stack overflow
+ * - Add all digits of a given number
+ * - https://stackoverflow.com/questions/38334652/sum-all-the-digits-of-a-number-javascript
+ */
+function sumAllDigits(value: number) {
+  let sum = 0;
+
+  while (value) {
+    sum += value % 10;
+    value = Math.floor(value / 10);
+  }
+
+  return sum;
 }
 
 export function luhnChecksum(value: string, alphabet = '0123456789'): number {
