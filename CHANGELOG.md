@@ -1,3 +1,15 @@
+# [1.4.0](https://github.com/koblas/stdnum-js/compare/v1.3.8...v1.4.0) (2022-07-06)
+
+
+### Bug Fixes
+
+* update ad.nrt alpha validation logic ([90879da](https://github.com/koblas/stdnum-js/commit/90879dac7ba52e220ab74a9292bd5c82f6592906))
+
+
+### Features
+
+* add de.svnr support ([ee03c72](https://github.com/koblas/stdnum-js/commit/ee03c72e62254c488e5ae3f889b1ee8c823b2cc4))
+
 ## [1.3.8](https://github.com/koblas/stdnum-js/compare/v1.3.7...v1.3.8) (2022-06-01)
 
 
