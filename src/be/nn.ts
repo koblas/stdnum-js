@@ -92,20 +92,15 @@ function validStructure(number: string): boolean {
 
 function validChecksum(number: string): boolean {
   const checksumBases = getChecksumBases(number);
-  const [, checksum] = getBaseNumberAndChecksum(number);
+  const checksum = getChecksum(number);
   return checksumBases.some(csb => csb % 97 + checksum === 97);
 }
 
 function isValidFirstSix(firstSix: string): boolean {
-  if (isCompletelyUnknownDob(firstSix) || isDobWithOnlyYearKnown(firstSix)) return true;
-  return isValidDob(firstSix);
+  return isUnknownDob(firstSix) || isValidDob(firstSix);
 }
 
-function isCompletelyUnknownDob(dob: string): boolean {
-  return (dob === '000001');
-}
-
-function isDobWithOnlyYearKnown(dob: string): boolean {
+function isUnknownDob(dob: string): boolean {
   const [yy, mm, dd] = toDateArray(dob);
   return (strings.isdigits(yy) && mm === '00' && strings.isdigits(dd));
 }
@@ -125,17 +120,15 @@ function getValidPastDates(yymmdd: string): Array<string> {
 
 function getChecksumBases(number: string): Array<number> {
   const firstSix = getFirstSix(number);
-  const [baseNumber] = getBaseNumberAndChecksum(number);
+  const baseNumber = getBaseNumber(number);
 
-  if (isCompletelyUnknownDob(firstSix)) return [baseNumber];
+  if (isUnknownDob(firstSix)) return getChecksumBasesUnknownDob(firstSix, baseNumber);
 
-  if (isDobWithOnlyYearKnown(firstSix)) return getChecksumBasesForYearOnlyKnown(firstSix, baseNumber);
-
-  return getChecksumBasesForStandardDate(firstSix, baseNumber);
+  return getChecksumBasesForStandardDob(firstSix, baseNumber);
 }
 
-function getChecksumBasesForYearOnlyKnown(firstSix: string, baseNumber: number): Array<number> {
-  const [yy] = toDateArray(firstSix);
+function getChecksumBasesUnknownDob(dob: string, baseNumber: string): Array<number> {
+  const [yy] = toDateArray(dob);
   const toYear = (prefix: string): number => parseInt(`${prefix}${yy}`, 10);
 
   return ['19', '20'].
@@ -144,16 +137,15 @@ function getChecksumBasesForYearOnlyKnown(firstSix: string, baseNumber: number):
     map(year => toChecksumBasis(year, baseNumber));
 }
 
-function getChecksumBasesForStandardDate(firstSix: string, baseNumber: number): Array<number> {
-  const validPastDates = getValidPastDates(firstSix);
+function getChecksumBasesForStandardDob(dob: string, baseNumber: string): Array<number> {
+  const validPastDates = getValidPastDates(dob);
   const extractYearFromDate = (date: string): number => parseInt(date.split('-')[0], 10);
   const validPastYears = validPastDates.map(extractYearFromDate);
   return validPastYears.map(year => toChecksumBasis(year, baseNumber));
 }
 
-function toChecksumBasis(year: number, baseNumber: number): number {
-  const twoPrefixedBaseNumber = parseInt(`${2}${baseNumber}`, 10);
-  return year < 2000 ? baseNumber : twoPrefixedBaseNumber
+function toChecksumBasis(year: number, baseNumber: string): number {
+  return parseInt(year < 2000 ? baseNumber : `${2}${baseNumber}`, 10);
 }
 
 function isInPast(date: string | number): boolean {
@@ -169,10 +161,15 @@ function getFirstSix(number: string): string {
   return strings.splitAt(number, 6)[0];
 }
 
-function getBaseNumberAndChecksum(number: string): Array<number> {
-  return strings.splitAt(number, 9).map(n => parseInt(n, 10));
+function getBaseNumber(number: string): string {
+  return strings.splitAt(number, 9)[0];
+}
+
+function getChecksum(number: string): number {
+  const checksumString = strings.splitAt(number, 9)[1];
+  return parseInt(checksumString, 10);
 }
 
 function toDateArray(number: string): Array<string> {
-  return strings.splitAt(number, 2, 4);
+  return strings.splitAt(number, 2, 4, 6).slice(0, 3);
 }

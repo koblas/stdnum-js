@@ -110,6 +110,12 @@ describe('be/nn', () => {
     expect(result.isValid && result.compact).toEqual('40000100133');
   });
 
+  it('validate:00000199938', () => {
+    const result = validate('00000199938');
+
+    expect(result.isValid && result.compact).toEqual('00000199938');
+  });
+
   it('validate:40000095579', () => {
     const result = validate('40000095579');
 
