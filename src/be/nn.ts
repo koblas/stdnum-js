@@ -111,8 +111,7 @@ function isValidDob(dob: string): boolean {
 
 function getValidPastDates(yymmdd: string): Array<string> {
   const [yy, mm, dd] = toDateArray(yymmdd);
-  return ['19', '20'].
-    map(c => `${c}${yy}`).
+  return getFullYears(yy).
     filter((yyyy) => isValidDateCompactYYYYMMDD(`${yyyy}${mm}${dd}`)).
     map((yyyy) => `${yyyy}-${mm}-${dd}`).
     filter(isInPast);
@@ -129,10 +128,8 @@ function getChecksumBases(number: string): Array<number> {
 
 function getChecksumBasesUnknownDob(dob: string, baseNumber: string): Array<number> {
   const [yy] = toDateArray(dob);
-  const toYear = (prefix: string): number => parseInt(`${prefix}${yy}`, 10);
 
-  return ['19', '20'].
-    map(toYear).
+  return getFullYears(yy).
     filter(isInPast).
     map(year => toChecksumBasis(year, baseNumber));
 }
@@ -155,6 +152,10 @@ function isInPast(date: string | number): boolean {
 function getApproximatelyNow() {
   const ONE_DAY = 1000 * 60 * 60 * 24;
   return new Date(Date.now() + ONE_DAY);
+}
+
+function getFullYears(yy: string | number): Array<number> {
+  return [parseInt(`19${yy}`, 10), parseInt(`20${yy}`, 10)];
 }
 
 function getFirstSix(number: string): string {
