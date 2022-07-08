@@ -14,8 +14,7 @@
       "require": "./lib/cjs/"
     }
   },
-  {
-    "release": {
+  "release": {
     "branches": ["main"],
     "plugins": [
         "@semantic-release/commit-analyzer",
