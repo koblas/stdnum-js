@@ -49,19 +49,13 @@ const impl: Validator = {
     if (error) {
       return { isValid: false, error };
     }
-    if (value.length !== 9) {
+    if (![8, 9].includes(value.length)) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
     if (!strings.isdigits(value)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
-
-    const sum = weightedSum(value, {
-      weights: [9, 8, 7, 6, 5, 4, 3, 2, -1],
-      modulus: 10000,
-    });
-
-    if (sum % 11 !== 0) {
+    if (!checksum(value)) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 
@@ -82,3 +76,12 @@ export const {
   format,
   compact,
 } = impl;
+
+function checksum(value: string): boolean {
+  const nineCharValue = value.padStart(9, '0');
+  const sum = weightedSum(nineCharValue, {
+    weights: [9, 8, 7, 6, 5, 4, 3, 2, -1],
+    modulus: 10000,
+  });
+  return (sum % 11 === 0);
+}
