@@ -32,4 +32,28 @@ describe('nl/bsn', () => {
 
     expect(result.error).toBeInstanceOf(InvalidChecksum);
   });
+
+  it('validate:123456782', () => {
+    const result = validate('123456782');
+
+    expect(result.isValid && result.compact).toEqual('123456782');
+  });
+
+  it('validate:40645678', () => {
+    const result = validate('40645678');
+
+    expect(result.isValid && result.compact).toEqual('40645678');
+  });
+
+  it('validate:1', () => {
+    const result = validate('1');
+
+    expect(result.error).toBeInstanceOf(InvalidLength);
+  });
+
+  it('validate:1234567', () => {
+    const result = validate('1234567');
+
+    expect(result.error).toBeInstanceOf(InvalidLength);
+  });
 });

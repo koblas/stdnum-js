@@ -17,13 +17,7 @@ import { Validator, ValidateReturn } from '../types';
 import { weightedSum } from '../util/checksum';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
-  const [value, err] = strings.cleanUnicode(input, ' -.');
-
-  if (err) {
-    return [value, err];
-  }
-
-  return [value.padStart(9, '0'), null];
+  return strings.cleanUnicode(input, ' -.');
 }
 
 const impl: Validator = {
