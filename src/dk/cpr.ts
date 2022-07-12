@@ -106,7 +106,7 @@ const impl: Validator = {
     } catch (err) {
       return {
         isValid: false,
-        error: err,
+        error: new exceptions.ValidationError(String(err)),
       };
     }
 
@@ -119,11 +119,5 @@ const impl: Validator = {
   },
 };
 
-export const {
-  name,
-  localName,
-  abbreviation,
-  validate,
-  format,
-  compact,
-} = impl;
+export const { name, localName, abbreviation, validate, format, compact } =
+  impl;
