@@ -1,7 +1,11 @@
-// The Belgian national number is a unique identifier consisting of 11 digits.
-//
-// For more information:
-// https://fr.wikipedia.org/wiki/Numéro_de_registre_national
+/**
+* The Belgian national number is a unique identifier consisting of 11 digits.
+*
+* Source
+*  https://fr.wikipedia.org/wiki/Numéro_de_registre_national
+*
+* PERSON
+*/
 
 import * as exceptions from '../exceptions';
 import { strings, isValidDateCompactYYYYMMDD } from '../util';
