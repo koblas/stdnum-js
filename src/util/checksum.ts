@@ -8,8 +8,8 @@ function sumAllDigits(value: number) {
   let sum = 0;
 
   while (localValue) {
-    sum += value % 10;
-    localValue = Math.floor(value / 10);
+    sum += localValue % 10;
+    localValue = Math.floor(localValue / 10);
   }
 
   return sum;

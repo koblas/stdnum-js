@@ -48,9 +48,21 @@ const AREA_NUMBER_OPTIONS = [
   '82',
   '89',
 ].concat([...Array(79 - 42 + 1).keys()].map(x => (x + 42).toString())); // '42'-'79'
-const BIRTH_MONTH_OPTIONS = [...Array(12).keys()].map(x =>
-  (x + 1).toLocaleString('de-DE', { minimumIntegerDigits: 2 }),
-); // '01'-'12'
+
+const BIRTH_MONTH_OPTIONS = [
+  '01',
+  '02',
+  '03',
+  '04',
+  '05',
+  '06',
+  '07',
+  '08',
+  '09',
+  '10',
+  '11',
+  '12',
+];
 
 const checkAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const checkAlphabetDict: Record<string, number> = checkAlphabet
@@ -58,7 +70,7 @@ const checkAlphabetDict: Record<string, number> = checkAlphabet
   .reduce(
     (acc, c, idx) => ({
       ...acc,
-      [c]: (idx + 1).toLocaleString('de-DE', { minimumIntegerDigits: 2 }),
+      [c]: String(idx + 1).padStart(2, '0'),
     }),
     {},
   );
