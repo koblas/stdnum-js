@@ -106,7 +106,7 @@ const impl: Validator = {
     } catch (err) {
       return {
         isValid: false,
-        error: new exceptions.ValidationError(String(err)),
+        error: new exceptions.InvalidComponent(String(err)),
       };
     }
 
