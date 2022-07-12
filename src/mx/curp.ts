@@ -244,11 +244,5 @@ export function getBirthDate(input: string): Date {
   return getBirthDateImpl(value);
 }
 
-export const {
-  name,
-  localName,
-  abbreviation,
-  validate,
-  format,
-  compact,
-} = impl;
+export const { name, localName, abbreviation, validate, format, compact } =
+  impl;

@@ -41,7 +41,7 @@ describe('be/nn', () => {
   it('validate:88022999297', () => {
     const result = validate('88022999297');
 
-    expect(result.isValid && result.compact).toEqual('88022999297')
+    expect(result.isValid && result.compact).toEqual('88022999297');
   });
 
   it('validate:85073003328', () => {
@@ -125,7 +125,7 @@ describe('be/nn', () => {
   it('validate:(unspecified date in current year)', () => {
     const yy = new Date().getFullYear() % 100;
     const baseNum = parseInt(`${yy}0000999`, 10);
-    const twoPrefixedBaseNumber = parseInt(`${2}${baseNum}`, 10)
+    const twoPrefixedBaseNumber = parseInt(`${2}${baseNum}`, 10);
     const checksum = 97 - (twoPrefixedBaseNumber % 97);
     const id = `${baseNum}${checksum}`;
 

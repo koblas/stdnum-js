@@ -13,11 +13,5 @@ const impl: Validator = {
   abbreviation: 'ЕМБГ',
 };
 
-export const {
-  name,
-  localName,
-  abbreviation,
-  validate,
-  format,
-  compact,
-} = impl;
+export const { name, localName, abbreviation, validate, format, compact } =
+  impl;

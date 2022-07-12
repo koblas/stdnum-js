@@ -20,7 +20,8 @@ import * as exceptions from '../exceptions';
 import { strings } from '../util';
 import { Validator, ValidateReturn } from '../types';
 
-const checkRe = /^[A-Z]{6}[0-9LMNPQRSTUV]{2}[ABCDEHLMPRST]{1}[0-9LMNPQRSTUV]{2}[A-Z]{1}[0-9LMNPQRSTUV]{3}[A-Z]{1}$/;
+const checkRe =
+  /^[A-Z]{6}[0-9LMNPQRSTUV]{2}[ABCDEHLMPRST]{1}[0-9LMNPQRSTUV]{2}[A-Z]{1}[0-9LMNPQRSTUV]{3}[A-Z]{1}$/;
 
 const CHECK_CODE_ODD = {
   0: 1,
@@ -162,11 +163,5 @@ const impl: Validator = {
   },
 };
 
-export const {
-  name,
-  localName,
-  abbreviation,
-  validate,
-  format,
-  compact,
-} = impl;
+export const { name, localName, abbreviation, validate, format, compact } =
+  impl;

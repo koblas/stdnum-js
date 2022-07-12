@@ -46,14 +46,22 @@ const AREA_NUMBER_OPTIONS = [
   '80',
   '81',
   '82',
-  '89'
-].concat([...Array(79 - 42 + 1).keys()].map(x => (x + 42).toString())) // '42'-'79'
-const BIRTH_MONTH_OPTIONS = [...Array(12).keys()].map(x => (x+1).toLocaleString('de-DE', { minimumIntegerDigits: 2 }))  // '01'-'12'
+  '89',
+].concat([...Array(79 - 42 + 1).keys()].map(x => (x + 42).toString())); // '42'-'79'
+const BIRTH_MONTH_OPTIONS = [...Array(12).keys()].map(x =>
+  (x + 1).toLocaleString('de-DE', { minimumIntegerDigits: 2 }),
+); // '01'-'12'
 
 const checkAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const checkAlphabetDict: Record<string, number> = checkAlphabet
   .split('')
-  .reduce((acc, c, idx) => ({ ...acc, [c]: (idx+1).toLocaleString('de-DE', { minimumIntegerDigits: 2 }) }), {});
+  .reduce(
+    (acc, c, idx) => ({
+      ...acc,
+      [c]: (idx + 1).toLocaleString('de-DE', { minimumIntegerDigits: 2 }),
+    }),
+    {},
+  );
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -./,');
@@ -111,7 +119,10 @@ const impl: Validator = {
     }
 
     const [frontWithAlpha, check] = strings.splitAt(value, 11);
-    const front = frontWithAlpha.split('').map(c => checkAlphabetDict[c] ?? c).join('')
+    const front = frontWithAlpha
+      .split('')
+      .map(c => checkAlphabetDict[c] ?? c)
+      .join('');
     const sum = weightedSum(front, {
       weights: [2, 1, 2, 5, 7, 1, 2, 1, 2, 1, 2, 1],
       modulus: 10,
@@ -119,7 +130,7 @@ const impl: Validator = {
     });
 
     if (String(sum % 10) !== check) {
-      return { isValid: false, error: new exceptions.InvalidChecksum() }
+      return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 
     return {
@@ -131,11 +142,5 @@ const impl: Validator = {
   },
 };
 
-export const {
-  name,
-  localName,
-  abbreviation,
-  validate,
-  format,
-  compact,
-} = impl;
+export const { name, localName, abbreviation, validate, format, compact } =
+  impl;

@@ -1,5 +1,9 @@
 import { validate, format } from './svnr';
-import { InvalidLength, InvalidComponent, InvalidChecksum } from '../exceptions';
+import {
+  InvalidLength,
+  InvalidComponent,
+  InvalidChecksum,
+} from '../exceptions';
 
 describe('de/svnr', () => {
   it('format:15070649C103', () => {
@@ -45,21 +49,21 @@ describe('de/svnr', () => {
     it('validate:15JU0649C102', () => {
       const result = validate('15JU0649C102');
       expect(result.error).toBeInstanceOf(InvalidComponent);
-    })
+    });
 
     it('validate:1507064CC102', () => {
       const result = validate('1507064CC102');
       expect(result.error).toBeInstanceOf(InvalidComponent);
-    })
+    });
 
     it('validate:150706499102', () => {
       const result = validate('150706499102');
       expect(result.error).toBeInstanceOf(InvalidComponent);
-    })
+    });
 
     it('validate:15070649CC03', () => {
       const result = validate('15070649CC03');
       expect(result.error).toBeInstanceOf(InvalidComponent);
-    })
-  })
+    });
+  });
 });

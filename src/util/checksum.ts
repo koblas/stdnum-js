@@ -1,4 +1,21 @@
 /**
+ * From stack overflow
+ * - Add all digits of a given number
+ * - https://stackoverflow.com/questions/38334652/sum-all-the-digits-of-a-number-javascript
+ */
+function sumAllDigits(value: number) {
+  let localValue = value;
+  let sum = 0;
+
+  while (localValue) {
+    sum += value % 10;
+    localValue = Math.floor(value / 10);
+  }
+
+  return sum;
+}
+
+/**
  * Compute the weighted sum of a string
  * @param {boolean} sumByDigit - ex) if checksum entry is 18, add 9 (sum of digits) to the sum (instead of 18).
  */
@@ -30,28 +47,12 @@ export function weightedSum(
       vv += modulus;
     }
 
-    if(sumByDigit && vv > 9) {
-      return (acc + (sumAllDigits(vv))) % modulus;
+    if (sumByDigit && vv > 9) {
+      return (acc + sumAllDigits(vv)) % modulus;
     }
 
     return (acc + vv) % modulus;
   }, 0);
-}
-
-/**
- * From stack overflow
- * - Add all digits of a given number
- * - https://stackoverflow.com/questions/38334652/sum-all-the-digits-of-a-number-javascript
- */
-function sumAllDigits(value: number) {
-  let sum = 0;
-
-  while (value) {
-    sum += value % 10;
-    value = Math.floor(value / 10);
-  }
-
-  return sum;
 }
 
 export function luhnChecksum(value: string, alphabet = '0123456789'): number {
