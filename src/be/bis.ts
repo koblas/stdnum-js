@@ -9,11 +9,19 @@
 
 import * as exceptions from '../exceptions';
 import { strings } from '../util';
-import { validStructure, validChecksum } from './personIdentifierHelpers';
+import { validStructure, validChecksum, toDateArray } from './personIdentifierHelpers';
 import { Validator, ValidateReturn } from '../types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -.');
+}
+
+function toDob(firstSix: string): string {
+  const [y, m, d] = toDateArray(firstSix).map(s => parseInt(s, 10));
+  const adjustedDateArrays = [[y, m - 20, d], [y, m - 40, d]];
+  // Allow 0 because a 0 month indicates an unknown DOB.
+  const dobArray = adjustedDateArrays.find(ada => ada[1] >= 0 && ada[1] <= 12) || [];
+  return dobArray.map(n => `${n}`.padStart(2, '0')).join('');
 }
 
 const impl: Validator = {
@@ -44,11 +52,11 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
 
-    if (!validStructure(number)) {
+    if (!validStructure(number, toDob)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
-    if (!validChecksum(number)) {
+    if (!validChecksum(number, toDob)) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 
