@@ -33,8 +33,8 @@ function getValidation(number: string): ValidateReturn {
 }
 
 const impl: Validator = {
-  name: '',
-  localName: '',
+  name: 'Belgian Social Security Identification Number',
+  localName: 'Identificatienummer van de Sociale Zekerheid',
   abbreviation: 'INSZ',
   compact(input: string): string {
     const [value, err] = clean(input);
