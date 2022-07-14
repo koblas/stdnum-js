@@ -29,9 +29,9 @@ function toDob(firstSix: string): string {
 }
 
 const impl: Validator = {
-  name: 'Belgian National Number',
-  localName: 'Numéro National',
-  abbreviation: 'NN, NISS',
+  name: 'Belgian Number for Foreigners',
+  localName: 'BIS',
+  abbreviation: 'BIS',
   compact(input: string): string {
     const [value, err] = clean(input);
 
