@@ -9,7 +9,6 @@
 * PERSON
 */
 
-import * as exceptions from '../exceptions';
 import { strings } from '../util';
 import { validate as nnValidate } from './nn';
 import { validate as bisValidate } from './bis';
@@ -17,19 +16,6 @@ import { Validator, ValidateReturn } from '../types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -.');
-}
-
-function getValidation(number: string): ValidateReturn {
-  const results = [nnValidate(number), bisValidate(number)];
-  const validResult = results.find(r => r.isValid);
-  if (validResult) return validResult;
-
-  // The only case with two different error types is an invalid checksum and an
-  // invalid format. The identifier with the checksum error had correct
-  // formatting, so invalid checksum seems like the more descriptive error.
-
-  const checksumErrorResult = results.find(r => r.error && r.error.name === 'InvalidChecksum');
-  return checksumErrorResult || results[0];
 }
 
 const impl: Validator = {
@@ -50,17 +36,16 @@ const impl: Validator = {
     return value;
   },
   validate(input: string): ValidateReturn {
-    const number = impl.compact(input);
+    const results = [nnValidate(input), bisValidate(input)];
+    const validResult = results.find(r => r.isValid);
+    if (validResult) return validResult;
 
-    if (!strings.isdigits(number) || parseInt(number, 10) <= 0) {
-      return { isValid: false, error: new exceptions.InvalidFormat() };
-    }
+    // The only case with two different error types is an invalid checksum and an
+    // invalid format. The identifier with the checksum error had correct
+    // formatting, so invalid checksum seems like the more descriptive error.
 
-    if (number.length !== 11) {
-      return { isValid: false, error: new exceptions.InvalidLength() };
-    }
-
-    return getValidation(number);
+    const checksumErrorResult = results.find(r => r.error && r.error.name === 'InvalidChecksum');
+    return checksumErrorResult || results[0];
   },
 };
 
