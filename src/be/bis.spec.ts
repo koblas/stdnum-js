@@ -95,8 +95,6 @@ describe('be/bis', () => {
     // A number with an unknown dob offset by 20, should be valid assuming 20xx
     const result = validate('01200199934');
 
-    console.log(JSON.stringify(result, null, 2));
-
     expect(result.isValid && result.compact).toEqual('01200199934');
   });
 
