@@ -1,8 +1,12 @@
 /**
-* The Belgian national number is a unique identifier consisting of 11 digits.
+* The BIS (Belgian Number for Foreigners) is an identifier for individuals such
+* as cross-border workers who do not have a Belgian National Number. It has the
+* same format as the Belgian National Number, but the month digits are increased
+* by 40 if the sex of the person was known when the number was assigned and by
+* 20 if not.
 *
 * Source
-*  https://fr.wikipedia.org/wiki/Numéro_de_registre_national
+*  https://fr.wikipedia.org/wiki/Numéro_de_registre_national (Numéro de sécurité sociale)
 *
 * PERSON
 */
