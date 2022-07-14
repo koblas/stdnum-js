@@ -19,7 +19,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 const impl: Validator = {
   name: 'Belgian National Number',
   localName: 'Numéro National',
-  abbreviation: 'NN, NISS',
+  abbreviation: 'NN, RN',
   compact(input: string): string {
     const [value, err] = clean(input);
 
