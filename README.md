@@ -46,6 +46,7 @@ All country validators are in the "namespace" of the ISO country code.
 | Bosnia and Herzegovina | BA   | JMBG            | Person             | Unique Master Citizen Number                                                        |
 | Belize                 | BZ   | TIN             | Person/Company     | Brazilian Tax ID ()                                                                 |
 | Belgium                | BE   | BIS             | Person             | Belgian Number for Foreigners                                                       |
+| Belgium                | BE   | INSZ            | Person             | Belgian Social Security Identification Number                                       |
 | Belgium                | BE   | NN              | Person             | Belgian National Number (Numéro National)                                           |
 | Belgium                | BE   | VAT             | Company            | Belgian Enterprise Number                                                           |
 | Bulgaria               | BG   | EGN             | Person             | ЕГН, Единен граждански номер, Bulgarian personal identity codes                     |
