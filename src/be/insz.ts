@@ -21,7 +21,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 const impl: Validator = {
   name: 'Belgian Social Security Identification Number',
   localName: 'Identificatienummer van de Sociale Zekerheid',
-  abbreviation: 'INSZ',
+  abbreviation: 'INSZ, NISS',
   compact(input: string): string {
     const [value, err] = clean(input);
 
