@@ -178,7 +178,7 @@ export const personValidators: Record<string, Validator[]> = {
   AU: [AU.tfn],
   AZ: [AZ.pin, AZ.tin],
   BA: [BA.jmbg],
-  BE: [BE.nn],
+  BE: [BE.bis, BE.insz, BE.nn],
   BG: [BG.egn, BG.pnf, BG.vat],
   BR: [BR.cpf],
   BY: [BY.unp],

@@ -45,7 +45,9 @@ All country validators are in the "namespace" of the ISO country code.
 | Australia              | AU   | TFN             | Tax/Person/Company | Australian Tax File Number                                                          |
 | Bosnia and Herzegovina | BA   | JMBG            | Person             | Unique Master Citizen Number                                                        |
 | Belize                 | BZ   | TIN             | Person/Company     | Brazilian Tax ID ()                                                                 |
-| Belgium                | BE   | NN              | Person             | Belgian National Number (Numéro National)
+| Belgium                | BE   | BIS             | Person             | Belgian Number for Foreigners                                                       |
+| Belgium                | BE   | INSZ, NISS      | Person             | Belgian Social Security Identification Number (Identificatienummer van de Sociale Zekerheid, Numéro d'Identification Sécurité Sociale) |
+| Belgium                | BE   | NN              | Person             | Belgian National Number (Numéro National)                                           |
 | Belgium                | BE   | VAT             | Company            | Belgian Enterprise Number                                                           |
 | Bulgaria               | BG   | EGN             | Person             | ЕГН, Единен граждански номер, Bulgarian personal identity codes                     |
 | Bulgaria               | BG   | PNF             | Person             | PNF (ЛНЧ, Личен номер на чужденец, Bulgarian number of a foreigner).                |
