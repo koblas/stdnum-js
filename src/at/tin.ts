@@ -121,7 +121,7 @@ const impl: Validator = {
         0,
       );
 
-    const digit = String(10 - (sum % 10));
+    const digit = String((10 - (sum % 10)) % 10);
 
     if (check !== digit) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
