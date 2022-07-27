@@ -1,5 +1,5 @@
 import { validate, format } from './stnr';
-import { InvalidComponent, InvalidLength } from '../exceptions';
+import { InvalidComponent, InvalidFormat, InvalidLength } from '../exceptions';
 
 describe('de/stnr', () => {
   it('format:18181508155', () => {
@@ -48,6 +48,12 @@ describe('de/stnr', () => {
     const result = validate('1234567890');
 
     expect(result.error).toBeInstanceOf(InvalidComponent);
+  });
+
+  it('validate:0472480661811', () => {
+    const result = validate('0472480661811');
+
+    expect(result.error).toBeInstanceOf(InvalidFormat);
   });
 
   // Test coverage from
