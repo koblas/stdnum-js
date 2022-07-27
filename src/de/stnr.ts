@@ -153,6 +153,11 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
+    // Make sure it's the same as a region
+    if (findMatch(value) === null) {
+      return { isValid: false, error: new exceptions.InvalidFormat() };
+    }
+
     // In the first 10 digits exactly one digit must be repeated two or
     // three times and other digits can appear only once.
     // Starting at 2017, the rule is, that within the first ten digits one number has to
