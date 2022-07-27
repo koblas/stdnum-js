@@ -67,7 +67,7 @@ const impl: Validator = {
 
     const [front, sum] = strings.splitAt(value, -2);
 
-    if (String(97 - (parseInt(front, 10) % 97)) !== sum) {
+    if (97 - (parseInt(front, 10) % 97) !== parseInt(sum, 10)) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 
