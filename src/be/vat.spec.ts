@@ -26,6 +26,12 @@ describe('be/vat', () => {
     expect(result.isValid && result.compact).toEqual('0428759497');
   });
 
+  it('validate:BE 0417497106', () => {
+    const result = validate('BE 0417497106');
+
+    expect(result.isValid && result.compact).toEqual('0417497106');
+  });
+
   it('validate:12345678', () => {
     const result = validate('12345678');
 
