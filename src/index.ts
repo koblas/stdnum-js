@@ -199,7 +199,7 @@ export const personValidators: Record<string, Validator[]> = {
   ES: [ES.dni, ES.nie],
   FI: [FI.hetu],
   FR: [FR.nif, FR.nir],
-  GB: [GB.utr],
+  GB: [GB.nino, GB.utr],
   GR: [GR.amka],
   GT: [GT.cui],
   HK: [HK.hkid],

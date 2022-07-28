@@ -91,8 +91,9 @@ All country validators are in the "namespace" of the ISO country code.
 | Finland                | FI   | HETU            | Person             | HETU (Henkilötunnus, Finnish personal identity code)                                |
 | Finland                | FI   | YTUNNUS         | Company            | Y-tunnus (Finnish business identifier)                                              |
 | France                 | FR   | NIF             | Person             | NIF (Numéro d'Immatriculation Fiscale, French tax identification number)            |
-| Great Brittan          | GB   | UTR             | Person             | UTR (United Kingdom Unique Taxpayer Reference)                                      |
-| Great Brittan          | GB   | VAT             | Company            | VAT (United Kingdom (and Isle of Man) VAT registration number)                      |
+| Great Britain          | GB   | NINO            | Person             | NINO (United Kingdom National Insurance Number)                                      |
+| Great Britain          | GB   | UTR             | Person             | UTR (United Kingdom Unique Taxpayer Reference)                                      |
+| Great Britain          | GB   | VAT             | Company            | VAT (United Kingdom (and Isle of Man) VAT registration number)                      |
 | Greece                 | GR   | AMKA            | Company            | AMKA (Αριθμός Μητρώου Κοινωνικής Ασφάλισης, Greek social security number)           |
 | Greece                 | GR   | VAT             | Company            | FPA, ΦΠΑ, ΑΦΜ (Αριθμός Φορολογικού Μητρώου, the Greek VAT number)                   |
 | France                 | FR   | NIR             | Person             | NIR (French personal identification number)                                         |
