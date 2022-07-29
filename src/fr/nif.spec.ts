@@ -1,5 +1,5 @@
 import { validate, format } from './nif';
-import { InvalidLength } from '../exceptions';
+import { InvalidChecksum, InvalidLength } from '../exceptions';
 
 describe('fr/nif', () => {
   it('format:0701987765432', () => {
@@ -11,7 +11,7 @@ describe('fr/nif', () => {
   it('validate:0701987765432', () => {
     const result = validate('0701987765432');
 
-    expect(result.isValid && result.compact).toEqual('0701987765432');
+    expect(result.error).toBeInstanceOf(InvalidChecksum);
   });
 
   it('validate:12345678', () => {
@@ -19,4 +19,8 @@ describe('fr/nif', () => {
 
     expect(result.error).toBeInstanceOf(InvalidLength);
   });
+
+  it.each(['0701987765493', '30 23 217 600 053'])('validate:%s', input =>
+    expect(validate(input).isValid).toBeTruthy(),
+  );
 });

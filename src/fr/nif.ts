@@ -50,8 +50,18 @@ const impl: Validator = {
     if (value.length !== 13) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
-    if (!strings.isdigits(value)) {
+    const startsWithOneOf0123 = [0, 1, 2, 3].includes(
+      Number.parseInt(value[0], 10),
+    );
+    if (!strings.isdigits(value) || !startsWithOneOf0123) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
+    }
+
+    const front = value.substring(0, value.length - 3);
+    const sum = value.substring(value.length - 3);
+    const checksumValid = parseInt(front, 10) % 511 === parseInt(sum, 10);
+    if (!checksumValid) {
+      return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 
     return {
