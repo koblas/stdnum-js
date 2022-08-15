@@ -72,8 +72,9 @@ function validLength(value: string): boolean {
   return [8, 9].includes(value.length);
 }
 
+const VALID_FORMAT_REGEX = /^([A-Z]{2})\d{6}[A-D]?$/;
+
 function validFormat(value: string): boolean {
-  const matchData = value.toUpperCase().match(/^([A-Z]{2})\d{6}[A-D]?$/);
-  if (!matchData) return false;
-  return PREFIXES.has(matchData[1]);
+  const matchData = value.toUpperCase().match(VALID_FORMAT_REGEX);
+  return !!matchData && PREFIXES.has(matchData[1]);
 }
