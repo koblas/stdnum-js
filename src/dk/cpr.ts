@@ -38,17 +38,19 @@ export function getBirthDate(value: string): Date {
   } else {
     year += 2000;
   }
-  const date = new Date(year, month, day);
+  const date = new Date(year, month - 1, day);
   if (
     Number.isNaN(date.getTime()) ||
-    [year, month, day].join('-') !== date.toISOString().substr(0, 10)
+    [year, String(month).padStart(2, '0'), String(day).padStart(2, '0')].join(
+      '-',
+    ) !== date.toISOString().substr(0, 10)
   ) {
     throw new exceptions.InvalidComponent(
       'The number does not contain valid birth date information.',
     );
   }
 
-  return new Date(year, month, day);
+  return date;
 }
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {

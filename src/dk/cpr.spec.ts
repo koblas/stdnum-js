@@ -8,10 +8,16 @@ describe('dk/cpr', () => {
     expect(result).toEqual('211062-5629');
   });
 
-  it('getBirthDate("2110620629")', () => {
+  it('getBirthDate("511062-0629")', () => {
     expect(() => {
-      getBirthDate('2110620629');
+      getBirthDate('511062-0629');
     }).toThrow(InvalidComponent);
+  });
+
+  it('getBirthDate("010180-1234")', () => {
+    const result = validate('010180-1234');
+
+    expect(result.isValid).toEqual(true);
   });
 
   it('validate wrong date', () => {
