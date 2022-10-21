@@ -124,7 +124,7 @@ export function luhnChecksumDigit(
 ): string {
   const cs = luhnChecksumValue(`${value}${alphabet[0]}`);
 
-  return alphabet[alphabet.length - cs];
+  return alphabet[(alphabet.length - cs) % alphabet.length];
 }
 
 /*

@@ -8,11 +8,14 @@ describe('es/cif', () => {
     expect(result).toEqual('J-9921658-2');
   });
 
-  it('validate:J99216582', () => {
-    const result = validate('J99216582');
+  it.each(['J99216582', 'B86670460', 'Q2876031B', 'N0112768G', 'W8265365J'])(
+      'validate:%s',
+      (cif: string) => {
+        const result = validate(cif);
 
-    expect(result.isValid && result.compact).toEqual('J99216582');
-  });
+        expect(result.isValid && result.compact).toEqual(cif);
+      },
+  );
 
   it('validate:X13585626', () => {
     const result = validate('X13585626');

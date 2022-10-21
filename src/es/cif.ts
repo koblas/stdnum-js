@@ -16,7 +16,8 @@ import { strings } from '../util';
 import { Validator, ValidateReturn } from '../types';
 import { luhnChecksumDigit } from '../util/checksum';
 
-const checkDigits = 'ABCDEFGHJNPQRSUVW';
+const entityTypes = 'ABCDEFGHJNPQRSUVW';
+const letterCheckDigits = 'JABCDEFGHI';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -');
@@ -56,17 +57,17 @@ const impl: Validator = {
 
     if (
       !strings.isdigits(body) ||
-      !checkDigits.includes(first) ||
-      !strings.isdigits(check)
+      !entityTypes.includes(first) ||
+      !(strings.isdigits(check) || letterCheckDigits.includes(check))
     ) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
     const cs = parseInt(luhnChecksumDigit(body), 10);
-    // Two sysstem of check digits
-    const digits = 'JABCDEFGHI'[cs] + String(cs);
+    // Two systems of check digits
+    const possibleCheckDigits = letterCheckDigits[cs] + String(cs);
 
-    if (!digits.includes(check)) {
+    if (!possibleCheckDigits.includes(check)) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 
