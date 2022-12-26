@@ -88,7 +88,7 @@ const impl: Validator = {
         weights: [8, 7, 6, 5, 4, 3, 2, 10, 1],
         modulus: 97,
       });
-      if (value[0] === '0') {
+      if (Number(value.substring(0, 3)) >= 100) {
         if (![0, 42, 55].includes(sum)) {
           return { isValid: false, error: new exceptions.InvalidChecksum() };
         }

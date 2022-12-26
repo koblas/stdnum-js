@@ -25,4 +25,16 @@ describe('gb/vat', () => {
 
     expect(result.error).toBeInstanceOf(InvalidChecksum);
   });
+
+  it('validate:GB340804329', () => {
+    const result = validate('GB340804329');
+
+    expect(result.isValid && result.compact).toEqual('340804329');
+  });
+
+  it('validate:GB346270013', () => {
+    const result = validate('GB346270013');
+
+    expect(result.isValid && result.compact).toEqual('346270013');
+  });
 });
