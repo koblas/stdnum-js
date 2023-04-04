@@ -56,11 +56,11 @@ const impl: Validator = {
     const [front, check] = strings.splitAt(value, -2);
 
     const sum1 =
-      10 -
-      weightedSum(front, {
-        weights: [3, 1],
-        modulus: 10,
-      });
+      (10 -
+        weightedSum(front, {
+          weights: [3, 1],
+          modulus: 10,
+        })) % 10;
     const sum2 =
       (sum1 +
         weightedSum(front, {

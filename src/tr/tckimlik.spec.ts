@@ -25,4 +25,16 @@ describe('tr/tckimlik', () => {
 
     expect(result.error).toBeInstanceOf(InvalidChecksum);
   });
+
+  it('validate:64211142102', () => {
+    const result = validate('64211142102');
+
+    expect(result.isValid && result.compact).toEqual('64211142102');
+  });
+
+  it('validate:62345678900', () => {
+    const result = validate('62345678900');
+
+    expect(result.isValid && result.compact).toEqual('62345678900');
+  })
 });
