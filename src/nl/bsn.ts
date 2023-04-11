@@ -27,9 +27,9 @@ function checksum(value: string): boolean {
   const nineCharValue = value.padStart(9, '0');
   const sum = weightedSum(nineCharValue, {
     weights: [9, 8, 7, 6, 5, 4, 3, 2, -1],
-    modulus: 10000,
+    modulus: 11,
   });
-  return sum % 11 === 0;
+  return sum === 0;
 }
 
 const impl: Validator = {
