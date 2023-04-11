@@ -22,7 +22,7 @@ function sumAllDigits(value: number) {
 export function weightedSum(
   value: string,
   {
-    alphabet = '0123456789',
+    alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ',
     reverse = false,
     weights = [1],
     modulus = 0,
