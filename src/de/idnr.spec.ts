@@ -8,6 +8,12 @@ describe('de/idnr', () => {
     expect(result).toEqual('36 574 261 809');
   });
 
+  test.each(['36574261809'])('validate:%s', value => {
+    const result = validate(value);
+
+    expect(result.isValid && result.compact).toEqual(value);
+  });
+
   it('validate:36 574 261 809', () => {
     const result = validate('36 574 261 809');
 
