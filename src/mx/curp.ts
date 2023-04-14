@@ -190,7 +190,7 @@ const impl: Validator = {
     if (nameBlacklist.has(value.substr(0, 4))) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
-    if (!['H', 'M'].includes(value[10])) {
+    if (!['H', 'M', 'X'].includes(value[10])) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
     if (!validStates.has(value.substr(11, 2))) {
@@ -232,10 +232,21 @@ function getBirthDateImpl(value: string) {
   return new Date(yyN + 2000, mmN, ddN);
 }
 
-export function getGender(input: string): 'M' | 'F' {
-  const value = impl.compact(input);
+///
+// Convert the gender value into English values
+//  CURP H = Hombre => Male (M)
+//  CURP M = Mujer  => Female (F)
+//  CURP X = gender neutral (X)
+//
+export function getGender(input: string): 'M' | 'F' | 'X' {
+  const value = impl.compact(input)[10];
 
-  return value[10] === 'H' ? 'M' : 'F';
+  if (value === 'X') {
+    return 'X';
+  } else if (value === 'H') {
+    return 'M';
+  }
+  return 'F';
 }
 
 export function getBirthDate(input: string): Date {
