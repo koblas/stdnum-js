@@ -18,6 +18,8 @@ import * as exceptions from '../exceptions';
 import { strings, isValidDateCompactYYMMDD, weightedSum } from '../util';
 import { Validator, ValidateReturn } from '../types';
 
+const oldRegex = /^([0-9CFGHJKLMNPRTVWXYZ]{9})([0-9])[A-Z]?$/;
+
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   const [value, err] = strings.cleanUnicode(input, ' -./,');
 
@@ -26,13 +28,126 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   }
 
   // Old format IDs had the national code at position 11 new format has them at 24
-  if (/[A-Z]/.test(value[10])) {
+  if (value.length >= 25 && /[A-Z]/.test(value[10])) {
     const [p1, p2, p3, p4] = strings.splitAt(value, 10, 11, 25);
 
     return [p1 + p3 + p2 + p4, err];
   }
 
   return [value, err];
+}
+
+export function validateIssue(value: string): ValidateReturn {
+  const match = value.match(oldRegex);
+  if (!match) {
+    return { isValid: false, error: new exceptions.InvalidFormat() };
+  }
+
+  const [issue, issueCheck] = [match[1], match[2]];
+
+  const issueSum = weightedSum(issue, {
+    weights: [7, 3, 1],
+    modulus: 10,
+  });
+
+  if (String(issueSum) !== issueCheck) {
+    return {
+      isValid: false,
+      error: new exceptions.InvalidChecksum('issue.checksum'),
+    };
+  }
+
+  return {
+    isValid: true,
+    compact: value,
+    isIndividual: true,
+    isCompany: false,
+  };
+}
+
+export function validateNew(value: string): ValidateReturn {
+  if (
+    !/^[0-9CFGHJKLMNPRTVWXYZ][0-9CFGHJKLMNPRTVWXYZ]+[A-Z][0-9]$/.test(value)
+  ) {
+    return { isValid: false, error: new exceptions.InvalidFormat() };
+  }
+
+  const [
+    issue,
+    issueCheck,
+    birth,
+    birthCheck,
+    expiry,
+    expiryCheck,
+    nationality,
+    checksum,
+  ] = strings.splitAt(value, 9, 10, 16, 17, 23, 24, 25);
+
+  if (!isValidDateCompactYYMMDD(birth)) {
+    return {
+      isValid: false,
+      error: new exceptions.InvalidComponent('birthdate'),
+    };
+  }
+  if (!isValidDateCompactYYMMDD(expiry)) {
+    return {
+      isValid: false,
+      error: new exceptions.InvalidComponent('expiry'),
+    };
+  }
+  if (!/^[A-Z]$/.test(nationality)) {
+    return {
+      isValid: false,
+      error: new exceptions.InvalidComponent('nationality'),
+    };
+  }
+
+  // The hope is that the issue information grows better
+  // checks over time and should be a shared function
+  const res = validateIssue(issue + issueCheck);
+  if (res.isValid === false) {
+    return res;
+  }
+
+  const birthSum = weightedSum(birth, {
+    weights: [7, 3, 1],
+    modulus: 10,
+  });
+  const expirySum = weightedSum(expiry, {
+    weights: [7, 3, 1],
+    modulus: 10,
+  });
+  if (String(birthSum) !== birthCheck) {
+    return {
+      isValid: false,
+      error: new exceptions.InvalidChecksum('birth.checksum'),
+    };
+  }
+
+  if (String(expirySum) !== expiryCheck) {
+    return {
+      isValid: false,
+      error: new exceptions.InvalidChecksum('expiry.checksum'),
+    };
+  }
+
+  const sum = weightedSum(value.substring(0, 24), {
+    weights: [7, 3, 1],
+    modulus: 10,
+  });
+  if (String(sum) !== checksum) {
+    return {
+      isValid: false,
+      error: new exceptions.InvalidChecksum('checksum'),
+    };
+  }
+
+  return {
+    isValid: true,
+    compact: value,
+    isIndividual: true,
+    isCompany: false,
+  };
 }
 
 const impl: Validator = {
@@ -61,95 +176,13 @@ const impl: Validator = {
     if (error) {
       return { isValid: false, error };
     }
-    if (value.length !== 26) {
+    if (value.length === 26) {
+      return validateNew(value);
+    } else if (value.length === 10 || value.length === 11) {
+      return validateIssue(value);
+    } else {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
-    if (!/^[CFGHJKLMNPRTVWXYZ][0-9CFGHJKLMNPRTVWXYZ]+[0-9]$/) {
-      return { isValid: false, error: new exceptions.InvalidFormat() };
-    }
-
-    const [
-      issue,
-      issueCheck,
-      birth,
-      birthCheck,
-      expiry,
-      expiryCheck,
-      nationality,
-      checksum,
-    ] = strings.splitAt(value, 9, 10, 16, 17, 23, 24, 25);
-
-    console.log('GOT', value, issue, birth, expiry);
-
-    if (!isValidDateCompactYYMMDD(birth)) {
-      return {
-        isValid: false,
-        error: new exceptions.InvalidComponent('birthdate'),
-      };
-    }
-    if (!isValidDateCompactYYMMDD(expiry)) {
-      return {
-        isValid: false,
-        error: new exceptions.InvalidComponent('expiry'),
-      };
-    }
-    if (!/^[A-Z]$/.test(nationality)) {
-      return {
-        isValid: false,
-        error: new exceptions.InvalidComponent('nationality'),
-      };
-    }
-
-    const issueSum = weightedSum(issue, {
-      weights: [7, 3, 1],
-      modulus: 10,
-    });
-    const birthSum = weightedSum(birth, {
-      weights: [7, 3, 1],
-      modulus: 10,
-    });
-    const expirySum = weightedSum(expiry, {
-      weights: [7, 3, 1],
-      modulus: 10,
-    });
-    console.log('ISSUE', issue, issueSum, issueCheck);
-    if (String(issueSum) !== issueCheck) {
-      return {
-        isValid: false,
-        error: new exceptions.InvalidChecksum('issue.checksum'),
-      };
-    }
-    if (String(birthSum) !== birthCheck) {
-      return {
-        isValid: false,
-        error: new exceptions.InvalidChecksum('birth.checksum'),
-      };
-    }
-
-    if (String(expirySum) !== expiryCheck) {
-      return {
-        isValid: false,
-        error: new exceptions.InvalidChecksum('expiry.checksum'),
-      };
-    }
-
-    const sum = weightedSum(value.substring(0, 24), {
-      weights: [7, 3, 1],
-      modulus: 10,
-    });
-    if (String(sum) !== checksum) {
-      return {
-        isValid: false,
-        error: new exceptions.InvalidChecksum('checksum'),
-      };
-    }
-
-    return {
-      isValid: true,
-      compact: value,
-      isIndividual: true,
-      isCompany: false,
-    };
   },
 };
 

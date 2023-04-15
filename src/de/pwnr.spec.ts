@@ -16,8 +16,24 @@ describe('de/pwnr', () => {
 
   test.each([
     '240605568468102030705109D6',
+    '2406055684-6810203-0705109-D-6',
     'T22000129364081252010315D4',
     '1220001297D640812517103198',
+    '1220001297D640812517103198',
+    '1220001297D 6408125 1710319 8',
+  ])('validate:%s', value => {
+    const result = validate(value);
+
+    expect(result.isValid).toEqual(true);
+  });
+
+  test.each([
+    '2406055684',
+    '2406055684d',
+    '2406055684D',
+    'T220001293D',
+    'T220001293',
+    'L01X00T471',
   ])('validate:%s', value => {
     const result = validate(value);
 
