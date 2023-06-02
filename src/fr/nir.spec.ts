@@ -8,6 +8,14 @@ describe('fr/nir', () => {
     expect(result).toEqual('2 95 10 99 126 111 93');
   });
 
+  test.each(['186022A21532523', '2 95 10 99 126 111 93'])(
+    'validate-list:%s',
+    value => {
+      const result = validate(value);
+      expect(result.isValid).toEqual(true);
+    },
+  );
+
   it('validate:2 95 10 99 126 111 93', () => {
     const result = validate('2 95 10 99 126 111 93');
 

@@ -70,9 +70,9 @@ const impl: Validator = {
     }
     let add = '';
     if (dept === '2A') {
-      add = '18';
-    } else if (dept === '2B') {
       add = '19';
+    } else if (dept === '2B') {
+      add = '18';
     } else if (strings.isdigits(dept)) {
       add = dept;
     } else {
