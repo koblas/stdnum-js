@@ -54,6 +54,13 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
+    const [prefix, check] = strings.splitAt(value, 10);
+    const pvalue = parseInt(prefix, 10);
+
+    if (String(pvalue % 511).padStart(3, '0') !== check) {
+      return { isValid: false, error: new exceptions.InvalidChecksum() };
+    }
+
     return {
       isValid: true,
       compact: value,
