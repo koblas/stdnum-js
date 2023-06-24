@@ -8,16 +8,16 @@ describe('fr/nif', () => {
     expect(result).toEqual('07 01 987 765 432');
   });
 
-  it('validate:3023217600053', () => {
-    const result = validate('302 321 7600 053');
+  test.each(['3023217600053', '0701987765493'])('validate:%s', value => {
+    const result = validate(value);
 
-    expect(result.isValid && result.compact).toEqual('3023217600053');
+    expect(result.isValid && result.compact).toEqual(value);
   });
 
-  it('validate:0701987765432', () => {
-    const result = validate('0701987765493');
+  test.each(['0000000000000'])('validate:%s', value => {
+    const result = validate(value);
 
-    expect(result.isValid && result.compact).toEqual('0701987765493');
+    expect(result.isValid).toEqual(false);
   });
 
   it('validate:12345678', () => {
