@@ -16,6 +16,9 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.test }}
+
 
     steps:
     - name: Checkout
@@ -42,3 +45,22 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
       run: npx semantic-release
+    - name: Get Version
+      id: version
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      run: echo "version=$(npx semantic-release --version)" >> "$GITHUB_OUTPUT"
+    - name: GitHub Release update
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        # body_path: ${{ github.workspace }}-CHANGELOG.txt
+        # note you'll typically need to create a personal access token
+        # with permissions to create releases in the other repoj
+        #token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
+        files: |
+          LICENSE.md
+          README.md
+          lib
+          package.json

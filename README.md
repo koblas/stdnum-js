@@ -178,6 +178,7 @@ All country validators are in the "namespace" of the ISO country code.
 | Spain                  | ES   | DNI             | Person             | Identity code (Documento Nacional de Identidad)                                                                                        |
 | Spain                  | ES   | NIE             | Person             | Identity code foreigner (Número de Identificación de Extranjero)                                                                       |
 | Spain                  | ES   | NIF             | Tax                | Tax Identifier (Número de Identificación Fiscal)                                                                                       |
+| Spain                  | ES   | NSS             | Person             | El número de Seguridad Social, Social Security Number                                                                                  |
 | Uruguay                | UY   | RUT             | Tax/Vat            | Tax Identifier (Registro Único Tributario)                                                                                             |
 | Uruguay                | UY   | CEDULA          | Person             | Person Identifier (Cédula de Residencia)                                                                                               |
 | Uruguay                | UY   | NIE             | Person             | ForeignersI identification Number                                                                                                      |
