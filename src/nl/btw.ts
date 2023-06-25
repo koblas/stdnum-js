@@ -75,7 +75,7 @@ const impl: Validator = {
 
     const sum = weightedSum(a, {
       weights: [9, 8, 7, 6, 5, 4, 3, 2, -1],
-      modulus: 10000,
+      modulus: 11,
     });
 
     if (sum % 11 !== 0 && !mod97base10Validate(`NL${a}${b}${c}`)) {
