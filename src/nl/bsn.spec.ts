@@ -8,6 +8,15 @@ describe('nl/bsn', () => {
     expect(result).toEqual('1112.22.333');
   });
 
+  test.each([
+    '001855013', // RSIN
+    '1112.22.333', // BSN
+  ])('isValid', value => {
+    const result = validate(value);
+
+    expect(result.isValid).toEqual(true);
+  });
+
   it('validate:1112.22.333', () => {
     const result = validate('1112.22.333');
 
