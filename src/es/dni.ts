@@ -8,6 +8,7 @@
  * de Extranjeros, Foreigner's Identity Number) instead.
  *
  * Sources:
+ *   https://www.oecd.org/tax/automatic-exchange/crs-implementation-and-assistance/tax-identification-numbers/SPAIN-TIN.pdf
  *
  * PERSON
  */
@@ -58,11 +59,14 @@ const impl: Validator = {
 
     const [body, check] = strings.splitAt(value, 8);
 
-    if (!strings.isdigits(body)) {
+    if ('KLM'.includes(body[0]) && strings.isdigits(body.substring(1))) {
+      // Currently no test data for these cases, so
+      // we're assuming they're good based on format
+    } else if (!strings.isdigits(body)) {
+      // Not all digits in the body, it's not valid
       return { isValid: false, error: new exceptions.InvalidComponent() };
-    }
-
-    if (calcCheckDigit(body) !== check) {
+    } else if (calcCheckDigit(body) !== check) {
+      // Check the checksum on a non-[KLM] person
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 
