@@ -167,6 +167,7 @@ All country validators are in the "namespace" of the ISO country code.
 | Sweden                 | SE   | VAT             | Vat                | VAT (Moms, Mervärdesskatt, Swedish VAT number)                                                                                         |
 | Singapore              | SG   | UEN             | Company            | Singapore's Unique Entity Number                                                                                                       |
 | Thailand               | TH   | IDNR            | Person             | Thai National ID (บัตรประจำตัวประชาชนไทย)                                                                                              |
+| Taiwan                 | TW   | BAN             | Company            | Taiwanese Unified Business Number (統一編號)                                                                                           |
 | Taiwan                 | TW   | NATID           | Person             | National ID Card Number                                                                                                                |
 | Taiwan                 | TW   | TAX_CODE        | Person             | Tax Code                                                                                                                               |
 | Taiwan                 | TW   | UBN             | Company            | Unified Business Number, 統一編號, Taiwanese tax number                                                                                |
