@@ -21,8 +21,8 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
-  name: 'Taiwanese Unified Business Number',
-  localName: '統一編號',
+  name: 'Taiwanese Business Administration Number',
+  localName: '',
   abbreviation: 'UBN',
 
   compact(input: string): string {

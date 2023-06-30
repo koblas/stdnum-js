@@ -159,7 +159,7 @@ All country validators are in the "namespace" of the ISO country code.
 | Romania                | RO   | CNP             | Person             | Cod Numeric Personal, Romanian Numerical Personal Code)                                                                                |
 | Romania                | RO   | CUI             | Tax                | Codul Unic de Înregistrare, Romanian company identifier                                                                                |
 | Romania                | RO   | ONRC            | Company            | Ordine din Registrul Comerţului, Romanian Trade Register identifier                                                                    |
-| San Marcos             | SM   | COE             | Company            | Codice operatore economico, San Marino national tax number                                                                             |
+| San Marino             | SM   | COE             | Company            | Codice operatore economico, San Marino national tax number                                                                             |
 | Serbia                 | RS   | PIB             | Vat                | Poreski identifikacioni broj Tax identification number                                                                                 |
 | Serbia                 | RS   | JMBG            | Person             | Unique Master Citizen Number (Jedinstveni matični broj građana)                                                                        |
 | Sweden                 | SE   | ORGNR           | Company            | Organisationsnummer, Swedish company number                                                                                            |
@@ -167,7 +167,10 @@ All country validators are in the "namespace" of the ISO country code.
 | Sweden                 | SE   | VAT             | Vat                | VAT (Moms, Mervärdesskatt, Swedish VAT number)                                                                                         |
 | Singapore              | SG   | UEN             | Company            | Singapore's Unique Entity Number                                                                                                       |
 | Thailand               | TH   | IDNR            | Person             | Thai National ID (บัตรประจำตัวประชาชนไทย)                                                                                              |
+| Taiwan                 | TW   | NATID           | Person             | National ID Card Number                                                                                                                |
+| Taiwan                 | TW   | TAX_CODE        | Person             | Tax Code                                                                                                                               |
 | Taiwan                 | TW   | UBN             | Company            | Unified Business Number, 統一編號, Taiwanese tax number                                                                                |
+| Taiwan                 | TW   | UI              | Person             | UI Number                                                                                                                              |
 | Turkey                 | TR   | TCKIMLIK        | Person             | Türkiye Cumhuriyeti Kimlik Numarası (Personal ID)                                                                                      |
 | Turkey                 | TR   | VKN             | Tax                | Vergi Kimlik Numarası, Turkish tax identification number                                                                               |
 | Slovenia               | SI   | DDV             | Vat                | ID za DDV (Davčna številka, Slovenian VAT number)                                                                                      |
