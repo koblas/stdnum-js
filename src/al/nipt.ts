@@ -14,7 +14,7 @@
 
 import * as exceptions from '../exceptions';
 import { ValidateReturn, Validator } from '../types';
-import { strings } from '../util';
+import { strings, isValidDate } from '../util';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   // eslint-disable-next-line prefer-const
@@ -68,9 +68,36 @@ const impl: Validator = {
     if (value.length !== 10) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
-    if (!/^[JKL]\d{8}[A-Z]$/.test(value)) {
+    if (!/^[A-M]\d{8}[A-Z]$/.test(value)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
+    const [ccode, ydigit, month_district, day, _, check] = strings.splitAt(
+      value,
+      1,
+      2,
+      4,
+      6,
+      9,
+    );
+    const month = ((parseInt(month_district, 10) - 1) % 12) + 1;
+    const yearVal = ccode.charCodeAt(0) - 65;
+    const year = 1900 + yearVal * 10 + parseInt(ydigit, 10);
+    if (!isValidDate(String(year), String(month), day)) {
+      return { isValid: false, error: new exceptions.InvalidComponent() };
+    }
+    if (!/^[A-Z]$/.test(check)) {
+      return { isValid: false, error: new exceptions.InvalidComponent() };
+    }
+
+    // TODO: check calculation is not understood
+    // const sumValue = `${yearVal}${value.substring(1, 9)}`;
+    // const checkValue = check.charCodeAt(0) - 65;
+
+    // const sum = weightedSum(sumValue, { weights: [1], modulus: 26 });
+    // console.log(value, sumValue, sum, checkValue);
+    // if (sum !== checkValue) {
+    //   return { isValid: false, error: new exceptions.InvalidChecksum() };
+    // }
 
     return {
       isValid: true,

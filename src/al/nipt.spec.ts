@@ -8,6 +8,15 @@ describe('al/nibt', () => {
     expect(result).toEqual('J91402501L');
   });
 
+  test.each(['I05101999Q', 'K52224002A', 'L42307014K'])(
+    'validate:%s',
+    value => {
+      const result = validate(value);
+
+      expect(result.isValid).toEqual(true);
+    },
+  );
+
   it('validate:AL J 91402501 L', () => {
     const result = validate('AL J 91402501 L');
 
