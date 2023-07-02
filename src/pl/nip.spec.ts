@@ -14,6 +14,12 @@ describe('pl/nip', () => {
     expect(result.isValid && result.compact).toEqual('8567346215');
   });
 
+  it('validate:0000002000', () => {
+    const result = validate('0000002000');
+
+    expect(result.error).toBeInstanceOf(InvalidChecksum);
+  });
+
   it('validate:12345678', () => {
     const result = validate('12345678');
 

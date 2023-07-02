@@ -5,6 +5,7 @@
  * a straightforward weighted checksum.
  *
  * Source
+ *   https://www.oecd.org/tax/automatic-exchange/crs-implementation-and-assistance/tax-identification-numbers/Poland-TIN.pdf
  *
  * ENTITY
  */
