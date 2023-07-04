@@ -79,7 +79,12 @@ const impl: Validator = {
           modulus: 11,
         }) !== 0
       ) {
-        return { isValid: false, error: new exceptions.InvalidChecksum() };
+        // If it's not a public, try natural
+        if (end.endsWith('000')) {
+          return { isValid: false, error: new exceptions.InvalidComponent() };
+        }
+
+        return ci.validate(value.substring(0, 10));
       }
     } else if (value[2] === '9') {
       // Juridical RUC

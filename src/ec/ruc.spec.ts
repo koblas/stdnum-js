@@ -14,6 +14,15 @@ describe('ec/ruc', () => {
     expect(result.isValid && result.compact).toEqual('1792060346001');
   });
 
+  test.each(['0101016905001', '0962467429001', '1803557964001'])(
+    'validate:%s',
+    value => {
+      const result = validate(value);
+
+      expect(result.isValid).toEqual(true);
+    },
+  );
+
   it('validate:1792060346-00', () => {
     const result = validate('1792060346-00');
 
