@@ -2,10 +2,19 @@
  * CNIC (Pakistan Computerize National Identiy Card)
  *
  * Pakastan National Identification Number (CNIC) is issued to individuals and legal entities for
- * tax purposes. The number consists of 11 digits.
+ * tax purposes. The number consists of 13 digits.
  *
- * Source
- *    https://www.oecd.org/tax/automatic-exchange/crs-implementation-and-assistance/tax-identification-numbers/Pakistan-TIN.pdf
+ * The CNIC (Computerised National Identity Card, قومی شناختی کارڈ) or SNIC
+ * (Smart National Identity Card) is issued by by Pakistan's NADRA (National
+ * Database and Registration Authority) to citizens of 18 years or older.
+ * The number consists of 13 digits and encodes the person's locality (5
+ * digits), followed by 7 digit serial number an a single digit indicating
+ * gender.
+ *
+ * Sources
+ *   https://www.oecd.org/tax/automatic-exchange/crs-implementation-and-assistance/tax-identification-numbers/Pakistan-TIN.pdf
+ *   https://en.wikipedia.org/wiki/CNIC_(Pakistan)
+ *   https://www.nadra.gov.pk/identity/identity-cnic/
  *
  * PERSON
  */
@@ -13,6 +22,17 @@
 import * as exceptions from '../exceptions';
 import { strings } from '../util';
 import { Validator, ValidateReturn } from '../types';
+
+const PROVINCES = {
+  '1': 'Khyber Pakhtunkhwa',
+  '2': 'FATA',
+  '3': 'Punjab',
+  '4': 'Sindh',
+  '5': 'Balochistan',
+  '6': 'Islamabad',
+  '7': 'Gilgit-Baltistan',
+};
+const VALID_PROVINCES = Object.keys(PROVINCES);
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -');
@@ -52,7 +72,12 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
-    if (!'1234567'.includes(value[0])) {
+    // Invalid Gender (male = 13579, female = 2468)
+    if (value[12] === '0') {
+      return { isValid: false, error: new exceptions.InvalidComponent() };
+    }
+
+    if (!VALID_PROVINCES.includes(value[0])) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
     // if (value[12] === '0') {
