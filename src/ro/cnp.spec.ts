@@ -36,6 +36,12 @@ describe('ro/cnp', () => {
     expect(result.error).toBeInstanceOf(InvalidComponent);
   });
 
+  it('validate:0800101228842', () => {
+    const result = validate('0800101228842');
+
+    expect(result.error).toBeInstanceOf(InvalidComponent);
+  });
+
   it('validate:1632215123457', () => {
     const result = validate('1632215123457');
 
