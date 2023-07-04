@@ -21,8 +21,19 @@ const CHECK_ALPHA = '0123456789ABCDEFHJKLMNPRSTUVWXY';
 const CENTURY = {
   '+': '18',
   '-': '19',
+  Y: '19',
+  X: '19',
+  W: '19',
+  V: '19',
+  U: '19',
   A: '20',
+  B: '20',
+  C: '20',
+  D: '20',
+  E: '20',
+  F: '20',
 };
+const VALID_CENTURY = Object.keys(CENTURY);
 
 const impl: Validator = {
   name: 'Finnish Personal Identity Code',
@@ -63,7 +74,7 @@ const impl: Validator = {
     ) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
-    if (!'-+A'.includes(value[6])) {
+    if (!VALID_CENTURY.includes(value[6])) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 

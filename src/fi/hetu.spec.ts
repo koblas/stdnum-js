@@ -14,6 +14,15 @@ describe('fi/hetu', () => {
     expect(result.isValid && result.compact).toEqual('131052-308T');
   });
 
+  test.each(['131052B308T', '131052X308T', '131052-308T'])(
+    'validate:%s',
+    value => {
+      const result = validate('131052-308T');
+
+      expect(result.isValid).toEqual(true);
+    },
+  );
+
   it('validate:12345678', () => {
     const result = validate('12345678');
 
