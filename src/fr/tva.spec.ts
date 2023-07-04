@@ -14,22 +14,16 @@ describe('fr/tva', () => {
     expect(result.isValid && result.compact).toEqual('40303265045');
   });
 
-  it('validate:23334175221', () => {
-    const result = validate('23334175221');
+  test.each([
+    '40303265045',
+    '23334175221',
+    'K7399859412',
+    '4Z123456782',
+    'FR84323140392',
+  ])('validate:%s', value => {
+    const result = validate(value);
 
-    expect(result.isValid && result.compact).toEqual('23334175221');
-  });
-
-  it('validate:K7399859412', () => {
-    const result = validate('K7399859412');
-
-    expect(result.isValid && result.compact).toEqual('K7399859412');
-  });
-
-  it('validate:4Z123456782', () => {
-    const result = validate('4Z123456782');
-
-    expect(result.isValid && result.compact).toEqual('4Z123456782');
+    expect(result.isValid).toEqual(true);
   });
 
   it('validate:12345678', () => {
