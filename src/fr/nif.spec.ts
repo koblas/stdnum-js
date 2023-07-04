@@ -1,5 +1,5 @@
 import { validate, format } from './nif';
-import { InvalidLength } from '../exceptions';
+import { InvalidComponent, InvalidLength } from '../exceptions';
 
 describe('fr/nif', () => {
   it('format:0701987765432', () => {
@@ -24,5 +24,11 @@ describe('fr/nif', () => {
     const result = validate('12345678');
 
     expect(result.error).toBeInstanceOf(InvalidLength);
+  });
+
+  it('validate:9701987765432', () => {
+    const result = validate('9701987765432');
+
+    expect(result.error).toBeInstanceOf(InvalidComponent);
   });
 });
