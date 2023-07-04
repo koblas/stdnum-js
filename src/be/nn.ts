@@ -1,11 +1,22 @@
 /**
-* The Belgian national number is a unique identifier consisting of 11 digits.
-*
-* Source
-*  https://fr.wikipedia.org/wiki/Numéro_de_registre_national
-*
-* PERSON
-*/
+ * NN, NISS, RRN (Belgian national number).
+ *
+ * The national registration number (Rijksregisternummer, Numéro de registre
+ * national, Nationalregisternummer) is a unique identification number of
+ * natural persons who are registered in Belgium.
+ *
+ * The number consists of 11 digits and includes the person's date of birth and
+ * gender. It encodes the date of birth in the first 6 digits in the format
+ * YYMMDD. The following 3 digits represent a counter of people born on the same
+ * date, seperated by sex (odd for male and even for females respectively). The
+ * final 2 digits form a check number based on the 9 preceding digits.
+ *
+ * Source
+ *  https://nl.wikipedia.org/wiki/Rijksregisternummer
+ *  https://fr.wikipedia.org/wiki/Numéro_de_registre_national
+ *
+ * PERSON
+ */
 
 import * as exceptions from '../exceptions';
 import { strings } from '../util';
