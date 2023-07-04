@@ -57,6 +57,9 @@ const impl: Validator = {
     const [prefix, check] = strings.splitAt(value, 10);
     const pvalue = parseInt(prefix, 10);
 
+    if (!'0123'.includes(value[0])) {
+      return { isValid: false, error: new exceptions.InvalidComponent() };
+    }
     // A zero value is not a valid value
     if (pvalue === 0) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
