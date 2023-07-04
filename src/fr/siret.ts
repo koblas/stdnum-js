@@ -3,7 +3,11 @@
  *
  * The SIRET (Système d'Identification du Répertoire des Établissements)
  * is a 14 digit number used to identify French companies' establishments
- * and facilities. The Luhn checksum is used to validate the numbers.
+ * and facilities. The Luhn checksum is used to validate the numbers (except
+ * for La Poste).
+ *
+ * Sources:
+ *   https://fr.wikipedia.org/wiki/Système_d'identification_du_répertoire_des_établissements
  *
  * ENTITY
  */
@@ -11,7 +15,7 @@
 import * as exceptions from '../exceptions';
 import { strings } from '../util';
 import { Validator, ValidateReturn } from '../types';
-import { luhnChecksumValidate } from '../util/checksum';
+import { luhnChecksumValidate, weightedSum } from '../util/checksum';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -/');
@@ -50,7 +54,16 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
-    if (!luhnChecksumValidate(value)) {
+    if (value.startsWith('356000000') && value !== '35600000000048') {
+      const sum = weightedSum(value, {
+        weights: [1],
+        modulus: 5,
+      });
+      console.log('HERE', value, sum);
+      if (sum !== 0) {
+        return { isValid: false, error: new exceptions.InvalidChecksum() };
+      }
+    } else if (!luhnChecksumValidate(value)) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 
