@@ -1,13 +1,17 @@
 /**
- * IDNR (Thai identity card)
+ * MOA (Thailand Memorandum of Association Number).
  *
- * The Thai identity card (Thai: บัตรประจำตัวประชาชนไทย)
- * is an official identity document issued to Thai nationals between the age of 7 and 70 years.
+ * Memorandum of Association Number (aka Company's Taxpayer Identification
+ * Number) are numbers issued by the Department of Business Development.
+ * The number consists of 13 digits of which the last is a check digit following
+ * the same algorithm as in the Personal Identity Number (PIN). It uses a
+ * different grouping format and always starts with zero to indicate that the
+ * number issued by DBD.
  *
  * Source
- *   https://en.wikipedia.org/wiki/Thai_identity_card
+ *   https://www.dbd.go.th/download/pdf_kc/s09/busin_2542-48.pdf
  *
- * PERSON
+ * ENTITY
  */
 
 import * as exceptions from '../exceptions';
@@ -20,9 +24,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
-  name: 'Thai National Identity Card Number',
-  localName: 'บัตรประจำตัวประชาชนไทย',
-  abbreviation: 'IDNR',
+  name: 'Thailand Memorandum of Association Number',
+  localName: '',
+  abbreviation: 'MOA',
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -36,7 +40,7 @@ const impl: Validator = {
   format(input: string): string {
     const [value] = clean(input);
 
-    return strings.splitAt(value, 1, 5, 10, 12).join('-');
+    return strings.splitAt(value, 1, 3, 4, 7, 12).join('-');
   },
 
   validate(input: string): ValidateReturn {
@@ -52,12 +56,13 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
-    if ('09'.includes(value[0])) {
+    if (value[0] !== '0') {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
     const [front, check] = strings.splitAt(value, 12);
 
+    // same sum as IDNR
     const sum = weightedSum(front, {
       weights: [13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
       modulus: 11,
@@ -70,8 +75,8 @@ const impl: Validator = {
     return {
       isValid: true,
       compact: value,
-      isIndividual: true,
-      isCompany: false,
+      isIndividual: false,
+      isCompany: true,
     };
   },
 };
