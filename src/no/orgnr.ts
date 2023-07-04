@@ -4,6 +4,10 @@
  * The Organisasjonsnummer is a 9-digit number with a straightforward check
  * mechanism.
  *
+ * Source
+ *   https://nn.wikipedia.org/wiki/Organisasjonsnummer
+ *   https://no.wikipedia.org/wiki/Organisasjonsnummer
+ *
  * ENTITY
  */
 
