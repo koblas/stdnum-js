@@ -2,6 +2,7 @@ import {
   luhnChecksumDigit,
   luhnChecksumValue,
   mod11mod10Validate,
+  mod97base10Validate,
 } from './checksum';
 
 describe('util/checksum', () => {
@@ -15,9 +16,21 @@ describe('util/checksum', () => {
     it.each([
       ['7894', '9'],
       ['8667046', '0'],
-    ])('luhnChecksumDigit %s should return %s', (digits: string, expectedResult: string) => {
-      expect(luhnChecksumDigit(digits)).toEqual(expectedResult);
-    });
+    ])(
+      'luhnChecksumDigit %s should return %s',
+      (digits: string, expectedResult: string) => {
+        expect(luhnChecksumDigit(digits)).toEqual(expectedResult);
+      },
+    );
+  });
+
+  describe('mod97base10Validate', () => {
+    test.each(['9999123456789012141490', '08686001256515001121751'])(
+      'value:%s',
+      value => {
+        expect(mod97base10Validate(value)).toBe(true);
+      },
+    );
   });
 
   describe('mod11mod10Validate', () => {
@@ -46,11 +59,11 @@ describe('util/checksum', () => {
       '716606185585077454311714605',
       '36760125602740581257256826035731224471746311354',
       '8537',
-    ])('valid', value => {
+    ])('validate:%s', value => {
       expect(mod11mod10Validate(value)).toBe(true);
     });
 
-    test.each(['17945', '17944'])('invalid', value => {
+    test.each(['17945', '17944'])('invalid:%s', value => {
       expect(mod11mod10Validate(value)).toBe(false);
     });
   });

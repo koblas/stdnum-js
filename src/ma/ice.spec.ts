@@ -8,10 +8,21 @@ describe('ma/ice', () => {
     expect(result).toEqual('001512572000078');
   });
 
-  it('validate:001512572000078', () => {
-    const result = validate('001512572000078');
+  it('validate:00151257200007 8', () => {
+    const result = validate('00151257200007 8');
 
     expect(result.isValid && result.compact).toEqual('001512572000078');
+  });
+
+  test.each([
+    '001561191000066',
+    '001512572000078',
+    '002410367000010',
+    '002614910000044',
+  ])('validate:%s', value => {
+    const result = validate(value);
+
+    expect(result.isValid).toEqual(true);
   });
 
   it('validate:12345678', () => {
