@@ -153,6 +153,7 @@ All country validators are in the "namespace" of the ISO country code.
 | Poland                 | PL   | NIP             | Vat                | Numer Identyfikacji Podatkowej, Polish VAT number                                                                                      |
 | Poland                 | PL   | PESEL           | Person             | Polish national identification number                                                                                                  |
 | Poland                 | PL   | REGON           | Company            | Rejestr Gospodarki Narodowej, Polish register of economic units                                                                        |
+| Portugual              | PT   | CC              | Person/Company     | Número de Cartão de Cidadão, Portuguese Identity number                                                                                |
 | Portugual              | PT   | NIF             | Vat                | Número de identificação fiscal, Portuguese VAT number                                                                                  |
 | Russia                 | RU   | INN             | Tax/Vat            | Tax Identifier (Идентификационный номер налогоплательщика)                                                                             |
 | Romania                | RO   | CF              | Vat                | Cod de înregistrare în scopuri de TVA, Romanian VAT number                                                                             |
