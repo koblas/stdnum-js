@@ -1,6 +1,6 @@
 {
   "name": "stdnum",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "Standard Number Validation",
   "files": [
     "lib"
