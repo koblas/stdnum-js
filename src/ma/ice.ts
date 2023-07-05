@@ -5,12 +5,16 @@
  * is a 15 (9 positions for the company, 4 positions for the establishment and 2 control digits), digit number used to identify Moroccan companies' establishments
  * and facilities. The validation checksum is unknown
  *
+ * Sources
+ *   https://www.ice.gov.ma/
+ *   https://www.ice.gov.ma/ICE/Depliant_ICE.pdf
+ *   https://www.ice.gov.ma/ICE/Guide_ICE.pdf
  *
  * ENTITY
  */
 
 import * as exceptions from '../exceptions';
-import { strings } from '../util';
+import { strings, mod97base10Validate } from '../util';
 import { Validator, ValidateReturn } from '../types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
@@ -51,8 +55,9 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
-    // const [company, establishment, checksum] = strings.splitAt(value, 9, 4);
-    // checksum validation is unknown at the moment
+    if (!mod97base10Validate(value, 0)) {
+      return { isValid: false, error: new exceptions.InvalidChecksum() };
+    }
 
     return {
       isValid: true,

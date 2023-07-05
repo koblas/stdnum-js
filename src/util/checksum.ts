@@ -213,7 +213,7 @@ function modulo(dividentIn: string, divisor: number) {
  * The Mod 97, 10 algorithm evaluates the whole number as an integer which is
  * valid if the number modulo 97 is 1. As such it has two check digits.
  */
-export function mod97base10Validate(value: string): boolean {
+export function mod97base10Validate(value: string, expect = 1): boolean {
   const alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   let fail = false;
 
@@ -233,7 +233,7 @@ export function mod97base10Validate(value: string): boolean {
     return false;
   }
 
-  return modulo(bigValue, 97) === 1;
+  return modulo(bigValue, 97) === expect;
 }
 
 /**
