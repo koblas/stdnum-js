@@ -11,8 +11,6 @@ describe('tw/tax_code', () => {
   test.each(['9000503', '2000 05 03 AA'])('validate:%s', value => {
     const result = validate(value);
 
-    console.log(value, result);
-
     expect(result.isValid).toEqual(true);
   });
 

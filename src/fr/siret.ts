@@ -59,7 +59,6 @@ const impl: Validator = {
         weights: [1],
         modulus: 5,
       });
-      console.log('HERE', value, sum);
       if (sum !== 0) {
         return { isValid: false, error: new exceptions.InvalidChecksum() };
       }
