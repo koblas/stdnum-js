@@ -28,6 +28,7 @@ import * as ES from './es';
 import * as FI from './fi';
 import * as FR from './fr';
 import * as GB from './gb';
+import * as GH from './gh';
 import * as GR from './gr';
 import * as GN from './gn';
 import * as GT from './gt';
@@ -117,6 +118,7 @@ export const stdnum: Record<string, Record<string, Validator>> = {
   FI,
   FR,
   GB,
+  GH,
   GR,
   GN,
   GT,
