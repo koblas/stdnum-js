@@ -20,7 +20,7 @@
  * PERSON
  */
 
-import { ValidateReturn } from 'types';
+import { ValidateReturn } from '../types';
 import * as exceptions from '../exceptions';
 import { strings, weightedSum } from '../util';
 

@@ -12,7 +12,7 @@ import { strings } from '../util';
 import { Validator, ValidateReturn } from '../types';
 
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-const weights = {
+const weights: Record<string, number> = {
   '0': 1,
   '1': 0,
   '2': 5,

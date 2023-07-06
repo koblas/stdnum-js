@@ -21,6 +21,18 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -.');
 }
 
+function validLength(value: string): boolean {
+  // The suffix letter may be omitted, so we permit a length of 8.
+  return [8, 9].includes(value.length);
+}
+
+const VALID_FORMAT_REGEX = /^([A-Z]{2})\d{6}[A-D]?$/;
+
+function validFormat(value: string): boolean {
+  const matchData = value.toUpperCase().match(VALID_FORMAT_REGEX);
+  return !!matchData && PREFIXES.has(matchData[1]);
+}
+
 const impl: Validator = {
   name: 'United Kingdom National Insurance Number',
   localName: 'National Insurance Number',
@@ -66,15 +78,3 @@ const impl: Validator = {
 
 export const { name, localName, abbreviation, validate, format, compact } =
   impl;
-
-function validLength(value: string): boolean {
-  // The suffix letter may be omitted, so we permit a length of 8.
-  return [8, 9].includes(value.length);
-}
-
-const VALID_FORMAT_REGEX = /^([A-Z]{2})\d{6}[A-D]?$/;
-
-function validFormat(value: string): boolean {
-  const matchData = value.toUpperCase().match(VALID_FORMAT_REGEX);
-  return !!matchData && PREFIXES.has(matchData[1]);
-}

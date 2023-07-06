@@ -23,7 +23,7 @@ import { Validator, ValidateReturn } from '../types';
 const checkRe =
   /^[A-Z]{6}[0-9LMNPQRSTUV]{2}[ABCDEHLMPRST]{1}[0-9LMNPQRSTUV]{2}[A-Z]{1}[0-9LMNPQRSTUV]{3}[A-Z]{1}$/;
 
-const CHECK_CODE_ODD = {
+const CHECK_CODE_ODD: Record<string, number> = {
   0: 1,
   1: 0,
   2: 5,
@@ -62,7 +62,7 @@ const CHECK_CODE_ODD = {
   Z: 23,
 };
 
-const CHECK_CODE_EVEN = {
+const CHECK_CODE_EVEN: Record<string, number> = {
   0: 0,
   1: 1,
   2: 2,

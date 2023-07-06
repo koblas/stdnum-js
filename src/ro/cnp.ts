@@ -18,7 +18,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -');
 }
 
-const century = {
+const century: Record<string, string> = {
   '0': '19', // shouldn't happen,
   '1': '19',
   '2': '19',
@@ -32,7 +32,7 @@ const century = {
 };
 
 // The Romanian counties
-const COUNTIES = {
+const COUNTIES: Record<string, string> = {
   '01': 'Alba',
   '02': 'Arad',
   '03': 'Arges',
