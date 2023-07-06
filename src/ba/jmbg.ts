@@ -8,7 +8,7 @@
  */
 
 import * as exceptions from '../exceptions';
-import { strings } from '../util';
+import { isValidDateCompactYYYYMMDD, strings } from '../util';
 import { Validator, ValidateReturn } from '../types';
 import { weightedSum } from '../util/checksum';
 
@@ -49,6 +49,16 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
+    // Question the format starts with this according to SI/EMSO
+    //  -- DDMMYYY (year < 800 ? year+=2000 : year+=1000)
+    // Is this universal?
+    const [dd, mm, yyy] = strings.splitAt(value, 2, 4, 7);
+    const yyyy = `${parseInt(yyy, 10) < 800 ? '2' : '1'}${yyy}`;
+
+    if (!isValidDateCompactYYYYMMDD(`${yyyy}${mm}${dd}`)) {
+      return { isValid: false, error: new exceptions.InvalidComponent() };
+    }
+
     const [front, check] = strings.splitAt(value, 12);
 
     const sum =
@@ -58,7 +68,7 @@ const impl: Validator = {
         weights: [7, 6, 5, 4, 3, 2, 7, 6, 5, 4, 3, 2],
       });
 
-    if (String(sum % 10) !== check) {
+    if (String((sum % 11) % 10) !== check) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 

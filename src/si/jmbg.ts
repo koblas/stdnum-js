@@ -1,6 +1,9 @@
 /**
  * Slovene JMBG
+ *
  * https://en.wikipedia.org/wiki/Unique_Master_Citizen_Number
+ *
+ * This is really the EMSO -- here for legacy support
  */
 
 import { Validator } from '../types';
