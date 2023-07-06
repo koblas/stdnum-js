@@ -1,14 +1,14 @@
 /**
- * CC (Número de Cartão de Cidadão, Portuguese Identity number).
- *
- * The Portuguese Identity Number is alphanumeric and consists of the numeric
- * Número de Identificação Civil, a two-letter version and a check digit.
- *
+ * NIFp (Numéro d'Identification Fiscale Permanent, Guinea tax number).
+ * 
+ * This number consists of 9 digits, usually separated into three groups using
+ * hyphens to make it easier to read. The first eight digits are assigned in a
+ * pseudorandom manner. The last digit is the check digit.
+ * 
  * Source
- *   https://pt.wikipedia.org/wiki/Cartão_de_cidadão
- *   https://www.autenticacao.gov.pt/documents/20126/115760/Validação+de+Número+de+Documento+do+Cartão+de+Cidadão.pdf
- *
- * PERSON
+ *   https://dgi.gov.gn/wp-content/uploads/2022/09/N%C2%B0-12-Cahier-de-Charges-NIF-p.pdf
+
+ * ENTITY/PERSON
  */
 
 import * as exceptions from '../exceptions';
@@ -16,17 +16,14 @@ import { strings } from '../util';
 import { Validator, ValidateReturn } from '../types';
 import { luhnChecksumValidate } from '../util/checksum';
 
-const ALPHABET = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-const validRe = /^\d{9}[A-Z0-9]{2}\d$/i;
-
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
-  return strings.cleanUnicode(input, ' ');
+  return strings.cleanUnicode(input, ' -');
 }
 
 const impl: Validator = {
-  name: 'Portuguese Identity number',
-  localName: 'Número de Cartão de Cidadão',
-  abbreviation: 'CC',
+  name: "Numéro d'Identification Fiscale Permanent",
+  localName: '',
+  abbreviation: 'NIFP',
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -41,7 +38,7 @@ const impl: Validator = {
   format(input: string): string {
     const [value] = clean(input);
 
-    return strings.splitAt(value, 8, 9).join(' ');
+    return strings.splitAt(value, 3, 6).join('-');
   },
 
   validate(input: string): ValidateReturn {
@@ -50,22 +47,23 @@ const impl: Validator = {
     if (error) {
       return { isValid: false, error };
     }
-    if (value.length !== 12) {
+    if (value.length !== 9) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
-    if (!validRe.test(value)) {
+
+    if (!strings.isdigits(value)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
-    if (!luhnChecksumValidate(value, ALPHABET)) {
+    if (!luhnChecksumValidate(value)) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 
     return {
       isValid: true,
       compact: value,
-      isIndividual: '1234'.includes(value[0]),
-      isCompany: !'1234'.includes(value[0]),
+      isIndividual: false,
+      isCompany: false,
     };
   },
 };

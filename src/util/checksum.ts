@@ -83,12 +83,18 @@ export function luhnChecksumValidate(
     // .reverse()
     .map(v => alphabet.indexOf(v))
     .reduce((acc, val, idx) => {
-      const v = idx % 2 === parity ? val * 2 : val;
+      let v = val;
+      if (idx % 2 === parity) {
+        v = val * 2;
+        if (v > 9) {
+          v -= 9;
+        }
+      }
 
-      return acc + (v > 9 ? v - 9 : v);
+      return acc + v;
     }, 0);
 
-  return sum % alphabet.length === 0;
+  return sum % 10 === 0;
 }
 
 /**

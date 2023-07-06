@@ -86,8 +86,6 @@ All country validators are in the "namespace" of the ISO country code.
 | Estonia                | EE   | Registrikood    | Company            | Registrikood (Estonian organisation registration code)                                                                                 |
 | Ecuador                | EC   | RUC             | Tax/Vat            | Ecuadorian company tax number (Registro Único de Contribuyentes)                                                                       |
 | El Salvador            | SV   | NIT             | Tax                | Tax Identifier (Número de Identificación Tributaria)                                                                                   |
-| Guatemala              | GT   | CUI             | Person             | Guatemala person (Código Único de Identificación)                                                                                      |
-| Guatemala              | GT   | NIT             | Company            | Guatemala company tax number (Número de Identificación Tributaria)                                                                     |
 | Finland                | FI   | ALV             | Company            | ALV nro (Arvonlisäveronumero, Finnish VAT number)                                                                                      |
 | Finland                | FI   | HETU            | Person             | HETU (Henkilötunnus, Finnish personal identity code)                                                                                   |
 | Finland                | FI   | YTUNNUS         | Company            | Y-tunnus (Finnish business identifier)                                                                                                 |
@@ -96,6 +94,9 @@ All country validators are in the "namespace" of the ISO country code.
 | Great Britain          | GB   | UTR             | Person             | UTR (United Kingdom Unique Taxpayer Reference)                                                                                         |
 | Great Britain          | GB   | VAT             | Company            | VAT (United Kingdom (and Isle of Man) VAT registration number)                                                                         |
 | Greece                 | GR   | AMKA            | Company            | AMKA (Αριθμός Μητρώου Κοινωνικής Ασφάλισης, Greek social security number)                                                              |
+| Guatemala              | GT   | CUI             | Person             | Guatemala person (Código Único de Identificación)                                                                                      |
+| Guatemala              | GT   | NIT             | Company            | Guatemala company tax number (Número de Identificación Tributaria)                                                                     |
+| Guinea                 | GN   | NIFP            | Person/Company     | Numéro d'Identification Fiscale Permanent, Guinea tax number                                                                           |
 | Greece                 | GR   | VAT             | Company            | FPA, ΦΠΑ, ΑΦΜ (Αριθμός Φορολογικού Μητρώου, the Greek VAT number)                                                                      |
 | France                 | FR   | NIR             | Person             | NIR (French personal identification number)                                                                                            |
 | France                 | FR   | SIREN           | Company            | SIREN (a French company identification number)                                                                                         |
