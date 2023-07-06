@@ -21,7 +21,7 @@ import { Validator, ValidateReturn } from '../types';
 
 // List of Finanzamtsnummern was manually generated from
 // https://de.wikipedia.org/wiki/Abgabenkontonummer
-const faOffices = {
+const faOffices: Record<string, { office: string; region: string }> = {
   '03': { office: 'Wien 3/6/7/11/15 Schwechat Gerasdorf', region: 'Wien' },
   '04': { office: 'Wien 4/5/10', region: 'Wien' },
   '06': { office: 'Wien 8/16/17', region: 'Wien' },

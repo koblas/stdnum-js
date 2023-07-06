@@ -12,7 +12,6 @@
     "allowSyntheticDefaultImports": true,
     "emitDecoratorMetadata": true,
     "declaration": true,
-    "suppressImplicitAnyIndexErrors": true,
     "sourceMap": false,
     "inlineSourceMap": true,
     "preserveConstEnums": true,

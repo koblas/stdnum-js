@@ -71,7 +71,7 @@ const impl: Validator = {
     if (!/^[A-M]\d{8}[A-Z]$/.test(value)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
-    const [ccode, ydigit, month_district, day, _, check] = strings.splitAt(
+    const [ccode, ydigit, monthDistrict, day, , check] = strings.splitAt(
       value,
       1,
       2,
@@ -79,7 +79,7 @@ const impl: Validator = {
       6,
       9,
     );
-    const month = ((parseInt(month_district, 10) - 1) % 12) + 1;
+    const month = ((parseInt(monthDistrict, 10) - 1) % 12) + 1;
     const yearVal = ccode.charCodeAt(0) - 65;
     const year = 1900 + yearVal * 10 + parseInt(ydigit, 10);
     if (!isValidDate(String(year), String(month), day)) {

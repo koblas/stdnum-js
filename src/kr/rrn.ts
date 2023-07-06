@@ -28,7 +28,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -/');
 }
 
-const centuryPrefix = {
+const centuryPrefix: Record<string, number> = {
   0: 18,
   1: 19,
   2: 19,

@@ -17,7 +17,7 @@ import { Validator, ValidateReturn } from '../types';
 
 //  Known number types and their corresponding value in the check
 //  digit calculation
-const companyTypes = {
+const companyTypes: Record<string, number> = {
   V: 4, // natural person born in Venezuela
   E: 8, // foreign natural person
   J: 12, // company

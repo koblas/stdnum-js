@@ -5,9 +5,8 @@ module.exports = {
   extends: [
     'airbnb-typescript/base',
     'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended',
+    'plugin:import/recommended',
     'prettier',
-    'prettier/@typescript-eslint',
   ],
   parserOptions: {
     project: './tsconfig-lint.json',
@@ -21,5 +20,6 @@ module.exports = {
   },
   rules: {
     'import/prefer-default-export': 'off',
+    'no-console': 'error',
   },
 };

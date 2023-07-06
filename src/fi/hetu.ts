@@ -18,7 +18,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const CHECK_ALPHA = '0123456789ABCDEFHJKLMNPRSTUVWXY';
-const CENTURY = {
+const CENTURY: Record<string, string> = {
   '+': '18',
   '-': '19',
   Y: '19',
