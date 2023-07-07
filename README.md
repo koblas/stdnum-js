@@ -126,6 +126,7 @@ All country validators are in the "namespace" of the ISO country code.
 | Luxembourgian          | LU   | TVA             | Vat                | taxe sur la valeur ajoutée                                                                                                             |
 | Latvian                | LV   | PVN             | Person/Vat         | Pievienotās vērtības nodokļa                                                                                                           |
 | Morocco                | MA   | ICE             | Company            | Identifiant Commun de l'Entreprise, Moroccan new registration number                                                                   |
+| Macedonia              | MK   | EDB             | Vat                | Едниствен Даночен Број, North Macedonia tax number                                                                                     |
 | Macedonia              | MK   | JMBG            | Person             | Unique Master Citizen Number (Единствен матичен број на граѓанинот)                                                                    |
 | Monaco                 | MC   | TVA             | Vat                | taxe sur la valeur ajoutée, Monacan VAT number                                                                                         |
 | Moldavia               | MD   | IDNO            | Vat                | Moldavian VAT number                                                                                                                   |
