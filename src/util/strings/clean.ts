@@ -1,3 +1,4 @@
+// import PREFIXES from 'gb/nino-prefixes';
 import * as exceptions from '../../exceptions';
 
 // Map visually similar unicode values to ASCII
@@ -273,7 +274,7 @@ const mapped: Record<string, string> = {
 export function cleanUnicode(
   value: string,
   deletechars = ' ',
-  stripPrefix?: string,
+  stripPrefix?: string | string[],
 ): [string, exceptions.InvalidFormat | null] {
   if (typeof value !== 'string') {
     return ['', new exceptions.InvalidFormat()];
@@ -286,8 +287,19 @@ export function cleanUnicode(
     .join('')
     .toLocaleUpperCase();
 
-  if (stripPrefix && cleaned.startsWith(stripPrefix)) {
-    return [cleaned.substr(stripPrefix.length), null];
+  if (stripPrefix && stripPrefix.length !== 0) {
+    let prefix;
+
+    if (Array.isArray(stripPrefix)) {
+      prefix = stripPrefix.find(p => cleaned.startsWith(p));
+    } else if (cleaned.startsWith(stripPrefix)) {
+      prefix = stripPrefix;
+    }
+
+    if (prefix !== undefined) {
+      return [cleaned.substring(prefix.length), null];
+    }
   }
+
   return [cleaned, null];
 }
