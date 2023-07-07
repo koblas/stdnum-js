@@ -49,8 +49,8 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 }
 
 const impl: Validator = {
-  name: 'NAME',
-  localName: 'NAME',
+  name: 'Tax Registration Number',
+  localName: 'الرقم الضريبي',
   abbreviation: 'TN',
 
   compact(input: string): string {
