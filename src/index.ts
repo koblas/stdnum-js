@@ -24,6 +24,7 @@ import * as DK from './dk';
 import * as DO from './do';
 import * as EC from './ec';
 import * as EE from './ee';
+import * as EG from './eg';
 import * as ES from './es';
 import * as FI from './fi';
 import * as FR from './fr';
@@ -114,6 +115,7 @@ export const stdnum: Record<string, Record<string, Validator>> = {
   DK,
   EC,
   EE,
+  EG,
   ES,
   FI,
   FR,

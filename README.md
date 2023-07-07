@@ -84,6 +84,7 @@ All country validators are in the "namespace" of the ISO country code.
 | Estonia                | EE   | IK              | Person             | Isikukood (Estonian Personcal ID number).                                                                                              |
 | Estonia                | EE   | KMKR            | Company            | KMKR (Käibemaksukohuslase, Estonian VAT number)                                                                                        |
 | Estonia                | EE   | Registrikood    | Company            | Registrikood (Estonian organisation registration code)                                                                                 |
+| Egypt                  | EG   | TN              | Company            | Tax Registration Number (الرقم الضريبي, Egypt tax number)                                                                              |
 | Ecuador                | EC   | RUC             | Tax/Vat            | Ecuadorian company tax number (Registro Único de Contribuyentes)                                                                       |
 | El Salvador            | SV   | NIT             | Tax                | Tax Identifier (Número de Identificación Tributaria)                                                                                   |
 | Finland                | FI   | ALV             | Company            | ALV nro (Arvonlisäveronumero, Finnish VAT number)                                                                                      |
