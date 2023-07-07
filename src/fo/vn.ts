@@ -1,10 +1,12 @@
 /**
- * XYZZY (description).
+ * V-number (Vinnutal, Faroe Islands tax number).
  *
- * DESCRIPTION
+ * In the Faroe Islands the legal persons TIN equals the V number issued by the
+ * Faroese Tax Administration. It is a consecutive number.
  *
  * Source
- *   HERE
+ *   https://www.taks.fo/fo/borgari/bolkar/at-stovna-virki/
+ *   https://www.oecd.org/tax/automatic-exchange/crs-implementation-and-assistance/tax-identification-numbers/Faroe-islands-TIN.pdf
  *
  * ENTITY/PERSON
  */
@@ -12,10 +14,9 @@
 import * as exceptions from '../exceptions';
 import { strings } from '../util';
 import { Validator, ValidateReturn } from '../types';
-import { weightedSum } from '../util/checksum';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
-  return strings.cleanUnicode(input, ' -');
+  return strings.cleanUnicode(input, ' -.');
 }
 
 // const validRe = /^[PCGQV]{1}00[A-Z0-9]{8}$/;
@@ -23,9 +24,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 // const ALPHABET = '0123456789X';
 
 const impl: Validator = {
-  name: 'NAME',
+  name: 'Vinnutal',
   localName: 'NAME',
-  abbreviation: '{{tincode_upper}}',
+  abbreviation: 'VN',
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -49,27 +50,13 @@ const impl: Validator = {
     if (error) {
       return { isValid: false, error };
     }
-    if (value.length !== 11) {
+    if (value.length !== 6) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
 
     if (!strings.isdigits(value)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
-    // if (!validRe.test(value)) {
-    //   return { isValid: false, error: new exceptions.InvalidFormat() };
-    // }
-
-    const [, front, check] = strings.splitAt(value, 1, 10);
-
-    const sum = weightedSum(front, {
-      weights: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-      modulus: 11,
-    });
-
-    // if (ALPHABET[sum] !== check) {
-    //   return { isValid: false, error: new exceptions.InvalidChecksum() };
-    // }
 
     return {
       isValid: true,

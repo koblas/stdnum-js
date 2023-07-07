@@ -90,6 +90,7 @@ All country validators are in the "namespace" of the ISO country code.
 | Finland                | FI   | ALV             | Company            | ALV nro (Arvonlisäveronumero, Finnish VAT number)                                                                                      |
 | Finland                | FI   | HETU            | Person             | HETU (Henkilötunnus, Finnish personal identity code)                                                                                   |
 | Finland                | FI   | YTUNNUS         | Company            | Y-tunnus (Finnish business identifier)                                                                                                 |
+| Faroe Islands          | FO   | VN              | Company/Person     | Vinnutal, Faroe Islands tax number                                                                                                     |
 | France                 | FR   | NIF             | Person             | NIF (Numéro d'Immatriculation Fiscale, French tax identification number)                                                               |
 | Great Britain          | GB   | NINO            | Person             | NINO (United Kingdom National Insurance Number)                                                                                        |
 | Great Britain          | GB   | UTR             | Person             | UTR (United Kingdom Unique Taxpayer Reference)                                                                                         |
