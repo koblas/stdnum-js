@@ -44,6 +44,7 @@ import * as IN from './in';
 import * as IS from './is';
 import * as IT from './it';
 import * as JP from './jp';
+import * as KE from './ke';
 import * as KR from './kr';
 import * as LI from './li';
 import * as LT from './lt';
@@ -140,6 +141,7 @@ export const stdnum: Record<string, Record<string, Validator>> = {
   LU,
   LV,
   JP,
+  KE,
   KR,
   MA,
   MC,

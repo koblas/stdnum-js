@@ -133,6 +133,7 @@ All country validators are in the "namespace" of the ISO country code.
 | Malta                  | MT   | VAT             | Vat                | Maltese VAT number                                                                                                                     |
 | Mauritius              | MU   | NID             | Person             | ID number (Mauritian national identifier)                                                                                              |
 | Japan                  | JP   | CN              | Company            | 法人番号, hōjin bangō, Japanese Corporate Number                                                                                       |
+| Kenya                  | KE   | PIN             | Person/Company     | Personal Identification Number, Kenya tax number                                                                                       |
 | South Korea            | KR   | BRN             | Company            | 사업자 등록 번호, South Korea Business Registration Number)                                                                            |
 | South Korea            | KR   | RRN             | Person             | South Korean resident registration number                                                                                              |
 | Mexico                 | MX   | RFC             | Tax/Vat            | Tax Identifier (Registro Federal de Contribuyentes)                                                                                    |
