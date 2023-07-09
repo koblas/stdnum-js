@@ -80,6 +80,7 @@ All country validators are in the "namespace" of the ISO country code.
 | Dominican Republic     | DO   | CEDULA          | Person             | Person Identifier (Cédula de Residencia)                                                                                               |
 | Dominican Republic     | DO   | NCF             | Vat                | Tax Receipt Number (Números de Comprobante Fiscal)                                                                                     |
 | Dominican Republic     | DO   | RNC             | Tax                | Person Identifier (Registro Nacional del Contribuyente)                                                                                |
+| Algeria                | DZ   | NIF             | Person/Company     | Numéro d'Identification Fiscale, Algeria tax number                                                                                    |
 | Ecuador                | EC   | CI              | Person             | Ecuadorian person identifier (Cédula de identidad)                                                                                     |
 | Estonia                | EE   | IK              | Person             | Isikukood (Estonian Personcal ID number).                                                                                              |
 | Estonia                | EE   | KMKR            | Company            | KMKR (Käibemaksukohuslase, Estonian VAT number)                                                                                        |
