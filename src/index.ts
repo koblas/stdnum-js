@@ -78,6 +78,7 @@ import * as SK from './sk';
 import * as SM from './sm';
 import * as SV from './sv';
 import * as TH from './th';
+import * as TN from './tn';
 import * as TR from './tr';
 import * as TW from './tw';
 import * as UA from './ua';
@@ -172,6 +173,7 @@ export const stdnum: Record<string, Record<string, Validator>> = {
   SM,
   SV,
   TH,
+  TN,
   TR,
   TW,
   UA,
