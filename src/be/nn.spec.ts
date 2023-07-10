@@ -38,40 +38,24 @@ describe('be/nn', () => {
     expect(result.error).toBeInstanceOf(InvalidFormat);
   });
 
-  it('validate:88022999297', () => {
-    const result = validate('88022999297');
+  test.each([
+    '88022999297',
+    '85073003328',
+    '20070199922',
+    '20070199951',
+    '80000099902',
+    '00000199938',
+    '99000099913',
+  ])('validate:%s', value => {
+    const result = validate(value);
 
-    expect(result.isValid && result.compact).toEqual('88022999297');
-  });
-
-  it('validate:85073003328', () => {
-    const result = validate('85073003328');
-
-    expect(result.isValid && result.compact).toEqual('85073003328');
-  });
-
-  it('validate:20070199922', () => {
-    const result = validate('20070199922');
-
-    expect(result.isValid && result.compact).toEqual('20070199922');
-  });
-
-  it('validate:20070199951', () => {
-    const result = validate('20070199951');
-
-    expect(result.isValid && result.compact).toEqual('20070199951');
+    expect(result.isValid).toEqual(true);
   });
 
   it('validate:20070199952', () => {
     const result = validate('20070199952');
 
     expect(result.error).toBeInstanceOf(InvalidChecksum);
-  });
-
-  it('validate:80000099902', () => {
-    const result = validate('80000099902');
-
-    expect(result.isValid && result.compact).toEqual('80000099902');
   });
 
   it('validate:80000099903', () => {
@@ -84,18 +68,6 @@ describe('be/nn', () => {
     const result = validate('00000199939');
 
     expect(result.error).toBeInstanceOf(InvalidChecksum);
-  });
-
-  it('validate:00000199938', () => {
-    const result = validate('00000199938');
-
-    expect(result.isValid && result.compact).toEqual('00000199938');
-  });
-
-  it('validate:99000099913', () => {
-    const result = validate('99000099913');
-
-    expect(result.isValid && result.compact).toEqual('99000099913');
   });
 
   it('validate:99000099942', () => {

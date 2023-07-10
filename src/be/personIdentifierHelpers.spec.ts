@@ -1,4 +1,8 @@
-import { validStructure, validChecksum, toDateArray } from './personIdentifierHelpers';
+import {
+  validStructure,
+  validChecksum,
+  toDateArray,
+} from './personIdentifierHelpers';
 
 describe('personIdentifierHelpers', () => {
   const toDob = (string: string): string => {
@@ -43,6 +47,7 @@ describe('personIdentifierHelpers', () => {
       });
     });
   });
+
   describe('validChecksum', () => {
     const range = Array.from({ length: 100 }, (_, n) => n);
 
@@ -58,7 +63,7 @@ describe('personIdentifierHelpers', () => {
 
         it('returns false when the checksum is invalid', () => {
           const toCheck = range.filter(x => x !== checksum);
-          toCheck.forEach((cs) => {
+          toCheck.forEach(cs => {
             const string = `${baseString}${cs}`;
             expect(validChecksum(string)).toEqual(false);
           });
@@ -76,7 +81,7 @@ describe('personIdentifierHelpers', () => {
 
         it('returns false when the checksum is invalid', () => {
           const toCheck = range.filter(x => x !== checksum);
-          toCheck.forEach((cs) => {
+          toCheck.forEach(cs => {
             const string = `${baseString}${cs}`;
             expect(validChecksum(string)).toEqual(false);
           });
@@ -99,9 +104,12 @@ describe('personIdentifierHelpers', () => {
         });
 
         it('returns false when the checksum is invalid', () => {
-          const excludedChecksums = [twentiethCenturyChecksum, twentyfirstCenturyChecksum];
+          const excludedChecksums = [
+            twentiethCenturyChecksum,
+            twentyfirstCenturyChecksum,
+          ];
           const toCheck = range.filter(x => !excludedChecksums.includes(x));
-          toCheck.forEach((cs) => {
+          toCheck.forEach(cs => {
             const string = `${baseString}${cs}`;
             expect(validChecksum(string)).toEqual(false);
           });
@@ -124,9 +132,12 @@ describe('personIdentifierHelpers', () => {
         });
 
         it('returns false when the checksum is invalid', () => {
-          const excludedChecksums = [twentiethCenturyChecksum, twentyfirstCenturyChecksum];
+          const excludedChecksums = [
+            twentiethCenturyChecksum,
+            twentyfirstCenturyChecksum,
+          ];
           const toCheck = range.filter(x => !excludedChecksums.includes(x));
-          toCheck.forEach((cs) => {
+          toCheck.forEach(cs => {
             const string = `${baseString}${cs}`;
             expect(validChecksum(string)).toEqual(false);
           });
@@ -146,7 +157,7 @@ describe('personIdentifierHelpers', () => {
 
         it('returns false when the checksum is invalid', () => {
           const toCheck = range.filter(x => x !== checksum);
-          toCheck.forEach((cs) => {
+          toCheck.forEach(cs => {
             const string = `${baseString}${cs}`;
             expect(validChecksum(string, toDob)).toEqual(false);
           });
@@ -164,7 +175,7 @@ describe('personIdentifierHelpers', () => {
 
         it('returns false when the checksum is invalid', () => {
           const toCheck = range.filter(x => x !== checksum);
-          toCheck.forEach((cs) => {
+          toCheck.forEach(cs => {
             const string = `${baseString}${cs}`;
             expect(validChecksum(string, toDob)).toEqual(false);
           });
@@ -187,9 +198,12 @@ describe('personIdentifierHelpers', () => {
         });
 
         it('returns false when the checksum is invalid', () => {
-          const excludedChecksums = [twentiethCenturyChecksum, twentyfirstCenturyChecksum];
+          const excludedChecksums = [
+            twentiethCenturyChecksum,
+            twentyfirstCenturyChecksum,
+          ];
           const toCheck = range.filter(x => !excludedChecksums.includes(x));
-          toCheck.forEach((cs) => {
+          toCheck.forEach(cs => {
             const string = `${baseString}${cs}`;
             expect(validChecksum(string, toDob)).toEqual(false);
           });
@@ -212,9 +226,12 @@ describe('personIdentifierHelpers', () => {
         });
 
         it('returns false when the checksum is invalid', () => {
-          const excludedChecksums = [twentiethCenturyChecksum, twentyfirstCenturyChecksum];
+          const excludedChecksums = [
+            twentiethCenturyChecksum,
+            twentyfirstCenturyChecksum,
+          ];
           const toCheck = range.filter(x => !excludedChecksums.includes(x));
-          toCheck.forEach((cs) => {
+          toCheck.forEach(cs => {
             const string = `${baseString}${cs}`;
             expect(validChecksum(string, toDob)).toEqual(false);
           });

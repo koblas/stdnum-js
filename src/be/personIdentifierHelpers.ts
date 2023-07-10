@@ -6,11 +6,13 @@ function getApproximatelyNow() {
 }
 
 function isInPast(date: string | number): boolean {
-  return new Date(`${date}`) <= getApproximatelyNow();
+  return new Date(String(date)) <= getApproximatelyNow();
 }
 
-function getFullYears(yy: string | number): Array<number> {
-  return [parseInt(`19${yy}`, 10), parseInt(`20${yy}`, 10)];
+function getFullYears(yy: string | number): number[] {
+  const yval = typeof yy === 'string' ? parseInt(yy, 10) : yy;
+
+  return [1900 + yval, 2000 + yval];
 }
 
 function getFirstSix(number: string): string {
@@ -26,12 +28,15 @@ function getChecksum(number: string): number {
   return parseInt(checksumString, 10);
 }
 
-export function toDateArray(number: string): Array<string> {
-  return strings.splitAt(number, 2, 4, 6).slice(0, 3);
+export function toDateArray(number: string): string[] {
+  const [yy, mm, dd] = strings.splitAt(number, 2, 4, 6);
+
+  return [yy, mm, dd];
 }
 
 function getValidPastDates(yymmdd: string): Array<string> {
   const [yy, mm, dd] = toDateArray(yymmdd);
+
   return getFullYears(yy)
     .filter(yyyy => isValidDateCompactYYYYMMDD(`${yyyy}${mm}${dd}`))
     .map(yyyy => `${yyyy}-${mm}-${dd}`)
@@ -39,7 +44,12 @@ function getValidPastDates(yymmdd: string): Array<string> {
 }
 
 function isUnknownDob(dob: string): boolean {
+  if (['000001', '002001', '004001'].includes(dob)) {
+    return true;
+  }
+
   const [yy, mm, dd] = toDateArray(dob);
+
   return strings.isdigits(yy) && mm === '00' && strings.isdigits(dd);
 }
 
@@ -55,19 +65,23 @@ function defaultToDob(origFirstSix: string): string {
   return origFirstSix;
 }
 
-function isValidFirstSix(firstSix: string, toDob: typeof defaultToDob): boolean {
+function isValidFirstSix(
+  firstSix: string,
+  toDob: typeof defaultToDob,
+): boolean {
   const dob = toDob(firstSix);
   return isUnknownDob(dob) || isValidDob(dob);
 }
 
-export function validStructure(number: string, toDob: typeof defaultToDob = defaultToDob): boolean {
+export function validStructure(
+  number: string,
+  toDob: typeof defaultToDob = defaultToDob,
+): boolean {
   const firstSix = getFirstSix(number);
   return isValidFirstSix(firstSix, toDob);
 }
 
-function getChecksumBasesUnknownDob(
-  baseNumber: string,
-): Array<number> {
+function getChecksumBasesUnknownDob(baseNumber: string): Array<number> {
   const firstSix = getFirstSix(baseNumber);
   const [yy] = toDateArray(firstSix);
 
@@ -89,13 +103,15 @@ function getChecksumBasesForStandardDob(
   return validPastYears.map(year => toChecksumBasis(year, baseNumber));
 }
 
-function getChecksumBases(number: string, toDob: typeof defaultToDob): Array<number> {
+function getChecksumBases(
+  number: string,
+  toDob: typeof defaultToDob,
+): Array<number> {
   const firstSix = getFirstSix(number);
   const dob = toDob(firstSix);
   const baseNumber = getBaseNumber(number);
 
-  if (isUnknownDob(dob))
-    return getChecksumBasesUnknownDob(baseNumber);
+  if (isUnknownDob(dob)) return getChecksumBasesUnknownDob(baseNumber);
 
   return getChecksumBasesForStandardDob(baseNumber, toDob);
 }
@@ -104,7 +120,10 @@ function isValidChecksumPair(checksumBasis: number, checksum: number): boolean {
   return !((checksumBasis + checksum) % 97);
 }
 
-export function validChecksum(number: string, toDob: typeof defaultToDob = defaultToDob): boolean {
+export function validChecksum(
+  number: string,
+  toDob: typeof defaultToDob = defaultToDob,
+): boolean {
   const checksumBases = getChecksumBases(number, toDob);
   const checksum = getChecksum(number);
   return checksumBases.some(csb => isValidChecksumPair(csb, checksum));

@@ -14,6 +14,7 @@
  * Source
  *  https://nl.wikipedia.org/wiki/Rijksregisternummer
  *  https://fr.wikipedia.org/wiki/Numéro_de_registre_national
+ *  https://www.ibz.rrn.fgov.be/fileadmin/user_upload/nl/rr/instructies/IT-lijst/IT000_Rijksregisternummer.pdf
  *
  * PERSON
  */
@@ -45,27 +46,27 @@ const impl: Validator = {
     return value;
   },
   validate(input: string): ValidateReturn {
-    const number = impl.compact(input);
+    const value = impl.compact(input);
 
-    if (!strings.isdigits(number) || parseInt(number, 10) <= 0) {
+    if (!strings.isdigits(value) || parseInt(value, 10) <= 0) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
-    if (number.length !== 11) {
+    if (value.length !== 11) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
 
-    if (!validStructure(number)) {
+    if (!validStructure(value)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
-    if (!validChecksum(number)) {
+    if (!validChecksum(value)) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 
     return {
       isValid: true,
-      compact: number,
+      compact: value,
       isIndividual: true,
       isCompany: false,
     };
