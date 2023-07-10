@@ -20,6 +20,12 @@ describe('in/aadhaar', () => {
     expect(result.error).toBeInstanceOf(InvalidFormat);
   });
 
+  it('validate:222222222222', () => {
+    const result = validate('222222222222');
+
+    expect(result.error).toBeInstanceOf(InvalidFormat);
+  });
+
   it('validate:12345678', () => {
     const result = validate('12345678');
 

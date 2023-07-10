@@ -115,6 +115,8 @@ All country validators are in the "namespace" of the ISO country code.
 | Ireland                | IE   | PPS             | Person             | Personal Public Service Number, Irish personal number                                                                                  |
 | Ireland                | IE   | VAT             | Tax/Vat            | Ireland Value Added Tax ID                                                                                                             |
 | India                  | IN   | AADHAAR         | Company            | Indian digital resident personal identity number                                                                                       |
+| India                  | IN   | EPIC            | Person             | Electoral Photo Identity Card, Indian Voter ID                                                                                         |
+| India                  | IN   | GSTIN           | Vat                | Goods and Services Tax identification number, Indian VAT number                                                                        |
 | India                  | IN   | PAN             | Person             | Permanent Account Number, Indian income tax identifier                                                                                 |
 | Israel                 | IL   | IDNR            | Person             | Identity Number (Mispar Zehut, מספר זהות, Israeli identity number)                                                                     |
 | Israel                 | IL   | HR              | Company            | Company Number (מספר חברה, or short ח.פ. Israeli company number)                                                                       |
