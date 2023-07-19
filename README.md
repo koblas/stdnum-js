@@ -29,6 +29,8 @@ All country validators are in the "namespace" of the ISO country code.
 
 ## Supported Countries and Numbers
 
+How you can help! This library currently support about half the countries in the world. It would be great if we can get to 100%. Submit an issue with any reference documentation and I'll do my best to integrate it, bonus points if you can get detailed descriptions of checksums or other validation criteria.
+
 | Country                | Code | Name            | Group              | Meaning                                                                                                                                |
 | ---------------------- | ---- | --------------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
 | Andorra                | AD   | NRT             | Tax                | Tax Register Identifier (Número de Registre Tributari)                                                                                 |
