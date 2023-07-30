@@ -58,6 +58,9 @@ How you can help! This library currently support about half the countries in the
 | Brazil                 | BR   | CNPJ            | Company            | Brazilian company number (Cadastro Nacional da Pessoa Jurídica)                                                                        |
 | Belarus                | BY   | UNP             | Person/Company     | Учетный номер плательщика, the Belarus VAT number                                                                                      |
 | Canada                 | CA   | BN              | Company            | Company Identifier (Canadian Business Number)                                                                                          |
+| Canada                 | CA   | GST             | Company            | Goods and service Tax Number                                                                                                           |
+| Canada                 | CA   | PST             | Company            | Provincial Service Tax Number                                                                                                          |
+| Canada                 | CA   | QST             | Company            | Quebec Service Tax Number                                                                                                              |
 | Canada                 | CA   | SIN             | Person             | Person Identifier (Social Insurance Number)                                                                                            |
 | Cuba                   | CU   | NI              | Person             | Número de identidad, Cuban identity card numbers                                                                                       |
 | Cyprus                 | CY   | VAT             | Company            | Αριθμός Εγγραφής Φ.Π.Α. (Cypriot VAT number)                                                                                           |
