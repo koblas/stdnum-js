@@ -54,7 +54,7 @@ const impl: Validator = {
       reverse: true,
     });
 
-    if (String(10 - sum) !== check) {
+    if (String((10 - sum) % 10) !== check) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 
