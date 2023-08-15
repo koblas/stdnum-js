@@ -24,6 +24,12 @@ describe('ch/ssn', () => {
     expect(result.isValid && result.compact).toEqual('7569217076985');
   });
 
+  test.each(['756.9203.3850.60', '75692170769 85'])('validate:%s', value => {
+    const result = validate(value);
+
+    expect(result.isValid).toEqual(true);
+  });
+
   it('validate:12345678', () => {
     const result = validate('12345678');
 
