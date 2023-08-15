@@ -54,10 +54,14 @@ const impl: Validator = {
     if (error) {
       return { isValid: false, error };
     }
-    if (value.length !== 11 && value.length !== 13) {
+    let a, b, c;
+    if (value.length === 11) {
+      [a, b, c] = strings.splitAt(value, -5, -4);
+    } else if (value.length === 13) {
+      [, a, b, c] = strings.splitAt(value, -11, -5, -4);
+    } else {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
-    const [a, b, c] = strings.splitAt(value, -5, -4);
     if (!'-+'.includes(b)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
