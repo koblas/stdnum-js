@@ -14,6 +14,15 @@ describe('se/personnummer', () => {
     expect(result.isValid && result.compact).toEqual('880320-0016');
   });
 
+  test.each(['811228-9874', '670919-9530', '11900102-2384'])(
+    'validate:%s',
+    value => {
+      const result = validate(value);
+
+      expect(result.isValid).toEqual(true);
+    },
+  );
+
   it('validate:12345678', () => {
     const result = validate('12345678');
 
