@@ -14,7 +14,7 @@ import { Validator, ValidateReturn } from '../types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   // eslint-disable-next-line prefer-const
-  let [value, err] = strings.cleanUnicode(input, ' ');
+  let [value, err] = strings.cleanUnicode(input, ' -.');
 
   if (err !== null) {
     return [value, err];
