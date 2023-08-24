@@ -1,16 +1,16 @@
 /**
-* The National Insurance Number (NINO) is a nine character identifier used in
-* the United Kingdom.
-*
-* The first two characters are from an approved list of prefixes, the next
-* six characters are numbers issued sequentially and the final character is
-* a letter A-D. The suffix may be omitted if it is not known.
-*
-* Source
-*  https://en.wikipedia.org/wiki/National_Insurance_number
-*
-* PERSON
-*/
+ * The National Insurance Number (NINO) is a nine character identifier used in
+ * the United Kingdom.
+ *
+ * The first two characters are from an approved list of prefixes, the next
+ * six characters are numbers issued sequentially and the final character is
+ * a letter A-D. The suffix may be omitted if it is not known.
+ *
+ * Source
+ *  https://en.wikipedia.org/wiki/National_Insurance_number
+ *
+ * PERSON
+ */
 
 import * as exceptions from '../exceptions';
 import { strings } from '../util';

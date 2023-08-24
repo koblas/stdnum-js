@@ -60,7 +60,8 @@ const impl: Validator = {
         weightedSum(front, {
           weights: [3, 1],
           modulus: 10,
-        })) % 10;
+        })) %
+      10;
     const sum2 =
       (sum1 +
         weightedSum(front, {

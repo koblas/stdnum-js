@@ -36,5 +36,5 @@ describe('tr/tckimlik', () => {
     const result = validate('62345678900');
 
     expect(result.isValid && result.compact).toEqual('62345678900');
-  })
+  });
 });

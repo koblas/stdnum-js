@@ -61,16 +61,14 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
-    const sum = 
+    const sum =
       (11 -
         weightedSum(front, {
           reverse: true,
           weights: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
           modulus: 11,
         })) %
-        11
-    ;
-
+      11;
     if (check !== checkDigit[sum]) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
