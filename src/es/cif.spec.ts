@@ -9,12 +9,12 @@ describe('es/cif', () => {
   });
 
   it.each(['J99216582', 'B86670460', 'Q2876031B', 'N0112768G', 'W8265365J'])(
-      'validate:%s',
-      (cif: string) => {
-        const result = validate(cif);
+    'validate:%s',
+    (cif: string) => {
+      const result = validate(cif);
 
-        expect(result.isValid && result.compact).toEqual(cif);
-      },
+      expect(result.isValid && result.compact).toEqual(cif);
+    },
   );
 
   it('validate:X13585626', () => {

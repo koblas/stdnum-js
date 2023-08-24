@@ -3,7 +3,7 @@ import { InvalidLength, InvalidChecksum, InvalidFormat } from '../exceptions';
 
 describe('be/bis', () => {
   it('format:88 22 29-999.70', () => {
-    const result = format('88 02 29-999.70')
+    const result = format('88 02 29-999.70');
 
     expect(result).toEqual('88022999970');
   });
@@ -61,7 +61,7 @@ describe('be/bis', () => {
     const result = validate('08222999935');
 
     expect(result.error).toBeInstanceOf(InvalidChecksum);
-  })
+  });
 
   it('validate:96531699935', () => {
     // A number with an offset of 40, should be invalid due to invalid month
@@ -130,7 +130,7 @@ describe('be/bis', () => {
     // A number with an unknown dob offset by 40, should be invalid by checksum
     const result = validate('01400199981');
 
-    expect(result.error).toBeInstanceOf(InvalidChecksum)
+    expect(result.error).toBeInstanceOf(InvalidChecksum);
   });
 
   it('validate:00290199976', () => {
