@@ -98,7 +98,10 @@ const impl: Validator = {
       modulus: 11,
     });
 
-    if (String(11 - sum1) !== check1 || String(11 - sum2) !== check2) {
+    if (
+      String((11 - sum1) % 11) !== check1 ||
+      String((11 - sum2) % 11) !== check2
+    ) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 
