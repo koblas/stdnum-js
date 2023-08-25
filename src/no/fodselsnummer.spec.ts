@@ -8,6 +8,15 @@ describe('no/fodselsnummer', () => {
     expect(result).toEqual('151086 95088');
   });
 
+  test.each(['11111598403', '23114048690', '15108695088'])(
+    'validate:%s',
+    value => {
+      const result = validate(value);
+
+      expect(result.isValid).toEqual(true);
+    },
+  );
+
   it('validate:151086 95088', () => {
     const result = validate('151086 95088');
 
