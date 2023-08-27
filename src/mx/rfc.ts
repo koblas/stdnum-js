@@ -129,7 +129,7 @@ const impl: Validator = {
       if (nameBlacklist.has(value.substr(0, 4))) {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
-      if (!isValidDateCompactYYMMDD(value.substr(4, 6))) {
+      if (!isValidDateCompactYYMMDD(value.substr(4, 6), true)) {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
     } else if (value.length === 12) {

@@ -48,7 +48,7 @@ function checkBirthdate(value: string) {
     return false;
   }
 
-  return isValidDate(String(yy), String(mm), String(dd));
+  return isValidDate(String(yy), String(mm), String(dd), true);
 }
 
 const impl: Validator = {

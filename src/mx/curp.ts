@@ -14,7 +14,12 @@
  */
 
 import * as exceptions from '../exceptions';
-import { isValidDateCompactYYMMDD, strings } from '../util';
+import {
+  buildDate,
+  isValidDateCompactYYMMDD,
+  strings,
+  validBirthdate,
+} from '../util';
 import { Validator, ValidateReturn } from '../types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
@@ -184,7 +189,7 @@ const impl: Validator = {
     if (!/^[A-Z]{4}[0-9]{6}[A-Z]{6}[0-9A-Z][0-9]$/.test(value)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
-    if (!isValidDateCompactYYMMDD(value.substr(4, 6))) {
+    if (!isValidDateCompactYYMMDD(value.substr(4, 6), true)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
     if (nameBlacklist.has(value.substr(0, 4))) {
@@ -219,17 +224,12 @@ const impl: Validator = {
   },
 };
 
-function getBirthDateImpl(value: string) {
-  const parts = strings.splitAt(value, 4, 6, 8);
+function getBirthDateImpl(value: string): Date | null {
+  const [, year, mm, dd] = strings.splitAt(value, 4, 6, 8);
 
-  const yyN = parseInt(parts[1], 10);
-  const mmN = parseInt(parts[2], 10) - 1;
-  const ddN = parseInt(parts[3], 10);
+  const century = !Number.isNaN(parseInt(value[16], 10)) ? '19' : '20';
 
-  if (!Number.isNaN(parseInt(value[16], 10))) {
-    return new Date(yyN + 1900, mmN, ddN);
-  }
-  return new Date(yyN + 2000, mmN, ddN);
+  return buildDate(`${century}${year}`, mm, dd);
 }
 
 ///
@@ -249,10 +249,12 @@ export function getGender(input: string): 'M' | 'F' | 'X' {
   return 'F';
 }
 
-export function getBirthDate(input: string): Date {
+export function getBirthDate(input: string): Date | null {
   const value = impl.compact(input);
 
-  return getBirthDateImpl(value);
+  const date = getBirthDateImpl(value);
+
+  return validBirthdate(date) ? date : null;
 }
 
 export const { name, localName, abbreviation, validate, format, compact } =

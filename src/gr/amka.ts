@@ -13,7 +13,7 @@
  */
 
 import * as exceptions from '../exceptions';
-import { isValidDateCompactYYMMDD, strings } from '../util';
+import { isValidDate, strings } from '../util';
 import { Validator, ValidateReturn } from '../types';
 import { luhnChecksumValidate } from '../util/checksum';
 
@@ -56,7 +56,7 @@ const impl: Validator = {
 
     const [dd, mm, yy] = strings.splitAt(value, 2, 4, 6);
 
-    if (!isValidDateCompactYYMMDD(`${yy}${mm}${dd}`)) {
+    if (!isValidDate(yy, mm, dd)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
     if (!luhnChecksumValidate(value)) {

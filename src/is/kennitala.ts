@@ -8,7 +8,7 @@
  */
 
 import * as exceptions from '../exceptions';
-import { isValidDateCompactYYYYMMDD, strings, weightedSum } from '../util';
+import { isValidDate, strings, weightedSum } from '../util';
 import { Validator, ValidateReturn } from '../types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
@@ -54,7 +54,7 @@ const impl: Validator = {
     const day = dayValue > 40 ? String(dayValue - 40).padStart(2, '0') : dd;
     const year = centry === '9' ? `19${yy}` : `20${yy}`;
 
-    if (!isValidDateCompactYYYYMMDD(`${year}${mm}${day}`)) {
+    if (!isValidDate(year, mm, day)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 

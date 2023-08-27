@@ -20,13 +20,14 @@
  */
 
 import * as exceptions from '../exceptions';
-import { strings } from '../util';
+import { isValidDate, buildDate, validBirthdate, strings } from '../util';
 import { Validator, ValidateReturn } from '../types';
 
 export function getBirthDate(value: string): Date {
   const [dob] = strings.splitAt(value, 6);
-  // eslint-disable-next-line prefer-const
-  let [day, month, year] = strings.splitAt(dob, 2, 4).map(v => Number(v));
+  const [day, month, yearStr] = strings.splitAt(dob, 2, 4);
+
+  let year = parseInt(yearStr);
 
   if ('5678'.includes(value[6]) && year >= 58) {
     year += 1800;
@@ -38,19 +39,16 @@ export function getBirthDate(value: string): Date {
   } else {
     year += 2000;
   }
-  const date = new Date(year, month - 1, day);
-  if (
-    Number.isNaN(date.getTime()) ||
-    [year, String(month).padStart(2, '0'), String(day).padStart(2, '0')].join(
-      '-',
-    ) !== date.toISOString().substr(0, 10)
-  ) {
+
+  const d = buildDate(String(year), month, day);
+
+  if (d === null || !isValidDate(String(year), month, day)) {
     throw new exceptions.InvalidComponent(
       'The number does not contain valid birth date information.',
     );
   }
 
-  return date;
+  return d;
 }
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
@@ -97,7 +95,7 @@ const impl: Validator = {
 
     try {
       const date = getBirthDate(value);
-      if (date.getTime() > new Date().getTime()) {
+      if (!validBirthdate(date)) {
         return {
           isValid: false,
           error: new exceptions.InvalidComponent(

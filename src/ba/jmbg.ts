@@ -8,7 +8,7 @@
  */
 
 import * as exceptions from '../exceptions';
-import { isValidDateCompactYYYYMMDD, strings } from '../util';
+import { isValidDate, strings } from '../util';
 import { Validator, ValidateReturn } from '../types';
 import { weightedSum } from '../util/checksum';
 
@@ -55,7 +55,7 @@ const impl: Validator = {
     const [dd, mm, yyy] = strings.splitAt(value, 2, 4, 7);
     const yyyy = `${parseInt(yyy, 10) < 800 ? '2' : '1'}${yyy}`;
 
-    if (!isValidDateCompactYYYYMMDD(`${yyyy}${mm}${dd}`)) {
+    if (!isValidDate(yyyy, mm, dd, true)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 

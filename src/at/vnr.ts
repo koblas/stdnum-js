@@ -56,7 +56,7 @@ const impl: Validator = {
 
     const [front, check, dob] = strings.splitAt(value, 3, 4);
 
-    if (!isValidDateCompactDDMMYY(dob)) {
+    if (!isValidDateCompactDDMMYY(dob, true)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 

@@ -83,7 +83,7 @@ export function validateNew(value: string): ValidateReturn {
     checksum,
   ] = strings.splitAt(value, 9, 10, 16, 17, 23, 24, 25);
 
-  if (!isValidDateCompactYYMMDD(birth)) {
+  if (!isValidDateCompactYYMMDD(birth, true)) {
     return {
       isValid: false,
       error: new exceptions.InvalidComponent('birthdate'),

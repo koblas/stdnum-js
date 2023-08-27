@@ -71,7 +71,7 @@ const impl: Validator = {
 
     const [bdate, place] = strings.splitAt(value, 6, 8);
 
-    if (!isValidDateCompactYYMMDD(bdate)) {
+    if (!isValidDateCompactYYMMDD(bdate, true)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
     if (UNASSIGNED.includes(place)) {
