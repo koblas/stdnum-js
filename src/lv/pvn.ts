@@ -12,7 +12,7 @@
  */
 
 import * as exceptions from '../exceptions';
-import { isValidDateCompactYYYYMMDD, strings } from '../util';
+import { isValidDate, strings } from '../util';
 import { Validator, ValidateReturn } from '../types';
 import { weightedSum } from '../util/checksum';
 
@@ -62,11 +62,7 @@ const impl: Validator = {
     if (isIndividual) {
       const [dd, mm, yy, century] = strings.splitAt(value, 2, 4, 6, 7);
 
-      if (
-        !isValidDateCompactYYYYMMDD(
-          `${18 + parseInt(century, 10)}${yy}${mm}${dd}`,
-        )
-      ) {
+      if (!isValidDate(`${18 + parseInt(century, 10)}${yy}`, mm, dd, true)) {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
 

@@ -13,9 +13,11 @@
  */
 
 import * as exceptions from '../exceptions';
-import { isValidDateCompactYYYYMMDD, strings } from '../util';
+import { isValidDateCompactYYYYMMDD, buildDate, strings } from '../util';
 import { Validator, ValidateReturn } from '../types';
 import { luhnChecksumValidate } from '../util/checksum';
+
+const ONE_HUNDRED_YEARS_IN_MS = 100 * 365 * 24 * 60 * 60 * 1_000;
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   const [value, err] = strings.cleanUnicode(input, ' :');
@@ -27,6 +29,43 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   const [a, b, c] = strings.splitAt(value, -5, -4);
 
   return [`${a.replace(/[-+]/g, '')}${b}${c}`, null];
+}
+
+function formatImpl(input: string): string {
+  const [value] = clean(input);
+
+  let front,
+    back,
+    sep = '-';
+
+  if (value.length === 12 || value.length === 13) {
+    const [yyyy, mm, dd] = strings.splitAt(value, 0, 4, 6, 8);
+
+    const d = buildDate(yyyy, mm, dd);
+    if (d === null) {
+      // bad date :(
+      return value;
+    }
+
+    if (new Date().getTime() - d.getTime() > ONE_HUNDRED_YEARS_IN_MS) {
+      sep = '+';
+    }
+
+    front = `${yyyy.substring(2)}${mm}${dd}`;
+
+    back = value.substring(value.length - 4);
+  } else if (value.length === 10) {
+    front = value.substring(0, 6);
+    back = value.substring(6);
+  } else if (value.length === 11) {
+    front = value.substring(0, 6);
+    sep = value[6];
+    back = value.substring(7);
+  } else {
+    return value;
+  }
+
+  return `${front}${sep}${back}`;
 }
 
 const impl: Validator = {
@@ -42,11 +81,7 @@ const impl: Validator = {
     return value;
   },
 
-  format(input: string): string {
-    const [value] = clean(input);
-
-    return strings.splitAt(value, -4).join('-');
-  },
+  format: formatImpl,
 
   validate(input: string): ValidateReturn {
     const [value, error] = clean(input);
@@ -87,7 +122,7 @@ const impl: Validator = {
 
       yyyymmdd = `${century}${yymmdd}`;
     }
-    if (!isValidDateCompactYYYYMMDD(yyyymmdd)) {
+    if (!isValidDateCompactYYYYMMDD(yyyymmdd, true)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
@@ -97,7 +132,7 @@ const impl: Validator = {
 
     return {
       isValid: true,
-      compact: value,
+      compact: formatImpl(input),
       isIndividual: true,
       isCompany: false,
     };

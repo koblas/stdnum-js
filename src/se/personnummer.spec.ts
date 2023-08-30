@@ -2,10 +2,18 @@ import { validate, format } from './personnummer';
 import { InvalidLength, InvalidChecksum } from '../exceptions';
 
 describe('se/personnummer', () => {
-  it('format:8803200016', () => {
-    const result = format('8803200016');
+  test.each([
+    ['8803200017', '880320-0017'], // no hyphen assume young person
+    ['880320-0017', '880320-0017'], // standard format
+    ['880320+0017', '880320+0017'], // standard format, person over 100
+    ['19200901-0000', '200901+0000'], // 4digit year, hypen that's useless person over 100
+    ['192009010000', '200901+0000'], // 4digit year, no hyphen, person over 100
+    ['20200901-0000', '200901-0000'], // 4digit year, hyphen
+    ['202009010000', '200901-0000'], // 4digit year, no hyphen
+  ])('format:%s', (given, want) => {
+    const result = format(given);
 
-    expect(result).toEqual('880320-0016');
+    expect(result).toEqual(want);
   });
 
   it('validate:880320-0016', () => {

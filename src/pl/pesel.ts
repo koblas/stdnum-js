@@ -69,7 +69,7 @@ const impl: Validator = {
       century = '19';
     }
 
-    if (!isValidDate(`${century}${yy}`, String(month % 20), dd)) {
+    if (!isValidDate(`${century}${yy}`, String(month % 20), dd, true)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 

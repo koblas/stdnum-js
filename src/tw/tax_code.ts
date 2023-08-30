@@ -71,12 +71,12 @@ const impl = {
       if (!strings.isdigits(yymmdd)) {
         return { isValid: false, error: new exceptions.InvalidFormat() };
       }
-      if (!isValidDateCompactYYMMDD(yymmdd)) {
+      if (!isValidDateCompactYYMMDD(yymmdd, true)) {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
     } else {
       const [yyyymmdd, name] = strings.splitAt(value, 8);
-      if (!isValidDateCompactYYYYMMDD(yyyymmdd)) {
+      if (!isValidDateCompactYYYYMMDD(yyyymmdd, true)) {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
       if (!/^[A-Z]+$/i.test(name)) {

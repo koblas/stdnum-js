@@ -12,7 +12,7 @@
  */
 
 import * as exceptions from '../exceptions';
-import { isValidDateCompactYYYYMMDD, strings } from '../util';
+import { isValidDate, strings } from '../util';
 import { Validator, ValidateReturn } from '../types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
@@ -66,9 +66,7 @@ const impl: Validator = {
     } else if (year < 1954) {
       year += 100;
     }
-    if (
-      !isValidDateCompactYYYYMMDD(`${year}${String(mon).padStart(2, '0')}${dd}`)
-    ) {
+    if (!isValidDate(String(year), String(mon), dd, true)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 

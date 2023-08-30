@@ -76,7 +76,7 @@ const impl: Validator = {
 
     const [dob, century, place, , check] = strings.splitAt(value, 6, 7, 9, 12);
 
-    if (!isValidDateCompactYYYYMMDD(`${centuryPrefix[century]}${dob}`)) {
+    if (!isValidDateCompactYYYYMMDD(`${centuryPrefix[century]}${dob}`, true)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
     if (parseInt(place, 10) > 96) {

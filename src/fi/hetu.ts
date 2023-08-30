@@ -10,7 +10,7 @@
  */
 
 import * as exceptions from '../exceptions';
-import { isValidDateCompactYYYYMMDD, strings } from '../util';
+import { isValidDate, strings } from '../util';
 import { Validator, ValidateReturn } from '../types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
@@ -86,8 +86,7 @@ const impl: Validator = {
       7,
       10,
     );
-    const dstr = `${CENTURY[century]}${yy}${mm}${dd}`;
-    if (!isValidDateCompactYYYYMMDD(dstr)) {
+    if (!isValidDate(`${CENTURY[century]}${yy}`, mm, dd, true)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 

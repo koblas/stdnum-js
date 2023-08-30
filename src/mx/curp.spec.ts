@@ -17,7 +17,7 @@ describe('mx/curp', () => {
   it('getBirthDate:BOXW310820HNERXN09', () => {
     const result = getBirthDate('BOXW310820HNERXN09');
 
-    expect(result.toISOString().substr(0, 10)).toEqual('1931-08-20');
+    expect(result?.toISOString().substr(0, 10)).toEqual('1931-08-20');
   });
 
   it('getGender:BOXW310820HNERXN09', () => {

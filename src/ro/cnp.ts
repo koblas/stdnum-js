@@ -126,7 +126,7 @@ const impl: Validator = {
 
     const [first, dvalue, county] = strings.splitAt(value, 1, 7, 9);
 
-    if (!isValidDateCompactYYYYMMDD(`${century[first]}${dvalue}`)) {
+    if (!isValidDateCompactYYYYMMDD(`${century[first]}${dvalue}`, true)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
     if (!VALID_COUNTIES.includes(county)) {

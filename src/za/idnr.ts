@@ -13,9 +13,8 @@
  */
 
 import * as exceptions from '../exceptions';
-import { strings } from '../util';
+import { strings, isValidDateCompactYYMMDD } from '../util';
 import { Validator, ValidateReturn } from '../types';
-import { isValidDateCompactYYMMDD } from '../util/isValidDate';
 import { luhnChecksumValidate } from '../util/checksum';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
@@ -64,7 +63,7 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
-    if (!isValidDateCompactYYMMDD(bdate)) {
+    if (!isValidDateCompactYYMMDD(bdate, true)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 

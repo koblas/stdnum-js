@@ -58,7 +58,7 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
-    if (!isValidDateCompactYYYYMMDD(front.substr(6, 8))) {
+    if (!isValidDateCompactYYYYMMDD(front.substring(6, 14), true)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
