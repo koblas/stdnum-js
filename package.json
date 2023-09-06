@@ -3,7 +3,10 @@
   "version": "1.10.0",
   "description": "Standard Number Validation",
   "files": [
-    "lib"
+    "README.md",
+    "LICENSE.txt",
+    "lib",
+    "src"
   ],
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
