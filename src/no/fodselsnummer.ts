@@ -42,7 +42,7 @@ function checkBirthdate(value: string) {
     yy += 1800;
   } else if (rest < 1000 && yy < 40) {
     yy += 2000;
-  } else if (rest < 1000 && yy >= 40) {
+  } else if (rest >= 900 && rest < 1000 && yy >= 40) {
     yy += 1900;
   } else {
     return false;

@@ -8,14 +8,33 @@ describe('no/fodselsnummer', () => {
     expect(result).toEqual('151086 95088');
   });
 
-  test.each(['11111598403', '23114048690', '15108695088'])(
-    'validate:%s',
-    value => {
-      const result = validate(value);
+  test.each([
+    '11111598403',
+    '23114048690',
+    '15108695088',
+    // from norsk-validator
+    '01010750160',
+    '30042099941',
+    '22052099424',
+    '09062099345',
+    '020161 26007',
+  ])('validate:%s', value => {
+    const result = validate(value);
 
-      expect(result.isValid).toEqual(true);
-    },
-  );
+    expect(result.isValid).toEqual(true);
+  });
+
+  test.each([
+    '45014054018',
+    // from norsk-validator
+    '11111234567',
+    '1234123456',
+    '',
+  ])('validate:%s', value => {
+    const result = validate(value);
+
+    expect(result.isValid).toEqual(false);
+  });
 
   it('validate:151086 95088', () => {
     const result = validate('151086 95088');
