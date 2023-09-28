@@ -77,8 +77,8 @@ const STATE_CODES: Record<string, string> = {
 const VALID_STATE_CODES = Object.keys(STATE_CODES);
 
 const impl: Validator = {
-  name: 'NAME',
-  localName: 'NAME',
+  name: 'Indian VAT Number',
+  localName: 'Goods and Services Tax Identification Number',
   abbreviation: 'GSTIN',
 
   compact(input: string): string {
