@@ -8,10 +8,10 @@ describe('tw/natid', () => {
     expect(result).toEqual('00501503');
   });
 
-  it('validate:A200501503', () => {
-    const result = validate('A200501503');
+  it('validate:A200501505', () => {
+    const result = validate('A200501505');
 
-    expect(result.isValid && result.compact).toEqual('A200501503');
+    expect(result.isValid && result.compact).toEqual('A200501505');
   });
 
   it('validate:12345', () => {
@@ -25,4 +25,17 @@ describe('tw/natid', () => {
 
     expect(result.error).toBeInstanceOf(InvalidComponent);
   });
+
+  test.each(['A200501503', 'A800501509', 'A800501509'])('not-valid:', value => {
+    const result = validate(value);
+    expect(result.isValid).toEqual(false);
+  });
+
+  test.each(['A800000014', 'A123456789', 'A100501503', 'A200501505'])(
+    'valid:',
+    value => {
+      const result = validate(value);
+      expect(result.isValid).toEqual(true);
+    },
+  );
 });

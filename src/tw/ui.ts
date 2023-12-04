@@ -74,7 +74,7 @@ const impl = {
     if (!strings.isalpha(issuer)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
-    if (!['A', 'B', 'C', 'D', '8', '9'].includes(gender)) {
+    if (!/[A-D]/.test(gender)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
     if (!strings.isdigits(code)) {
@@ -84,11 +84,15 @@ const impl = {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
-    const sum = weightedSum(value, {
-      weights: [1, 9, 8, 7, 6, 5, 4, 3, 2, 1],
-      alphabet: ALPHABET,
-      modulus: 10,
-    });
+    const leading = ALPHABET.indexOf(issuer) - 10;
+    const sum =
+      weightedSum(`${gender}${code}${check}`, {
+        weights: [8, 7, 6, 5, 4, 3, 2, 1, 1],
+        alphabet: ALPHABET,
+        modulus: 10,
+      }) +
+      Math.floor(leading / 10 + 1) +
+      leading * 9;
     if (sum % 10 !== 0) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
