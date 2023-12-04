@@ -1,0 +1,15 @@
+name: Commit Message
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Semantic Release PR Title Check
+        uses: osl-incubator/semantic-release-pr-title-check@v1.4.2
