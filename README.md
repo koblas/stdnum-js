@@ -129,6 +129,7 @@ How you can help! This library currently support about half the countries in the
 | Italy                  | IT   | CODICEFISCALE   | Person             | Codice Fiscale (Italian tax code for individuals)                                                                                      |
 | Italy                  | IT   | IVA             | Vat                | Partita IVA (Italian VAT number)                                                                                                       |
 | Liechtenstein          | LI   | PEID            | Person/Company     | Personenidentifikationsnummer                                                                                                          |
+| Sri Lanka              | LK   | NIC             | Person             | NIC Number                |
 | Lithuanian             | LT   | ASMENS          | Person             | Asmens kodas (Person Number)                                                                                                           |
 | Lithuanian             | LT   | PVM             | Vat                | Pridėtinės vertės mokestis mokėtojo kodas                                                                                              |
 | Luxembourgian          | LU   | TVA             | Vat                | taxe sur la valeur ajoutée                                                                                                             |
