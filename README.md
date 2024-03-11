@@ -202,6 +202,7 @@ How you can help! This library currently support about half the countries in the
 | Spain                  | ES   | NIE             | Person             | Identity code foreigner (Número de Identificación de Extranjero)                                                                       |
 | Spain                  | ES   | NIF             | Tax                | Tax Identifier (Número de Identificación Fiscal)                                                                                       |
 | Spain                  | ES   | NSS             | Person             | El número de Seguridad Social, Social Security Number                                                                                  |
+| Sri Lanka              | LK   | NIC             | Person             | NIC Number                |
 | Uruguay                | UY   | RUT             | Tax/Vat            | Tax Identifier (Registro Único Tributario)                                                                                             |
 | Uruguay                | UY   | CEDULA          | Person             | Person Identifier (Cédula de Residencia)                                                                                               |
 | Uruguay                | UY   | NIE             | Person             | ForeignersI identification Number                                                                                                      |
