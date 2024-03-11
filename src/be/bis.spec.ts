@@ -144,7 +144,7 @@ describe('be/bis', () => {
     const yy = new Date().getFullYear() % 100;
     const baseNum = parseInt(`${yy}2000999`, 10);
     const twoPrefixedBaseNumber = parseInt(`${2}${baseNum}`, 10);
-    const checksum = 97 - (twoPrefixedBaseNumber % 97);
+    const checksum = String(97 - (twoPrefixedBaseNumber % 97)).padStart(2, '0');
     const id = `${baseNum}${checksum}`;
 
     const result = validate(id);
@@ -155,7 +155,7 @@ describe('be/bis', () => {
     const yy = new Date().getFullYear() % 100;
     const baseNum = parseInt(`${yy}4000999`, 10);
     const twoPrefixedBaseNumber = parseInt(`${2}${baseNum}`, 10);
-    const checksum = 97 - (twoPrefixedBaseNumber % 97);
+    const checksum = String(97 - (twoPrefixedBaseNumber % 97)).padStart(2, '0');
     const id = `${baseNum}${checksum}`;
 
     const result = validate(id);
@@ -165,7 +165,7 @@ describe('be/bis', () => {
   it('validate:(unspecified date 100 years ago, offset of 20)', () => {
     const yy = new Date().getFullYear() % 100;
     const baseNum = parseInt(`${yy}2000999`, 10);
-    const checksum = 97 - (baseNum % 97);
+    const checksum = String(97 - (baseNum % 97)).padStart(2, '0');
     const id = `${baseNum}${checksum}`;
 
     const result = validate(id);
@@ -175,7 +175,7 @@ describe('be/bis', () => {
   it('validate:(unspecified date 100 years ago, offset of 40)', () => {
     const yy = new Date().getFullYear() % 100;
     const baseNum = parseInt(`${yy}4000999`, 10);
-    const checksum = 97 - (baseNum % 97);
+    const checksum = String(97 - (baseNum % 97)).padStart(2, '0');
     const id = `${baseNum}${checksum}`;
 
     const result = validate(id);
