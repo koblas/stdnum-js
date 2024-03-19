@@ -25,7 +25,7 @@ export class ValidationError extends Error {
  *  part of the number or required parts are missing.
  */
 export class InvalidFormat extends ValidationError {
-  constructor(msg = 'The number has an invlidad format.') {
+  constructor(msg = 'The number has an invalid format.') {
     super(msg);
     this.name = 'InvalidFormat';
   }
