@@ -80,7 +80,7 @@ const impl: Validator = {
     if (strings.isdigits(check)) {
       const sum = (12 + 3 * (parseInt(back, 10) % 97)) % 97;
 
-      if (String(sum) !== check) {
+      if (sum !== parseInt(check, 10)) {
         return { isValid: false, error: new exceptions.InvalidChecksum() };
       }
     } else {
