@@ -35,7 +35,7 @@ export class InvalidFormat extends ValidationError {
  * The number's internal checksum or check digit does not match.
  */
 export class InvalidChecksum extends ValidationError {
-  constructor(msg = "The number number's checksum or check digit is invalid.") {
+  constructor(msg = "The number checksum or check digit is invalid.") {
     super(msg);
     this.name = 'InvalidChecksum';
   }
