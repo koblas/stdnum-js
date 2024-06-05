@@ -19,6 +19,8 @@ describe('fr/tva', () => {
     '23334175221',
     'K7399859412',
     '4Z123456782',
+    '04494887854', // First digit of checksum is 0
+    'FR04494887854', // First digit of checksum is 0
     'FR84323140392',
   ])('validate:%s', value => {
     const result = validate(value);
