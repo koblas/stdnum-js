@@ -25,4 +25,16 @@ describe('pt/nif', () => {
 
     expect(result.error).toBeInstanceOf(InvalidChecksum);
   });
+
+  it('validate:PT 507 104 560', () => {
+    const result = validate('507104560');
+
+    expect(result.isValid && result.compact).toEqual('507104560');
+  });
+
+  it('validate:PT 506 035 220', () => {
+    const result = validate('506035220');
+
+    expect(result.isValid && result.compact).toEqual('506035220');
+  });
 });
