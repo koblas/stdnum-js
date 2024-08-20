@@ -85,9 +85,9 @@ describe('gb/nino', () => {
     expect(result.error).toBeInstanceOf(InvalidFormat);
   });
 
-  it('validate:HO012345E', () => {
-    // Valid prefix, valid numeric section, invalid suffix
-    const result = validate('HH012345E');
+  it('validate:TO012345D', () => {
+    // Invalid prefix, valid numeric section, valid suffix
+    const result = validate('TO012345D');
 
     expect(result.error).toBeInstanceOf(InvalidFormat);
   });
