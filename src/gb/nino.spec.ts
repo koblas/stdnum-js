@@ -15,6 +15,13 @@ describe('gb/nino', () => {
     expect(result.isValid && result.compact).toEqual('HH012345D');
   });
 
+  it('validate:TJ012345D', () => {
+    // A valid number with a suffix
+    const result = validate('TJ012345D');
+
+    expect(result.isValid && result.compact).toEqual('TJ012345D');
+  });
+
   it('validate:hh012345d', () => {
     // A valid number with lowercase letters
     const result = validate('hh012345d');
@@ -72,6 +79,13 @@ describe('gb/nino', () => {
   });
 
   it('validate:HH012345E', () => {
+    // Valid prefix, valid numeric section, invalid suffix
+    const result = validate('HH012345E');
+
+    expect(result.error).toBeInstanceOf(InvalidFormat);
+  });
+
+  it('validate:HO012345E', () => {
     // Valid prefix, valid numeric section, invalid suffix
     const result = validate('HH012345E');
 
