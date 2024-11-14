@@ -35,8 +35,8 @@ function formatImpl(input: string): string {
   const [value] = clean(input);
 
   let front,
-    back,
-    sep = '-';
+      back,
+      sep = '-';
 
   if (value.length === 12 || value.length === 13) {
     const [yyyy, mm, dd] = strings.splitAt(value, 0, 4, 6, 8);
@@ -122,6 +122,15 @@ const impl: Validator = {
 
       yyyymmdd = `${century}${yymmdd}`;
     }
+
+    // Adjust for coordination numbers ("Samordningsnummer")
+    // https://skatteverket.se/servicelankar/otherlanguages/inenglishengelska/individualsandemployees/coordinationnumbers
+    const day = parseInt(yyyymmdd.substring(6, 8), 10);
+    if (day > 60) {
+      yyyymmdd =
+          yyyymmdd.substring(0, 6) + (day - 60).toString().padStart(2, '0');
+    }
+
     if (!isValidDateCompactYYYYMMDD(yyyymmdd, true)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
@@ -140,4 +149,4 @@ const impl: Validator = {
 };
 
 export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+    impl;
