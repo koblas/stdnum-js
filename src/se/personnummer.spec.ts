@@ -22,6 +22,13 @@ describe('se/personnummer', () => {
     expect(result.isValid && result.compact).toEqual('880320-0016');
   });
 
+  // Coordination number ("Samordningsnummer")
+  it('validate:701063-2391', () => {
+    const result = validate('701063-2391');
+
+    expect(result.isValid && result.compact).toEqual('701063-2391');
+  });
+
   test.each(['811228-9874', '670919-9530', '11900102-2384'])(
     'validate:%s',
     value => {
