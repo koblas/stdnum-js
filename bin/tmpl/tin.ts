@@ -60,8 +60,10 @@ const impl: Validator = {
     //   return { isValid: false, error: new exceptions.InvalidFormat() };
     // }
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [, front, check] = strings.splitAt(value, 1, 10);
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const sum = weightedSum(front, {
       weights: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       modulus: 11,

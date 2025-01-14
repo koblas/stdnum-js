@@ -1,4 +1,3 @@
-/* eslint-disable max-classes-per-file */
 /**
  * Collection of exceptions.
  * The validation functions of stdnum should raise one of the below exceptions
@@ -35,7 +34,7 @@ export class InvalidFormat extends ValidationError {
  * The number's internal checksum or check digit does not match.
  */
 export class InvalidChecksum extends ValidationError {
-  constructor(msg = "The number checksum or check digit is invalid.") {
+  constructor(msg = 'The number checksum or check digit is invalid.') {
     super(msg);
     this.name = 'InvalidChecksum';
   }

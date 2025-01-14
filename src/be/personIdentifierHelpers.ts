@@ -34,7 +34,7 @@ export function toDateArray(number: string): string[] {
   return [yy, mm, dd];
 }
 
-function getValidPastDates(yymmdd: string): Array<string> {
+function getValidPastDates(yymmdd: string): string[] {
   const [yy, mm, dd] = toDateArray(yymmdd);
 
   return getFullYears(yy)
@@ -81,7 +81,7 @@ export function validStructure(
   return isValidFirstSix(firstSix, toDob);
 }
 
-function getChecksumBasesUnknownDob(baseNumber: string): Array<number> {
+function getChecksumBasesUnknownDob(baseNumber: string): number[] {
   const firstSix = getFirstSix(baseNumber);
   const [yy] = toDateArray(firstSix);
 
@@ -93,7 +93,7 @@ function getChecksumBasesUnknownDob(baseNumber: string): Array<number> {
 function getChecksumBasesForStandardDob(
   baseNumber: string,
   toDob: typeof defaultToDob,
-): Array<number> {
+): number[] {
   const firstSix = getFirstSix(baseNumber);
   const dob = toDob(firstSix);
   const validPastDates = getValidPastDates(dob);
@@ -106,7 +106,7 @@ function getChecksumBasesForStandardDob(
 function getChecksumBases(
   number: string,
   toDob: typeof defaultToDob,
-): Array<number> {
+): number[] {
   const firstSix = getFirstSix(number);
   const dob = toDob(firstSix);
   const baseNumber = getBaseNumber(number);
