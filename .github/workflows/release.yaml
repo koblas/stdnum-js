@@ -2,14 +2,14 @@ name: Release
 
 on:
   #push:
-  #  branches: 
+  #  branches:
   #    - main
 
   # Only run if the general build for the main branch has completed
   workflow_run:
-    workflows: ["Build and Test"]
+    workflows: ['Build and Test']
     branches: [main]
-    types: 
+    types:
       - completed
 
 jobs:
@@ -19,46 +19,45 @@ jobs:
     outputs:
       version: ${{ steps.version.outputs.test }}
 
-
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
-        persist-credentials: false
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 20
-    - name: Install dependencies
-      run: npm ci
-    - name: Install semantic-release extra plugins
-      run: npm install --save-dev @semantic-release/changelog @semantic-release/git      
-#   - name: Lint
-#     run: npm run lint-fix
-#   - name: Test
-#     run: npm run test:unit --if-present
-    - name: Build
-      run: npm run build      
-    - name: Release
-      id: release
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-      run: |
-        npx semantic-release
-        echo "version=$(npx semantic-release --version)" >> $GITHUB_OUTPUT
-    - name: GitHub Release update
-      uses: softprops/action-gh-release@v1
-      #if: startsWith(github.ref, 'refs/tags/')
-      with:
-        # body_path: ${{ github.workspace }}-CHANGELOG.txt
-        # note you'll typically need to create a personal access token
-        # with permissions to create releases in the other repoj
-        #token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
-        tag_name: ${{ steps.release.outputs.version }}
-        files: |
-          LICENSE.md
-          README.md
-          lib
-          package.json
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install dependencies
+        run: npm ci
+      - name: Install semantic-release extra plugins
+        run: npm install --save-dev @semantic-release/changelog @semantic-release/git
+      #   - name: Lint
+      #     run: npm run lint-fix
+      #   - name: Test
+      #     run: npm run test:unit --if-present
+      - name: Build
+        run: npm run build
+      - name: Release
+        id: release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+        run: |
+          npx semantic-release
+          echo "version=$(npx semantic-release --version)" >> $GITHUB_OUTPUT
+      - name: GitHub Release update
+        uses: softprops/action-gh-release@v1
+        #if: startsWith(github.ref, 'refs/tags/')
+        with:
+          # body_path: ${{ github.workspace }}-CHANGELOG.txt
+          # note you'll typically need to create a personal access token
+          # with permissions to create releases in the other repoj
+          #token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
+          tag_name: ${{ steps.release.outputs.version }}
+          files: |
+            LICENSE.md
+            README.md
+            lib
+            package.json
