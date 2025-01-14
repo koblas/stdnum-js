@@ -18,7 +18,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 
 export function validPrefix(value: string): boolean {
   const prefix = parseInt(value.substr(0, 2), 10);
-  if (prefix === 0 || prefix > 24 || prefix === 30 || prefix === 50) {
+  if ((prefix < 1 || prefix > 24) && !(prefix === 30 || prefix === 50)) {
     // Invalid province
     return false;
   }

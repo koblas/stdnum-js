@@ -1,5 +1,9 @@
 import { validate, format } from './ci';
-import { InvalidLength, InvalidChecksum } from '../exceptions';
+import {
+  InvalidLength,
+  InvalidChecksum,
+  InvalidComponent,
+} from '../exceptions';
 
 describe('ec/ci', () => {
   it('format:1714307103', () => {
@@ -24,5 +28,11 @@ describe('ec/ci', () => {
     const result = validate('1714307104');
 
     expect(result.error).toBeInstanceOf(InvalidChecksum);
+  });
+
+  it('validate:2714307104', () => {
+    const result = validate('2714307104');
+
+    expect(result.error).toBeInstanceOf(InvalidComponent);
   });
 });
