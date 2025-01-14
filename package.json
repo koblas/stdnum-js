@@ -37,7 +37,7 @@
   },
   "scripts": {
     "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx src",
+    "lint": "eslint src",
     "test": "jest",
     "build": "tsc",
     "prepublishOnly:esm": "tsc -p tsconfig.json",
