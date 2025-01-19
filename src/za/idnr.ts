@@ -7,7 +7,7 @@
  *
  * Source
  *   https://en.wikipedia.org/wiki/South_African_identity_card
- *   http://www.dha.gov.za/index.php/identity-documents2
+ *   https://www.dha.gov.za/index.php/identity-documents2
  *
  * PERSON
  */

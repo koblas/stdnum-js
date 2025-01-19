@@ -71,7 +71,7 @@ const impl: Validator = {
         modulus: 11,
       });
     }
-    if (String(sum) !== check) {
+    if (String(sum % 10) !== check) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 

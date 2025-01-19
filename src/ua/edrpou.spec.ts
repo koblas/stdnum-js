@@ -8,11 +8,14 @@ describe('ua/edrpou', () => {
     expect(result).toEqual('32855961');
   });
 
-  it('validate:32855961', () => {
-    const result = validate('32855961');
+  test.each(['32855961', '23226362', '23246880', '25083040'])(
+    'validate:%s',
+    value => {
+      const result = validate(value);
 
-    expect(result.isValid && result.compact).toEqual('32855961');
-  });
+      expect(result.isValid && result.compact).toEqual(value);
+    },
+  );
 
   it('validate:12345', () => {
     const result = validate('12345');

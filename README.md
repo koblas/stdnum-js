@@ -57,6 +57,7 @@ How you can help! This library currently support about half the countries in the
 | Brazil                 | BR   | CPF             | Person             | Brazilian identity number (Cadastro de Pessoas Físicas)                                                                                |
 | Brazil                 | BR   | CNPJ            | Company            | Brazilian company number (Cadastro Nacional da Pessoa Jurídica)                                                                        |
 | Belarus                | BY   | UNP             | Person/Company     | Учетный номер плательщика, the Belarus VAT number                                                                                      |
+| Canada                 | CA   | BC_BHN          | Person             | British Columbia Personal Health Number                                                                                                |
 | Canada                 | CA   | BN              | Company            | Company Identifier (Canadian Business Number)                                                                                          |
 | Canada                 | CA   | GST             | Company            | Goods and service Tax Number                                                                                                           |
 | Canada                 | CA   | PST             | Company            | Provincial Service Tax Number                                                                                                          |
@@ -123,6 +124,7 @@ How you can help! This library currently support about half the countries in the
 | India                  | IN   | EPIC            | Person             | Electoral Photo Identity Card, Indian Voter ID                                                                                         |
 | India                  | IN   | GSTIN           | Vat                | Goods and Services Tax identification number, Indian VAT number                                                                        |
 | India                  | IN   | PAN             | Person             | Permanent Account Number, Indian income tax identifier                                                                                 |
+| India                  | IN   | VIN             | Person             | Indian personal virtual identity number                                                                                                |
 | Israel                 | IL   | IDNR            | Person             | Identity Number (Mispar Zehut, מספר זהות, Israeli identity number)                                                                     |
 | Israel                 | IL   | HR              | Company            | Company Number (מספר חברה, or short ח.פ. Israeli company number)                                                                       |
 | Italy                  | IT   | AIC             | Drug               | Italian code for identification of drugs                                                                                               |
@@ -202,7 +204,7 @@ How you can help! This library currently support about half the countries in the
 | Spain                  | ES   | NIE             | Person             | Identity code foreigner (Número de Identificación de Extranjero)                                                                       |
 | Spain                  | ES   | NIF             | Tax                | Tax Identifier (Número de Identificación Fiscal)                                                                                       |
 | Spain                  | ES   | NSS             | Person             | El número de Seguridad Social, Social Security Number                                                                                  |
-| Sri Lanka              | LK   | NIC             | Person             | NIC Number                |
+| Sri Lanka              | LK   | NIC             | Person             | NIC Number                                                                                                                             |
 | Uruguay                | UY   | RUT             | Tax/Vat            | Tax Identifier (Registro Único Tributario)                                                                                             |
 | Uruguay                | UY   | CEDULA          | Person             | Person Identifier (Cédula de Residencia)                                                                                               |
 | Uruguay                | UY   | NIE             | Person             | ForeignersI identification Number                                                                                                      |
@@ -237,4 +239,3 @@ versioning information.
 
 This is based on the angular commit message format
 https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-format
-

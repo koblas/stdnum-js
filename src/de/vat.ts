@@ -1,7 +1,7 @@
 /**
  * Ust ID Nr. (Umsatzsteuer Identifikationsnummer, German VAT number).
  *
- * The number is 10 digits long and uses the ISO 7064 Mod 11, 10 check digit
+ * The number is 9 digits long and uses the ISO 7064 Mod 11, 10 check digit
  * algorithm.
  *
  * ENTITY
