@@ -329,7 +329,7 @@ export const entityValidators: Record<string, Validator[]> = {
   US: [US.ein],
   UY: [UY.rut],
   VN: [VN.mst],
-  ZA: [ZA.tin],
+  ZA: [ZA.tin, ZA.vat],
 };
 
 /**

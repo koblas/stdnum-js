@@ -216,6 +216,7 @@ How you can help! This library currently support about half the countries in the
 | Vietnam                | VN   | MST             | Company            | Mã số thuế, Vietnam tax number                                                                                                         |
 | South Africa           | ZA   | IDNR            | Person             | ID number (South African Identity Document number).                                                                                    |
 | South Africa           | ZA   | TIN             | Person/Company     | TIN (South African Tax Identification Number).                                                                                         |
+| South Africa           | ZA   | VAT             | Company            | VAT (South African Value Added Tax Number).                                                                                            |
 
 ### Examples
 
