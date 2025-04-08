@@ -2,7 +2,7 @@
  * VAT Number for South Africa
  *
  * This is a South African VAT number validator. The number is a 10 digit
- * number that starts with a 4, followed by 9 digits and ends with a checksum digit.
+ * number that starts with a 4, followed by 9 digits.
  *
  * ENTITY
  */

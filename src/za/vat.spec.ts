@@ -27,7 +27,7 @@ describe('za/vat', () => {
   });
 
   it('validate:49a 9999 999', () => {
-    const result = validate('399 9999 999');
+    const result = validate('49a 9999 999');
 
     expect(result.error).toBeInstanceOf(InvalidFormat);
   });
