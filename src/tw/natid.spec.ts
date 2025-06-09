@@ -26,13 +26,16 @@ describe('tw/natid', () => {
     expect(result.error).toBeInstanceOf(InvalidComponent);
   });
 
-  test.each(['A200501503', 'A800501509', 'A800501509'])('not-valid:', value => {
-    const result = validate(value);
-    expect(result.isValid).toEqual(false);
-  });
+  test.each(['A200501503', 'A800501509', 'A800501509'])(
+    'validate:%s',
+    value => {
+      const result = validate(value);
+      expect(result.isValid).toEqual(false);
+    },
+  );
 
   test.each(['A800000014', 'A123456789', 'A100501503', 'A200501505'])(
-    'valid:',
+    'validate:%s',
     value => {
       const result = validate(value);
       expect(result.isValid).toEqual(true);

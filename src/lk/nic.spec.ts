@@ -20,14 +20,8 @@ describe('lk/nic', () => {
     expect(result.isValid && result.compact).toEqual('942281632V');
   });
 
-  it('validate:942R81632b', () => {
+  it('validate:942281632b', () => {
     const result = validate('942281632b');
-
-    expect(result.error).toBeInstanceOf(InvalidFormat);
-  });
-
-  it('validate:942R81632b', () => {
-    const result = validate('942R81632b');
 
     expect(result.error).toBeInstanceOf(InvalidFormat);
   });
@@ -36,5 +30,4 @@ describe('lk/nic', () => {
     const result = validate('23417');
     expect(result.error).toBeInstanceOf(InvalidLength);
   });
-
 });

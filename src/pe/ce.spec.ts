@@ -1,7 +1,7 @@
 import { validate, format } from './ce';
 import { InvalidLength } from '../exceptions';
 
-describe('pe/cui', () => {
+describe('pe/ce', () => {
   it('format:001766062', () => {
     const result = format('001766062');
 

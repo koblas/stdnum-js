@@ -1,7 +1,7 @@
 import { validate, format } from './nipt';
 import { InvalidLength, InvalidFormat } from '../exceptions';
 
-describe('al/nibt', () => {
+describe('al/nipt', () => {
   it('format:AL J 91402501 L', () => {
     const result = format('AL J 91402501 L');
 
