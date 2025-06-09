@@ -1,7 +1,7 @@
 import { validate, format } from './tin';
 import { InvalidLength, InvalidChecksum } from '../exceptions';
 
-describe('gn/tin', () => {
+describe('gh/tin', () => {
   it('format:C0000803561', () => {
     const result = format('C0000803561');
 
@@ -29,7 +29,7 @@ describe('gn/tin', () => {
   });
 
   it('validate:C000080356', () => {
-    const result = validate('12345678');
+    const result = validate('C000080356');
 
     expect(result.error).toBeInstanceOf(InvalidLength);
   });
