@@ -14,6 +14,12 @@ describe('dk/cvr', () => {
     expect(result.isValid && result.compact).toEqual('13585628');
   });
 
+  test.each(['DK13585628', '13585628', 'DK19319970'])('validate:%s', value => {
+    const result = validate(value);
+
+    expect(result.isValid).toEqual(true);
+  });
+
   it('validate:1234567', () => {
     const result = validate('1234567');
 
