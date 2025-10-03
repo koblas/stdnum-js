@@ -6,10 +6,16 @@ import {
 } from '../exceptions';
 
 describe('cl/rut', () => {
-  it('format:800280610', () => {
+  it('format:125319092', () => {
     const result = format('125319092');
 
     expect(result).toEqual('12.531.909-2');
+  });
+
+  it('format:77272305', () => {
+    const result = format('77272305');
+
+    expect(result).toEqual('7.727.230-5');
   });
 
   it('validate:76086428-5', () => {
