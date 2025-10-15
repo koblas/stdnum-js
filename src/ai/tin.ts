@@ -86,8 +86,8 @@ const impl: Validator = {
     return {
       isValid: true,
       compact: value,
-      isIndividual: prefix == '1',
-      isCompany: prefix == '2',
+      isIndividual: prefix === '1',
+      isCompany: prefix === '2',
     };
   },
 };
