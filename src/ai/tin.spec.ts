@@ -2,21 +2,21 @@ import { validate, format } from './tin';
 import { InvalidLength, InvalidFormat } from '../exceptions';
 
 describe('ai/tin', () => {
-  it('format:12345-6789', () => {
-    const result = format('123456789');
+  it('format:12345-67890', () => {
+    const result = format('1234567890');
 
-    expect(result).toEqual('12345-6789');
+    expect(result).toEqual('12345-67890');
   });
 
-  it('validate:12345-6789', () => {
-    const result = validate('12345-6789');
+  it('validate:12345-67890', () => {
+    const result = validate('12345-67890');
 
-    expect(result.isValid && result.compact).toEqual('123456789');
+    expect(result.isValid && result.compact).toEqual('1234567890');
   });
 
   test.each([
-    '123456789', // Valid format
-    '12345-6789', // Valid format with hyphen
+    '1234567890', // Valid format
+    '12345-67890', // Valid format with hyphen
   ])('validate:%s', value => {
     const result = validate(value);
 
@@ -34,14 +34,14 @@ describe('ai/tin', () => {
     expect(result.isValid).toEqual(false);
   });
 
-  it('validate:1234567890', () => {
-    const result = validate('1234567890');
+  it('validate:123456789', () => {
+    const result = validate('123456789');
 
     expect(result.error).toBeInstanceOf(InvalidLength);
   });
 
-  it('validate:12345A678', () => {
-    const result = validate('12345A678');
+  it('validate:12345A6789', () => {
+    const result = validate('12345A6789');
 
     expect(result.error).toBeInstanceOf(InvalidFormat);
   });

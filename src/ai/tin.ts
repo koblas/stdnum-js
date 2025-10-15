@@ -44,7 +44,7 @@ const impl: Validator = {
   format(input: string): string {
     const [value] = clean(input);
 
-    if (value.length !== 9) {
+    if (value.length !== 10) {
       return value;
     }
 
@@ -58,7 +58,7 @@ const impl: Validator = {
       return { isValid: false, error };
     }
 
-    if (value.length !== 9) {
+    if (value.length !== 10) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
 
@@ -86,8 +86,8 @@ const impl: Validator = {
     return {
       isValid: true,
       compact: value,
-      isIndividual: value == '1',
-      isCompany: value == '2',
+      isIndividual: prefix == '1',
+      isCompany: prefix == '2',
     };
   },
 };
