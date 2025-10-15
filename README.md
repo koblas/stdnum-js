@@ -34,8 +34,8 @@ How you can help! This library currently support about half the countries in the
 | Country                | Code | Name            | Group              | Meaning                                                                                                                                |
 | ---------------------- | ---- | --------------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
 | Andorra                | AD   | NRT             | Tax                | Tax Register Identifier (Número de Registre Tributari)                                                                                 |
-| Anguilla               | AI   | TIN             | Tax                | Tax Identification Number                                                                                                              |
 | Albania                | AL   | NIPT            | Vat                | Albanian Vat Identifier (Numri i Identifikimit për Personin e Tatueshëm)                                                               |
+| Anguilla               | AI   | TIN             | Tax                | Tax Identification Number                                                                                                              |
 | Argentina              | AR   | CBU             | Bank               | Single Banking Code (Clave Bancaria Uniforme)                                                                                          |
 | Argentina              | AR   | CUIT            | Tax                | Unique Tax Identification Code (Código Único de Identificación Tributaria)                                                             |
 | Argentina              | AR   | DNI             | Person             | National Identity Document (Documento Nacional de Identidad)                                                                           |
