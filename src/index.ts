@@ -1,4 +1,5 @@
 import * as AD from './ad';
+import * as AI from './ai';
 import * as AL from './al';
 import * as AR from './ar';
 import * as AT from './at';
@@ -186,6 +187,7 @@ export const stdnum: Record<string, Record<string, Validator>> = {
 
 export const personValidators: Record<string, Validator[]> = {
   AD: [AD.nrt],
+  AI: [AI.tin],
   AL: [AL.nipt],
   AR: [AR.cuit, AR.dni],
   AT: [AT.vnr],
@@ -214,6 +216,7 @@ export const personValidators: Record<string, Validator[]> = {
   FI: [FI.hetu],
   FR: [FR.nif, FR.nir],
   GB: [GB.nino, GB.utr],
+  GH: [GH.tin],
   GR: [GR.amka],
   GT: [GT.cui],
   HK: [HK.hkid],
@@ -251,14 +254,17 @@ export const personValidators: Record<string, Validator[]> = {
   SV: [SV.nit],
   TH: [TH.idnr],
   TR: [TR.tckimlik],
+  TW: [TW.ubn],
   UA: [UA.rntrc],
   US: [US.ssn],
   UY: [UY.nie, UY.cedula],
+  VN: [VN.mst],
   ZA: [ZA.tin, ZA.idnr],
 };
 
 export const entityValidators: Record<string, Validator[]> = {
   AD: [AD.nrt],
+  AI: [AI.tin],
   AL: [AL.nipt],
   AR: [AR.cuit],
   AT: [AT.businessid, AT.tin, AT.uid],
