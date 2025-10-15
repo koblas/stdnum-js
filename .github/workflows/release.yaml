@@ -1,9 +1,5 @@
 name: Release
 
-permissions:
-  id-token: write # Required for OIDC
-  contents: write
-
 on:
   #push:
   #  branches:
@@ -22,7 +18,11 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.version.outputs.test }}
-
+    permissions:
+      contents: write # to be able to publish a GitHub release
+      issues: write # to be able to comment on released issues
+      pull-requests: write # to be able to comment on released pull requests
+      id-token: write # to enable use of OIDC for npm provenance
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -32,7 +32,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: lts/*
       - name: Install dependencies
         run: npm ci
       - name: Install semantic-release extra plugins
@@ -47,7 +47,7 @@ jobs:
         id: release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          # NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
         run: |
           npx semantic-release
           echo "version=$(npx semantic-release --version)" >> $GITHUB_OUTPUT
