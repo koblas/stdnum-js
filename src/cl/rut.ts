@@ -46,9 +46,7 @@ const impl: Validator = {
   format(input: string): string {
     const [value] = clean(input);
 
-    const [a, b, c, d] = strings.splitAt(value, 2, 5, 8);
-
-    return `${a}.${b}.${c}-${d}`;
+    return `${value.slice(0, -7)}.${value.slice(-7, -4)}.${value.slice(-4, -1)}-${value.slice(-1)}`;
   },
 
   /**
