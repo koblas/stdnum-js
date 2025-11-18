@@ -47,6 +47,10 @@ const impl: Validator = {
   format(input: string): string {
     const [value] = clean(input);
 
+    if (value.length !== 11) {
+      throw new exceptions.InvalidLength('CPF must have 11 digits.');
+    }
+
     const [a, b, c, d] = strings.splitAt(value, 3, 6, 9, 11);
 
     return `${a}.${b}.${c}-${d}`;
