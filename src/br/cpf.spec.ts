@@ -8,6 +8,12 @@ describe('br/cpf', () => {
     expect(result).toEqual('231.002.999-00');
   });
 
+  it('format: 216.957.050-09', () => {
+    const result = format('216.957.050-09');
+
+    expect(result).toEqual('216.957.050-09');
+  });
+
   it('validate:390.533.447-05', () => {
     const result = validate('390.533.447-05');
 
