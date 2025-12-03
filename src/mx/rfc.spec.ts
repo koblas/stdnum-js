@@ -61,6 +61,12 @@ describe('mx/rfc', () => {
     expect(result.isValid).toEqual(false);
   });
 
+  it('validate:SOTO800101110', () => {
+    const result = validate('SOTO800101110');
+
+    expect(result.isValid && result.compact).toEqual('SOTO800101110');
+  });
+
   it('format:GODE561231GR8', () => {
     const result = format('GODE561231GR8');
 
