@@ -57,7 +57,10 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
-    const [front, check] = strings.splitAt(value.padStart(9, '0'), -1);
+    // FIX: Pad to 10 total digits. 
+    // This ensures that 'front' is always exactly 9 digits, 
+    // perfectly matching the 9 weights provided.
+    const [front, check] = strings.splitAt(value.padStart(10, '0'), -1);
 
     const sum =
       10 *
