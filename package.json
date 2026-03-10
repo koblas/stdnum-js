@@ -44,6 +44,10 @@
     "prepublishOnly:cjs": "tsc -p tsconfig-cjs.json",
     "prepublishOnly": "npm run prepublishOnly:esm && npm run prepublishOnly:cjs"
   },
+  "overrides": {
+    "minimatch": ">=9.0.7",
+    "tar": ">=6.2.1"
+  },
   "publishConfig": {
     "provenance": true
   },
@@ -78,18 +82,19 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@eslint/js": "^9.18.0",
+    "@eslint/js": "^8.57.1",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "@types/jest": "^30.0.0",
-    "eslint": "^9.18.0",
+    "@semantic-release/npm": "^13.1.5",
+    "@types/jest": "^29.5.14",
+    "eslint": "^8.57.1",
     "eslint-config-prettier": "^10.0.1",
-    "jest": "^30.2.0",
-    "prettier": "^3.4.2",
-    "prettier-eslint": "^16.3.0",
-    "semantic-release": "^25.0.1",
-    "ts-jest": "^29.1.0",
-    "typescript": "^5.7.3",
-    "typescript-eslint": "^8.20.0"
+    "jest": "^29.7.0",
+    "prettier": "^3.8.1",
+    "prettier-eslint": "^16.4.2",
+    "semantic-release": "^25.0.3",
+    "ts-jest": "^29.4.6",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^7.18.0"
   }
 }
