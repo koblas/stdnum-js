@@ -45,8 +45,8 @@
     "prepublishOnly": "npm run prepublishOnly:esm && npm run prepublishOnly:cjs"
   },
   "overrides": {
-    "minimatch": ">=9.0.7",
-    "tar": ">=6.2.1"
+    "minimatch": "^9.0.7",
+    "tar": "^6.2.1"
   },
   "publishConfig": {
     "provenance": true
