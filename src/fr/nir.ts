@@ -68,6 +68,9 @@ const impl: Validator = {
     ) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
+
+    // eslint is broken on this variable
+    // eslint-disable-next-line no-useless-assignment
     let add = '';
     if (dept === '2A') {
       add = '19';
