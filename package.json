@@ -17,6 +17,9 @@
       "require": "./lib/cjs/"
     }
   },
+  "overrides": {
+    "minimatch": "^9.0.7"
+  },
   "release": {
     "branches": [
       "main"
