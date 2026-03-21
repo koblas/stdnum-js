@@ -12,7 +12,7 @@
     "allowSyntheticDefaultImports": true,
     "emitDecoratorMetadata": true,
     "declaration": true,
-    "sourceMap": false,
+    "sourceMap": true,
     "inlineSourceMap": true,
     "preserveConstEnums": true,
     "noImplicitAny": true,
