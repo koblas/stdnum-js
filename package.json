@@ -78,11 +78,11 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@eslint/js": "^9.18.0",
+    "@eslint/js": "^10.0.1",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@types/jest": "^30.0.0",
-    "eslint": "^9.18.0",
+    "eslint": "^10.1.0",
     "eslint-config-prettier": "^10.0.1",
     "jest": "^30.2.0",
     "prettier": "^3.4.2",
@@ -90,6 +90,6 @@
     "semantic-release": "^25.0.1",
     "ts-jest": "^29.1.0",
     "typescript": "^5.7.3",
-    "typescript-eslint": "^8.20.0"
+    "typescript-eslint": "^8.57.1"
   }
 }
