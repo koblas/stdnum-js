@@ -8,6 +8,12 @@ describe('ro/cui', () => {
     expect(result).toEqual('185 472 90');
   });
 
+  it('validate:18547290 (8 digits, padded to 10 for checksum)', () => {
+    const result = validate('18547290');
+
+    expect(result.isValid).toBe(true);
+  });
+
   it('validate:185 472 90', () => {
     const result = validate('185 472 90');
 
@@ -23,6 +29,13 @@ describe('ro/cui', () => {
   it('validate:185 472 91', () => {
     const result = validate('185 472 91');
 
+    expect(result.error).toBeInstanceOf(InvalidChecksum);
+  });
+
+  it('validate:18547291 (8 digits, invalid checksum after padding)', () => {
+    const result = validate('18547291');
+
+    expect(result.isValid).toBe(false);
     expect(result.error).toBeInstanceOf(InvalidChecksum);
   });
 });
