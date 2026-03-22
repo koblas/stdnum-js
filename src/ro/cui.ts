@@ -57,7 +57,7 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
-    const [front, check] = strings.splitAt(value.padStart(9, '0'), -1);
+    const [front, check] = strings.splitAt(value.padStart(10, '0'), -1);
 
     const sum =
       10 *
@@ -66,7 +66,7 @@ const impl: Validator = {
         modulus: 11,
       });
 
-    if (String(sum % 10) !== check) {
+    if (String((sum % 11) % 10) !== check) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 
