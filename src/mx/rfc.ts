@@ -80,10 +80,12 @@ const nameBlacklist = new Set([
   'RUIN',
 ]);
 
+// Official alphabet per SAT (Anexo 20). Includes '&' and 'Ñ'.
 const checkAlphabet = '0123456789ABCDEFGHIJKLMN&OPQRSTUVWXYZ Ñ';
-// const checkAlphabetDict: Record<string, number> = checkAlphabet
-//   .split('')
-//   .reduce((acc, c, idx) => ({ ...acc, [c]: idx }), {});
+
+// Legacy alphabet (Base 36) used in older systems.
+// It excludes '&' and 'Ñ'. Space is added to support padding for companies.
+const checkAlphabetLegacy = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ ';
 
 const impl: Validator = {
   name: 'Mexican Tax Number',
@@ -149,34 +151,33 @@ const impl: Validator = {
       }
 
       const [front, check] = strings.splitAt(value, -1);
+      const paddedInput = front.padStart(12, ' ');
 
-      const sum = weightedSum(front.padStart(12, ' '), {
-        modulus: 11,
-        alphabet: checkAlphabet,
-        weights: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
-        reverse: true,
-      });
+      const calculateChecksum = (alphabet: string) => {
+        const sum = weightedSum(paddedInput, {
+          modulus: 11,
+          alphabet: alphabet,
+          weights: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+          reverse: true,
+        });
 
-      // const sum = value
-      //   .substr(0, value.length - 1)
-      //   .padStart(12, ' ')
-      //   .split('')
-      //   .reduce(
-      //     (acc, c, idx) => acc + (checkAlphabetDict[c] ?? 0) * (13 - idx),
-      //     0,
-      //   );
-      const mod = 11 - (sum % 11);
-      let val;
-      if (mod === 11) {
-        val = '0';
-      } else if (mod === 10) {
-        val = 'A';
-      } else {
-        val = String(mod);
-      }
+        const mod = 11 - (sum % 11);
+        if (mod === 11) return '0';
+        if (mod === 10) return 'A';
+        return String(mod);
+      };
 
-      if (check !== val) {
-        return { isValid: false, error: new exceptions.InvalidChecksum() };
+      // Try with official SAT alphabet first
+      const valOfficial = calculateChecksum(checkAlphabet);
+
+      if (check !== valOfficial) {
+        // If it fails, try with Legacy alphabet (Base 36)
+        // This handles older RFCs generated without '&' or 'Ñ' support
+        const valLegacy = calculateChecksum(checkAlphabetLegacy);
+
+        if (check !== valLegacy) {
+          return { isValid: false, error: new exceptions.InvalidChecksum() };
+        }
       }
     }
 
