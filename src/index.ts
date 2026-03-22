@@ -8,6 +8,7 @@ import * as AZ from './az';
 import * as BA from './ba';
 import * as BE from './be';
 import * as BG from './bg';
+import * as BO from './bo';
 import * as BR from './br';
 import * as BY from './by';
 import * as BZ from './bz';
@@ -103,6 +104,7 @@ export const stdnum: Record<string, Record<string, Validator>> = {
   BA,
   BE,
   BG,
+  BO,
   BR,
   BY,
   BZ,

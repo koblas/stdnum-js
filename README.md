@@ -55,6 +55,7 @@ How you can help! This library currently support about half the countries in the
 | Bulgaria               | BG   | EGN             | Person             | ЕГН, Единен граждански номер, Bulgarian personal identity codes                                                                        |
 | Bulgaria               | BG   | PNF             | Person             | PNF (ЛНЧ, Личен номер на чужденец, Bulgarian number of a foreigner).                                                                   |
 | Bulgaria               | BG   | VAT             | Company            | Идентификационен номер по ДДС, Bulgarian VAT number                                                                                    |
+| Bolivia                | BO   | CI              | Person             | Person Identifier (Cédula de Identidad)                                                                                                |
 | Brazil                 | BR   | CPF             | Person             | Brazilian identity number (Cadastro de Pessoas Físicas)                                                                                |
 | Brazil                 | BR   | CNPJ            | Company            | Brazilian company number (Cadastro Nacional da Pessoa Jurídica)                                                                        |
 | Belarus                | BY   | UNP             | Person/Company     | Учетный номер плательщика, the Belarus VAT number                                                                                      |
