@@ -69,7 +69,7 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
     const [front, check] = strings.splitAt(value, -1);
-    if (!strings.isdigits(front)) {
+    if (!strings.isDigits(front)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
     if (!alphabet.includes(check)) {

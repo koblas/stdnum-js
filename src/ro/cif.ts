@@ -42,7 +42,7 @@ const impl: Validator = {
     if (error) {
       return { isValid: false, error };
     }
-    if (!strings.isdigits(value)) {
+    if (!strings.isDigits(value)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 

@@ -90,7 +90,7 @@ const impl: Validator = {
       if (!value.startsWith('E')) {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
-      if (!strings.isdigits(value.substr(1))) {
+      if (!strings.isDigits(value.substr(1))) {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
       if (!ecfTypes.includes(value.substr(1, 2))) {
@@ -100,7 +100,7 @@ const impl: Validator = {
       if (!value.startsWith('B')) {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
-      if (!strings.isdigits(value.substr(1))) {
+      if (!strings.isDigits(value.substr(1))) {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
       if (!ncfTypes.includes(value.substr(1, 2))) {
@@ -110,7 +110,7 @@ const impl: Validator = {
       if (!value.startsWith('AP')) {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
-      if (!strings.isdigits(value.substr(2))) {
+      if (!strings.isDigits(value.substr(2))) {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
       if (!ncfTypes.includes(value.substr(9, 2))) {

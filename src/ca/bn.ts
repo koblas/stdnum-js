@@ -57,7 +57,7 @@ const impl: Validator = {
     }
 
     const [front, rest] = strings.splitAt(value, 9);
-    if (!strings.isdigits(front)) {
+    if (!strings.isDigits(front)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
     if (!luhnChecksumValidate(front)) {
@@ -70,7 +70,7 @@ const impl: Validator = {
       if (!['RC', 'RM', 'RP', 'RT'].includes(a)) {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
-      if (!strings.isdigits(b)) {
+      if (!strings.isDigits(b)) {
         return { isValid: false, error: new exceptions.InvalidFormat() };
       }
     }

@@ -66,7 +66,7 @@ const impl: Validator = {
     if (!alphabet.includes(check[0]) || !alphabet.includes(check[1])) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
-    if (!strings.isdigits(back)) {
+    if (!strings.isDigits(back)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
     // numbers from Monaco are valid TVA but not SIREN
@@ -77,7 +77,7 @@ const impl: Validator = {
       }
     }
 
-    if (strings.isdigits(check)) {
+    if (strings.isDigits(check)) {
       const sum = (12 + 3 * (parseInt(back, 10) % 97)) % 97;
 
       if (sum !== parseInt(check, 10)) {
@@ -88,7 +88,7 @@ const impl: Validator = {
       //   1: [24, 10],
       //   0: [34, 100],
       // };
-      // const factors = FACTORS[strings.isdigits(check[0]) ? 1 : 0];
+      // const factors = FACTORS[strings.isDigits(check[0]) ? 1 : 0];
 
       // const cvalue =
       //   alphabet.indexOf(check[0]) * factors[0] +

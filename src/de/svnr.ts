@@ -108,25 +108,25 @@ const impl: Validator = {
     if (value.length !== 12) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
-    if (!strings.isalphanumeric(value)) {
+    if (!strings.isAlphanumeric(value)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
     if (!AREA_NUMBER_OPTIONS.includes(value.substring(0, 2))) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
-    if (!strings.isdigits(value.substring(2, 4))) {
+    if (!strings.isDigits(value.substring(2, 4))) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
     if (!BIRTH_MONTH_OPTIONS.includes(value.substring(4, 6))) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
-    if (!strings.isdigits(value.substring(6, 8))) {
+    if (!strings.isDigits(value.substring(6, 8))) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
-    if (!strings.isalpha(value[8])) {
+    if (!strings.isAlpha(value[8])) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
-    if (!strings.isdigits(value.substring(9, 11))) {
+    if (!strings.isDigits(value.substring(9, 11))) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 

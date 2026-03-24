@@ -45,7 +45,7 @@ const impl: Validator = {
     if (value.length !== 6 && value.length !== 8) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
-    if (!strings.isdigits(value)) {
+    if (!strings.isDigits(value)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
     const [, code] = strings.splitAt(value, 6);

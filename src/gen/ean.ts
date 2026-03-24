@@ -43,7 +43,7 @@ const impl: Validator = {
     if (![8, 12, 13, 14].includes(value.length)) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
-    if (!strings.isdigits(value)) {
+    if (!strings.isDigits(value)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 

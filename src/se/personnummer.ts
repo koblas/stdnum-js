@@ -35,8 +35,8 @@ function formatImpl(input: string): string {
   const [value] = clean(input);
 
   let front,
-      back,
-      sep = '-';
+    back,
+    sep = '-';
 
   if (value.length === 12 || value.length === 13) {
     const [yyyy, mm, dd] = strings.splitAt(value, 0, 4, 6, 8);
@@ -101,7 +101,7 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
     const digits = `${a}${c}`;
-    if (!strings.isdigits(digits)) {
+    if (!strings.isDigits(digits)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
@@ -128,7 +128,7 @@ const impl: Validator = {
     const day = parseInt(yyyymmdd.substring(6, 8), 10);
     if (day > 60) {
       yyyymmdd =
-          yyyymmdd.substring(0, 6) + (day - 60).toString().padStart(2, '0');
+        yyyymmdd.substring(0, 6) + (day - 60).toString().padStart(2, '0');
     }
 
     if (!isValidDateCompactYYYYMMDD(yyyymmdd, true)) {
@@ -149,4 +149,4 @@ const impl: Validator = {
 };
 
 export const { name, localName, abbreviation, validate, format, compact } =
-    impl;
+  impl;

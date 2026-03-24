@@ -55,9 +55,9 @@ const impl: Validator = {
     const [first, body, check] = strings.splitAt(value, 1, 8);
 
     if (
-      !strings.isdigits(body) ||
+      !strings.isDigits(body) ||
       !checkDigits.includes(first) ||
-      strings.isdigits(check)
+      strings.isDigits(check)
     ) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }

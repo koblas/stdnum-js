@@ -62,9 +62,9 @@ const impl: Validator = {
     const [pre, dept, post, check] = strings.splitAt(value, 5, 7, 13);
 
     if (
-      !strings.isdigits(pre) ||
-      !strings.isdigits(post) ||
-      !strings.isdigits(check)
+      !strings.isDigits(pre) ||
+      !strings.isDigits(post) ||
+      !strings.isDigits(check)
     ) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
@@ -76,7 +76,7 @@ const impl: Validator = {
       add = '19';
     } else if (dept === '2B') {
       add = '18';
-    } else if (strings.isdigits(dept)) {
+    } else if (strings.isDigits(dept)) {
       add = dept;
     } else {
       return { isValid: false, error: new exceptions.InvalidComponent() };

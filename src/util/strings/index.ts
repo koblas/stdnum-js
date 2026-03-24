@@ -1,4 +1,4 @@
-export { isalpha, isalphanumeric, isdigits } from './char';
+export { isAlpha, isAlphanumeric, isDigits } from './char';
 export { cleanUnicode } from './clean';
 export { reverse } from './reverseString';
 export { splitAt } from './splitAt';

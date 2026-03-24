@@ -69,16 +69,16 @@ const impl = {
 
     const [issuer, gender, code, check] = strings.splitAt(value, 1, 2, 9);
 
-    if (!strings.isalpha(issuer)) {
+    if (!strings.isAlpha(issuer)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
     if (!/[1-28-9]/.test(gender)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
-    if (!strings.isdigits(code)) {
+    if (!strings.isDigits(code)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
-    if (!strings.isdigits(check)) {
+    if (!strings.isDigits(check)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 

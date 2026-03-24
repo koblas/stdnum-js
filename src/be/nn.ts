@@ -48,7 +48,7 @@ const impl: Validator = {
   validate(input: string): ValidateReturn {
     const value = impl.compact(input);
 
-    if (!strings.isdigits(value) || parseInt(value, 10) <= 0) {
+    if (!strings.isDigits(value) || parseInt(value, 10) <= 0) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 

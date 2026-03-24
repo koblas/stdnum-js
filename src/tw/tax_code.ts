@@ -68,7 +68,7 @@ const impl = {
       if (lead !== '9') {
         return { isValid: false, error: new exceptions.InvalidFormat() };
       }
-      if (!strings.isdigits(yymmdd)) {
+      if (!strings.isDigits(yymmdd)) {
         return { isValid: false, error: new exceptions.InvalidFormat() };
       }
       if (!isValidDateCompactYYMMDD(yymmdd, true)) {

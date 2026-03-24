@@ -65,14 +65,14 @@ const impl: Validator = {
     if (value.length !== 8 && value.length !== 9) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
-    if (!strings.isdigits(value[0]) || !strings.isdigits(value.substr(2, 5))) {
+    if (!strings.isDigits(value[0]) || !strings.isDigits(value.substr(2, 5))) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
     const [front, end] = strings.splitAt(value, 7);
     if (!end.split('').every(v => ALPHABET.includes(v))) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
-    if (strings.isdigits(front)) {
+    if (strings.isDigits(front)) {
       // 7 digits followed by 1 or 2 letters
       if (value[7] !== calcCheckDigit(`${front}${value.substr(8)}`)) {
         return { isValid: false, error: new exceptions.InvalidChecksum() };

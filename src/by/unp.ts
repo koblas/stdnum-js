@@ -67,20 +67,20 @@ const impl: Validator = {
     if (value.length !== 9) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
-    if (!strings.isdigits(value.substr(2))) {
+    if (!strings.isDigits(value.substr(2))) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
-    if (!strings.isdigits(value[0]) && !'1234567ABCEHKM'.includes(value[0])) {
+    if (!strings.isDigits(value[0]) && !'1234567ABCEHKM'.includes(value[0])) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
-    if (!strings.isdigits(value[1]) && !'ABCEHKMOPT'.includes(value[1])) {
+    if (!strings.isDigits(value[1]) && !'ABCEHKMOPT'.includes(value[1])) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
     const [front, check] = strings.splitAt(value, -1);
 
     let frontClean = front;
-    if (!strings.isdigits(front.substr(0, 2))) {
+    if (!strings.isDigits(front.substr(0, 2))) {
       const vv = String('ABCEHKMOPT'.indexOf(front[1]));
       frontClean = `${front[0]}${vv}${front.substr(2)}`;
     }

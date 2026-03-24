@@ -58,10 +58,10 @@ const impl: Validator = {
 
     const mid = v.substr(1, v.length - 2);
 
-    if (!strings.isalpha(v[0]) || !strings.isalpha(v[v.length - 1])) {
+    if (!strings.isAlpha(v[0]) || !strings.isAlpha(v[v.length - 1])) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
-    if (!strings.isdigits(mid)) {
+    if (!strings.isDigits(mid)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
     if (!'ACDEFGLOPU'.includes(v[0])) {

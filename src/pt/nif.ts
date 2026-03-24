@@ -50,7 +50,7 @@ const impl: Validator = {
     if (value.length !== 9) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
-    if (!strings.isdigits(value) || value[0] === '0') {
+    if (!strings.isDigits(value) || value[0] === '0') {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
@@ -61,7 +61,7 @@ const impl: Validator = {
       modulus: 11,
     });
 
-    if (String((11 - sum) % 11 % 10) !== check) {
+    if (String(((11 - sum) % 11) % 10) !== check) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 

@@ -53,7 +53,7 @@ const impl: Validator = {
     }
 
     if (value.length === 5) {
-      if (!strings.isdigits(value.substr(2))) {
+      if (!strings.isDigits(value.substr(2))) {
         return { isValid: false, error: new exceptions.InvalidFormat() };
       }
       const cvalue = parseInt(value.substr(2), 10);
@@ -67,7 +67,7 @@ const impl: Validator = {
       value.length === 11 &&
       (value.startsWith('GD8888') || value.startsWith('HA8888'))
     ) {
-      if (!strings.isdigits(value.substr(6))) {
+      if (!strings.isDigits(value.substr(6))) {
         return { isValid: false, error: new exceptions.InvalidFormat() };
       }
       const cvalue = parseInt(value.substr(6, 3), 10);
@@ -81,7 +81,7 @@ const impl: Validator = {
         return { isValid: false, error: new exceptions.InvalidChecksum() };
       }
     } else if (value.length === 9 || value.length === 12) {
-      if (!strings.isdigits(value)) {
+      if (!strings.isDigits(value)) {
         return { isValid: false, error: new exceptions.InvalidFormat() };
       }
       const sum = weightedSum(value.substr(0, 9), {
