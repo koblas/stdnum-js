@@ -18,18 +18,39 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -./');
 }
 
-function computeDigit(input: string): number {
-  const mlen = input.length + 7;
+function charToValue(char: string): number {
+  return char.charCodeAt(0) - 48;
+}
 
-  const value =
-    11 -
-    (input
-      .split('')
-      .map((v, idx) => parseInt(v, 10) * (((mlen - idx) % 8) + 2))
-      .reduce((acc, v) => acc + v) %
-      11);
+function calculateDigit(base: string, pesos: number[]): number {
+  let sum = 0;
 
-  return value > 9 ? 0 : value;
+  for (let i = 0; i < base.length; i++) {
+    sum += charToValue(base[i]) * pesos[i];
+  }
+
+  const rest = sum % 11;
+  return rest < 2 ? 0 : 11 - rest;
+}
+
+function generateCheckDigits(
+  valueWithoutDigits: string,
+): string | exceptions.InvalidLength {
+  if (valueWithoutDigits.length !== 12) {
+    return new exceptions.InvalidLength();
+  }
+
+  const base = valueWithoutDigits.toUpperCase();
+
+  const weightFirstDigit: number[] = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+  const weightSecondDigit: number[] = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+
+  const firstDigit = calculateDigit(base, weightFirstDigit);
+  const baseWithFirstDigit = base + firstDigit.toString();
+
+  const secondDigit = calculateDigit(baseWithFirstDigit, weightSecondDigit);
+
+  return `${firstDigit}${secondDigit}`;
 }
 
 const impl: Validator = {
@@ -60,19 +81,26 @@ const impl: Validator = {
     if (error) {
       return { isValid: false, error };
     }
-    if (value.length !== 14) {
-      return { isValid: false, error: new exceptions.InvalidLength() };
-    }
-    if (!strings.isDigits(value)) {
+
+    if (!strings.isAlphanumeric(value)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
-    const [front, c1, c2] = strings.splitAt(value, 12, 13);
+    if (value.length !== 14) {
+      return { isValid: false, error: new exceptions.InvalidLength() };
+    }
 
-    const d1 = String(computeDigit(front));
-    const d2 = String(computeDigit(value.substr(0, 13)));
+    const cleaned = value.toUpperCase();
 
-    if (d1 !== c1 || d2 !== c2) {
+    const base = cleaned.slice(0, 12);
+    const informedCheckDigits = cleaned.slice(12);
+
+    const checkDigitsCalculated = generateCheckDigits(base);
+    if (checkDigitsCalculated instanceof exceptions.InvalidLength) {
+      return { isValid: false, error: checkDigitsCalculated };
+    }
+
+    if (informedCheckDigits !== checkDigitsCalculated) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 
