@@ -66,7 +66,7 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
     const [a, b, c] = strings.splitAt(value, 9, 10);
-    if (!strings.isdigits(a) || !strings.isdigits(c)) {
+    if (!strings.isDigits(a) || !strings.isDigits(c)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
     if (b !== 'B') {

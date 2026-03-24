@@ -55,7 +55,7 @@ const impl: Validator = {
     if (value.length !== 18) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
-    if (!strings.isdigits(value)) {
+    if (!strings.isDigits(value)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
@@ -72,7 +72,7 @@ const impl: Validator = {
     if (cities[parseInt(cityCode, 10)] === undefined) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
-    if (!strings.isdigits(account)) {
+    if (!strings.isDigits(account)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 

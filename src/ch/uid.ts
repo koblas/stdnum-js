@@ -54,7 +54,7 @@ const impl: Validator = {
     if (value.length !== 12) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
-    if (!strings.isdigits(value.substr(3)) || !value.startsWith('CHE')) {
+    if (!strings.isDigits(value.substr(3)) || !value.startsWith('CHE')) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 

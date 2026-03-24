@@ -49,7 +49,7 @@ const impl: Validator = {
     if (value.length !== 12) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
-    if (!strings.isdigits(value.substr(0, 9))) {
+    if (!strings.isDigits(value.substr(0, 9))) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 

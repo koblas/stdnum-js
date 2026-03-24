@@ -68,8 +68,8 @@ const impl: Validator = {
 
     const [front, , back, check2] = strings.splitAt(value, 6, 7, -1);
     if (
-      !strings.isdigits(front) ||
-      !strings.isdigits(back) ||
+      !strings.isDigits(front) ||
+      !strings.isDigits(back) ||
       !CHECK_ALPHA.includes(check2)
     ) {
       return { isValid: false, error: new exceptions.InvalidFormat() };

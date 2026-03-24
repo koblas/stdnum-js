@@ -135,7 +135,7 @@ const impl: Validator = {
       10,
     );
 
-    if (!strings.isdigits(front)) {
+    if (!strings.isDigits(front)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
     if (!VALID_CONTROL_KEYS.includes(key)) {
@@ -148,7 +148,7 @@ const impl: Validator = {
       if (!VALID_CATEGORY_CODES.includes(category)) {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
-      if (!strings.isdigits(rest)) {
+      if (!strings.isDigits(rest)) {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
       if (rest !== '000' && category !== 'E') {

@@ -65,7 +65,7 @@ const impl: Validator = {
     }
 
     // Base10 version
-    if (!strings.isdigits(base10)) {
+    if (!strings.isDigits(base10)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 

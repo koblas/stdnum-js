@@ -58,7 +58,7 @@ const impl: Validator = {
     if (value.length !== 10) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
-    if (!strings.isdigits(value.substr(1))) {
+    if (!strings.isDigits(value.substr(1))) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
     const [ctype, body, check] = strings.splitAt(value, 1, 9);

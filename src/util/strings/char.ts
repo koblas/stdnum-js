@@ -5,14 +5,14 @@ const alphaRE = /^[A-Za-z]+$/;
 /**
  * Alpha numeric check A-Za-z0-9
  */
-export function isalphanumeric(value: string): boolean {
+export function isAlphanumeric(value: string): boolean {
   return alphanumericRE.test(value);
 }
 
-export function isdigits(value: string): boolean {
+export function isDigits(value: string): boolean {
   return digitRE.test(value);
 }
 
-export function isalpha(value: string): boolean {
+export function isAlpha(value: string): boolean {
   return alphaRE.test(value);
 }

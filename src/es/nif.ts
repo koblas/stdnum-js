@@ -77,7 +77,7 @@ const impl: Validator = {
         isCompany: false,
       };
     }
-    if (strings.isdigits(value[0])) {
+    if (strings.isDigits(value[0])) {
       // Natural resident (DNI)
       return dni.validate(value);
     }

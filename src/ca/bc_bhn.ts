@@ -21,7 +21,7 @@
 import * as exceptions from '../exceptions';
 import { strings, weightedSum } from '../util';
 import { Validator, ValidateReturn } from '../types';
-import { isdigits, splitAt } from '../util/strings';
+import { isDigits, splitAt } from '../util/strings';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -');
@@ -60,7 +60,7 @@ const impl: Validator = {
     if (value[0] !== '9') {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
-    if (!isdigits(value)) {
+    if (!isDigits(value)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 

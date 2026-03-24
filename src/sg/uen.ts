@@ -73,7 +73,7 @@ const OTHER_UEN_ENTITY_TYPES = [
 
 function validateLocal(value: string): ValidateReturn {
   const [front, check] = strings.splitAt(value, -1);
-  if (!strings.isdigits(front)) {
+  if (!strings.isDigits(front)) {
     return { isValid: false, error: new exceptions.InvalidComponent() };
   }
 
@@ -98,7 +98,7 @@ function validateLocal(value: string): ValidateReturn {
 
 function validateBusiness(value: string): ValidateReturn {
   const [front, check] = strings.splitAt(value, -1);
-  if (!strings.isdigits(front)) {
+  if (!strings.isDigits(front)) {
     return { isValid: false, error: new exceptions.InvalidComponent() };
   }
 
@@ -126,7 +126,7 @@ function validateOther(value: string): ValidateReturn {
   if (!['R', 'S', 'T'].includes(kind)) {
     return { isValid: false, error: new exceptions.InvalidComponent() };
   }
-  if (!strings.isdigits(year)) {
+  if (!strings.isDigits(year)) {
     return { isValid: false, error: new exceptions.InvalidComponent() };
   }
 
@@ -136,7 +136,7 @@ function validateOther(value: string): ValidateReturn {
   if (!OTHER_UEN_ENTITY_TYPES.includes(etype)) {
     return { isValid: false, error: new exceptions.InvalidComponent() };
   }
-  if (!strings.isdigits(rest)) {
+  if (!strings.isDigits(rest)) {
     return { isValid: false, error: new exceptions.InvalidComponent() };
   }
   const alphabet = 'ABCDEFGHJKLMNPQRSTUVWX0123456789';
@@ -197,7 +197,7 @@ const impl: Validator = {
     if (value.length === 9) {
       return validateBusiness(value);
     }
-    if (strings.isdigits(value[0])) {
+    if (strings.isDigits(value[0])) {
       return validateLocal(value);
     }
 

@@ -60,7 +60,7 @@ const impl: Validator = {
     if (value.length !== 12) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
-    if (!strings.isdigits(value)) {
+    if (!strings.isDigits(value)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
     if (parseInt(value.substr(0, 2), 10) > 21 || value.substr(0, 2) === '00') {

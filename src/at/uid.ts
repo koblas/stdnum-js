@@ -59,7 +59,7 @@ const impl: Validator = {
     if (value.length !== 9) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
-    if (!value.startsWith('U') || !strings.isdigits(value.substr(1))) {
+    if (!value.startsWith('U') || !strings.isDigits(value.substr(1))) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 

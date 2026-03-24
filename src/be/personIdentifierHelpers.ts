@@ -50,7 +50,7 @@ function isUnknownDob(dob: string): boolean {
 
   const [yy, mm, dd] = toDateArray(dob);
 
-  return strings.isdigits(yy) && mm === '00' && strings.isdigits(dd);
+  return strings.isDigits(yy) && mm === '00' && strings.isDigits(dd);
 }
 
 function toChecksumBasis(year: number, baseNumber: string): number {

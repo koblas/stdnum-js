@@ -59,10 +59,10 @@ const impl: Validator = {
 
     const [body, check] = strings.splitAt(value, 8);
 
-    if ('KLM'.includes(body[0]) && strings.isdigits(body.substring(1))) {
+    if ('KLM'.includes(body[0]) && strings.isDigits(body.substring(1))) {
       // Currently no test data for these cases, so
       // we're assuming they're good based on format
-    } else if (!strings.isdigits(body)) {
+    } else if (!strings.isDigits(body)) {
       // Not all digits in the body, it's not valid
       return { isValid: false, error: new exceptions.InvalidComponent() };
     } else if (calcCheckDigit(body) !== check) {
