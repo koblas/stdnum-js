@@ -31,4 +31,34 @@ describe('br/cnpj', () => {
 
     expect(result.error).toBeInstanceOf(InvalidFormat);
   });
+
+  it('format:12ABC34501DE35 (alphanumeric)', () => {
+    const result = format('12ABC34501DE35');
+
+    expect(result).toEqual('12.ABC.345/01DE-35');
+  });
+
+  it('validate:12.ABC.345/01DE-35 (alphanumeric)', () => {
+    const result = validate('12.ABC.345/01DE-35');
+
+    expect(result.isValid && result.compact).toEqual('12ABC34501DE35');
+  });
+
+  it('validate:12abc34501de35 (alphanumeric lowercase)', () => {
+    const result = validate('12abc34501de35');
+
+    expect(result.isValid && result.compact).toEqual('12ABC34501DE35');
+  });
+
+  it('validate:12.ABC.345/01DE-99 (alphanumeric bad checksum)', () => {
+    const result = validate('12.ABC.345/01DE-99');
+
+    expect(result.error).toBeInstanceOf(InvalidChecksum);
+  });
+
+  it('validate:12.ABC.345/01DE-AB (non-numeric check digits)', () => {
+    const result = validate('12.ABC.345/01DE-AB');
+
+    expect(result.error).toBeInstanceOf(InvalidFormat);
+  });
 });
