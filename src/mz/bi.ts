@@ -7,7 +7,7 @@
  * format, but public validation rules (including checksums) are not officially
  * documented.
  *
- * This validator supports only 13-digit numeric format.
+ * This validator supports only the 13-character alphanumeric format.
  *
  * Source:
  *     Serviço de Migração e Estrangeiros (SME), República de Moçambique
@@ -20,7 +20,7 @@ import { strings } from '../util';
 import { Validator, ValidateReturn } from '../types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
-  return strings.cleanUnicode(input, ' -.');
+  return strings.cleanUnicode(input.toUpperCase(), ' -.');
 }
 
 const impl: Validator = {

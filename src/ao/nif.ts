@@ -1,7 +1,7 @@
 /**
  * NIF (Número de Identificação Fiscal, Angola Tax Identification Number).
  *
- * The Angolan NIF is a 10/14-digit number used for tax purposes.
+ * The Angolan NIF is a 10-digit or 14-character number used for tax purposes.
  *
  * Source:
  * https://validarnif.pt/pt/validar-nif-angola/
@@ -12,7 +12,7 @@ import { strings } from '../util';
 import { Validator, ValidateReturn } from '../types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
-  return strings.cleanUnicode(input, ' -.');
+  return strings.cleanUnicode(input.toUpperCase(), ' -.');
 }
 
 const impl: Validator = {

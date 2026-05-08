@@ -15,7 +15,7 @@ import { strings } from '../util';
 import { Validator, ValidateReturn } from '../types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
-  return strings.cleanUnicode(input, ' -.');
+  return strings.cleanUnicode(input.toUpperCase(), ' -.');
 }
 
 const BIO_REGEX = /^\d{9}[A-Z]{2}\d{3}$/;
