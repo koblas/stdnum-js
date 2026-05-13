@@ -97,7 +97,7 @@ const impl: Validator = {
             weights: [2, 7, 6, 5, 4, 3, 2, 7, 6, 5, 4, 3, 2],
             modulus: 11,
           })) %
-          11)%
+          11) %
         10;
     }
 
