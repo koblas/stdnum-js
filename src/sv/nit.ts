@@ -84,7 +84,7 @@ const impl: Validator = {
     let sum;
     const [front, check] = strings.splitAt(value, 13);
 
-    if (value.substr(10, 3) <= '100') {
+    if (value.slice(10, 13) <= '100') {
       sum =
         weightedSum(front, {
           weights: [14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2],
