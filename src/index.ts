@@ -1,6 +1,7 @@
 import * as AD from './ad';
 import * as AI from './ai';
 import * as AL from './al';
+import * as AO from './ao';
 import * as AR from './ar';
 import * as AT from './at';
 import * as AU from './au';
@@ -62,6 +63,7 @@ import * as MT from './mt';
 import * as MU from './mu';
 import * as MX from './mx';
 import * as MY from './my';
+import * as MZ from './mz';
 import * as NL from './nl';
 import * as NO from './no';
 import * as NZ from './nz';
@@ -89,14 +91,15 @@ import * as UY from './uy';
 import * as VE from './ve';
 import * as VN from './vn';
 import * as ZA from './za';
-import { Validator } from './types';
+import type { Validator } from './types';
 
-export { Validator } from './types';
+export type { Validator } from './types';
 
 // Live an uppercase world, to prevent keyword collisions
 export const stdnum: Record<string, Record<string, Validator>> = {
   AD,
   AL,
+  AO,
   AR,
   AT,
   AU,
@@ -158,6 +161,7 @@ export const stdnum: Record<string, Record<string, Validator>> = {
   MU,
   MX,
   MY,
+  MZ,
   NL,
   NO,
   NZ,
@@ -191,6 +195,7 @@ export const personValidators: Record<string, Validator[]> = {
   AD: [AD.nrt],
   AI: [AI.tin],
   AL: [AL.nipt],
+  AO: [AO.nif, AO.bi],
   AR: [AR.cuit, AR.dni],
   AT: [AT.vnr],
   AU: [AU.tfn],
@@ -239,6 +244,7 @@ export const personValidators: Record<string, Validator[]> = {
   MU: [MU.nid],
   MX: [MX.curp, MX.rfc],
   MY: [MY.nric],
+  MZ: [MZ.bi, MZ.nuit],
   NL: [NL.onderwijsnummer, NL.bsn],
   NO: [NO.fodselsnummer],
   NZ: [NZ.ird],
@@ -268,6 +274,7 @@ export const entityValidators: Record<string, Validator[]> = {
   AD: [AD.nrt],
   AI: [AI.tin],
   AL: [AL.nipt],
+  AO: [AO.nif],
   AR: [AR.cuit],
   AT: [AT.businessid, AT.tin, AT.uid],
   AU: [AU.abn, AU.acn, AU.tfn],
@@ -314,6 +321,7 @@ export const entityValidators: Record<string, Validator[]> = {
   MA: [MA.ice, MA.ice9],
   MT: [MT.vat],
   MX: [MX.rfc],
+  MZ: [MZ.nuit],
   NL: [NL.btw],
   NO: [NO.mva, NO.orgnr],
   NZ: [NZ.ird],

@@ -34,6 +34,8 @@ How you can help! This library currently support about half the countries in the
 | Country                | Code | Name            | Group              | Meaning                                                                                                                                |
 | ---------------------- | ---- | --------------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
 | Andorra                | AD   | NRT             | Tax                | Tax Register Identifier (Número de Registre Tributari)                                                                                 |
+| Angola                 | AO   | BI              | Person             | Angolan Identity Card (Bilhete de Identidade)                                                                                          |
+| Angola                 | AO   | NIF             | Tax                | Angolan Tax Identification Number (Número de Identificação Fiscal)                                                                     |
 | Albania                | AL   | NIPT            | Vat                | Albanian Vat Identifier (Numri i Identifikimit për Personin e Tatueshëm)                                                               |
 | Anguilla               | AI   | TIN             | Tax                | Tax Identification Number                                                                                                              |
 | Argentina              | AR   | CBU             | Bank               | Single Banking Code (Clave Bancaria Uniforme)                                                                                          |
@@ -154,6 +156,8 @@ How you can help! This library currently support about half the countries in the
 | Mexico                 | MX   | CLABE           | Bank               | Bank Account (Clave Bancaria Estandarizada)                                                                                            |
 | Montenegro             | ME   | JMBG            | Person             | Unique Master Citizen Number                                                                                                           |
 | Montenegro             | ME   | PIB             | Tax/Vat            | Poreski Identifikacioni Broj, Montenegro tax number                                                                                    |
+| Mozambique             | MZ   | BI              | Person             | Bilhete de Identidade, Mozambican national identification number                                                                       |
+| Mozambique             | MZ   | NUIT            | Tax/Vat            | Número Único de Identificação Tributária, Mozambican tax identifier number                                                             |
 | Malaysia               | MY   | NRIC            | Person             | Malaysian National Registration Identity Card Number                                                                                   |
 | Netherlands            | NL   | BSN             | Person             | Burgerservicenummer, the Dutch citizen identification number                                                                           |
 | Netherlands            | NL   | BTW             | Vat                | Btw-identificatienummer (Omzetbelastingnummer, the Dutch VAT number)                                                                   |
