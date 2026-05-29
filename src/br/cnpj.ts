@@ -1,9 +1,14 @@
 /**
  * CNPJ (Cadastro Nacional da Pessoa Jurídica, Brazilian company identifier).
  *
- * Numbers from the national register of legal entities have 14 digits. The
- * first 8 digits identify the company, the following 4 digits identify a
- * business unit and the last 2 digits are check digits.
+ * Numbers from the national register of legal entities have 14 characters. The
+ * first 8 characters identify the company, the following 4 identify a business
+ * unit and the last 2 are check digits.
+ *
+ * Starting July 2026, new CNPJs may be alphanumeric: the first 12 positions
+ * can contain A-Z and 0-9, while the last 2 remain numeric check digits.
+ * Legacy numeric-only CNPJs remain valid. The check digit algorithm (mod 11)
+ * is unchanged; letters use their ASCII code minus 48 (A=17 … Z=42).
  *
  * Sources:
  *
@@ -18,6 +23,10 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -./');
 }
 
+function charValue(ch: string): number {
+  return ch.charCodeAt(0) - 48;
+}
+
 function computeDigit(input: string): number {
   const mlen = input.length + 7;
 
@@ -25,7 +34,7 @@ function computeDigit(input: string): number {
     11 -
     (input
       .split('')
-      .map((v, idx) => parseInt(v, 10) * (((mlen - idx) % 8) + 2))
+      .map((v, idx) => charValue(v) * (((mlen - idx) % 8) + 2))
       .reduce((acc, v) => acc + v) %
       11);
 
@@ -63,11 +72,15 @@ const impl: Validator = {
     if (value.length !== 14) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
-    if (!strings.isdigits(value)) {
+    if (!strings.isalphanumeric(value)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
     const [front, c1, c2] = strings.splitAt(value, 12, 13);
+
+    if (!strings.isdigits(c1) || !strings.isdigits(c2)) {
+      return { isValid: false, error: new exceptions.InvalidFormat() };
+    }
 
     const d1 = String(computeDigit(front));
     const d2 = String(computeDigit(value.substr(0, 13)));
