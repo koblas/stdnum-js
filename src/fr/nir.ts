@@ -61,16 +61,11 @@ const impl: Validator = {
 
     const [pre, dept, post, check] = strings.splitAt(value, 5, 7, 13);
 
-    if (
-      !strings.isDigits(pre) ||
-      !strings.isDigits(post) ||
-      !strings.isDigits(check)
-    ) {
+    if (!strings.isDigits(pre) || !strings.isDigits(post) || !strings.isDigits(check)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
     // eslint is broken on this variable
-    // eslint-disable-next-line no-useless-assignment
     let add = '';
     if (dept === '2A') {
       add = '19';
@@ -97,5 +92,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

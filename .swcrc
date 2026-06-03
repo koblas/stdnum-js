@@ -1,0 +1,29 @@
+{
+  /* minify files */
+  "minify": true,
+  "module": {
+    "type": "commonjs"
+  },
+  "exclude": ["./tests/*", ".*\\.spec.*$", ".*\\.test.*$", ".*\\.d.*$"],
+  "jsc": {
+    "externalHelpers": false,
+    "parser": {
+      "syntax": "typescript",
+      "decorators": true,
+      "decoratorsBeforeExport": true
+    },
+    "target": "esnext",
+    "baseUrl": "./",
+    "transform": {
+      "legacyDecorator": true,
+      "decoratorMetadata": true
+    },
+    /* minify files and rename properties */
+    "minify": {
+      "compress": {
+        "unused": true
+      },
+      "mangle": true
+    }
+  }
+}

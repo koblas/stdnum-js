@@ -8,9 +8,9 @@
     "lib",
     "src"
   ],
-  "main": "./lib/cjs/index.js",
+  "main": "./dist/index.js",
   "module": "./lib/esm/index.js",
-  "types": "./lib/cjs/index.d.ts",
+  "types": "./dist/index.d.ts",
   "exports_NOT_YET": {
     "./": {
       "import": "./lib/esm/",
@@ -39,32 +39,16 @@
     ]
   },
   "scripts": {
-    "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint src",
-    "test": "jest",
-    "build": "tsc",
-    "prepublishOnly:esm": "tsc -p tsconfig.json",
-    "prepublishOnly:cjs": "tsc -p tsconfig-cjs.json",
-    "prepublishOnly": "npm run prepublishOnly:esm && npm run prepublishOnly:cjs"
+    "test": "vitest",
+    "build": "rimraf dist && swc src -d dist --copy-files --strip-leading-paths",
+    "postbuild": "tsc -p tsconfig.build.json",
+    "build:esm": "swc src -d dist/esm --config-file .swcrc-esm",
+    "build:cjs": "swc src -d dist/cjs --config-file .swcrc-cjs",
+    "prepare": "cross-env HUSKY_SKIP_INSTALL=1 && husky install || echo 'Husky install skipped for production build'"
   },
   "publishConfig": {
     "provenance": true
-  },
-  "jest": {
-    "moduleFileExtensions": [
-      "ts",
-      "js"
-    ],
-    "roots": [
-      "<rootDir>/src"
-    ],
-    "transform": {
-      "^.+\\.(ts|tsx)$": "ts-jest"
-    },
-    "testMatch": [
-      "**/__tests__/**/*.+(ts|tsx|js)",
-      "**/?(*.)+(spec|test).+(ts|tsx|js)"
-    ]
   },
   "author": "David Koblas",
   "keywords": [
@@ -81,18 +65,29 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
+    "@eslint/eslintrc": "^3.3.0",
+    "@eslint/js": "^9.22.0",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "@types/jest": "^30.0.0",
-    "eslint": "^10.1.0",
+    "@swc/cli": "^0.6.0",
+    "@swc/core": "^1.11.9",
+    "@typescript-eslint/eslint-plugin": "^8.26.1",
+    "@typescript-eslint/parser": "^8.26.1",
+    "eslint": "^9.22.0",
+    "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^10.0.1",
-    "jest": "^30.2.0",
-    "prettier": "^3.4.2",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-html": "^8.1.2",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-vitest-globals": "^1.5.0",
+    "globals": "16.0.0",
+    "husky": "^9.1.7",
+    "prettier": "^3.5.3",
     "prettier-eslint": "^16.3.0",
+    "rimraf": "^6.0.1",
     "semantic-release": "^25.0.1",
-    "ts-jest": "^29.1.0",
-    "typescript": "^5.7.3",
-    "typescript-eslint": "^8.57.1"
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.57.1",
+    "vitest": "^3.0.8"
   }
 }
