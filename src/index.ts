@@ -90,11 +90,15 @@ import * as VE from './ve';
 import * as VN from './vn';
 import * as ZA from './za';
 import { Validator } from './types/types';
+import { type StdnumEnum } from './types/stdnum';
+import { EntityValidatorsEnum } from './types/entityValidators';
+import { PersonValidatorsEnum } from './types/personValidators';
+import { EuVatEnum } from './types/euVat';
 
 export { type Validator } from './types/types';
 
 // Live an uppercase world, to prevent keyword collisions
-export const stdnum: Record<string, Record<string, Validator>> = {
+export const stdnum: Record<StdnumEnum, Record<string, Validator>> = {
   AD,
   AL,
   AR,
@@ -187,7 +191,7 @@ export const stdnum: Record<string, Record<string, Validator>> = {
   ZA,
 };
 
-export const personValidators: Record<string, Validator[]> = {
+export const personValidators: Record<PersonValidatorsEnum, Validator[]> = {
   AD: [AD.nrt],
   AI: [AI.tin],
   AL: [AL.nipt],
@@ -264,7 +268,7 @@ export const personValidators: Record<string, Validator[]> = {
   ZA: [ZA.tin, ZA.idnr],
 };
 
-export const entityValidators: Record<string, Validator[]> = {
+export const entityValidators: Record<EntityValidatorsEnum, Validator[]> = {
   AD: [AD.nrt],
   AI: [AI.tin],
   AL: [AL.nipt],
@@ -343,7 +347,7 @@ export const entityValidators: Record<string, Validator[]> = {
 /**
  * https://en.wikipedia.org/wiki/VAT_identification_number
  */
-export const euVat: Record<string, Validator[]> = {
+export const euVat: Record<EuVatEnum, Validator[]> = {
   AD: [AD.nrt],
   AT: [AT.uid],
   BE: [BE.vat],
@@ -378,8 +382,11 @@ export const euVat: Record<string, Validator[]> = {
 /**
  *  Apply the necessary validators for a given country to validate an ID number
  */
-export function validatePerson(country: string, value: string): { checked: boolean; isValid?: boolean; matchedValidators?: Validator[] } {
-  const vset = personValidators[country.toLocaleUpperCase()];
+export function validatePerson(
+  country: PersonValidatorsEnum,
+  value: string,
+): { checked: boolean; isValid?: boolean; matchedValidators?: Validator[] } {
+  const vset = personValidators[country];
 
   if (!vset || vset.length === 0) {
     return { checked: false };
@@ -393,8 +400,11 @@ export function validatePerson(country: string, value: string): { checked: boole
 /**
  *  Apply the necessary validators for a given country to validate an Entity (Business) ID number
  */
-export function validateEntity(country: string, value: string): { checked: boolean; isValid?: boolean; matchedValidators?: Validator[] } {
-  const vset = entityValidators[country.toLocaleUpperCase()];
+export function validateEntity(
+  country: EntityValidatorsEnum,
+  value: string,
+): { checked: boolean; isValid?: boolean; matchedValidators?: Validator[] } {
+  const vset = entityValidators[country];
 
   if (!vset || vset.length === 0) {
     return { checked: false };
