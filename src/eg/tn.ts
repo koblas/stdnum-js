@@ -12,7 +12,7 @@
 
 import * as exceptions from '../exceptions';
 import { strings } from '../util';
-import { Validator, ValidateReturn } from '../types';
+import { Validator, ValidateReturn } from '../types/types';
 
 const ARABIC_NUMBERS_MAP: Record<string, string> = {
   // Arabic-indic digits.
@@ -43,7 +43,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   // Normalize the arabic characters to ascii digits
   const norm = input
     .split('')
-    .map(c => ARABIC_NUMBERS_MAP[c] ?? c)
+    .map((c) => ARABIC_NUMBERS_MAP[c] ?? c)
     .join('');
   return strings.cleanUnicode(norm, ' -/');
 }
@@ -92,5 +92,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

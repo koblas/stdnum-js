@@ -14,7 +14,7 @@
 
 import * as exceptions from '../exceptions';
 import { isValidDate, strings, weightedSum } from '../util';
-import { Validator, ValidateReturn } from '../types';
+import { Validator, ValidateReturn } from '../types/types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -:');
@@ -22,9 +22,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 
 function checkBirthdate(value: string) {
   // eslint-disable-next-line prefer-const
-  let [dd, mm, yy, rest] = strings
-    .splitAt(value, 2, 4, 6, 9)
-    .map(v => parseInt(v, 10));
+  let [dd, mm, yy, rest] = strings.splitAt(value, 2, 4, 6, 9).map((v) => parseInt(v, 10));
 
   // Correct the birth day for D-numbers. These have a modified first digit.
   // https://no.wikipedia.org/wiki/F%C3%B8dselsnummer#D-nummer
@@ -98,10 +96,7 @@ const impl: Validator = {
       modulus: 11,
     });
 
-    if (
-      String((11 - sum1) % 11) !== check1 ||
-      String((11 - sum2) % 11) !== check2
-    ) {
+    if (String((11 - sum1) % 11) !== check1 || String((11 - sum2) % 11) !== check2) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 
@@ -114,5 +109,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

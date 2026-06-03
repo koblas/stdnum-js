@@ -16,7 +16,7 @@
 
 import * as exceptions from '../exceptions';
 import { strings, isValidDateCompactYYMMDD, weightedSum } from '../util';
-import { Validator, ValidateReturn } from '../types';
+import { Validator, ValidateReturn } from '../types/types';
 
 const oldRegex = /^([0-9CFGHJKLMNPRTVWXYZ]{9})([0-9])[A-Z]?$/;
 
@@ -66,22 +66,11 @@ export function validateIssue(value: string): ValidateReturn {
 }
 
 export function validateNew(value: string): ValidateReturn {
-  if (
-    !/^[0-9CFGHJKLMNPRTVWXYZ][0-9CFGHJKLMNPRTVWXYZ]+[A-Z][0-9]$/.test(value)
-  ) {
+  if (!/^[0-9CFGHJKLMNPRTVWXYZ][0-9CFGHJKLMNPRTVWXYZ]+[A-Z][0-9]$/.test(value)) {
     return { isValid: false, error: new exceptions.InvalidFormat() };
   }
 
-  const [
-    issue,
-    issueCheck,
-    birth,
-    birthCheck,
-    expiry,
-    expiryCheck,
-    nationality,
-    checksum,
-  ] = strings.splitAt(value, 9, 10, 16, 17, 23, 24, 25);
+  const [issue, issueCheck, birth, birthCheck, expiry, expiryCheck, nationality, checksum] = strings.splitAt(value, 9, 10, 16, 17, 23, 24, 25);
 
   if (!isValidDateCompactYYMMDD(birth, true)) {
     return {
@@ -186,5 +175,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

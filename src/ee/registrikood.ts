@@ -20,7 +20,7 @@
 
 import * as exceptions from '../exceptions';
 import { strings } from '../util';
-import { Validator, ValidateReturn } from '../types';
+import { Validator, ValidateReturn } from '../types/types';
 import { ikCheck } from './ik';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
@@ -76,5 +76,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

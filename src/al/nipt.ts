@@ -13,7 +13,7 @@
  */
 
 import * as exceptions from '../exceptions';
-import { ValidateReturn, Validator } from '../types';
+import { ValidateReturn, Validator } from '../types/types';
 import { strings, isValidDate } from '../util';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
@@ -71,14 +71,7 @@ const impl: Validator = {
     if (!/^[A-M]\d{8}[A-Z]$/.test(value)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
-    const [ccode, ydigit, monthDistrict, day, , check] = strings.splitAt(
-      value,
-      1,
-      2,
-      4,
-      6,
-      9,
-    );
+    const [ccode, ydigit, monthDistrict, day, , check] = strings.splitAt(value, 1, 2, 4, 6, 9);
     const month = ((parseInt(monthDistrict, 10) - 1) % 12) + 1;
     const yearVal = ccode.charCodeAt(0) - 65;
     const year = 1900 + yearVal * 10 + parseInt(ydigit, 10);
@@ -107,5 +100,4 @@ const impl: Validator = {
     };
   },
 };
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

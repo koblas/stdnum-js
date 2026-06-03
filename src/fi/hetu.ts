@@ -11,7 +11,7 @@
 
 import * as exceptions from '../exceptions';
 import { isValidDate, strings } from '../util';
-import { Validator, ValidateReturn } from '../types';
+import { Validator, ValidateReturn } from '../types/types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' ');
@@ -67,25 +67,14 @@ const impl: Validator = {
     }
 
     const [front, , back, check2] = strings.splitAt(value, 6, 7, -1);
-    if (
-      !strings.isDigits(front) ||
-      !strings.isDigits(back) ||
-      !CHECK_ALPHA.includes(check2)
-    ) {
+    if (!strings.isDigits(front) || !strings.isDigits(back) || !CHECK_ALPHA.includes(check2)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
     if (!VALID_CENTURY.includes(value[6])) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
-    const [dd, mm, yy, century, person, check] = strings.splitAt(
-      value,
-      2,
-      4,
-      6,
-      7,
-      10,
-    );
+    const [dd, mm, yy, century, person, check] = strings.splitAt(value, 2, 4, 6, 7, 10);
     if (!isValidDate(`${CENTURY[century]}${yy}`, mm, dd, true)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
@@ -104,5 +93,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

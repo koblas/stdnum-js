@@ -14,7 +14,7 @@
 import * as exceptions from '../exceptions';
 import { strings } from '../util';
 import { weightedSum } from '../util/checksum';
-import { Validator, ValidateReturn } from '../types';
+import { Validator, ValidateReturn } from '../types/types';
 
 const AREA_NUMBER_OPTIONS = [
   '02',
@@ -47,33 +47,18 @@ const AREA_NUMBER_OPTIONS = [
   '81',
   '82',
   '89',
-].concat([...Array(79 - 42 + 1).keys()].map(x => (x + 42).toString())); // '42'-'79'
+].concat([...Array(79 - 42 + 1).keys()].map((x) => (x + 42).toString())); // '42'-'79'
 
-const BIRTH_MONTH_OPTIONS = [
-  '01',
-  '02',
-  '03',
-  '04',
-  '05',
-  '06',
-  '07',
-  '08',
-  '09',
-  '10',
-  '11',
-  '12',
-];
+const BIRTH_MONTH_OPTIONS = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
 
 const checkAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-const checkAlphabetDict: Record<string, number> = checkAlphabet
-  .split('')
-  .reduce(
-    (acc, c, idx) => ({
-      ...acc,
-      [c]: String(idx + 1).padStart(2, '0'),
-    }),
-    {},
-  );
+const checkAlphabetDict: Record<string, number> = checkAlphabet.split('').reduce(
+  (acc, c, idx) => ({
+    ...acc,
+    [c]: String(idx + 1).padStart(2, '0'),
+  }),
+  {},
+);
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -./,');
@@ -133,7 +118,7 @@ const impl: Validator = {
     const [frontWithAlpha, check] = strings.splitAt(value, 11);
     const front = frontWithAlpha
       .split('')
-      .map(c => checkAlphabetDict[c] ?? c)
+      .map((c) => checkAlphabetDict[c] ?? c)
       .join('');
     const sum = weightedSum(front, {
       weights: [2, 1, 2, 5, 7, 1, 2, 1, 2, 1, 2, 1],
@@ -154,5 +139,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

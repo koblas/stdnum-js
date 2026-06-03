@@ -9,7 +9,7 @@
 
 import * as exceptions from '../exceptions';
 import { strings } from '../util';
-import { Validator, ValidateReturn } from '../types';
+import { Validator, ValidateReturn } from '../types/types';
 
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const weights: Record<string, number> = {
@@ -78,7 +78,7 @@ const impl: Validator = {
 
     const sum = front
       .split('')
-      .map(v => parseInt(v, 10))
+      .map((v) => parseInt(v, 10))
       .reduce((acc, v, idx) => acc + (idx % 2 === 0 ? weights[v] : v), 0);
 
     if (alphabet[sum % 26] !== check) {
@@ -94,5 +94,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

@@ -14,7 +14,7 @@
 
 import * as exceptions from '../exceptions';
 import { strings, weightedSum } from '../util';
-import { Validator, ValidateReturn } from '../types';
+import { Validator, ValidateReturn } from '../types/types';
 import { banksMap, cities } from './banks';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
@@ -59,12 +59,7 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
-    const [bankCode, cityCode, account, checksum] = strings.splitAt(
-      value,
-      3,
-      6,
-      17,
-    );
+    const [bankCode, cityCode, account, checksum] = strings.splitAt(value, 3, 6, 17);
 
     if (banksMap[parseInt(bankCode, 10)] === undefined) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
@@ -101,5 +96,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

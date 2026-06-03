@@ -20,7 +20,7 @@
  * PERSON
  */
 
-import { ValidateReturn } from '../types';
+import { ValidateReturn } from '../types/types';
 import * as exceptions from '../exceptions';
 import { strings, weightedSum } from '../util';
 
@@ -104,6 +104,5 @@ const impl = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;
 export default impl;

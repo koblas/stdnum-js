@@ -16,7 +16,7 @@
 
 import * as exceptions from '../exceptions';
 import { strings, mod97base10Validate } from '../util';
-import { Validator, ValidateReturn } from '../types';
+import { Validator, ValidateReturn } from '../types/types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -/');

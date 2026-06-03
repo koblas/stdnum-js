@@ -15,7 +15,7 @@
 
 import * as exceptions from '../exceptions';
 import { strings } from '../util';
-import { Validator, ValidateReturn } from '../types';
+import { Validator, ValidateReturn } from '../types/types';
 
 // Valid department codes for Bolivia
 const VALID_DEPARTMENTS = [
@@ -123,8 +123,7 @@ const impl: Validator = {
     }
 
     // Final length check
-    const totalLength =
-      numberPart.length + department.length + extension.length;
+    const totalLength = numberPart.length + department.length + extension.length;
     if (totalLength < 9 || totalLength > 12) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
@@ -138,5 +137,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

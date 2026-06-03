@@ -12,7 +12,7 @@
 
 import * as exceptions from '../exceptions';
 import { strings } from '../util';
-import { Validator, ValidateReturn } from '../types';
+import { Validator, ValidateReturn } from '../types/types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -./');
@@ -33,9 +33,7 @@ function calculateDigit(base: string, pesos: number[]): number {
   return rest < 2 ? 0 : 11 - rest;
 }
 
-function generateCheckDigits(
-  valueWithoutDigits: string,
-): string | exceptions.InvalidLength {
+function generateCheckDigits(valueWithoutDigits: string): string | exceptions.InvalidLength {
   if (valueWithoutDigits.length !== 12) {
     return new exceptions.InvalidLength();
   }
@@ -113,5 +111,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

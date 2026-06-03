@@ -23,7 +23,7 @@
 
 import * as exceptions from '../exceptions';
 import { strings } from '../util';
-import { Validator, ValidateReturn } from '../types';
+import { Validator, ValidateReturn } from '../types/types';
 import { validate as panValidate } from './pan';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
@@ -129,16 +129,13 @@ const impl: Validator = {
       .map((char, index) => {
         const product = ALPHABET.indexOf(char) * (index % 2 !== 0 ? 2 : 1);
 
-        return (
-          Math.floor(product / ALPHABET.length) + (product % ALPHABET.length)
-        );
+        return Math.floor(product / ALPHABET.length) + (product % ALPHABET.length);
       })
       .reduce((prev, current) => {
         return prev + current;
       });
 
-    const checksum =
-      (ALPHABET.length - (sum % ALPHABET.length)) % ALPHABET.length;
+    const checksum = (ALPHABET.length - (sum % ALPHABET.length)) % ALPHABET.length;
     if (ALPHABET[checksum] !== check) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
@@ -152,5 +149,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

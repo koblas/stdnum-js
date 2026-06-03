@@ -3,7 +3,7 @@
  * https://en.wikipedia.org/wiki/Unique_Master_Citizen_Number
  */
 
-import { Validator } from '../types';
+import { Validator } from '../types/types';
 import * as jmbg from '../ba/jmbg';
 
 const impl: Validator = {
@@ -13,5 +13,4 @@ const impl: Validator = {
   abbreviation: 'ЕМБГ',
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

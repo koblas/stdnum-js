@@ -15,7 +15,7 @@
 
 import * as exceptions from '../exceptions';
 import { strings, weightedSum } from '../util';
-import { Validator, ValidateReturn } from '../types';
+import { Validator, ValidateReturn } from '../types/types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' ');
@@ -56,9 +56,7 @@ const impl: Validator = {
 
     const [front, check] = strings.splitAt(value, -1);
 
-    const weights = '345'.includes(front[0])
-      ? [7, 1, 2, 3, 4, 5, 6]
-      : [1, 2, 3, 4, 5, 6, 7];
+    const weights = '345'.includes(front[0]) ? [7, 1, 2, 3, 4, 5, 6] : [1, 2, 3, 4, 5, 6, 7];
 
     let sum = weightedSum(front, {
       weights,
@@ -67,7 +65,7 @@ const impl: Validator = {
 
     if (sum === 10) {
       sum = weightedSum(front, {
-        weights: weights.map(v => v + 2),
+        weights: weights.map((v) => v + 2),
         modulus: 11,
       });
     }
@@ -84,5 +82,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

@@ -15,7 +15,7 @@
 
 import * as exceptions from '../exceptions';
 import { strings } from '../util';
-import { Validator, ValidateReturn } from '../types';
+import { Validator, ValidateReturn } from '../types/types';
 import { iso7064mod10x11validate } from '../util/iso7064';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
@@ -65,11 +65,11 @@ const impl: Validator = {
     value
       .substr(0, 10)
       .split('')
-      .map(v => parseInt(v, 10))
-      .forEach(v => {
+      .map((v) => parseInt(v, 10))
+      .forEach((v) => {
         counter[v] = (counter[v] ?? 0) + 1;
       });
-    const more = Object.values(counter).filter(v => v > 1);
+    const more = Object.values(counter).filter((v) => v > 1);
     if (more.length !== 1 && [2, 3].includes(more[0])) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
@@ -87,5 +87,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

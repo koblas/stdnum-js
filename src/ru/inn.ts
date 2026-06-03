@@ -13,7 +13,7 @@
 
 import * as exceptions from '../exceptions';
 import { strings, weightedSum } from '../util';
-import { Validator, ValidateReturn } from '../types';
+import { Validator, ValidateReturn } from '../types/types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' ');
@@ -60,10 +60,7 @@ const impl: Validator = {
     }
 
     let digit: string;
-    const [front, check] = strings.splitAt(
-      value,
-      value.length === 10 ? -1 : -2,
-    );
+    const [front, check] = strings.splitAt(value, value.length === 10 ? -1 : -2);
 
     if (value.length === 10) {
       digit = String(
@@ -102,5 +99,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

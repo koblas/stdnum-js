@@ -21,7 +21,7 @@
 
 import * as exceptions from '../exceptions';
 import { isValidDate, buildDate, validBirthdate, strings } from '../util';
-import { Validator, ValidateReturn } from '../types';
+import { Validator, ValidateReturn } from '../types/types';
 
 export function getBirthDate(value: string): Date {
   const [dob] = strings.splitAt(value, 6);
@@ -31,10 +31,7 @@ export function getBirthDate(value: string): Date {
 
   if ('5678'.includes(value[6]) && year >= 58) {
     year += 1800;
-  } else if (
-    '0123'.includes(value[6]) ||
-    ('49'.includes(value[6]) && year >= 37)
-  ) {
+  } else if ('0123'.includes(value[6]) || ('49'.includes(value[6]) && year >= 37)) {
     year += 1900;
   } else {
     year += 2000;
@@ -43,9 +40,7 @@ export function getBirthDate(value: string): Date {
   const d = buildDate(String(year), month, day);
 
   if (d === null || !isValidDate(String(year), month, day)) {
-    throw new exceptions.InvalidComponent(
-      'The number does not contain valid birth date information.',
-    );
+    throw new exceptions.InvalidComponent('The number does not contain valid birth date information.');
   }
 
   return d;
@@ -98,9 +93,7 @@ const impl: Validator = {
       if (!validBirthdate(date)) {
         return {
           isValid: false,
-          error: new exceptions.InvalidComponent(
-            'The birth date information is valid, but this person has not been born yet.',
-          ),
+          error: new exceptions.InvalidComponent('The birth date information is valid, but this person has not been born yet.'),
         };
       }
     } catch (err) {
@@ -125,5 +118,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

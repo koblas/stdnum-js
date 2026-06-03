@@ -16,7 +16,7 @@
 
 import * as exceptions from '../exceptions';
 import { strings } from '../util';
-import { Validator, ValidateReturn } from '../types';
+import { Validator, ValidateReturn } from '../types/types';
 import { weightedSum } from '../util/checksum';
 
 // Data from pages 10 and 11 of
@@ -155,15 +155,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
     return [cvalue, new exceptions.InvalidFormat()];
   }
 
-  return [
-    [
-      parts[0].padStart(2, '0'),
-      parts[1].padStart(4, '0'),
-      parts[2].padStart(7, '0'),
-      parts[3].padStart(3, '0'),
-    ].join(''),
-    null,
-  ];
+  return [[parts[0].padStart(2, '0'), parts[1].padStart(4, '0'), parts[2].padStart(7, '0'), parts[3].padStart(3, '0')].join(''), null];
 }
 
 const impl: Validator = {
@@ -205,7 +197,7 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
     const bnum = parseInt(branch, 10);
-    if (!bankInfo.branches.some(pair => bnum >= pair[0] && bnum <= pair[1])) {
+    if (!bankInfo.branches.some((pair) => bnum >= pair[0] && bnum <= pair[1])) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
@@ -234,5 +226,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

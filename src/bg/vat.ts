@@ -12,7 +12,7 @@ import * as exceptions from '../exceptions';
 import * as egn from './egn';
 import * as pnf from './pnf';
 import { strings } from '../util';
-import { Validator, ValidateReturn } from '../types';
+import { Validator, ValidateReturn } from '../types/types';
 import { weightedSum } from '../util/checksum';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
@@ -99,11 +99,7 @@ const impl: Validator = {
       if (!checkLegal(value)) {
         return { isValid: false, error: new exceptions.InvalidChecksum() };
       }
-    } else if (
-      !egn.validate(value).isValid &&
-      !pnf.validate(value).isValid &&
-      !checkOther(value)
-    ) {
+    } else if (!egn.validate(value).isValid && !pnf.validate(value).isValid && !checkOther(value)) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 
@@ -116,5 +112,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

@@ -12,7 +12,7 @@
 
 import * as exceptions from '../exceptions';
 import { strings } from '../util';
-import { Validator, ValidateReturn } from '../types';
+import { Validator, ValidateReturn } from '../types/types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' ');
@@ -54,14 +54,10 @@ const impl: Validator = {
     if (value.length === 6) {
       // Base32 version
       const chars = value.split('');
-      if (!chars.every(v => alphabet.includes(v))) {
+      if (!chars.every((v) => alphabet.includes(v))) {
         return { isValid: false, error: new exceptions.InvalidFormat() };
       }
-      base10 = String(
-        chars
-          .reverse()
-          .reduce((acc, v, idx) => acc + alphabet.indexOf(v) * 32 ** idx, 0),
-      ).padStart(9, '0');
+      base10 = String(chars.reverse().reduce((acc, v, idx) => acc + alphabet.indexOf(v) * 32 ** idx, 0)).padStart(9, '0');
     }
 
     // Base10 version
@@ -73,7 +69,7 @@ const impl: Validator = {
 
     const sum = front
       .split('')
-      .map(v => parseInt(v, 10))
+      .map((v) => parseInt(v, 10))
       .reduce((acc, v, idx) => {
         const vv = v * ((idx % 2) + 1);
 
@@ -93,5 +89,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

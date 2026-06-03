@@ -1,6 +1,6 @@
 import * as rut from './rut';
 
-import { Validator } from '../types';
+import { Validator } from '../types/types';
 
 const impl: Validator = {
   ...rut,
@@ -9,5 +9,4 @@ const impl: Validator = {
   abbreviation: 'RUN',
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

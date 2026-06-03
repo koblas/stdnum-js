@@ -6,7 +6,7 @@
  * This is really the EMSO -- here for legacy support
  */
 
-import { Validator } from '../types';
+import { Validator } from '../types/types';
 import * as jmbg from '../ba/jmbg';
 
 const impl: Validator = {
@@ -16,5 +16,4 @@ const impl: Validator = {
   abbreviation: 'EMŠO',
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

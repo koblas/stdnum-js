@@ -14,13 +14,8 @@
  */
 
 import * as exceptions from '../exceptions';
-import {
-  buildDate,
-  isValidDateCompactYYMMDD,
-  strings,
-  validBirthdate,
-} from '../util';
-import { Validator, ValidateReturn } from '../types';
+import { buildDate, isValidDateCompactYYMMDD, strings, validBirthdate } from '../util';
+import { Validator, ValidateReturn } from '../types/types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' ');
@@ -147,9 +142,7 @@ const validStates = new Set([
 ]);
 
 const checkAlphabet = '0123456789ABCDEFGHIJKLMN&OPQRSTUVWXYZ';
-const checkAlphabetDict: Record<string, number> = checkAlphabet
-  .split('')
-  .reduce((acc, c, idx) => ({ ...acc, [c]: idx }), {});
+const checkAlphabetDict: Record<string, number> = checkAlphabet.split('').reduce((acc, c, idx) => ({ ...acc, [c]: idx }), {});
 
 const impl: Validator = {
   name: 'Mexican Personal Identification',
@@ -205,10 +198,7 @@ const impl: Validator = {
     const check = value
       .substr(0, 17)
       .split('')
-      .reduce(
-        (acc, c, idx) => acc + (checkAlphabetDict[c] ?? 0) * (18 - idx),
-        0,
-      );
+      .reduce((acc, c, idx) => acc + (checkAlphabetDict[c] ?? 0) * (18 - idx), 0);
 
     const checkStr = String((10 - (check % 10)) % 10);
     if (checkStr !== value.substr(17, 1)) {
@@ -257,5 +247,4 @@ export function getBirthDate(input: string): Date | null {
   return validBirthdate(date) ? date : null;
 }
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

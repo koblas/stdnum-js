@@ -8,7 +8,7 @@
 
 import * as exceptions from '../exceptions';
 import { strings } from '../util';
-import { Validator, ValidateReturn } from '../types';
+import { Validator, ValidateReturn } from '../types/types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   const [value, err] = strings.cleanUnicode(input, ' ');
@@ -64,7 +64,7 @@ const impl: Validator = {
 
     const sum = front
       .split('')
-      .map(v => parseInt(v, 10))
+      .map((v) => parseInt(v, 10))
       .reduce((acc, v) => acc * 2 + v, 0);
 
     if (String(((sum * 2) % 11) % 10) !== check) {
@@ -80,5 +80,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

@@ -12,7 +12,7 @@
 
 import * as exceptions from '../exceptions';
 import { strings, weightedSum } from '../util';
-import { Validator, ValidateReturn } from '../types';
+import { Validator, ValidateReturn } from '../types/types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   const [value, err] = strings.cleanUnicode(input, ' -/');
@@ -63,10 +63,7 @@ const impl: Validator = {
       if (value.startsWith('HA') && cvalue < 500) {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
-    } else if (
-      value.length === 11 &&
-      (value.startsWith('GD8888') || value.startsWith('HA8888'))
-    ) {
+    } else if (value.length === 11 && (value.startsWith('GD8888') || value.startsWith('HA8888'))) {
       if (!strings.isDigits(value.substr(6))) {
         return { isValid: false, error: new exceptions.InvalidFormat() };
       }
@@ -108,5 +105,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

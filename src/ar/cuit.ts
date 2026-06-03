@@ -12,7 +12,7 @@
  */
 
 import * as exceptions from '../exceptions';
-import { ValidateReturn, Validator } from '../types';
+import { ValidateReturn, Validator } from '../types/types';
 import { strings, weightedSum } from '../util';
 
 const cuitTypes = [
@@ -98,5 +98,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

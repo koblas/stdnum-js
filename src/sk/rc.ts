@@ -1,4 +1,4 @@
-import { Validator } from '../types';
+import { Validator } from '../types/types';
 import * as rc from '../cz/rc';
 
 const impl: Validator = {
@@ -8,5 +8,4 @@ const impl: Validator = {
   abbreviation: 'RC',
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

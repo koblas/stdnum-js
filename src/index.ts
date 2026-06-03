@@ -89,9 +89,9 @@ import * as UY from './uy';
 import * as VE from './ve';
 import * as VN from './vn';
 import * as ZA from './za';
-import { Validator } from './types';
+import { Validator } from './types/types';
 
-export { type Validator } from './types';
+export { type Validator } from './types/types';
 
 // Live an uppercase world, to prevent keyword collisions
 export const stdnum: Record<string, Record<string, Validator>> = {
@@ -378,17 +378,14 @@ export const euVat: Record<string, Validator[]> = {
 /**
  *  Apply the necessary validators for a given country to validate an ID number
  */
-export function validatePerson(
-  country: string,
-  value: string,
-): { checked: boolean; isValid?: boolean; matchedValidators?: Validator[] } {
+export function validatePerson(country: string, value: string): { checked: boolean; isValid?: boolean; matchedValidators?: Validator[] } {
   const vset = personValidators[country.toLocaleUpperCase()];
 
   if (!vset || vset.length === 0) {
     return { checked: false };
   }
 
-  const match = vset.filter(grp => grp.validate(value).isValid);
+  const match = vset.filter((grp) => grp.validate(value).isValid);
 
   return { checked: true, isValid: match.length > 0, matchedValidators: match };
 }
@@ -396,17 +393,14 @@ export function validatePerson(
 /**
  *  Apply the necessary validators for a given country to validate an Entity (Business) ID number
  */
-export function validateEntity(
-  country: string,
-  value: string,
-): { checked: boolean; isValid?: boolean; matchedValidators?: Validator[] } {
+export function validateEntity(country: string, value: string): { checked: boolean; isValid?: boolean; matchedValidators?: Validator[] } {
   const vset = entityValidators[country.toLocaleUpperCase()];
 
   if (!vset || vset.length === 0) {
     return { checked: false };
   }
 
-  const match = vset.filter(grp => grp.validate(value).isValid);
+  const match = vset.filter((grp) => grp.validate(value).isValid);
 
   return { checked: true, isValid: match.length > 0, matchedValidators: match };
 }

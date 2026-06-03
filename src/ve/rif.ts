@@ -13,7 +13,7 @@
 
 import * as exceptions from '../exceptions';
 import { strings, weightedSum } from '../util';
-import { Validator, ValidateReturn } from '../types';
+import { Validator, ValidateReturn } from '../types/types';
 
 //  Known number types and their corresponding value in the check
 //  digit calculation
@@ -88,5 +88,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

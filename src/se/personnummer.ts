@@ -14,7 +14,7 @@
 
 import * as exceptions from '../exceptions';
 import { isValidDateCompactYYYYMMDD, buildDate, strings } from '../util';
-import { Validator, ValidateReturn } from '../types';
+import { Validator, ValidateReturn } from '../types/types';
 import { luhnChecksumValidate } from '../util/checksum';
 
 const ONE_HUNDRED_YEARS_IN_MS = 100 * 365 * 24 * 60 * 60 * 1_000;
@@ -127,8 +127,7 @@ const impl: Validator = {
     // https://skatteverket.se/servicelankar/otherlanguages/inenglishengelska/individualsandemployees/coordinationnumbers
     const day = parseInt(yyyymmdd.substring(6, 8), 10);
     if (day > 60) {
-      yyyymmdd =
-        yyyymmdd.substring(0, 6) + (day - 60).toString().padStart(2, '0');
+      yyyymmdd = yyyymmdd.substring(0, 6) + (day - 60).toString().padStart(2, '0');
     }
 
     if (!isValidDateCompactYYYYMMDD(yyyymmdd, true)) {
@@ -148,5 +147,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

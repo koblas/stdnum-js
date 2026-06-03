@@ -15,7 +15,7 @@
 
 import * as exceptions from '../exceptions';
 import { strings } from '../util';
-import { Validator, ValidateReturn } from '../types';
+import { Validator, ValidateReturn } from '../types/types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -.');
@@ -27,9 +27,9 @@ function validLength(value: string): boolean {
 }
 
 function isValidPrefix(prefix: string): boolean {
-  const invalidChars = ["D", "F", "I", "Q", "U", "V"];
-  const invalidSecondChar = "O";
-  const invalidPrefixes = ["BG", "GB", "KN", "NK", "NT", "TN", "ZZ"];
+  const invalidChars = ['D', 'F', 'I', 'Q', 'U', 'V'];
+  const invalidSecondChar = 'O';
+  const invalidPrefixes = ['BG', 'GB', 'KN', 'NK', 'NT', 'TN', 'ZZ'];
 
   if (invalidChars.includes(prefix[0]) || invalidChars.includes(prefix[1])) {
     return false;
@@ -93,5 +93,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

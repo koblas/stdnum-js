@@ -17,7 +17,7 @@
 
 import * as exceptions from '../exceptions';
 import { strings } from '../util';
-import { Validator, ValidateReturn } from '../types';
+import { Validator, ValidateReturn } from '../types/types';
 
 // List of Finanzamtsnummern was manually generated from
 // https://de.wikipedia.org/wiki/Abgabenkontonummer
@@ -114,12 +114,8 @@ const impl: Validator = {
 
     const sum = `${office}${front}`
       .split('')
-      .map(x => parseInt(x, 10))
-      .reduce(
-        (acc, digit, idx) =>
-          acc + (idx % 2 === 1 ? [0, 2, 4, 6, 8, 1, 3, 5, 7, 9][digit] : digit),
-        0,
-      );
+      .map((x) => parseInt(x, 10))
+      .reduce((acc, digit, idx) => acc + (idx % 2 === 1 ? [0, 2, 4, 6, 8, 1, 3, 5, 7, 9][digit] : digit), 0);
 
     const digit = String((10 - (sum % 10)) % 10);
 
@@ -136,5 +132,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

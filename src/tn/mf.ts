@@ -28,7 +28,7 @@
 
 import * as exceptions from '../exceptions';
 import { strings } from '../util';
-import { Validator, ValidateReturn } from '../types';
+import { Validator, ValidateReturn } from '../types/types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' /.-');
@@ -52,31 +52,7 @@ function compactImpl(input: string): ReturnType<typeof strings.cleanUnicode> {
   return [value, null];
 }
 
-const VALID_CONTROL_KEYS = [
-  'A',
-  'B',
-  'C',
-  'D',
-  'E',
-  'F',
-  'G',
-  'H',
-  'J',
-  'K',
-  'L',
-  'M',
-  'N',
-  'P',
-  'Q',
-  'R',
-  'S',
-  'T',
-  'V',
-  'W',
-  'X',
-  'Y',
-  'Z',
-];
+const VALID_CONTROL_KEYS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Y', 'Z'];
 const VALID_TVA_CODES = ['A', 'P', 'B', 'D', 'N'];
 const VALID_CATEGORY_CODES = ['M', 'P', 'C', 'N', 'E'];
 
@@ -102,13 +78,7 @@ const impl: Validator = {
       return input;
     }
 
-    const [front, key, tva, category, rest] = strings.splitAt(
-      value,
-      7,
-      8,
-      9,
-      10,
-    );
+    const [front, key, tva, category, rest] = strings.splitAt(value, 7, 8, 9, 10);
 
     if (value.length === 8) {
       return `${front}/${key}`;
@@ -127,13 +97,7 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
 
-    const [front, key, tva, category, rest] = strings.splitAt(
-      value,
-      7,
-      8,
-      9,
-      10,
-    );
+    const [front, key, tva, category, rest] = strings.splitAt(value, 7, 8, 9, 10);
 
     if (!strings.isDigits(front)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
@@ -165,5 +129,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

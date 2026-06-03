@@ -20,13 +20,9 @@
  * PERSON
  */
 
-import { ValidateReturn } from '../types';
+import { ValidateReturn } from '../types/types';
 import * as exceptions from '../exceptions';
-import {
-  isValidDateCompactYYMMDD,
-  isValidDateCompactYYYYMMDD,
-  strings,
-} from '../util';
+import { isValidDateCompactYYMMDD, isValidDateCompactYYYYMMDD, strings } from '../util';
 
 function clean(input: string) {
   return strings.cleanUnicode(input, ' -');
@@ -93,6 +89,5 @@ const impl = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;
 export default impl;

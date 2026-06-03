@@ -12,7 +12,7 @@
 import { strings } from '../util';
 import { validate as nnValidate } from './nn';
 import { validate as bisValidate } from './bis';
-import { Validator, ValidateReturn } from '../types';
+import { Validator, ValidateReturn } from '../types/types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -.');
@@ -37,19 +37,16 @@ const impl: Validator = {
   },
   validate(input: string): ValidateReturn {
     const results = [nnValidate(input), bisValidate(input)];
-    const validResult = results.find(r => r.isValid);
+    const validResult = results.find((r) => r.isValid);
     if (validResult) return validResult;
 
     // The only case with two different error types is an invalid checksum and an
     // invalid format. The identifier with the checksum error had correct
     // formatting, so invalid checksum seems like the more descriptive error.
 
-    const checksumErrorResult = results.find(
-      r => r.error && r.error.name === 'InvalidChecksum',
-    );
+    const checksumErrorResult = results.find((r) => r.error && r.error.name === 'InvalidChecksum');
     return checksumErrorResult || results[0];
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

@@ -16,7 +16,7 @@
 
 import * as exceptions from '../exceptions';
 import { strings } from '../util';
-import { Validator, ValidateReturn } from '../types';
+import { Validator, ValidateReturn } from '../types/types';
 import { calcCheckDigit } from './vat';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
@@ -59,9 +59,7 @@ const impl: Validator = {
     }
 
     if (value.length === 9 && 'AH'.includes(value[8])) {
-      if (
-        value[7] !== calcCheckDigit(`${value.substr(0, 7)}${value.substr(8)}`)
-      ) {
+      if (value[7] !== calcCheckDigit(`${value.substr(0, 7)}${value.substr(8)}`)) {
         return { isValid: false, error: new exceptions.InvalidChecksum() };
       }
     } else if (value[7] !== calcCheckDigit(value.substr(0, 7))) {
@@ -77,5 +75,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

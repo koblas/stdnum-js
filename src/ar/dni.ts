@@ -13,7 +13,7 @@
  */
 
 import * as exceptions from '../exceptions';
-import { ValidateReturn, Validator } from '../types';
+import { ValidateReturn, Validator } from '../types/types';
 import { strings } from '../util';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
@@ -68,5 +68,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

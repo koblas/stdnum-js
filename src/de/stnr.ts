@@ -17,7 +17,7 @@
 
 import * as exceptions from '../exceptions';
 import { strings } from '../util';
-import { Validator, ValidateReturn } from '../types';
+import { Validator, ValidateReturn } from '../types/types';
 // import { mod11mod10Validate } from '../util/checksum';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
@@ -37,7 +37,7 @@ type Match =
 type MFunc = (v: string) => Match;
 
 function buildMatch(fmt: string): MFunc {
-  const pattern = fmt.replace(/([FBUP])\1*/g, m => {
+  const pattern = fmt.replace(/([FBUP])\1*/g, (m) => {
     return `(\\d{${m.length}})`;
   });
   const matcher = new RegExp(`^${pattern}$`);
@@ -167,11 +167,11 @@ const impl: Validator = {
     value
       .substring(0, 10)
       .split('')
-      .forEach(v => {
+      .forEach((v) => {
         counter[v] = (counter[v] ?? 0) + 1;
       });
     const more = Object.values(counter); // .filter(v => v > 1);
-    if (!more.some(v => v === 2 || v === 3)) {
+    if (!more.some((v) => v === 2 || v === 3)) {
       // if (more.length !== 1 && [2, 3].includes(more[0])) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
@@ -189,5 +189,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

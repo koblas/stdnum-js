@@ -18,10 +18,9 @@
 
 import * as exceptions from '../exceptions';
 import { strings } from '../util';
-import { Validator, ValidateReturn } from '../types';
+import { Validator, ValidateReturn } from '../types/types';
 
-const checkRe =
-  /^[A-Z]{6}[0-9LMNPQRSTUV]{2}[ABCDEHLMPRST]{1}[0-9LMNPQRSTUV]{2}[A-Z]{1}[0-9LMNPQRSTUV]{3}[A-Z]{1}$/;
+const checkRe = /^[A-Z]{6}[0-9LMNPQRSTUV]{2}[ABCDEHLMPRST]{1}[0-9LMNPQRSTUV]{2}[A-Z]{1}[0-9LMNPQRSTUV]{3}[A-Z]{1}$/;
 
 const CHECK_CODE_ODD: Record<string, number> = {
   0: 1,
@@ -142,13 +141,7 @@ const impl: Validator = {
 
     const [front, check] = strings.splitAt(value, -1);
 
-    const sum = front
-      .split('')
-      .reduce(
-        (acc, v, idx) =>
-          (acc + (idx % 2 === 1 ? CHECK_CODE_EVEN[v] : CHECK_CODE_ODD[v])) % 26,
-        0,
-      );
+    const sum = front.split('').reduce((acc, v, idx) => (acc + (idx % 2 === 1 ? CHECK_CODE_EVEN[v] : CHECK_CODE_ODD[v])) % 26, 0);
 
     if (CHECK_CODE_CHARS[sum] !== check) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
@@ -163,5 +156,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

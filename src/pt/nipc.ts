@@ -14,7 +14,7 @@
 
 import * as nif from './nif';
 
-import { Validator } from '../types';
+import { Validator } from '../types/types';
 
 const impl: Validator = {
   ...nif,
@@ -23,5 +23,4 @@ const impl: Validator = {
   abbreviation: 'NIPC',
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

@@ -28,7 +28,7 @@
 
 import * as exceptions from '../exceptions';
 import { strings } from '../util';
-import { Validator, ValidateReturn } from '../types';
+import { Validator, ValidateReturn } from '../types/types';
 import { weightedSum } from '../util/checksum';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
@@ -67,12 +67,7 @@ const impl: Validator = {
     if (!strings.isDigits(value)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
-    const [province, sequence, check, suffix] = strings.splitAt(
-      value,
-      2,
-      9,
-      10,
-    );
+    const [province, sequence, check, suffix] = strings.splitAt(value, 2, 9, 10);
 
     if (sequence === '0000000' || suffix === '000' || province === '00') {
       return { isValid: false, error: new exceptions.InvalidComponent() };
@@ -96,5 +91,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

@@ -14,7 +14,7 @@
 import * as exceptions from '../exceptions';
 import { strings } from '../util';
 import * as dni from './dni';
-import { Validator, ValidateReturn } from '../types';
+import { Validator, ValidateReturn } from '../types/types';
 
 const checkDigits = 'XYZ';
 
@@ -54,11 +54,7 @@ const impl: Validator = {
 
     const [first, body, check] = strings.splitAt(value, 1, 8);
 
-    if (
-      !strings.isDigits(body) ||
-      !checkDigits.includes(first) ||
-      strings.isDigits(check)
-    ) {
+    if (!strings.isDigits(body) || !checkDigits.includes(first) || strings.isDigits(check)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
@@ -75,5 +71,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

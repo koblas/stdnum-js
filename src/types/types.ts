@@ -1,4 +1,4 @@
-import { ValidationError } from './exceptions';
+import { ValidationError } from '../exceptions';
 
 interface ValidateSuccess {
   /**
@@ -38,10 +38,7 @@ interface ValidateFail {
   error: ValidationError;
 }
 
-export type ValidateReturn = { error?: ValidationError } & (
-  | ValidateSuccess
-  | ValidateFail
-);
+export type ValidateReturn = { error?: ValidationError } & (ValidateSuccess | ValidateFail);
 
 export interface Validator {
   /**

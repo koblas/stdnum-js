@@ -10,7 +10,7 @@
 
 import * as exceptions from '../exceptions';
 import { strings } from '../util';
-import { Validator, ValidateReturn } from '../types';
+import { Validator, ValidateReturn } from '../types/types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -');
@@ -70,9 +70,9 @@ const impl: Validator = {
     const digit =
       value
         .split('')
-        .map(v => parseInt(v, 10))
+        .map((v) => parseInt(v, 10))
         .map((v, idx) => (idx % 2 === 0 ? v * 2 : v))
-        .map(v => (v > 9 ? v - 9 : v))
+        .map((v) => (v > 9 ? v - 9 : v))
         .reduce((acc, v) => acc + v) % 10;
 
     if (digit !== 0) {
@@ -88,5 +88,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

@@ -16,7 +16,7 @@
 
 import * as exceptions from '../exceptions';
 import { strings } from '../util';
-import { Validator, ValidateReturn } from '../types';
+import { Validator, ValidateReturn } from '../types/types';
 import { weightedSum } from '../util/checksum';
 
 const PREFIX = ['УНП', 'УНП', 'UNP', 'UNP'];
@@ -29,11 +29,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
     return [value, err];
   }
 
-  const v2 = PREFIX.reduce(
-    (acc: string | null, p) =>
-      acc || (!value.startsWith(p) ? acc : value.substr(p.length)),
-    null,
-  );
+  const v2 = PREFIX.reduce((acc: string | null, p) => acc || (!value.startsWith(p) ? acc : value.substr(p.length)), null);
 
   return [v2 ?? value, null];
 }
@@ -104,5 +100,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;

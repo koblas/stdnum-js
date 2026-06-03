@@ -14,27 +14,13 @@
 
 import * as exceptions from '../exceptions';
 import { isValidDateCompactYYMMDD, strings } from '../util';
-import { Validator, ValidateReturn } from '../types';
+import { Validator, ValidateReturn } from '../types/types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -*');
 }
 
-const UNASSIGNED = [
-  '00',
-  '17',
-  '18',
-  '19',
-  '20',
-  '69',
-  '73',
-  '80',
-  '81',
-  '94',
-  '95',
-  '96',
-  '97',
-];
+const UNASSIGNED = ['00', '17', '18', '19', '20', '69', '73', '80', '81', '94', '95', '96', '97'];
 
 const impl: Validator = {
   name: 'Malaysian National Registration Identity Card Number',
@@ -87,5 +73,4 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const { name, localName, abbreviation, validate, format, compact } = impl;
