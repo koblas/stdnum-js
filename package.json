@@ -41,7 +41,7 @@
   "scripts": {
     "lint": "eslint src",
     "test": "vitest",
-    "build": "rimraf dist && swc src -d dist --copy-files --strip-leading-paths",
+    "build": "rimraf dist && swc src -d dist --copy-files --strip-leading-paths && pnpm postbuild && pnpm build:esm && pnpm build:cjs",
     "postbuild": "tsc -p tsconfig.build.json",
     "build:esm": "swc src -d dist/esm --config-file .swcrc-esm",
     "build:cjs": "swc src -d dist/cjs --config-file .swcrc-cjs",

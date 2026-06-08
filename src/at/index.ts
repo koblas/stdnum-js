@@ -1,4 +1,21 @@
-export * as businessid from './businessid';
-export * as tin from './tin';
-export * as uid from './uid';
-export * as vnr from './vnr';
+import { Validator } from '../types/types';
+import * as businessid from './businessid';
+import * as tin from './tin';
+import * as uid from './uid';
+import * as vnr from './vnr';
+
+export type AT = {
+  businessid: Validator;
+  tin: Validator;
+  uid: Validator;
+  vnr: Validator;
+};
+
+const impl: AT = {
+  businessid,
+  tin,
+  uid,
+  vnr,
+};
+
+export default impl;
