@@ -54,14 +54,16 @@ const impl: Validator = {
     // The first six digits are the birth date. The month encodes the century:
     // 41-52 -> 2000s, 21-32 -> 1800s, 01-12 -> 1900s.
     const [yy, mm, dd] = strings.splitAt(value, 2, 4, 6);
-    let year = parseInt(yy, 10) + 1900;
+    let year = parseInt(yy, 10);
     let month = parseInt(mm, 10);
     if (month > 40) {
-      year += 100;
+      year += 2000;
       month -= 40;
     } else if (month > 20) {
-      year -= 100;
+      year += 1800;
       month -= 20;
+    } else {
+      year += 1900;
     }
     if (!isValidDate(String(year), String(month), dd)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
