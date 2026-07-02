@@ -1,21 +1,29 @@
 import * as AD from './ad';
+import * as AF from './af';
+import * as AG from './ag';
 import * as AI from './ai';
 import * as AL from './al';
+import * as AM from './am';
 import * as AO from './ao';
 import * as AR from './ar';
 import * as AT from './at';
 import * as AU from './au';
 import * as AZ from './az';
 import * as BA from './ba';
+import * as BB from './bb';
+import * as BD from './bd';
 import * as BE from './be';
 import * as BG from './bg';
 import * as BO from './bo';
 import * as BR from './br';
+import * as BS from './bs';
 import * as BY from './by';
 import * as BZ from './bz';
 import * as CA from './ca';
 import * as CH from './ch';
+import * as CI from './ci';
 import * as CL from './cl';
+import * as CM from './cm';
 import * as CN from './cn';
 import * as CO from './co';
 import * as CR from './cr';
@@ -24,22 +32,29 @@ import * as CY from './cy';
 import * as CZ from './cz';
 import * as DE from './de';
 import * as DK from './dk';
+import * as DM from './dm';
 import * as DO from './do';
 import * as DZ from './dz';
 import * as EC from './ec';
 import * as EE from './ee';
 import * as EG from './eg';
 import * as ES from './es';
+import * as ET from './et';
 import * as FI from './fi';
+import * as FJ from './fj';
 import * as FO from './fo';
 import * as FR from './fr';
 import * as GB from './gb';
+import * as GD from './gd';
+import * as GE from './ge';
 import * as GH from './gh';
 import * as GR from './gr';
 import * as GN from './gn';
 import * as GT from './gt';
+import * as GY from './gy';
 import * as HK from './hk';
 import * as HR from './hr';
+import * as HT from './ht';
 import * as HU from './hu';
 import * as ID from './id';
 import * as IE from './ie';
@@ -47,10 +62,18 @@ import * as IL from './il';
 import * as IN from './in';
 import * as IS from './is';
 import * as IT from './it';
+import * as JM from './jm';
 import * as JP from './jp';
 import * as KE from './ke';
+import * as KH from './kh';
+import * as KN from './kn';
 import * as KR from './kr';
+import * as KZ from './kz';
+import * as LA from './la';
+import * as LB from './lb';
+import * as LC from './lc';
 import * as LI from './li';
+import * as LK from './lk';
 import * as LT from './lt';
 import * as LU from './lu';
 import * as LV from './lv';
@@ -59,38 +82,59 @@ import * as MC from './mc';
 import * as MD from './md';
 import * as ME from './me';
 import * as MK from './mk';
+import * as MN from './mn';
 import * as MT from './mt';
 import * as MU from './mu';
 import * as MX from './mx';
 import * as MY from './my';
 import * as MZ from './mz';
+import * as NG from './ng';
 import * as NL from './nl';
 import * as NO from './no';
+import * as NP from './np';
 import * as NZ from './nz';
+import * as OM from './om';
 import * as PE from './pe';
+import * as PG from './pg';
+import * as PH from './ph';
 import * as PK from './pk';
 import * as PL from './pl';
 import * as PT from './pt';
 import * as PY from './py';
+import * as QA from './qa';
 import * as RO from './ro';
 import * as RS from './rs';
 import * as RU from './ru';
+import * as SB from './sb';
 import * as SE from './se';
 import * as SG from './sg';
 import * as SI from './si';
 import * as SK from './sk';
 import * as SM from './sm';
+import * as SN from './sn';
+import * as SR from './sr';
 import * as SV from './sv';
 import * as TH from './th';
+import * as TJ from './tj';
+import * as TM from './tm';
 import * as TN from './tn';
+import * as TO from './to';
 import * as TR from './tr';
+import * as TT from './tt';
 import * as TW from './tw';
+import * as TZ from './tz';
 import * as UA from './ua';
+import * as UG from './ug';
 import * as US from './us';
 import * as UY from './uy';
+import * as VC from './vc';
 import * as VE from './ve';
 import * as VN from './vn';
+import * as WS from './ws';
+import * as YE from './ye';
 import * as ZA from './za';
+import * as ZM from './zm';
+import * as exceptions from './exceptions';
 import type { Validator } from './types';
 
 export type { Validator } from './types';
@@ -98,22 +142,31 @@ export type { Validator } from './types';
 // Live an uppercase world, to prevent keyword collisions
 export const stdnum: Record<string, Record<string, Validator>> = {
   AD,
+  AF,
+  AG,
+  AI,
   AL,
+  AM,
   AO,
   AR,
   AT,
   AU,
   AZ,
   BA,
+  BB,
+  BD,
   BE,
   BG,
   BO,
   BR,
+  BS,
   BY,
   BZ,
   CA,
   CH,
+  CI,
   CL,
+  CM,
   CN,
   CO,
   CR,
@@ -122,22 +175,29 @@ export const stdnum: Record<string, Record<string, Validator>> = {
   CZ,
   DE,
   DK,
+  DM,
   DO,
   DZ,
   EC,
   EE,
   EG,
   ES,
+  ET,
   FI,
+  FJ,
   FO,
   FR,
   GB,
+  GD,
+  GE,
   GH,
   GR,
   GN,
   GT,
+  GY,
   HK,
   HR,
+  HT,
   HU,
   ID,
   IE,
@@ -145,7 +205,15 @@ export const stdnum: Record<string, Record<string, Validator>> = {
   IN,
   IS,
   IT,
+  JM,
+  KH,
+  KN,
+  KZ,
+  LA,
+  LB,
+  LC,
   LI,
+  LK,
   LT,
   LU,
   LV,
@@ -157,38 +225,58 @@ export const stdnum: Record<string, Record<string, Validator>> = {
   MD,
   ME,
   MK,
+  MN,
   MT,
   MU,
   MX,
   MY,
   MZ,
+  NG,
   NL,
   NO,
+  NP,
   NZ,
+  OM,
   PE,
+  PG,
+  PH,
   PK,
   PL,
   PT,
   PY,
+  QA,
   RO,
   RS,
   RU,
+  SB,
   SE,
   SG,
   SI,
   SK,
   SM,
+  SN,
+  SR,
   SV,
   TH,
+  TJ,
+  TM,
   TN,
+  TO,
   TR,
+  TT,
   TW,
+  TZ,
   UA,
+  UG,
   US,
   UY,
+  VC,
   VE,
   VN,
+  WS,
+  YE,
   ZA,
+  ZM,
 };
 
 export const personValidators: Record<string, Validator[]> = {
@@ -201,6 +289,7 @@ export const personValidators: Record<string, Validator[]> = {
   AU: [AU.tfn],
   AZ: [AZ.pin, AZ.tin],
   BA: [BA.jmbg],
+  BD: [BD.nid],
   BE: [BE.bis, BE.insz, BE.nn],
   BG: [BG.egn, BG.pnf, BG.vat],
   BR: [BR.cpf],
@@ -220,9 +309,12 @@ export const personValidators: Record<string, Validator[]> = {
   EC: [EC.ci],
   EE: [EE.ik],
   ES: [ES.dni, ES.nie],
+  ET: [ET.nid],
   FI: [FI.hetu],
+  FJ: [FJ.tin],
   FR: [FR.nif, FR.nir],
   GB: [GB.nino, GB.utr],
+  GE: [GE.nid],
   GH: [GH.tin],
   GR: [GR.amka],
   GT: [GT.cui],
@@ -235,6 +327,7 @@ export const personValidators: Record<string, Validator[]> = {
   IN: [IN.aadhaar],
   IS: [IS.kennitala],
   IT: [IT.codicefiscale],
+  JM: [JM.tin],
   KR: [KR.rrn],
   LI: [LI.peid],
   LT: [LT.asmens],
@@ -245,8 +338,10 @@ export const personValidators: Record<string, Validator[]> = {
   MX: [MX.curp, MX.rfc],
   MY: [MY.nric],
   MZ: [MZ.bi, MZ.nuit],
+  NG: [NG.nid],
   NL: [NL.onderwijsnummer, NL.bsn],
   NO: [NO.fodselsnummer],
+  NP: [NP.nid],
   NZ: [NZ.ird],
   PE: [PE.cui, PE.ce],
   PK: [PK.cnic],
@@ -262,7 +357,9 @@ export const personValidators: Record<string, Validator[]> = {
   SV: [SV.nit],
   TH: [TH.idnr],
   TR: [TR.tckimlik],
+  TT: [TT.nid],
   TW: [TW.ubn],
+  TZ: [TZ.nid],
   UA: [UA.rntrc],
   US: [US.ssn],
   UY: [UY.nie, UY.cedula],
@@ -299,6 +396,7 @@ export const entityValidators: Record<string, Validator[]> = {
   EE: [EE.kmkr, EE.registrikood],
   ES: [ES.cif],
   FI: [FI.alv, FI.ytunnus],
+  FJ: [FJ.tin],
   FR: [FR.siren, FR.siret, FR.tva],
   GB: [GB.vat],
   GR: [GR.vat],
@@ -310,6 +408,7 @@ export const entityValidators: Record<string, Validator[]> = {
   IN: [IN.pan],
   IS: [IS.kennitala, IS.vsk],
   IT: [IT.iva],
+  JM: [JM.tin],
   JP: [JP.cn],
   KR: [KR.brn],
   LI: [LI.peid],
@@ -322,10 +421,12 @@ export const entityValidators: Record<string, Validator[]> = {
   MT: [MT.vat],
   MX: [MX.rfc],
   MZ: [MZ.nuit],
+  NG: [NG.tin],
   NL: [NL.btw],
   NO: [NO.mva, NO.orgnr],
   NZ: [NZ.ird],
   PE: [PE.ruc],
+  PH: [PH.tin],
   PK: [PK.ntn],
   PL: [PL.nip, PL.regon],
   PT: [PT.nipc],
@@ -340,6 +441,7 @@ export const entityValidators: Record<string, Validator[]> = {
   SM: [SM.coe],
   SV: [SV.nit],
   TR: [TR.vkn],
+  TT: [TT.nid],
   TW: [TW.ubn],
   UA: [UA.edrpou],
   US: [US.ein],
@@ -417,4 +519,51 @@ export function validateEntity(
   const match = vset.filter(grp => grp.validate(value).isValid);
 
   return { checked: true, isValid: match.length > 0, matchedValidators: match };
+}
+
+/**
+ * Validate a passport number for a given country.
+ *
+ * @param countryCode - ISO 3166-1 alpha-2 country code (e.g., 'BR', 'US', 'DE')
+ * @param value - Passport number to validate
+ */
+export function validatePassport(
+  countryCode: string,
+  value: string,
+): ReturnType<Validator['validate']> {
+  const country = stdnum[countryCode.toLocaleUpperCase()];
+
+  if (!country || !country.passport) {
+    return { isValid: false, error: new exceptions.InvalidComponent() };
+  }
+
+  return country.passport.validate(value);
+}
+
+/**
+ * Format a passport number for a given country.
+ * Returns the value unchanged if the country is unsupported.
+ */
+export function formatPassport(countryCode: string, value: string): string {
+  const country = stdnum[countryCode.toLocaleUpperCase()];
+
+  if (!country || !country.passport) {
+    return value;
+  }
+
+  return country.passport.format(value);
+}
+
+/**
+ * Compact a passport number for a given country.
+ * Returns the value unchanged if the country is unsupported.
+ */
+export function compactPassport(countryCode: string, value: string): string {
+  const country = stdnum[countryCode.toLocaleUpperCase()];
+
+  if (!country || !country.passport) {
+    return value;
+  }
+
+  return country.passport.compact(value);
 }

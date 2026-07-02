@@ -1,7 +1,7 @@
 import { validate, format } from './passport';
 import { InvalidLength, InvalidChecksum } from '../exceptions';
 
-describe('de/idnr', () => {
+describe('de/passport', () => {
   it('format:C01X00T47', () => {
     const result = format('C01X00T47');
 

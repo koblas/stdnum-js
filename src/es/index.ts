@@ -3,3 +3,5 @@ export * as dni from './dni';
 export * as nie from './nie';
 export * as nif from './nif';
 export * as nss from './nss';
+
+export * as passport from './passport';
