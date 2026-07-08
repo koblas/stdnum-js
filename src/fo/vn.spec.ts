@@ -14,6 +14,12 @@ describe('fo/vn', () => {
     expect(result.isValid && result.compact).toEqual('623857');
   });
 
+  it('validate:FO384941', () => {
+    const result = validate('FO384941');
+
+    expect(result.isValid && result.compact).toEqual('384941');
+  });
+
   test.each(['623857', '33 28 28', '563.609'])('validate:%s', value => {
     const result = validate(value);
 
