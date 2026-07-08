@@ -38,6 +38,12 @@ describe('ie/pps', () => {
     expect(result.isValid && result.compact).toEqual('6433435IH');
   });
 
+  it('validate:1234567OB', () => {
+    const result = validate('1234567OB');
+
+    expect(result.isValid && result.compact).toEqual('1234567OB');
+  });
+
   it('validate:12345678', () => {
     const result = validate('1234567891');
 
