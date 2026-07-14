@@ -17,7 +17,7 @@ import * as exceptions from '../exceptions';
 import { strings } from '../util';
 import { Validator, ValidateReturn } from '../types';
 
-const invalidSSN = [
+const invalidSSNSet = new Set([
   '111111111',
   '222222222',
   '333333333',
@@ -27,7 +27,6 @@ const invalidSSN = [
   '888888888',
   '999999999',
   '123123123',
-  '999999999',
   // Used in Advertising and known "invalid"
   '002281852',
   '042103580',
@@ -51,7 +50,7 @@ const invalidSSN = [
   '457555462',
   '468288779',
   '549241889',
-];
+]);
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, '- ');
@@ -94,7 +93,7 @@ const impl: Validator = {
     if (!strings.isdigits(value)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
-    if (invalidSSN.includes(value)) {
+    if (invalidSSNSet.has(value)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
     if (/^(000|666|9)\d+/.test(value)) {

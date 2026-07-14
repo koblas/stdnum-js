@@ -80,7 +80,6 @@ export function luhnChecksumValidate(
 
   const sum = value
     .split('')
-    // .reverse()
     .map(v => alphabet.indexOf(v))
     .reduce((acc, val, idx) => {
       let v = val;
@@ -214,31 +213,35 @@ function modulo(dividentIn: string, divisor: number) {
 }
 
 /**
+ * Convert a string using alphanumeric alphabet to its numeric representation.
+ * Returns null if any character is not in the alphabet.
+ */
+function alphabetToNumber(
+  value: string,
+  alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+): string | null {
+  let result = '';
+  for (const c of value) {
+    const idx = alphabet.indexOf(c);
+    if (idx === -1) {
+      return null;
+    }
+    result += String(idx);
+  }
+  return result;
+}
+
+/**
  * The ISO 7064 Mod 97, 10 algorithm.
  *
  * The Mod 97, 10 algorithm evaluates the whole number as an integer which is
  * valid if the number modulo 97 is 1. As such it has two check digits.
  */
 export function mod97base10Validate(value: string, expect = 1): boolean {
-  const alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  let fail = false;
-
-  const bigValue = value
-    .split('')
-    .map(c => {
-      const idx = alphabet.indexOf(c);
-      if (idx === -1) {
-        fail = true;
-        return '';
-      }
-      return String(idx);
-    })
-    .join('');
-
-  if (fail) {
+  const bigValue = alphabetToNumber(value);
+  if (bigValue === null) {
     return false;
   }
-
   return modulo(bigValue, 97) === expect;
 }
 
