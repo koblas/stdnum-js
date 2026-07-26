@@ -30,8 +30,34 @@ describe('cl/rut', () => {
     expect(result.isValid && result.compact).toEqual('125319092');
   });
 
+  // The number is normally printed with the thousands separators, which is
+  // also what format() emits.
+  it('validate:12.531.909-2', () => {
+    const result = validate('12.531.909-2');
+
+    expect(result.isValid && result.compact).toEqual('125319092');
+  });
+
+  it('validate:CL 7.727.230-5', () => {
+    const result = validate('CL 7.727.230-5');
+
+    expect(result.isValid && result.compact).toEqual('77272305');
+  });
+
+  it('validate:format:76086428-5', () => {
+    const result = validate(format('76086428-5'));
+
+    expect(result.isValid && result.compact).toEqual('760864285');
+  });
+
   it('validate:12531909-3', () => {
     const result = validate('12531909-3');
+
+    expect(result.error).toBeInstanceOf(InvalidChecksum);
+  });
+
+  it('validate:12.531.909-3', () => {
+    const result = validate('12.531.909-3');
 
     expect(result.error).toBeInstanceOf(InvalidChecksum);
   });
