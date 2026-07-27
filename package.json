@@ -11,10 +11,25 @@
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
   "types": "./lib/cjs/index.d.ts",
-  "exports_NOT_YET": {
-    "./": {
-      "import": "./lib/esm/",
-      "require": "./lib/cjs/"
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./lib/cjs/index.d.ts",
+      "node": "./lib/cjs/index.js",
+      "import": "./lib/esm/index.js",
+      "default": "./lib/cjs/index.js"
+    },
+    "./package.json": "./package.json",
+    "./lib/esm/*.js": "./lib/esm/*.js",
+    "./lib/esm/*": "./lib/esm/*.js",
+    "./lib/cjs/*.js": "./lib/cjs/*.js",
+    "./lib/cjs/*": "./lib/cjs/*.js",
+    "./src/*": "./src/*",
+    "./*": {
+      "types": "./lib/esm/*.d.ts",
+      "node": "./lib/cjs/*.js",
+      "import": "./lib/esm/*.js",
+      "default": "./lib/cjs/*.js"
     }
   },
   "overrides": {
