@@ -63,20 +63,22 @@ const impl: Validator = {
     const [front, c1, back, c2] = strings.splitAt(value, 7, 8, 21);
 
     const s1 = String(
-      10 -
+      (10 -
         weightedSum(front, {
           reverse: true,
           weights: [3, 1, 7, 9, 3, 1, 7],
           modulus: 10,
-        }),
+        })) %
+        10,
     );
     const s2 = String(
-      10 -
+      (10 -
         weightedSum(back, {
           reverse: true,
           weights: [3, 1, 7, 9, 3, 1, 7, 9, 3, 1, 7, 9, 3, 1],
           modulus: 10,
-        }),
+        })) %
+        10,
     );
 
     if (s1 !== c1 || s2 !== c2) {
