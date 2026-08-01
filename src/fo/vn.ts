@@ -16,7 +16,7 @@ import { strings } from '../util';
 import { Validator, ValidateReturn } from '../types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
-  return strings.cleanUnicode(input, ' -.');
+  return strings.cleanUnicode(input, ' -.', 'FO');
 }
 
 // const validRe = /^[PCGQV]{1}00[A-Z0-9]{8}$/;
