@@ -14,6 +14,12 @@ describe('pe/cui', () => {
     expect(result.isValid && result.compact).toEqual('101174102');
   });
 
+  it('validate:10812543-H', () => {
+    const result = validate('10812543-H');
+
+    expect(result.isValid && result.compact).toEqual('10812543H');
+  });
+
   it('validate:1011741', () => {
     const result = validate('1011741');
 
