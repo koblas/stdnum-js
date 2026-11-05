@@ -26,7 +26,16 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
     return [value, err];
   }
 
-  const [a, b, c] = strings.splitAt(value, -5, -4);
+  // A 10 or 12 digit number is written without the separator, so put the
+  // default one back. '-' is only replaced by '+' the year someone turns 100,
+  // which the bare form cannot express.
+  const separated =
+    (value.length === 10 || value.length === 12) &&
+    !'-+'.includes(value[value.length - 5])
+      ? `${value.slice(0, -4)}-${value.slice(-4)}`
+      : value;
+
+  const [a, b, c] = strings.splitAt(separated, -5, -4);
 
   return [`${a.replace(/[-+]/g, '')}${b}${c}`, null];
 }
