@@ -1,9 +1,10 @@
 /**
  * Senegalese Passport Number (Passeport sénégalais).
  *
- * Format: 9 numeric digits. Senegalese passports have been ICAO machine-readable (MRP) since 2007, but no authoritative source consulted documents the exact serial composition. The current 9-digit guess is retained for lack of better evidence.
+ * Format: Senegalese passport number: nine digits, or one letter followed by eight digits (e.g. A04447087).
  *
  * Source
+ *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: real passport numbers with future expiry)
  *   https://en.wikipedia.org/wiki/Senegalese_passport
  *   https://www.consilium.europa.eu/prado/en/prado-documents/SEN/A/docs-per-category.html
  *   https://sn.usembassy.gov/passports/important-passport-information/
@@ -19,7 +20,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -./,');
 }
 
-const idRegexp = /^\d{9}$/;
+const idRegexp = /^(?:\d{9}|[A-Z]\d{8})$/;
 
 const impl: Validator = {
   name: 'Senegalese Passport Number',

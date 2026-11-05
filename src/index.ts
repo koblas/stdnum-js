@@ -134,8 +134,7 @@ import * as WS from './ws';
 import * as YE from './ye';
 import * as ZA from './za';
 import * as ZM from './zm';
-import * as exceptions from './exceptions';
-import type { Validator } from './types';
+import type { ValidateReturn, Validator } from './types';
 
 export type { Validator } from './types';
 
@@ -523,6 +522,8 @@ export function validateEntity(
 
 /**
  * Validate a passport number for a given country.
+ * Like validatePerson, returns `{ checked: false }` when the country has no
+ * passport validator, so the caller decides what to do with the value.
  *
  * @param countryCode - ISO 3166-1 alpha-2 country code (e.g., 'BR', 'US', 'DE')
  * @param value - Passport number to validate
@@ -530,14 +531,14 @@ export function validateEntity(
 export function validatePassport(
   countryCode: string,
   value: string,
-): ReturnType<Validator['validate']> {
-  const country = stdnum[countryCode.toLocaleUpperCase()];
+): { checked: false } | ({ checked: true } & ValidateReturn) {
+  const validator = stdnum[countryCode.toLocaleUpperCase()]?.passport;
 
-  if (!country || !country.passport) {
-    return { isValid: false, error: new exceptions.InvalidComponent() };
+  if (!validator) {
+    return { checked: false };
   }
 
-  return country.passport.validate(value);
+  return { checked: true, ...validator.validate(value) };
 }
 
 /**

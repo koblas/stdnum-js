@@ -1,9 +1,10 @@
 /**
  * Salvadoran Passport Number (Pasaporte salvadoreño).
  *
- * Format: One letter followed by 6 digits (format 'X999999'), per El Salvador's financial regulator (SSF) field-validation annexes for identity documents.
+ * Format: Salvadoran passport number: one letter followed by six to eight digits (e.g. A123456, C01141422).
  *
  * Source
+ *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: real passport numbers with future expiry)
  *   https://ssf.gob.sv/images/stories/desc_normas_prud_bancos/69_npb4-41_A17.doc
  *   https://www.ssf.gob.sv/images/stories/desc_normas_prud_bancos/64_npb4-41_A12.doc
  *   https://es.wikipedia.org/wiki/Pasaporte_salvadore%C3%B1o
@@ -19,7 +20,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -./,');
 }
 
-const idRegexp = /^[A-Z]\d{6}$/;
+const idRegexp = /^[A-Z]\d{6,8}$/;
 
 const impl: Validator = {
   name: 'Salvadoran Passport Number',
@@ -49,7 +50,7 @@ const impl: Validator = {
       return { isValid: false, error };
     }
 
-    if (value.length !== 7) {
+    if (value.length < 7 || value.length > 9) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
 

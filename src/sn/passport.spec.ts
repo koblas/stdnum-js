@@ -26,3 +26,9 @@ describe('sn/passport', () => {
     expect(result.error).toBeInstanceOf(InvalidLength);
   });
 });
+
+describe('sn/passport real-world formats', () => {
+  test.each(['A04447087', '123456789'])('validate:%s', value => {
+    expect(validate(value).isValid).toBeTruthy();
+  });
+});

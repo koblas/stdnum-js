@@ -1,9 +1,10 @@
 /**
  * Moroccan Passport Number (جواز سفر مغربي).
  *
- * Format: Commonly two letters followed by six digits as used by the project; however authoritative sources describe the document number as 9 characters without specifying the letter/digit split.
+ * Format: Moroccan passport number: one or two letters followed by six or seven digits (e.g. UZ6430184, AB123456).
  *
  * Source
+ *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: real passport numbers with future expiry)
  *   https://en.wikipedia.org/wiki/Moroccan_passport
  *   https://trustdochub.com/en/verify-moroccan-passport/
  *   https://www.consilium.europa.eu/prado/en/MAR-AO-02001/index.html
@@ -19,7 +20,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -./,');
 }
 
-const idRegexp = /^[A-Z]{2}\d{6}$/;
+const idRegexp = /^[A-Z]{1,2}\d{6,7}$/;
 
 const impl: Validator = {
   name: 'Moroccan Passport Number',
@@ -49,7 +50,7 @@ const impl: Validator = {
       return { isValid: false, error };
     }
 
-    if (value.length !== 8) {
+    if (value.length < 7 || value.length > 9) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
 

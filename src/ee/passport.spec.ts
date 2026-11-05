@@ -14,15 +14,21 @@ describe('ee/passport', () => {
     expect(result.isValid).toBeTruthy();
   });
 
-  test.each(['11234567'])('validate:%s', value => {
+  test.each(['11234567', '111111111'])('validate:%s', value => {
     const result = validate(value);
 
     expect(result.error).toBeInstanceOf(InvalidFormat);
   });
 
-  test.each(['AB1234567', 'K123456', '111111111'])('validate:%s', value => {
+  test.each(['K123456'])('validate:%s', value => {
     const result = validate(value);
 
     expect(result.error).toBeInstanceOf(InvalidLength);
+  });
+});
+
+describe('ee/passport real-world formats', () => {
+  test.each(['KG1234567', 'K1234567'])('validate:%s', value => {
+    expect(validate(value).isValid).toBeTruthy();
   });
 });

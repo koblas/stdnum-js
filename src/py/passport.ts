@@ -1,9 +1,10 @@
 /**
  * Paraguayan Passport Number (Pasaporte paraguayo).
  *
- * Format: Guessed: two letters followed by six digits (e.g. AB123456). NOT confirmed by any authoritative source.
+ * Format: Paraguayan passport number. No authoritative format is published; real numbers seen range from 6 to 9 alphanumeric characters (e.g. 1035562, 002301585, D15449), so any 6 to 9 letters or digits are accepted.
  *
  * Source
+ *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: real passport numbers with future expiry)
  *   https://en.wikipedia.org/wiki/Paraguayan_passport
  *   https://www.mre.gov.py/index.php/tramites/pasaportes
  *   https://danskebank.fi/-/media/pdf/danske-bank/fi/en/national-identifier-list-final.pdf
@@ -19,7 +20,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -./,');
 }
 
-const idRegexp = /^[A-Z]{2}\d{6}$/;
+const idRegexp = /^[A-Z0-9]{6,9}$/;
 
 const impl: Validator = {
   name: 'Paraguayan Passport Number',
@@ -49,7 +50,7 @@ const impl: Validator = {
       return { isValid: false, error };
     }
 
-    if (value.length !== 8) {
+    if (value.length < 6 || value.length > 9) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
 

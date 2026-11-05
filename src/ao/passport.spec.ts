@@ -14,15 +14,21 @@ describe('ao/passport', () => {
     expect(result.isValid).toBeTruthy();
   });
 
-  test.each(['11473613'])('validate:%s', value => {
+  test.each(['11473613', '111111111'])('validate:%s', value => {
     const result = validate(value);
 
     expect(result.error).toBeInstanceOf(InvalidFormat);
   });
 
-  test.each(['NN1234567', 'N123456', '111111111'])('validate:%s', value => {
+  test.each(['N123456'])('validate:%s', value => {
     const result = validate(value);
 
     expect(result.error).toBeInstanceOf(InvalidLength);
+  });
+});
+
+describe('ao/passport real-world formats', () => {
+  test.each(['NA1234567', 'N1473613'])('validate:%s', value => {
+    expect(validate(value).isValid).toBeTruthy();
   });
 });

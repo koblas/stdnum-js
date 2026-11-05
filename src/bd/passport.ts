@@ -1,9 +1,10 @@
 /**
  * Bangladeshi Passport Number (বাংলাদেশী পাসপোর্ট).
  *
- * Format: Two uppercase letters followed by seven digits (e.g. AB1234567), the ICAO 9-character machine-readable passport serial.
+ * Format: Bangladeshi passport number: two letters followed by seven digits (e.g. AB1234567), or one letter followed by eight digits for e-passports (e.g. B00002095).
  *
  * Source
+ *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: real passport numbers with future expiry)
  *   https://en.wikipedia.org/wiki/Bangladeshi_passport
  *   https://www.gov.uk/government/publications/bangladesh-country-policy-and-information-notes/country-information-note-documentation-bangladesh-november-2024-accessible
  *   https://www.epassport.gov.bd/
@@ -19,7 +20,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -./,');
 }
 
-const idRegexp = /^[A-Z]{2}\d{7}$/;
+const idRegexp = /^(?:[A-Z]{2}\d{7}|[A-Z]\d{8})$/;
 
 const impl: Validator = {
   name: 'Bangladeshi Passport Number',

@@ -1,9 +1,11 @@
 /**
  * Chinese Passport Number (中国护照).
  *
- * Format: Chinese passport. Ordinary (old) passports: 'G' + 8 digits (e.g. G12345678). Public-affairs: 'P' + 8 digits. Electronic ordinary passports: original 'E' + 8 digits (E12345678); since April 2017 the extended format is 'E' + a sequential letter (excluding I and O) + 7 digits (e.g. EA1234567), keeping 9 total characters.
+ * Format: Chinese passport, 9 characters. Ordinary: 'G' + 8 digits, or electronic 'E' + 8 digits and, since April 2017, 'E' + a letter (excluding I and O) + 7 digits (e.g. EA1234567). Official/diplomatic/service: 'P', 'D' or 'S' + 8 digits, and electronic 'PE', 'DE' or 'SE' + 7 digits (e.g. PE1234567).
  *
  * Source
+ *   https://www.thepaper.cn/newsDetail_forward_4186634
+ *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: real passport numbers with future expiry)
  *   https://en.wikipedia.org/wiki/Chinese_passport
  *   https://www.fragomen.com/insights/understanding-the-chinese-e-passport.html
  *   https://capetown.china-consulate.gov.cn/eng/lsqz/consularlawsandregulations/lawsandregulationsaboutpassport/200611/t20061102_6620811.htm
@@ -19,7 +21,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -./,');
 }
 
-const idRegexp = /^(?:[GP]\d{8}|E[A-HJ-NP-Z]?\d{7,8})$/;
+const idRegexp = /^(?:[GDSP]\d{8}|[DSP]E\d{7}|E[A-HJ-NP-Z0-9]\d{7})$/;
 
 const impl: Validator = {
   name: 'Chinese Passport Number',

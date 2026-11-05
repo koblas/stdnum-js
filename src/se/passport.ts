@@ -1,9 +1,10 @@
 /**
  * Swedish Passport Number (Svenskt pass).
  *
- * Format: Swedish passport number: eight consecutive digits, printed in the 'Passnr./Passport No.' field. No letters.
+ * Format: Swedish passport number: two letters followed by seven digits (e.g. XA0000001) for passports issued since 1 January 2022; older passports use eight digits.
  *
  * Source
+ *   https://polisen.se/6d1763c8c5f100deaa40c14acccb5c27/contentassets/773823ae7ffd403abff84fbfce490661/hp2022-bilder-info.pdf
  *   https://learn.microsoft.com/en-us/purview/sit-defn-sweden-passport-number
  *   https://en.wikipedia.org/wiki/Swedish_passport
  *
@@ -18,7 +19,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -./,');
 }
 
-const idRegexp = /^\d{8}$/;
+const idRegexp = /^(?:\d{8}|[A-Z]{2}\d{7})$/;
 
 const impl: Validator = {
   name: 'Swedish Passport Number',
@@ -48,7 +49,7 @@ const impl: Validator = {
       return { isValid: false, error };
     }
 
-    if (value.length !== 8) {
+    if (value.length < 8 || value.length > 9) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
 

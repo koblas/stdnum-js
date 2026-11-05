@@ -1,5 +1,5 @@
 import { validate, format } from './passport';
-import { InvalidLength, InvalidChecksum } from '../exceptions';
+import { InvalidLength, InvalidChecksum, InvalidFormat } from '../exceptions';
 
 describe('de/passport', () => {
   it('format:C01X00T47', () => {
@@ -17,7 +17,7 @@ describe('de/passport', () => {
     },
   );
 
-  test.each(['C01X00T47999', 'C01X00T4'])('validate:%s', value => {
+  test.each(['C01X00T47999', 'C01X0'])('validate:%s', value => {
     const result = validate(value);
 
     expect(result.error).toBeInstanceOf(InvalidLength);
@@ -27,5 +27,15 @@ describe('de/passport', () => {
     const result = validate('C01X00T479');
 
     expect(result.error).toBeInstanceOf(InvalidChecksum);
+  });
+});
+
+describe('de/passport real-world formats', () => {
+  test.each(['A1234567', 'B1234567'])('validate:%s', value => {
+    expect(validate(value).isValid).toBeTruthy();
+  });
+
+  test.each(['C01X00T4', 'XC01X00T47', 'D1234567'])('validate:%s', value => {
+    expect(validate(value).error).toBeInstanceOf(InvalidFormat);
   });
 });

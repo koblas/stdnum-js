@@ -20,9 +20,15 @@ describe('dm/passport', () => {
     expect(result.error).toBeInstanceOf(InvalidFormat);
   });
 
-  test.each(['A123456', 'ABC1234567', '1111111111'])('validate:%s', value => {
+  test.each(['ABC1234567', '1111111111'])('validate:%s', value => {
     const result = validate(value);
 
     expect(result.error).toBeInstanceOf(InvalidLength);
+  });
+});
+
+describe('dm/passport real-world formats', () => {
+  test.each(['RA045652', 'A1234567', 'AB1234567'])('validate:%s', value => {
+    expect(validate(value).isValid).toBeTruthy();
   });
 });

@@ -20,3 +20,9 @@ describe('co/passport', () => {
     expect(result.error).toBeInstanceOf(InvalidLength);
   });
 });
+
+describe('co/passport real-world formats', () => {
+  test.each(['PS123456', 'AB1234567'])('validate:%s', value => {
+    expect(validate(value).isValid).toBeTruthy();
+  });
+});

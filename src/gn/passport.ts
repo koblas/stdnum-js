@@ -1,11 +1,14 @@
 /**
  * Guinean Passport Number (Passeport guinéen).
  *
- * Format: Guinea passport/personal number documented as 15 numeric digits in the form 9YYMMDD99999999 (a leading digit, a YYMMDD date-of-birth component, then 8 sequential digits). All numeric, no letters.
+ * Format: 9 characters, one letter (or digit) followed by eight digits (e.g. D00003001).
+ * The PRADO specimens show the passport number (O00000000) apart from the 15-digit
+ * personal number (Numéro Personnel, 9YYMMDD99999999), which is not the passport number.
  *
  * Source
- *   https://danskebank.fi/-/media/pdf/danske-bank/fi/en/national-identifier-list-final.pdf
- *   https://www.amba-guinee.de/wp-content/uploads/2022/05/Liste_des_Passpport_202205.pdf
+ *   https://www.consilium.europa.eu/prado/en/GIN-AO-03001/index.html (specimen, 2018)
+ *   https://www.consilium.europa.eu/prado/en/GIN-AO-02001/index.html (specimen, 2014)
+ *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: D00003001)
  *   https://fr.wikipedia.org/wiki/Passeport_guin%C3%A9en
  *   https://www.paf.gov.gn/dnpaf/?page_id=125&lang=en
  *
@@ -20,7 +23,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -./,');
 }
 
-const idRegexp = /^\d{15}$/;
+const idRegexp = /^[A-Z0-9]\d{8}$/;
 
 const impl: Validator = {
   name: 'Guinean Passport Number',
@@ -50,7 +53,7 @@ const impl: Validator = {
       return { isValid: false, error };
     }
 
-    if (value.length !== 15) {
+    if (value.length !== 9) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
 

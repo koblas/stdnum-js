@@ -1,9 +1,10 @@
 /**
  * Dominican Passport Number (Dominican passport).
  *
- * Format: One or two uppercase letters followed by seven digits (total 8 or 9 characters). Format X9999999 or XX99999999.
+ * Format: Dominican (Commonwealth of Dominica) passport number: one or two letters followed by six or seven digits (e.g. RA045652, A1234567).
  *
  * Source
+ *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: real passport numbers with future expiry)
  *   https://danskebank.fi/-/media/pdf/danske-bank/fi/en/national-identifier-list-final.pdf
  *   https://en.wikipedia.org/wiki/Commonwealth_of_Dominica_passport
  *
@@ -18,7 +19,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -./,');
 }
 
-const idRegexp = /^[A-Z]\d{7}$|^[A-Z]{2}\d{7}$/;
+const idRegexp = /^[A-Z]{1,2}\d{6,7}$/;
 
 const impl: Validator = {
   name: 'Dominican Passport Number',
@@ -48,7 +49,7 @@ const impl: Validator = {
       return { isValid: false, error };
     }
 
-    if (value.length < 8 || value.length > 9) {
+    if (value.length < 7 || value.length > 9) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
 

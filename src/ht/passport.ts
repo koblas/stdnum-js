@@ -1,9 +1,10 @@
 /**
  * Haitian Passport Number (Passeport haïtien).
  *
- * Format: Two uppercase letters (an issuing-location/series code such as RL, TA, ML) followed by six digits. Total 8 characters.
+ * Format: Haitian passport number: two letters followed by six or seven digits (e.g. RL123456, PP5201306), or one letter followed by eight digits (e.g. R10097145).
  *
  * Source
+ *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: real passport numbers with future expiry)
  *   https://www.ecoi.net/en/document/1416369.html
  *   https://en.wikipedia.org/wiki/Haitian_passport
  *
@@ -18,7 +19,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -./,');
 }
 
-const idRegexp = /^[A-Z]{2}\d{6}$/;
+const idRegexp = /^(?:[A-Z]{2}\d{6,7}|[A-Z]\d{8})$/;
 
 const impl: Validator = {
   name: 'Haitian Passport Number',
@@ -48,7 +49,7 @@ const impl: Validator = {
       return { isValid: false, error };
     }
 
-    if (value.length !== 8) {
+    if (value.length < 8 || value.length > 9) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
 

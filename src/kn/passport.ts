@@ -1,9 +1,10 @@
 /**
  * Kittitian and Nevisian Passport Number (Saint Kitts and Nevis passport).
  *
- * Format: Believed to be one uppercase letter followed by six digits. NOT confirmed by any authoritative source.
+ * Format: Saint Kitts and Nevis passport number: one or two letters followed by six or seven digits (e.g. RE0124671, RE138611).
  *
  * Source
+ *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: real passport numbers with future expiry)
  *   https://en.wikipedia.org/wiki/Saint_Kitts_and_Nevis_passport
  *   https://travel.state.gov/content/travel/en/us-visas/Visa-Reciprocity-and-Civil-Documents-by-Country/SaintKittsandNevis.html
  *   https://www.passportindex.org/passport/saint-kitts-and-nevis/
@@ -19,7 +20,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -./,');
 }
 
-const idRegexp = /^[A-Z]\d{6}$/;
+const idRegexp = /^[A-Z]{1,2}\d{6,7}$/;
 
 const impl: Validator = {
   name: 'Kittitian and Nevisian Passport Number',
@@ -49,7 +50,7 @@ const impl: Validator = {
       return { isValid: false, error };
     }
 
-    if (value.length !== 7) {
+    if (value.length < 7 || value.length > 9) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
 

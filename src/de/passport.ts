@@ -1,8 +1,12 @@
 /**
  * Passport (German passport number).
  *
+ * Format: Reisepass: 9 characters starting with C, F, G, H, J or K, followed by letters or digits
+ * (optionally with the MRZ check digit and a trailing letter). Provisional passport (vorläufiger Reisepass):
+ * 8 characters, A or B followed by seven digits.
  *
  * Source
+ *   https://www.marktflecken-Villmar.de/fileadmin/villmar/downloads/ausweisrecht/Seriennummer-des-Personalausweises.pdf
  *   https://learn.microsoft.com/en-us/microsoft-365/compliance/sit-defn-germany-passport-number?view=o365-worldwide
  *   https://en.wikipedia.org/wiki/German_passport
  *   https://www.bmi.bund.de/SharedDocs/downloads/DE/veroeffentlichungen/themen/moderne-verwaltung/ausweise/personalausweis-seriennummer.pdf?__blob=publicationFile&v=15
@@ -18,7 +22,8 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -./,');
 }
 
-const idRegexp = /([CFGHJK][0-9CFGHJKLMNPRTVWXYZ]{8})([0-9]?)[A-Z]?/;
+const idRegexp =
+  /^(?:([CFGHJK][0-9CFGHJKLMNPRTVWXYZ]{8})([0-9]?)[A-Z]?|[AB]\d{7})$/;
 
 const impl: Validator = {
   name: 'German Passport Number',
@@ -48,7 +53,7 @@ const impl: Validator = {
       return { isValid: false, error };
     }
 
-    if (value.length < 9 || value.length > 11) {
+    if (value.length < 8 || value.length > 11) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
     const match = value.match(idRegexp);
@@ -57,7 +62,7 @@ const impl: Validator = {
     }
 
     // Checksum is optional -- present in the matchine readable form, not in the human
-    if (match[2] !== '') {
+    if (match[2]) {
       const [issue, issueCheck] = [match[1], match[2]];
 
       const issueSum = weightedSum(issue, {

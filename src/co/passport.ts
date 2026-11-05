@@ -1,9 +1,12 @@
 /**
  * Colombian Passport Number (Pasaporte colombiano).
  *
- * Format: Colombian passport. ID-document/MRZ references describe the document number as 9 alphanumeric characters (the ICAO MRP document-number field), which can contain letters and/or digits. Many older Colombian passport numbers are all-numeric; newer ones may include letters.
+ * Format: Colombian passport number: alphanumeric booklet serial (Decreto 2465/2010). Current booklets use two letters followed by six digits (e.g. PS123456); older ones are 9 alphanumeric characters.
  *
  * Source
+ *   https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2465_2010.htm
+ *   https://www.risaralda.gov.co/preguntas-frecuentes/65/pasaportes/
+ *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: real passport numbers with future expiry)
  *   https://en.wikipedia.org/wiki/Colombian_passport
  *   https://www.cancilleria.gov.co/en/machine-readable-zone-ordinary-passport
  *   https://www.cancilleria.gov.co/help/faq/passports
@@ -20,7 +23,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -./,');
 }
 
-const idRegexp = /^[A-Z0-9]{9}$/;
+const idRegexp = /^[A-Z0-9]{8,9}$/;
 
 const impl: Validator = {
   name: 'Colombian Passport Number',
@@ -50,7 +53,7 @@ const impl: Validator = {
       return { isValid: false, error };
     }
 
-    if (value.length !== 9) {
+    if (value.length < 8 || value.length > 9) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
 

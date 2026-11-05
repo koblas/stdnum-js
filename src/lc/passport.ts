@@ -1,9 +1,10 @@
 /**
  * Saint Lucian Passport Number (Saint Lucian passport).
  *
- * Format: Could not find an authoritative specification for the Saint Lucia passport number. Saint Lucia issues ICAO-compliant CARICOM/OECS biometric e-passports, but no government or standards source documents the serial structure. The project's current guess is 1 letter followed by 6 digits.
+ * Format: Saint Lucia passport number: one or two letters followed by six digits (e.g. RA018981, A123456).
  *
  * Source
+ *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: real passport numbers with future expiry)
  *   https://en.wikipedia.org/wiki/Saint_Lucian_passport
  *   https://www.govt.lc/services/issuance-of-passports
  *   https://www.idanalyzer.com/solutions/supported-documents/lc.html
@@ -19,7 +20,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -./,');
 }
 
-const idRegexp = /^[A-Z]\d{6}$/;
+const idRegexp = /^[A-Z]{1,2}\d{6}$/;
 
 const impl: Validator = {
   name: 'Saint Lucian Passport Number',
@@ -49,7 +50,7 @@ const impl: Validator = {
       return { isValid: false, error };
     }
 
-    if (value.length !== 7) {
+    if (value.length < 7 || value.length > 8) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
 

@@ -26,3 +26,12 @@ describe('cn/passport', () => {
     expect(result.error).toBeInstanceOf(InvalidLength);
   });
 });
+
+describe('cn/passport real-world formats', () => {
+  test.each(['PE3086952', 'EA1234567', 'E12345678', 'G12345678'])(
+    'validate:%s',
+    value => {
+      expect(validate(value).isValid).toBeTruthy();
+    },
+  );
+});

@@ -1,7 +1,7 @@
 /**
  * Norwegian Passport Number (Norsk pass).
  *
- * Format: Norwegian passport document number is commonly cited as 8 digits. Note that the Norwegian national identity number (fødselsnummer, 11 digits) is a separate value printed on the passport and is NOT the passport number. No authoritative government spec confirming the exact passport serial length was obtainable.
+ * Format: Norwegian passport number. Passports issued since 19 October 2020 start with a letter (C ordinary, K emergency, FG diplomatic, FH service, FJ special, FL aliens, FK travel document) followed by letters or digits; older passports use eight digits. The exact length after the prefix is not published, so 8 or 9 characters are accepted.
  *
  * Source
  *   https://en.wikipedia.org/wiki/Norwegian_passport
@@ -19,7 +19,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -./,');
 }
 
-const idRegexp = /^\d{8}$/;
+const idRegexp = /^(?:\d{8}|[A-Z][A-Z0-9]{7,8})$/;
 
 const impl: Validator = {
   name: 'Norwegian Passport Number',
@@ -49,7 +49,7 @@ const impl: Validator = {
       return { isValid: false, error };
     }
 
-    if (value.length !== 8) {
+    if (value.length < 8 || value.length > 9) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
 

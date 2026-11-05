@@ -14,15 +14,24 @@ describe('py/passport', () => {
     expect(result.isValid).toBeTruthy();
   });
 
-  test.each(['ABC12345'])('validate:%s', value => {
+  test.each(['AB12#456'])('validate:%s', value => {
     const result = validate(value);
 
     expect(result.error).toBeInstanceOf(InvalidFormat);
   });
 
-  test.each(['A123456', '111111111', '1111111'])('validate:%s', value => {
+  test.each(['A1'])('validate:%s', value => {
     const result = validate(value);
 
     expect(result.error).toBeInstanceOf(InvalidLength);
   });
+});
+
+describe('py/passport real-world formats', () => {
+  test.each(['1035562', '002301585', 'D15449', 'Q568928'])(
+    'validate:%s',
+    value => {
+      expect(validate(value).isValid).toBeTruthy();
+    },
+  );
 });

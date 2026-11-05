@@ -1,9 +1,10 @@
 /**
  * Estonian Passport Number (Eesti pass).
  *
- * Format: Estonian passport number: one letter followed by seven digits, no spaces or delimiters (e.g. K1234567).
+ * Format: Estonian passport number: two-letter prefix followed by seven digits (e.g. KG1234567) for documents issued since 16 March 2026 (PPA notice 15.1-1/2-1 of 20.02.2026); older passports use one letter followed by seven digits (e.g. K1234567).
  *
  * Source
+ *   https://www.politsei.ee/en
  *   https://learn.microsoft.com/en-us/purview/sit-defn-estonia-passport-number
  *   https://en.wikipedia.org/wiki/Estonian_passport
  *
@@ -18,7 +19,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -./,');
 }
 
-const idRegexp = /^[A-Z]\d{7}$/;
+const idRegexp = /^[A-Z]{1,2}\d{7}$/;
 
 const impl: Validator = {
   name: 'Estonian Passport Number',
@@ -48,7 +49,7 @@ const impl: Validator = {
       return { isValid: false, error };
     }
 
-    if (value.length !== 8) {
+    if (value.length < 8 || value.length > 9) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
 

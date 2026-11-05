@@ -1,9 +1,10 @@
 /**
  * Moldovan Passport Number (Pașaport moldovenesc).
  *
- * Format: Moldovan biometric passport serials are commonly seen as a single letter prefix followed by 7 digits (e.g. A01234567 style, i.e. one letter + 7 digits = 8 chars). The project's existing guess of two letters + 6 digits is also retained as an alternative. No authoritative ICAO/government/Purview source documents the exact serial structure, so this is uncertain.
+ * Format: Moldovan passport number: one or two letters followed by six or seven digits (e.g. AB1893585, A1234567, AB123456).
  *
  * Source
+ *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: real passport numbers with future expiry)
  *   https://en.wikipedia.org/wiki/Moldovan_passport
  *   https://mfa.gov.md/en/content/biometric-passport
  *   https://www.consilium.europa.eu/prado/en/prado-documents/mda/a/docs-per-category.html
@@ -19,7 +20,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -./,');
 }
 
-const idRegexp = /^[A-Z]\d{7}$|^[A-Z]{2}\d{6}$/;
+const idRegexp = /^[A-Z]{1,2}\d{6,7}$/;
 
 const impl: Validator = {
   name: 'Moldovan Passport Number',
@@ -49,7 +50,7 @@ const impl: Validator = {
       return { isValid: false, error };
     }
 
-    if (value.length !== 8) {
+    if (value.length < 7 || value.length > 9) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
 
