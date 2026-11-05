@@ -49,7 +49,7 @@ const impl: Validator = {
       return { isValid: false, error };
     }
 
-    if (value.length < 6 || value.length > 9) {
+    if (value.length < 6 || value.length > 9 || value.length === 8) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
 

@@ -1,7 +1,7 @@
 /**
  * Anguillan Passport Number (Anguilla Passport).
  *
- * Format: Modern Anguilla passports are British Overseas Territory passports issued since 2015 by HM Passport Office (UK), using the UK format: 9 characters, one letter-or-digit followed by 8 digits (in practice 9 digits). An older British-territory format of two letters followed by six digits is retained via alternation.
+ * Format: Modern Anguilla passports are British Overseas Territory passports issued since 2015 by HM Passport Office (UK), using the UK format of 9 digits. An older British-territory format of two letters followed by six digits is retained via alternation.
  *
  * Source
  *   https://en.wikipedia.org/wiki/British_passport_(Anguilla)

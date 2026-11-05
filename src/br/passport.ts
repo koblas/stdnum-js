@@ -6,6 +6,8 @@
  * Source
  *   https://en.wikipedia.org/wiki/Brazilian_passport
  *   https://www.consilium.europa.eu/prado/en/BRA-AO-01001/index.html
+ *   https://www.consilium.europa.eu/prado/en/BRA-AO-05001/index.html (2015 specimen: 8 characters, 2-letter prefix)
+ *   https://github.com/brazilian-utils/python/blob/main/brutils/passport.py (^[A-Z]{2}[0-9]{6}$)
  *
  * PERSON
  */

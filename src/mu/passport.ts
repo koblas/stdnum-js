@@ -1,7 +1,9 @@
 /**
  * Mauritian Passport Number (Passeport mauricien).
  *
- * Format: Modern Mauritian MRP number is nine alphanumeric characters; commonly one letter followed by seven digits.
+ * Format: one letter followed by seven digits (8 characters), e.g. A1234567.
+ * Some descriptions mention nine characters; no authoritative specification
+ * was found.
  *
  * Source
  *   https://en.wikipedia.org/wiki/Mauritian_passport

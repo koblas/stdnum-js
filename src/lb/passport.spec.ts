@@ -14,15 +14,18 @@ describe('lb/passport', () => {
     expect(result.isValid).toBeTruthy();
   });
 
-  test.each(['LR123456'])('validate:%s', value => {
+  test.each(['L12345678', 'L123456'])('validate:%s', value => {
     const result = validate(value);
 
     expect(result.error).toBeInstanceOf(InvalidFormat);
   });
 
-  test.each(['AB12345678', '1111111111', '11111'])('validate:%s', value => {
-    const result = validate(value);
+  test.each(['AB12345678', '1111111111', '11111', 'LR123456'])(
+    'validate:%s',
+    value => {
+      const result = validate(value);
 
-    expect(result.error).toBeInstanceOf(InvalidLength);
-  });
+      expect(result.error).toBeInstanceOf(InvalidLength);
+    },
+  );
 });
