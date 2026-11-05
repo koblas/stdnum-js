@@ -6,8 +6,9 @@
  * When present (which should be the case for new numbers as of 2013),
  * the second letter can be 'A' (for individuals) or 'H' (for
  * non-individuals, such as limited companies, trusts, partnerships
- * and unincorporated bodies). Pre-2013 values may have 'W', 'T',
- * or 'X' as the second letter ; it is ignored by the check.
+ * and unincorporated bodies). As of 2024, 'B' was accepted as a
+ * second letter on all new PPS numbers. Pre-2013 values may have
+ * 'W', 'T', or 'X' as the second letter ; it is ignored by the check.
  *
  * Source
  *
@@ -23,7 +24,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -');
 }
 
-const ppsRe = /^\d{7}[A-W][AHWTX]?$/;
+const ppsRe = /^\d{7}[A-W][ABHWTX]?$/;
 
 const impl: Validator = {
   name: 'Irish Personal Number',
@@ -58,7 +59,7 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
-    if (value.length === 9 && 'AH'.includes(value[8])) {
+    if (value.length === 9 && 'ABH'.includes(value[8])) {
       if (
         value[7] !== calcCheckDigit(`${value.substr(0, 7)}${value.substr(8)}`)
       ) {
