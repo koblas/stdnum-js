@@ -91,10 +91,6 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
-    if (!['0', '1', '2', '3', '9'].includes(value[0])) {
-      return { isValid: false, error: new exceptions.InvalidFormat() };
-    }
-
     if (value.length === 9) {
       if (!checkLegal(value)) {
         return { isValid: false, error: new exceptions.InvalidChecksum() };
