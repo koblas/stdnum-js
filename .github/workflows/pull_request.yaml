@@ -6,16 +6,21 @@ on:
   pull_request:
     branches: [main]
 
-permissions:
-  contents: read
+permissions: {}
 
 concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  build:
+  # Build both outputs, lint (including a type check of the specs) and check the
+  # packed tarball: publint for package.json and file layout, attw for the type
+  # declarations under each module resolution mode.
+  check:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -25,7 +30,49 @@ jobs:
           # Preinstalled on ubuntu-latest: no download. lts/* (26) is not.
           node-version: 24
           cache: npm
-      - run: npm ci
-      - run: npm run build
+      # No dependency needs an install script; skipping them closes the usual
+      # npm malware entry point.
+      - run: npm ci --ignore-scripts
+      - run: npm run prepublishOnly
       - run: npm run lint
+      - run: npm run lint:package
+
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        # Supported Node.js releases; vitest needs >= 22.12.
+        node-version: [22, 24, 26]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+      - run: npm ci --ignore-scripts
       - run: npm test
+
+  # The one check the main ruleset requires. It fails unless every job above
+  # succeeded, so jobs can be added or renamed without touching the ruleset. A
+  # skipped required job would otherwise count as passing.
+  build:
+    needs: [check, test]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - name: All CI jobs succeeded
+        env:
+          RESULTS: ${{ join(needs.*.result, ' ') }}
+        run: |
+          echo "Job results: $RESULTS"
+          for r in $RESULTS; do
+            [ "$r" = success ] || exit 1
+          done

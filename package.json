@@ -4,9 +4,10 @@
   "description": "Standard Number Validation",
   "files": [
     "README.md",
-    "LICENSE.txt",
+    "LICENSE.md",
     "lib",
-    "src"
+    "src",
+    "!**/*.spec.*"
   ],
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
@@ -26,7 +27,8 @@
     "prepublishOnly:cjs": "tsc -p tsconfig-cjs.json",
     "prepublishOnly": "npm run prepublishOnly:esm && npm run prepublishOnly:cjs",
     "test:watch": "vitest",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "lint:package": "publint --level error && attw --pack ."
   },
   "publishConfig": {
     "provenance": true
@@ -46,11 +48,13 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.5",
     "@eslint/js": "^10.0.1",
     "@vitest/coverage-v8": "^5.0.5",
     "eslint": "^10.13.0",
     "eslint-config-prettier": "^10.0.1",
     "prettier": "^3.4.2",
+    "publint": "^0.3.25",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.71.2",
     "vitest": "^5.0.5"

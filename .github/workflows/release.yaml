@@ -20,8 +20,7 @@ on:
   push:
     branches: [main]
 
-permissions:
-  contents: read
+permissions: {}
 
 concurrency:
   group: release
@@ -30,6 +29,8 @@ concurrency:
 jobs:
   release-please:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    # Used only by the GITHUB_TOKEN fallback while the App is not configured.
     permissions:
       contents: write
       pull-requests: write
@@ -59,6 +60,7 @@ jobs:
     needs: release-please
     if: needs.release-please.outputs.release_created == 'true'
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     environment:
       name: npm
       url: https://www.npmjs.com/package/stdnum
@@ -82,8 +84,12 @@ jobs:
             echo "::error::npm $v is too old for trusted publishing; need >= 11.5.1"
             exit 1
           fi
-      - run: npm ci
+      - run: npm ci --ignore-scripts
+      # Every installed package must carry a valid npm registry signature.
+      - run: npm audit signatures
       - run: npm run lint
       - run: npm test
-      # prepublishOnly builds lib/esm and lib/cjs.
+      - run: npm run prepublishOnly
+      - run: npm run lint:package
+      # prepublishOnly runs again here and rebuilds lib/esm and lib/cjs.
       - run: npm publish
