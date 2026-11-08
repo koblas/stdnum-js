@@ -83,6 +83,11 @@ const COUNTIES: Record<string, string> = {
   '48': 'Bucuresti - Sector 8 (desfiintat)',
   '51': 'Calarasi',
   '52': 'Giurgiu',
+  '70': 'Any',
+  '80': 'Unknown',
+  '81': 'Unknown',
+  '82': 'Unknown',
+  '83': 'Unknown',
 };
 
 const VALID_COUNTIES = Object.keys(COUNTIES);
