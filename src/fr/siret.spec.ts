@@ -35,4 +35,11 @@ describe('fr/siret', () => {
 
     expect(result.error).toBeInstanceOf(InvalidChecksum);
   });
+
+  // Passes the 14 digit Luhn check, but the embedded SIREN (032829320) does not
+  it('validate:03282932000004', () => {
+    const result = validate('03282932000004');
+
+    expect(result.error).toBeInstanceOf(InvalidChecksum);
+  });
 });

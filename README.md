@@ -27,6 +27,27 @@ VAT, Person and Tax identifiers.
 
 All country validators are in the "namespace" of the ISO country code.
 
+## Bundle size: tree-shakeable imports
+
+The `stdnum` object eagerly references every country, so importing it bundles
+all of them (~200KB minified). If you only need a few validators, use either of
+these forms instead:
+
+    // Named country exports — tree-shakeable, bundlers drop unused countries
+    import { GB, BR } from 'stdnum';
+
+    GB.nino.validate('AB123456C');
+    BR.cpf.validate('390.533.447-05');
+
+    // Or import a single validator via its subpath
+    import { validate } from 'stdnum/gb/nino';
+
+    validate('AB123456C');
+
+Subpaths follow the source layout: `stdnum/<country>/<number>` (e.g.
+`stdnum/it/codicefiscale`), and `stdnum/<country>` for a whole country's
+validators.
+
 ## Supported Countries and Numbers
 
 How you can help! This library currently support about half the countries in the world. It would be great if we can get to 100%. Submit an issue with any reference documentation and I'll do my best to integrate it, bonus points if you can get detailed descriptions of checksums or other validation criteria.
@@ -241,9 +262,12 @@ https://wiki.scn.sap.com/wiki/display/CRM/Country+Tax+Category+check
 
 ### Release Notes
 
-This project is now using https://github.com/semantic-release/semantic-release to manage the
-release process. Commit messages should use the format specified to handle the major/minor/patch
-versioning information.
+Releases are managed by [release-please](https://github.com/googleapis/release-please).
+PRs are squash-merged and the PR title becomes the commit on `main`, so it must be a
+[Conventional Commit](https://www.conventionalcommits.org/) (`fix(de/vat): ...`,
+`feat(br): ...`); a CI check enforces it. `fix` bumps the patch version, `feat`
+the minor version, and `!` or a `BREAKING CHANGE:` footer the major version.
 
-This is based on the angular commit message format
-https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-format
+Every push to `main` updates one release PR that bumps the version and prepends
+the `CHANGELOG.md` entry. Merging it tags the release, creates the GitHub release
+and publishes to npm with provenance (`.github/workflows/release.yaml`).

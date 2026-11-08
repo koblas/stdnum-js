@@ -10,6 +10,23 @@
 
 * add de.svnr support ([ee03c72](https://github.com/koblas/stdnum-js/commit/ee03c72e62254c488e5ae3f889b1ee8c823b2cc4))
 
+## [1.13.1](https://github.com/koblas/stdnum-js/compare/v1.13.0...v1.13.1) (2026-11-08)
+
+
+### Bug Fixes
+
+* **de/idnr:** enforce the repeated-digit rule ([#193](https://github.com/koblas/stdnum-js/issues/193)) ([51382ad](https://github.com/koblas/stdnum-js/commit/51382ad9d80b860a68a5a08703ec42780a318713)), closes [#177](https://github.com/koblas/stdnum-js/issues/177)
+* **fr/siret, ec/ruc, be/nn, be/bis:** align checks with python-stdnum ([#196](https://github.com/koblas/stdnum-js/issues/196)) ([0614346](https://github.com/koblas/stdnum-js/commit/0614346e361203d0b55342e9a1f833e4582a33d1))
+* include Anguilla (AI) in the stdnum object ([#192](https://github.com/koblas/stdnum-js/issues/192)) ([fa732ea](https://github.com/koblas/stdnum-js/commit/fa732eaaf77dffd9e758e9334c20a364eb4360b4))
+* **py/ruc, cn/uscc, mu/nid:** accept check digit 0 ([#194](https://github.com/koblas/stdnum-js/issues/194)) ([c46afca](https://github.com/koblas/stdnum-js/commit/c46afca8179e7f29e59f52a2dc2afbfeffb681d7))
+
+## [1.13.0](https://github.com/koblas/stdnum-js/compare/v1.12.6...v1.13.0) (2026-11-08)
+
+
+### Features
+
+* add exports map, sideEffects flag, and named country exports for tree-shaking ([#190](https://github.com/koblas/stdnum-js/issues/190)) ([a618bd6](https://github.com/koblas/stdnum-js/commit/a618bd65b02eef5cb94c9c95ed1cc62cad1176dc))
+
 ## [1.3.8](https://github.com/koblas/stdnum-js/compare/v1.3.7...v1.3.8) (2022-06-01)
 
 

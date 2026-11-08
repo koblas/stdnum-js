@@ -51,7 +51,7 @@ const impl: Validator = {
     if (!strings.isdigits(value)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
-    if (value.substr(0, 2) !== '10') {
+    if (value.slice(0, 2) !== '10') {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 

@@ -83,7 +83,7 @@ const impl: Validator = {
     }
 
     const d1 = String(computeDigit(front));
-    const d2 = String(computeDigit(value.substr(0, 13)));
+    const d2 = String(computeDigit(value.slice(0, 13)));
 
     if (d1 !== c1 || d2 !== c2) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };

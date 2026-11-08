@@ -17,7 +17,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   }
   let num = value;
   if (value.startsWith('GR') || value.startsWith('EL')) {
-    num = value.substr(2);
+    num = value.slice(2);
   }
 
   // Old format was 8 digits

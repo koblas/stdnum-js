@@ -56,7 +56,7 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
 
-    const mid = v.substr(1, v.length - 2);
+    const mid = v.slice(1, v.length - 1);
 
     if (!strings.isalpha(v[0]) || !strings.isalpha(v[v.length - 1])) {
       return { isValid: false, error: new exceptions.InvalidFormat() };

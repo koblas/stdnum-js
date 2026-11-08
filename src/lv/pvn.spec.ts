@@ -41,4 +41,24 @@ describe('lv/pvn', () => {
 
     expect(result.error).toBeInstanceOf(InvalidChecksum);
   });
+
+  // Personal codes issued since 2017-07-01 start with 32 and have no birth date
+  test.each(['32867300679', '32579461005'])('validate:%s', value => {
+    const result = validate(value);
+
+    expect(result.isValid && result.isIndividual).toEqual(true);
+  });
+
+  it('validate:32867300678', () => {
+    const result = validate('32867300678');
+
+    expect(result.error).toBeInstanceOf(InvalidChecksum);
+  });
+
+  // Other codes starting with 3 still need a valid birth date
+  it('validate:33867300679', () => {
+    const result = validate('33867300679');
+
+    expect(result.error).toBeInstanceOf(InvalidComponent);
+  });
 });

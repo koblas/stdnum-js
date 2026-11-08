@@ -1,5 +1,5 @@
 import { validate, format } from './cvr';
-import { InvalidLength, InvalidChecksum } from '../exceptions';
+import { InvalidLength, InvalidChecksum, InvalidFormat } from '../exceptions';
 
 describe('dk/cvr', () => {
   it('format:DK 13585628', () => {
@@ -30,5 +30,20 @@ describe('dk/cvr', () => {
     const result = validate('DK 13585627');
 
     expect(result.error).toBeInstanceOf(InvalidChecksum);
+  });
+
+  // No CVR number starts with 0. These all pass the modulus 11 check, so the
+  // leading digit is the only thing that rejects them.
+  test.each(['00000000', 'DK00000000', '01000004'])('validate:%s', value => {
+    const result = validate(value);
+
+    expect(result.error).toBeInstanceOf(InvalidFormat);
+  });
+
+  // A registered CVR number still passes.
+  test.each(['24256790', 'DK24256790'])('validate:%s', value => {
+    const result = validate(value);
+
+    expect(result.isValid && result.compact).toEqual('24256790');
   });
 });

@@ -22,7 +22,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
     return [value, err];
   }
   if (value.startsWith('BG')) {
-    return [value.substr(2), null];
+    return [value.slice(2), null];
   }
   return [value, err];
 }
@@ -75,10 +75,6 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
     if (!strings.isdigits(value)) {
-      return { isValid: false, error: new exceptions.InvalidFormat() };
-    }
-
-    if (!['0', '1', '2', '3', '9'].includes(value[0])) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 

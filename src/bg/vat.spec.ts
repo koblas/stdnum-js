@@ -55,4 +55,18 @@ describe('bg/vat', () => {
 
     expect(result.error).toBeInstanceOf(InvalidFormat);
   });
+
+  // A registered VAT number starting with 8. The first digit is not
+  // restricted: python-stdnum's bg/vat has no such rule.
+  it('validate:BG 831642181', () => {
+    const result = validate('BG 831642181');
+
+    expect(result.isValid && result.compact).toEqual('831642181');
+  });
+
+  it('validate:BG 831642182', () => {
+    const result = validate('BG 831642182');
+
+    expect(result.error).toBeInstanceOf(InvalidChecksum);
+  });
 });

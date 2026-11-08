@@ -1,5 +1,9 @@
 import { validate, format } from './idnr';
-import { InvalidLength, InvalidChecksum } from '../exceptions';
+import {
+  InvalidLength,
+  InvalidChecksum,
+  InvalidComponent,
+} from '../exceptions';
 
 describe('de/idnr', () => {
   it('format:36574261809', () => {
@@ -30,5 +34,12 @@ describe('de/idnr', () => {
     const result = validate('36574261808');
 
     expect(result.error).toBeInstanceOf(InvalidChecksum);
+  });
+
+  // Exactly one digit must repeat, two or three times, in the first 10 digits
+  test.each(['12345678903', '11112345678'])('validate:%s', value => {
+    const result = validate(value);
+
+    expect(result.error).toBeInstanceOf(InvalidComponent);
   });
 });
