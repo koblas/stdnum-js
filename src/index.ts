@@ -1,12 +1,16 @@
 import * as AD from './ad';
+import * as AF from './af';
 import * as AI from './ai';
 import * as AL from './al';
+import * as AM from './am';
 import * as AO from './ao';
 import * as AR from './ar';
 import * as AT from './at';
 import * as AU from './au';
+import * as AW from './aw';
 import * as AZ from './az';
 import * as BA from './ba';
+import * as BB from './bb';
 import * as BE from './be';
 import * as BG from './bg';
 import * as BO from './bo';
@@ -15,11 +19,13 @@ import * as BY from './by';
 import * as BZ from './bz';
 import * as CA from './ca';
 import * as CH from './ch';
+import * as CK from './ck';
 import * as CL from './cl';
 import * as CN from './cn';
 import * as CO from './co';
 import * as CR from './cr';
 import * as CU from './cu';
+import * as CW from './cw';
 import * as CY from './cy';
 import * as CZ from './cz';
 import * as DE from './de';
@@ -31,9 +37,12 @@ import * as EE from './ee';
 import * as EG from './eg';
 import * as ES from './es';
 import * as FI from './fi';
+import * as FJ from './fj';
 import * as FO from './fo';
 import * as FR from './fr';
 import * as GB from './gb';
+import * as GD from './gd';
+import * as GE from './ge';
 import * as GH from './gh';
 import * as GR from './gr';
 import * as GN from './gn';
@@ -75,6 +84,7 @@ import * as PY from './py';
 import * as RO from './ro';
 import * as RS from './rs';
 import * as RU from './ru';
+import * as SC from './sc';
 import * as SE from './se';
 import * as SG from './sg';
 import * as SI from './si';
@@ -101,14 +111,18 @@ export type { Validator } from './types';
 // countries entirely.
 export {
   AD,
+  AF,
   AI,
   AL,
+  AM,
   AO,
   AR,
   AT,
   AU,
+  AW,
   AZ,
   BA,
+  BB,
   BE,
   BG,
   BO,
@@ -117,11 +131,13 @@ export {
   BZ,
   CA,
   CH,
+  CK,
   CL,
   CN,
   CO,
   CR,
   CU,
+  CW,
   CY,
   CZ,
   DE,
@@ -133,9 +149,12 @@ export {
   EG,
   ES,
   FI,
+  FJ,
   FO,
   FR,
   GB,
+  GD,
+  GE,
   GH,
   GR,
   GN,
@@ -177,6 +196,7 @@ export {
   RO,
   RS,
   RU,
+  SC,
   SE,
   SG,
   SI,
@@ -198,14 +218,18 @@ export {
 // Live an uppercase world, to prevent keyword collisions
 export const stdnum: Record<string, Record<string, Validator>> = {
   AD,
+  AF,
   AI,
   AL,
+  AM,
   AO,
   AR,
   AT,
   AU,
+  AW,
   AZ,
   BA,
+  BB,
   BE,
   BG,
   BO,
@@ -214,11 +238,13 @@ export const stdnum: Record<string, Record<string, Validator>> = {
   BZ,
   CA,
   CH,
+  CK,
   CL,
   CN,
   CO,
   CR,
   CU,
+  CW,
   CY,
   CZ,
   DE,
@@ -230,9 +256,12 @@ export const stdnum: Record<string, Record<string, Validator>> = {
   EG,
   ES,
   FI,
+  FJ,
   FO,
   FR,
   GB,
+  GD,
+  GE,
   GH,
   GR,
   GN,
@@ -274,6 +303,7 @@ export const stdnum: Record<string, Record<string, Validator>> = {
   RO,
   RS,
   RU,
+  SC,
   SE,
   SG,
   SI,
@@ -294,14 +324,18 @@ export const stdnum: Record<string, Record<string, Validator>> = {
 
 export const personValidators: Record<string, Validator[]> = {
   AD: [AD.nrt],
+  AF: [AF.tin],
   AI: [AI.tin],
   AL: [AL.nipt],
+  AM: [AM.tin],
   AO: [AO.nif, AO.bi],
   AR: [AR.cuit, AR.dni],
   AT: [AT.vnr],
   AU: [AU.tfn],
+  AW: [AW.tin],
   AZ: [AZ.pin, AZ.tin],
   BA: [BA.jmbg],
+  BB: [BB.tin],
   BE: [BE.bis, BE.insz, BE.nn],
   BG: [BG.egn, BG.pnf, BG.vat],
   BR: [BR.cpf],
@@ -309,11 +343,13 @@ export const personValidators: Record<string, Validator[]> = {
   BZ: [BZ.tin],
   CA: [CA.sin],
   CH: [CH.ssn],
+  CK: [CK.tin],
   CL: [CL.run], // which is the same as RUT
   CN: [CN.ric],
   CO: [CO.nit],
   CR: [CR.cpf, CR.cr],
   CU: [CU.ni],
+  CW: [CW.tin],
   CZ: [CZ.rc],
   DE: [DE.idnr, DE.svnr],
   DK: [DK.cpr],
@@ -322,8 +358,11 @@ export const personValidators: Record<string, Validator[]> = {
   EE: [EE.ik],
   ES: [ES.dni, ES.nie],
   FI: [FI.hetu],
+  FJ: [FJ.tin],
   FR: [FR.nif, FR.nir],
   GB: [GB.nino, GB.utr],
+  GD: [GD.tin],
+  GE: [GE.tin],
   GH: [GH.tin],
   GR: [GR.amka],
   GT: [GT.cui],
@@ -357,6 +396,7 @@ export const personValidators: Record<string, Validator[]> = {
   RO: [RO.cnp],
   RS: [RS.jmbg],
   RU: [RU.inn],
+  SC: [SC.tin],
   SE: [SE.personnummer],
   SI: [SI.jmbg],
   SK: [SK.rc],
@@ -373,13 +413,17 @@ export const personValidators: Record<string, Validator[]> = {
 
 export const entityValidators: Record<string, Validator[]> = {
   AD: [AD.nrt],
+  AF: [AF.tin],
   AI: [AI.tin],
   AL: [AL.nipt],
+  AM: [AM.tin],
   AO: [AO.nif],
   AR: [AR.cuit],
   AT: [AT.businessid, AT.tin, AT.uid],
   AU: [AU.abn, AU.acn, AU.tfn],
+  AW: [AW.tin],
   AZ: [AZ.tin],
+  BB: [BB.tin],
   BE: [BE.vat],
   BG: [BG.vat],
   BR: [BR.cnpj],
@@ -387,10 +431,12 @@ export const entityValidators: Record<string, Validator[]> = {
   BZ: [BZ.tin],
   CA: [CA.bn],
   CH: [CH.uid, CH.vat],
+  CK: [CK.tin],
   CL: [CL.rut],
   CN: [CN.uscc],
   CO: [CO.nit],
   CR: [CR.cpj],
+  CW: [CW.tin],
   CY: [CY.vat],
   CZ: [CZ.dic],
   DE: [DE.stnr, DE.vat],
@@ -400,8 +446,11 @@ export const entityValidators: Record<string, Validator[]> = {
   EE: [EE.kmkr, EE.registrikood],
   ES: [ES.cif],
   FI: [FI.alv, FI.ytunnus],
+  FJ: [FJ.tin],
   FR: [FR.siren, FR.siret, FR.tva],
   GB: [GB.vat],
+  GD: [GD.tin],
+  GE: [GE.tin],
   GR: [GR.vat],
   GT: [GT.nit],
   HU: [HU.anum],
@@ -434,6 +483,7 @@ export const entityValidators: Record<string, Validator[]> = {
   RO: [RO.onrc, RO.cui],
   RS: [RS.pib],
   RU: [RU.inn],
+  SC: [SC.tin],
   SE: [SE.orgnr, SE.vat],
   SG: [SG.uen],
   SI: [SI.ddv],
