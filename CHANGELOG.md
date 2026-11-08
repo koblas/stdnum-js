@@ -10,6 +10,28 @@
 
 * add de.svnr support ([ee03c72](https://github.com/koblas/stdnum-js/commit/ee03c72e62254c488e5ae3f889b1ee8c823b2cc4))
 
+## [1.14.0](https://github.com/koblas/stdnum-js/compare/v1.13.1...v1.14.0) (2026-11-08)
+
+
+### Features
+
+* **ro/onrc:** support the new 14-character format ([#174](https://github.com/koblas/stdnum-js/issues/174)) ([17b932c](https://github.com/koblas/stdnum-js/commit/17b932cfe3529d44839762eb2308b2a1709c96f9))
+
+
+### Bug Fixes
+
+* **bg/vat:** accept 9-digit numbers whatever their first digit ([#172](https://github.com/koblas/stdnum-js/issues/172)) ([e8bfce7](https://github.com/koblas/stdnum-js/commit/e8bfce760e895c69a7b898356f67f0b50af8312a))
+* **bg/vat:** check only the length of 10-digit numbers ([#173](https://github.com/koblas/stdnum-js/issues/173)) ([6b44eea](https://github.com/koblas/stdnum-js/commit/6b44eeaad041c78cbac5aaf4be2597f673087eb5))
+* **cz/dic:** correct special 9-digit DIC check to match python-stdnum ([fd76d7e](https://github.com/koblas/stdnum-js/commit/fd76d7e93f2da5fbe8a3f46f9cb90b39e8669939)), closes [#164](https://github.com/koblas/stdnum-js/issues/164)
+* **cz/dic:** correct special 9-digit DIC check to match python-stdnum (fixes [#164](https://github.com/koblas/stdnum-js/issues/164)) ([#169](https://github.com/koblas/stdnum-js/issues/169)) ([fd76d7e](https://github.com/koblas/stdnum-js/commit/fd76d7e93f2da5fbe8a3f46f9cb90b39e8669939))
+* **dk/cvr:** reject numbers that start with 0 ([#171](https://github.com/koblas/stdnum-js/issues/171)) ([bc6e027](https://github.com/koblas/stdnum-js/commit/bc6e027fe84edb5abf343378066ad9178194e7cc))
+* **ec/ruc:** do not enforce mod-11 check digit on company RUCs ([#168](https://github.com/koblas/stdnum-js/issues/168)) ([8ac9250](https://github.com/koblas/stdnum-js/commit/8ac9250825aafafe33b631ea59fa17d5adc68bb3))
+* **lv/pvn:** accept personal codes without a birth date ([#198](https://github.com/koblas/stdnum-js/issues/198)) ([c2c87f2](https://github.com/koblas/stdnum-js/commit/c2c87f23f5724e9800514cb1be696da164d26604)), closes [#178](https://github.com/koblas/stdnum-js/issues/178)
+* **mx/rfc:** do not enforce check digit, matching python-stdnum default ([fbb2ce4](https://github.com/koblas/stdnum-js/commit/fbb2ce4bad0885b8c756cc0e2d212a3efc75b22e))
+* **mx/rfc:** do not enforce check digit, matching python-stdnum default behavior ([#163](https://github.com/koblas/stdnum-js/issues/163)) ([fbb2ce4](https://github.com/koblas/stdnum-js/commit/fbb2ce4bad0885b8c756cc0e2d212a3efc75b22e))
+* **pe/cui:** allow a letter as the optional check digit ([#162](https://github.com/koblas/stdnum-js/issues/162)) ([725d57d](https://github.com/koblas/stdnum-js/commit/725d57dfe3eb1565c9fad402e340778a228216a7))
+* **ro/cnp:** accept county codes 70 and 80-83 to match python-stdnum ([#170](https://github.com/koblas/stdnum-js/issues/170)) ([68bc26c](https://github.com/koblas/stdnum-js/commit/68bc26c2a58ff8843f66fa25e81abb6916f49d5c))
+
 ## [1.13.1](https://github.com/koblas/stdnum-js/compare/v1.13.0...v1.13.1) (2026-11-08)
 
 
