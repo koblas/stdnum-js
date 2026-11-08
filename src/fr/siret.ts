@@ -16,6 +16,7 @@ import * as exceptions from '../exceptions';
 import { strings } from '../util';
 import { Validator, ValidateReturn } from '../types';
 import { luhnChecksumValidate, weightedSum } from '../util/checksum';
+import { validate as sirenValidate } from './siren';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -/');
@@ -64,6 +65,12 @@ const impl: Validator = {
       }
     } else if (!luhnChecksumValidate(value)) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
+    }
+
+    // The first 9 digits are the SIREN, which has its own check digit
+    const siren = sirenValidate(value.substring(0, 9));
+    if (!siren.isValid) {
+      return siren;
     }
 
     return {

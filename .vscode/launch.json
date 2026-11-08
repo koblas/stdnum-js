@@ -6,16 +6,14 @@
   "configurations": [
     {
       "type": "node",
-      "name": "Debug Jest Tests",
+      "name": "Debug Vitest Tests",
       "request": "launch",
-      "runtimeArgs": [
-        "--inspect-brk",
-        "${workspaceRoot}/node_modules/.bin/jest",
-        "--runInBand"
-      ],
+      "autoAttachChildProcesses": true,
+      "program": "${workspaceRoot}/node_modules/vitest/vitest.mjs",
+      "args": ["run", "--no-file-parallelism"],
       "cwd": "${workspaceFolder}",
-      "console": "internalConsole",
-      "internalConsoleOptions": "neverOpen"
+      "skipFiles": ["<node_internals>/**", "**/node_modules/**"],
+      "console": "integratedTerminal"
     }
   ]
 }

@@ -117,7 +117,8 @@ function getChecksumBases(
 }
 
 function isValidChecksumPair(checksumBasis: number, checksum: number): boolean {
-  return !((checksumBasis + checksum) % 97);
+  // The check is 97 - (basis % 97), so it is always in 1..97 (never 00, 98, 99)
+  return 97 - (checksumBasis % 97) === checksum;
 }
 
 export function validChecksum(
