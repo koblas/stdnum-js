@@ -10,6 +10,13 @@
 
 * add de.svnr support ([ee03c72](https://github.com/koblas/stdnum-js/commit/ee03c72e62254c488e5ae3f889b1ee8c823b2cc4))
 
+## [1.13.0](https://github.com/koblas/stdnum-js/compare/v1.12.6...v1.13.0) (2026-11-08)
+
+
+### Features
+
+* add exports map, sideEffects flag, and named country exports for tree-shaking ([#190](https://github.com/koblas/stdnum-js/issues/190)) ([a618bd6](https://github.com/koblas/stdnum-js/commit/a618bd65b02eef5cb94c9c95ed1cc62cad1176dc))
+
 ## [1.3.8](https://github.com/koblas/stdnum-js/compare/v1.3.7...v1.3.8) (2022-06-01)
 
 

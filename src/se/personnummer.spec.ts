@@ -38,6 +38,21 @@ describe('se/personnummer', () => {
     },
   );
 
+  // The separator is only written between the birth date and the birth number,
+  // it is not part of the number (Folkbokföringslagen 1991:481 §18), so the
+  // bare 10 and 12 digit forms are valid too.
+  test.each([
+    ['8803200016', '880320-0016'],
+    ['8112289874', '811228-9874'],
+    ['6709199530', '670919-9530'],
+    ['7010632391', '701063-2391'], // coordination number
+    ['119001022384', '900102+2384'], // 4digit year, no hyphen
+  ])('validate:%s', (given, want) => {
+    const result = validate(given);
+
+    expect(result.isValid && result.compact).toEqual(want);
+  });
+
   it('validate:12345678', () => {
     const result = validate('12345678');
 
@@ -46,6 +61,18 @@ describe('se/personnummer', () => {
 
   it('validate:880320-0018', () => {
     const result = validate('880320-0018');
+
+    expect(result.error).toBeInstanceOf(InvalidChecksum);
+  });
+
+  it('validate:8803200018', () => {
+    const result = validate('8803200018');
+
+    expect(result.error).toBeInstanceOf(InvalidChecksum);
+  });
+
+  it('validate:198803200018', () => {
+    const result = validate('198803200018');
 
     expect(result.error).toBeInstanceOf(InvalidChecksum);
   });
