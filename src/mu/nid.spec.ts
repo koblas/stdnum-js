@@ -31,4 +31,17 @@ describe('mu/nid', () => {
 
     expect(result.error).toBeInstanceOf(InvalidChecksum);
   });
+
+  // Check character 0 (weighted sum % 17 === 0)
+  test.each(['L0207971502210', 'L2201971306870'])('validate:%s', value => {
+    const result = validate(value);
+
+    expect(result.isValid).toEqual(true);
+  });
+
+  it('validate:L020797150221H', () => {
+    const result = validate('L020797150221H');
+
+    expect(result.error).toBeInstanceOf(InvalidChecksum);
+  });
 });
