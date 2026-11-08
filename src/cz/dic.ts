@@ -12,6 +12,7 @@
 
 import * as exceptions from '../exceptions';
 import { strings, weightedSum } from '../util';
+import { pymod } from '../util/pymod';
 import { Validator, ValidateReturn } from '../types';
 import { validate as rcValidate } from './rc';
 
@@ -41,17 +42,21 @@ function checkLegal(value: string): boolean {
 }
 
 function checkSpecial(value: string): boolean {
-  // check = sum((8 - i) * int(n) for i, n in enumerate(number)) % 11
-
-  // return str((8 - (10 - check) % 11) % 10)
-
-  const [front, check] = strings.splitAt(value, -1);
+  // Reference: python-stdnum cz/dic.py::calc_check_digit_special
+  //   check = sum((8 - i) * int(n) for i, n in enumerate(number[1:8])) % 11
+  //   return str((8 - (10 - check) % 11) % 10)
+  //
+  // The weighted sum runs over digits 2..8 only: the leading 6 and the check
+  // digit are excluded (weights [8, 7, 6, 5, 4, 3, 2]). The final reduction
+  // relies on Python's always-non-negative modulo, so pymod is used to match
+  // it -- JS '%' keeps the dividend's sign and would yield a negative digit.
+  const [, front, check] = strings.splitAt(value, 1, -1);
 
   const sum = weightedSum(front, {
     modulus: 11,
-    weights: [8, 7, 6, 5, 4, 3, 2, 1],
+    weights: [8, 7, 6, 5, 4, 3, 2],
   });
-  const digit = String((8 - ((10 - sum) % 11)) % 10);
+  const digit = String(pymod(8 - ((10 - sum) % 11), 10));
 
   return digit === check;
 }
