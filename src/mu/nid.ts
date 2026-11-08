@@ -72,7 +72,7 @@ const impl: Validator = {
       modulus: 17,
     });
 
-    if (ALPHABET[17 - sum] !== check) {
+    if (ALPHABET[(17 - sum) % 17] !== check) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 
