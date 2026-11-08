@@ -241,9 +241,12 @@ https://wiki.scn.sap.com/wiki/display/CRM/Country+Tax+Category+check
 
 ### Release Notes
 
-This project is now using https://github.com/semantic-release/semantic-release to manage the
-release process. Commit messages should use the format specified to handle the major/minor/patch
-versioning information.
+Releases are managed by [release-please](https://github.com/googleapis/release-please).
+PRs are squash-merged, so each PR title must be a
+[Conventional Commit](https://www.conventionalcommits.org/) (`fix(de/vat): ...`,
+`feat(br): ...`); a CI check enforces it. `fix` bumps the patch version, `feat`
+the minor version, and `!` or a `BREAKING CHANGE:` footer the major version.
 
-This is based on the angular commit message format
-https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-format
+Every push to `main` updates one release PR that bumps the version and prepends
+the `CHANGELOG.md` entry. Merging it tags the release, creates the GitHub release
+and publishes to npm with provenance (`.github/workflows/release.yaml`).
