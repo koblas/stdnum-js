@@ -5,9 +5,15 @@
  * within Taiwan for tax (VAT) purposes. The number consists of 8 digits, the
  * last being a check digit.
  *
+ * Since 2023-04-01 the Ministry of Finance relaxed the check-digit logic from
+ * "the weighted digit sum is divisible by 10" to "divisible by 5", so that the
+ * number space can be expanded while staying compatible with existing numbers
+ * (every old, divisible-by-10 number is also divisible by 5).
+ *
  * Source
  *    https://zh.wikipedia.org/wiki/統一編號
  *    https://findbiz.nat.gov.tw/fts/query/QueryBar/queryInit.do?request_locale=en
+ *    https://www.fia.gov.tw/singlehtml/3?cntId=c4d9cff38c8642ef8872774ee9987283
  *
  * ENTITY
  */
@@ -63,7 +69,10 @@ const impl: Validator = {
       .split('')
       .reduce((acc, d) => (acc + parseInt(d, 10)) % 10, 0);
 
-    if (!(sum === 0 || (sum === 9 && value[6] === '7'))) {
+    // The weighted digit sum must be divisible by 5 (was 10 before 2023-04-01).
+    // Special case: when the 7th digit is 7 its product 7*4=28 sums to 10, which
+    // may be counted as either 1 or 0, so a remainder of 4 is also accepted.
+    if (!(sum % 5 === 0 || (value[6] === '7' && (sum + 1) % 5 === 0))) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 
