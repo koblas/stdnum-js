@@ -13,6 +13,7 @@ import * as BA from './ba';
 import * as BB from './bb';
 import * as BE from './be';
 import * as BG from './bg';
+import * as BH from './bh';
 import * as BO from './bo';
 import * as BR from './br';
 import * as BY from './by';
@@ -125,6 +126,7 @@ export {
   BB,
   BE,
   BG,
+  BH,
   BO,
   BR,
   BY,
@@ -232,6 +234,7 @@ export const stdnum: Record<string, Record<string, Validator>> = {
   BB,
   BE,
   BG,
+  BH,
   BO,
   BR,
   BY,
@@ -423,9 +426,11 @@ export const entityValidators: Record<string, Validator[]> = {
   AU: [AU.abn, AU.acn, AU.tfn],
   AW: [AW.tin],
   AZ: [AZ.tin],
+  BA: [BA.jib],
   BB: [BB.tin],
   BE: [BE.vat],
   BG: [BG.vat],
+  BH: [BH.vat],
   BR: [BR.cnpj],
   BY: [BY.unp],
   BZ: [BZ.tin],

@@ -111,6 +111,12 @@
       "import": "./lib/esm/bg/index.js",
       "default": "./lib/cjs/bg/index.js"
     },
+    "./bh": {
+      "types": "./lib/esm/bh/index.d.ts",
+      "node": "./lib/cjs/bh/index.js",
+      "import": "./lib/esm/bh/index.js",
+      "default": "./lib/cjs/bh/index.js"
+    },
     "./bo": {
       "types": "./lib/esm/bo/index.d.ts",
       "node": "./lib/cjs/bo/index.js",
