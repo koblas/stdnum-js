@@ -10,6 +10,23 @@
 
 * add de.svnr support ([ee03c72](https://github.com/koblas/stdnum-js/commit/ee03c72e62254c488e5ae3f889b1ee8c823b2cc4))
 
+## [1.15.0](https://github.com/koblas/stdnum-js/compare/v1.14.0...v1.15.0) (2026-11-08)
+
+
+### Features
+
+* add Bosnia and Herzegovina JIB/VAT and Bahrain VAT validators ([#208](https://github.com/koblas/stdnum-js/issues/208)) ([b9b3554](https://github.com/koblas/stdnum-js/commit/b9b35546662becc5e4531b2b5c34f83ba052b474)), closes [#15](https://github.com/koblas/stdnum-js/issues/15)
+* add tax number validators for 10 countries ([#206](https://github.com/koblas/stdnum-js/issues/206)) ([230465d](https://github.com/koblas/stdnum-js/commit/230465d97a98daf0505ec5d4206b279f2ab5b702)), closes [#15](https://github.com/koblas/stdnum-js/issues/15)
+* **am/tin:** verify the check digit ([#207](https://github.com/koblas/stdnum-js/issues/207)) ([56a1a12](https://github.com/koblas/stdnum-js/commit/56a1a1209cf5221ebd143066f51180933b642bcb)), closes [#15](https://github.com/koblas/stdnum-js/issues/15)
+* **sc/tin:** verify the checksum ([#209](https://github.com/koblas/stdnum-js/issues/209)) ([4dc94d9](https://github.com/koblas/stdnum-js/commit/4dc94d93d2d892554c15bfb9127d948e0fb61aac)), closes [#15](https://github.com/koblas/stdnum-js/issues/15)
+* **se/personnummer:** return the 12 digit form from compact() ([#205](https://github.com/koblas/stdnum-js/issues/205)) ([d7501a9](https://github.com/koblas/stdnum-js/commit/d7501a9046e201e52b62519271283cdec5bafa5c)), closes [#113](https://github.com/koblas/stdnum-js/issues/113) [#117](https://github.com/koblas/stdnum-js/issues/117)
+
+
+### Bug Fixes
+
+* **es/dni:** verify the check letter of K, L and M numbers ([#200](https://github.com/koblas/stdnum-js/issues/200)) ([becf45b](https://github.com/koblas/stdnum-js/commit/becf45bbb6813cee27a12393cc03f946aec20ef4)), closes [#51](https://github.com/koblas/stdnum-js/issues/51)
+* **kr/rrn:** accept random-suffix numbers issued since October 2020 ([#202](https://github.com/koblas/stdnum-js/issues/202)) ([7170a29](https://github.com/koblas/stdnum-js/commit/7170a29cfe62bb861fca6f4e94c09c72e47f38c1)), closes [#134](https://github.com/koblas/stdnum-js/issues/134)
+
 ## [1.14.0](https://github.com/koblas/stdnum-js/compare/v1.13.1...v1.14.0) (2026-11-08)
 
 
