@@ -60,8 +60,12 @@ const impl: Validator = {
     const [body, check] = strings.splitAt(value, 8);
 
     if ('KLM'.includes(body[0]) && strings.isdigits(body.substring(1))) {
-      // Currently no test data for these cases, so
-      // we're assuming they're good based on format
+      // K: Spanish citizens younger than 14, L: Spanish citizens living
+      // abroad without a DNI, M: foreigners without an NIE. These use the
+      // DNI check letter on the 7 digits after the prefix (as es/nif does).
+      if (calcCheckDigit(body.substring(1)) !== check) {
+        return { isValid: false, error: new exceptions.InvalidChecksum() };
+      }
     } else if (!strings.isdigits(body)) {
       // Not all digits in the body, it's not valid
       return { isValid: false, error: new exceptions.InvalidComponent() };
