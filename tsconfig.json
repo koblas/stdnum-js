@@ -2,7 +2,8 @@
   "compilerOptions": {
     "module": "ES6",
     "outDir": "./lib/esm",
-    "moduleResolution": "node",
+    "rootDir": "./src",
+    "moduleResolution": "bundler",
     "skipLibCheck": true,
     "importHelpers": false,
     "target": "es6",
@@ -27,11 +28,7 @@
     "forceConsistentCasingInFileNames": true,
     "noUnusedLocals": true,
     "jsx": "react",
-    "lib": ["es2017", "es2016", "dom"],
-    "baseUrl": ".",
-    "paths": {
-      "*": ["src/*", "node_modules/*"]
-    }
+    "lib": ["es2017", "es2016", "dom"]
   },
   "exclude": ["lib", "node_modules", "**/*.spec.*"],
   "include": ["src/**/*"]
