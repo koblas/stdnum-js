@@ -17,36 +17,19 @@
       "require": "./lib/cjs/"
     }
   },
-  "overrides": {
-    "minimatch": "^9.0.7"
-  },
   "scripts": {
     "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "eslint src",
-    "test": "jest",
+    "lint": "eslint src && tsc --noEmit -p tsconfig-lint.json",
+    "test": "vitest run",
     "build": "tsc",
     "prepublishOnly:esm": "tsc -p tsconfig.json",
     "prepublishOnly:cjs": "tsc -p tsconfig-cjs.json",
-    "prepublishOnly": "npm run prepublishOnly:esm && npm run prepublishOnly:cjs"
+    "prepublishOnly": "npm run prepublishOnly:esm && npm run prepublishOnly:cjs",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "publishConfig": {
     "provenance": true
-  },
-  "jest": {
-    "moduleFileExtensions": [
-      "ts",
-      "js"
-    ],
-    "roots": [
-      "<rootDir>/src"
-    ],
-    "transform": {
-      "^.+\\.(ts|tsx)$": "ts-jest"
-    },
-    "testMatch": [
-      "**/__tests__/**/*.+(ts|tsx|js)",
-      "**/?(*.)+(spec|test).+(ts|tsx|js)"
-    ]
   },
   "author": "David Koblas",
   "keywords": [
@@ -64,14 +47,12 @@
   "license": "MIT",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@types/jest": "^30.0.0",
-    "eslint": "^10.1.0",
+    "@vitest/coverage-v8": "^5.0.5",
+    "eslint": "^10.13.0",
     "eslint-config-prettier": "^10.0.1",
-    "jest": "^30.2.0",
     "prettier": "^3.4.2",
-    "prettier-eslint": "^16.3.0",
-    "ts-jest": "^29.1.0",
-    "typescript": "^5.7.3",
-    "typescript-eslint": "^8.57.1"
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.71.2",
+    "vitest": "^5.0.5"
   }
 }
