@@ -54,8 +54,15 @@ jobs:
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: lts/*
-          cache: npm
           registry-url: https://registry.npmjs.org
+      # No dependency cache here: this job holds id-token: write.
+      - name: Check npm supports trusted publishing (>= 11.5.1)
+        run: |
+          v=$(npm -v)
+          if [ "$(printf '%s\n' 11.5.1 "$v" | sort -V | head -n1)" != 11.5.1 ]; then
+            echo "::error::npm $v is too old for trusted publishing; need >= 11.5.1"
+            exit 1
+          fi
       - run: npm ci
       - run: npm run lint
       - run: npm test

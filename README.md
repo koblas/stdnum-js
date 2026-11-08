@@ -242,7 +242,7 @@ https://wiki.scn.sap.com/wiki/display/CRM/Country+Tax+Category+check
 ### Release Notes
 
 Releases are managed by [release-please](https://github.com/googleapis/release-please).
-PRs are squash-merged, so each PR title must be a
+Squash-merge PRs; the PR title becomes the commit on `main`, so it must be a
 [Conventional Commit](https://www.conventionalcommits.org/) (`fix(de/vat): ...`,
 `feat(br): ...`); a CI check enforces it. `fix` bumps the patch version, `feat`
 the minor version, and `!` or a `BREAKING CHANGE:` footer the major version.
