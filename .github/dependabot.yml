@@ -4,6 +4,10 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    # Only propose releases at least 21 days old, matching the maintainer's
+    # npm min-release-age, so a compromised release has time to be pulled.
+    cooldown:
+      default-days: 21
     commit-message:
       prefix: ci
     groups:
@@ -14,6 +18,13 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    cooldown:
+      default-days: 21
+    ignore:
+      # typescript-eslint supports TypeScript < 6.1. Remove once it
+      # supports TypeScript 7.
+      - dependency-name: typescript
+        update-types: ['version-update:semver-major']
     commit-message:
       prefix: chore
       include: scope
