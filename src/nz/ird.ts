@@ -25,7 +25,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   }
 
   if (value.startsWith('NZ')) {
-    return [value.substr(2), null];
+    return [value.slice(2), null];
   }
 
   return [value, null];

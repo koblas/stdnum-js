@@ -162,7 +162,7 @@ const impl: Validator = {
     // if (invalidSSN.includes(value)) {
     //   return { isValid: false, error: new exceptions.InvalidComponent() };
     // }
-    if (!prefixes.includes(value.substr(0, 2))) {
+    if (!prefixes.includes(value.slice(0, 2))) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 

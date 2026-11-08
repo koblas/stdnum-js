@@ -189,21 +189,21 @@ const impl: Validator = {
     if (!/^[A-Z]{4}[0-9]{6}[A-Z]{6}[0-9A-Z][0-9]$/.test(value)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
-    if (!isValidDateCompactYYMMDD(value.substr(4, 6), true)) {
+    if (!isValidDateCompactYYMMDD(value.slice(4, 10), true)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
-    if (nameBlacklist.has(value.substr(0, 4))) {
+    if (nameBlacklist.has(value.slice(0, 4))) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
     if (!['H', 'M', 'X'].includes(value[10])) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
-    if (!validStates.has(value.substr(11, 2))) {
+    if (!validStates.has(value.slice(11, 13))) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
     const check = value
-      .substr(0, 17)
+      .slice(0, 17)
       .split('')
       .reduce(
         (acc, c, idx) => acc + (checkAlphabetDict[c] ?? 0) * (18 - idx),
@@ -211,7 +211,7 @@ const impl: Validator = {
       );
 
     const checkStr = String((10 - (check % 10)) % 10);
-    if (checkStr !== value.substr(17, 1)) {
+    if (checkStr !== value.slice(17, 18)) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 

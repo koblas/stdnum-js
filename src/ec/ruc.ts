@@ -4,14 +4,17 @@
  * The RUC is a tax identification number for legal entities. It has 13 digits
  * where the third digit is a number denoting the type of entity.
  *
- * Company RUCs (third digit 6 = public, 9 = private/juridical) are issued by
- * the SRI without any check-digit algorithm, so only structural checks apply
- * to them; the historical mod-11 scheme rejects real registry-valid numbers.
- * Cedula-based RUCs (third digit 0-5) do carry the cedula's check digit.
+ * The SRI states that RUCs issued to private companies, public entities and
+ * foreign natural persons without a cedula have no specific validation
+ * algorithm. The historical mod-11 check digit stopped applying to company
+ * RUCs once their sequence number grew past 6 digits, and it rejects real,
+ * registered numbers, so company RUCs (third digit 6 = public, 9 =
+ * private/juridical) only get structural checks. Cedula-based RUCs (third
+ * digit 0-5) still carry the cedula's check digit.
  *
- * Source
+ * Sources
+ *   https://www.sri.gob.ec/web/intersri/facturacion-electronica
  *   https://minka.gob.ec/mintel/ge/rutr/gobec_forms/-/issues/32
- *   https://www.sri.gob.ec/en/web/intersri/consulta-al-ruc
  *
  * TAX/VAT
  */
@@ -73,15 +76,15 @@ const impl: Validator = {
     }
 
     if (value[2] === '6') {
-      // Public RUC: SRI issues these without a check-digit algorithm, so
-      // only the establishment number is checked.
+      // Public RUC: no published check digit, so only the establishment
+      // number is checked.
       const [, end] = strings.splitAt(value, 9);
       if (end === '0000') {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
     } else if (value[2] === '9') {
-      // Juridical RUC: SRI issues these without a check-digit algorithm, so
-      // only the establishment number is checked.
+      // Juridical RUC: no published check digit, so only the establishment
+      // number is checked.
       const [, end] = strings.splitAt(value, 10);
       if (end === '000') {
         return { isValid: false, error: new exceptions.InvalidComponent() };

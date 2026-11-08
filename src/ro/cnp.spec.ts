@@ -47,4 +47,28 @@ describe('ro/cnp', () => {
 
     expect(result.error).toBeInstanceOf(InvalidComponent);
   });
+
+  it('validate:5240512700014', () => {
+    const result = validate('5240512700014');
+
+    expect(result.isValid && result.compact).toEqual('5240512700014');
+  });
+
+  it('validate:5240512700013', () => {
+    const result = validate('5240512700013');
+
+    expect(result.error).toBeInstanceOf(InvalidChecksum);
+  });
+
+  it('validate:5240512830010', () => {
+    const result = validate('5240512830010');
+
+    expect(result.isValid && result.compact).toEqual('5240512830010');
+  });
+
+  it('validate:1630615993454', () => {
+    const result = validate('1630615993454');
+
+    expect(result.error).toBeInstanceOf(InvalidComponent);
+  });
 });

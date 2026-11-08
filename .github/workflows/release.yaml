@@ -1,67 +1,95 @@
 name: Release
 
-on:
-  #push:
-  #  branches:
-  #    - main
+# Every push to main opens or updates one release PR ("chore(main): release
+# x.y.z") that bumps package.json, package-lock.json and the manifest, and
+# prepends the CHANGELOG.md entry built from the Conventional Commits since
+# the last release. Merging that PR tags vx.y.z, creates the GitHub release,
+# and runs the publish job below.
+#
+# release-please signs in as the stdnum-js release GitHub App (variable
+# RELEASE_APP_CLIENT_ID, secret RELEASE_APP_PRIVATE_KEY) so that its release
+# PR runs CI and can pass the required checks on main; a PR made with
+# GITHUB_TOKEN starts no workflows. Until the App is configured it falls back
+# to GITHUB_TOKEN. Publishing happens in this workflow rather than on a tag push.
+#
+# npm trusted publishing is bound to this file name (release.yaml) and the
+# "npm" environment, which only main may deploy to. Rename either only after
+# updating the trusted publisher on npmjs.com.
 
-  # Only run if the general build for the main branch has completed
-  workflow_run:
-    workflows: ['Build and Test']
+on:
+  push:
     branches: [main]
-    types:
-      - completed
+
+permissions: {}
+
+concurrency:
+  group: release
+  cancel-in-progress: false
 
 jobs:
-  release:
-    name: Release
+  release-please:
     runs-on: ubuntu-latest
-    outputs:
-      version: ${{ steps.version.outputs.test }}
+    timeout-minutes: 10
+    # Used only by the GITHUB_TOKEN fallback while the App is not configured.
     permissions:
-      contents: write # to be able to publish a GitHub release
-      issues: write # to be able to comment on released issues
-      pull-requests: write # to be able to comment on released pull requests
-      id-token: write # to enable use of OIDC for npm provenance
+      contents: write
+      pull-requests: write
+      issues: write
+    outputs:
+      release_created: ${{ steps.rp.outputs.release_created }}
+      tag_name: ${{ steps.rp.outputs.tag_name }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      # Minted in this job: a token passed between jobs arrives masked.
+      - id: app-token
+        if: vars.RELEASE_APP_CLIENT_ID != ''
+        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
         with:
-          fetch-depth: 0
+          client-id: ${{ vars.RELEASE_APP_CLIENT_ID }}
+          private-key: ${{ secrets.RELEASE_APP_PRIVATE_KEY }}
+          permission-contents: write
+          permission-pull-requests: write
+          permission-issues: write
+      - id: rp
+        uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
+        with:
+          token: ${{ steps.app-token.outputs.token || github.token }}
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+
+  publish:
+    needs: release-please
+    if: needs.release-please.outputs.release_created == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment:
+      name: npm
+      url: https://www.npmjs.com/package/stdnum
+    permissions:
+      contents: read
+      id-token: write # npm trusted publishing (OIDC) and provenance
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ needs.release-please.outputs.tag_name }}
           persist-credentials: false
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: lts/*
-      - name: Install dependencies
-        run: npm ci
-      - name: Install semantic-release extra plugins
-        run: npm install --save-dev semantic-release@25.0.1 @semantic-release/changelog @semantic-release/git
-      #   - name: Lint
-      #     run: npm run lint-fix
-      #   - name: Test
-      #     run: npm run test:unit --if-present
-      - name: Build
-        run: npm run build
-      - name: Release
-        id: release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          registry-url: https://registry.npmjs.org
+      # No dependency cache here: this job holds id-token: write.
+      - name: Check npm supports trusted publishing (>= 11.5.1)
         run: |
-          npx semantic-release
-          echo "version=$(npx semantic-release --version)" >> $GITHUB_OUTPUT
-      - name: GitHub Release update
-        uses: softprops/action-gh-release@v1
-        #if: startsWith(github.ref, 'refs/tags/')
-        with:
-          # body_path: ${{ github.workspace }}-CHANGELOG.txt
-          # note you'll typically need to create a personal access token
-          # with permissions to create releases in the other repoj
-          #token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
-          tag_name: ${{ steps.release.outputs.version }}
-          files: |
-            LICENSE.md
-            README.md
-            lib
-            package.json
+          v=$(npm -v)
+          if [ "$(printf '%s\n' 11.5.1 "$v" | sort -V | head -n1)" != 11.5.1 ]; then
+            echo "::error::npm $v is too old for trusted publishing; need >= 11.5.1"
+            exit 1
+          fi
+      - run: npm ci --ignore-scripts
+      # Every installed package must carry a valid npm registry signature.
+      - run: npm audit signatures
+      - run: npm run lint
+      - run: npm test
+      - run: npm run prepublishOnly
+      - run: npm run lint:package
+      # prepublishOnly runs again here and rebuilds lib/esm and lib/cjs.
+      - run: npm publish

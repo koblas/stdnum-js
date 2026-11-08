@@ -181,4 +181,11 @@ describe('be/bis', () => {
     const result = validate(id);
     expect(result.isValid && result.compact).toEqual(id);
   });
+
+  // The check is 97 - (basis % 97), so it is never 00 or 99
+  test.each(['01290199900', '01220191999'])('validate:%s', value => {
+    const result = validate(value);
+
+    expect(result.error).toBeInstanceOf(InvalidChecksum);
+  });
 });
