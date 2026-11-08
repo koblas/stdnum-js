@@ -93,7 +93,7 @@ const impl: Validator = {
       alphabet,
     });
 
-    if (alphabet[31 - digit] !== check) {
+    if (alphabet[(31 - digit) % 31] !== check) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 
