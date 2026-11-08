@@ -9,6 +9,6 @@ export default tseslint.config(
   tseslint.configs.stylistic,
   eslintConfigPrettier,
   {
-    ignores: ['lib/*', '.eslintrc.js', 'release.config.js'],
+    ignores: ['lib/*'],
   },
 );

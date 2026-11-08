@@ -2,7 +2,8 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "module": "CommonJS",
-    "outDir": "./lib/cjs"
+    "outDir": "./lib/cjs",
+    "types": ["vitest/globals", "node"]
   },
   "exclude": ["lib", "node_modules"]
 }
