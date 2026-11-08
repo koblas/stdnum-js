@@ -54,6 +54,7 @@ For a change to check-digit logic, compare many inputs, not a handful. Build the
 
 - Put sources in the module doc comment, primary sources first. A blog or vendor page that doesn't state the format is not a source.
 - A new country must appear in `src/index.ts` in four places: the `import * as XX`, the named `export { ... }` list, the `stdnum` object, and `personValidators`/`entityValidators` where relevant. `src/index.spec.ts` fails if the first three drift apart.
+- It also needs a `"./xx"` entry in the `exports` map of `package.json` (same shape as the existing ones); `src/package-exports.spec.ts` fails without it. Insert new entries in place rather than re-sorting, to keep the diff small.
 - When a deliberate rule differs from python-stdnum (for example `bg/vat` 10-digit, `ec/ruc` company RUCs, `kr/rrn` since 2020, `tw/ubn` 2023 rule, `kr/brn`, `be/vat`, `cz/rc` after 1985), say so in the doc comment and note it on issue #91.
 
 ## Test data
