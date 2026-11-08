@@ -37,4 +37,17 @@ describe('py/ruc', () => {
 
     expect(result.error).toBeInstanceOf(InvalidChecksum);
   });
+
+  // Check digit 0 (sum % 11 === 0)
+  test.each(['1280950-0', '2195990-0'])('validate:%s', value => {
+    const result = validate(value);
+
+    expect(result.isValid).toEqual(true);
+  });
+
+  it('validate:1280950-1', () => {
+    const result = validate('1280950-1');
+
+    expect(result.error).toBeInstanceOf(InvalidChecksum);
+  });
 });
