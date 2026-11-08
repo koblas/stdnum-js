@@ -1,5 +1,5 @@
 import { validate, format } from './vat';
-import { InvalidLength, InvalidChecksum } from '../exceptions';
+import { InvalidLength, InvalidChecksum, InvalidFormat } from '../exceptions';
 
 describe('bg/vat', () => {
   it('format:BG 175 074 752', () => {
@@ -30,6 +30,30 @@ describe('bg/vat', () => {
     const result = validate('BG 175 074 754');
 
     expect(result.error).toBeInstanceOf(InvalidChecksum);
+  });
+
+  // 10-digit VAT numbers belong to individuals. Since 2024 they are an
+  // official number issued by the National Revenue Agency, for which no check
+  // digit algorithm is published, so only the length and the digits are checked.
+  test.each(['BG1234567890', 'BG1234567892', '9067903772', '9067903779'])(
+    'validate:%s',
+    value => {
+      const result = validate(value);
+
+      expect(result.isValid && result.isIndividual).toEqual(true);
+    },
+  );
+
+  it('validate:BG12345678901', () => {
+    const result = validate('BG12345678901');
+
+    expect(result.error).toBeInstanceOf(InvalidLength);
+  });
+
+  it('validate:BG123456789A', () => {
+    const result = validate('BG123456789A');
+
+    expect(result.error).toBeInstanceOf(InvalidFormat);
   });
 
   // A registered VAT number starting with 8. The first digit is not

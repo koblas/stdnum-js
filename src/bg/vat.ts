@@ -3,14 +3,14 @@
  *
  * The Bulgarian VAT (Данък върху добавената стойност) number is either 9
  * (for legal entities) or 10 digits (for physical persons, foreigners and
- * others) long. Each type of number has its own check digit algorithm.
+ * others) long. A 9-digit number carries a check digit. A 10-digit number is,
+ * since 2024, an official number issued by the National Revenue Agency, which
+ * publishes no check digit algorithm for it, so only its length is checked.
  *
  * PERSON/ENTITY
  */
 
 import * as exceptions from '../exceptions';
-import * as egn from './egn';
-import * as pnf from './pnf';
 import { strings } from '../util';
 import { Validator, ValidateReturn } from '../types';
 import { weightedSum } from '../util/checksum';
@@ -43,19 +43,6 @@ function checkLegal(value: string): boolean {
   }
 
   return String(sum % 10) === check;
-}
-
-function checkOther(value: string): boolean {
-  const [front, check] = strings.splitAt(value, -1);
-
-  const sum =
-    11 -
-    weightedSum(front, {
-      modulus: 11,
-      weights: [4, 3, 2, 7, 6, 5, 4, 3, 2],
-    });
-
-  return String(sum % 10) !== check;
 }
 
 const impl: Validator = {
@@ -91,15 +78,7 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
-    if (value.length === 9) {
-      if (!checkLegal(value)) {
-        return { isValid: false, error: new exceptions.InvalidChecksum() };
-      }
-    } else if (
-      !egn.validate(value).isValid &&
-      !pnf.validate(value).isValid &&
-      !checkOther(value)
-    ) {
+    if (value.length === 9 && !checkLegal(value)) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 
