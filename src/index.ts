@@ -198,6 +198,7 @@ export {
 // Live an uppercase world, to prevent keyword collisions
 export const stdnum: Record<string, Record<string, Validator>> = {
   AD,
+  AI,
   AL,
   AO,
   AR,
