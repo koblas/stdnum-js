@@ -34,4 +34,11 @@ describe('ec/ruc', () => {
 
     expect(result.error).toBeInstanceOf(InvalidChecksum);
   });
+
+  // Third digit 9 can also be a public RUC (python-stdnum tries public first)
+  it('validate:1792021746001', () => {
+    const result = validate('1792021746001');
+
+    expect(result.isValid && result.compact).toEqual('1792021746001');
+  });
 });

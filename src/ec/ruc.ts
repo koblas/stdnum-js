@@ -19,6 +19,19 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -.');
 }
 
+// Public RUC: 9 digits with a check digit, then a 4 digit establishment number
+function isPublic(value: string): boolean {
+  const [front, end] = strings.splitAt(value, 9);
+
+  return (
+    end !== '0000' &&
+    weightedSum(front, {
+      weights: [3, 2, 7, 6, 5, 4, 3, 2, 1],
+      modulus: 11,
+    }) === 0
+  );
+}
+
 const impl: Validator = {
   name: 'Ecuadorian Company Tax Number',
   localName: 'Registro Único de Contribuyentes',
@@ -87,6 +100,17 @@ const impl: Validator = {
         return ci.validate(value.substring(0, 10));
       }
     } else if (value[2] === '9') {
+      // Public RUCs can also have 9 as the third digit, so try the public
+      // check first and fall back to the juridical check.
+      if (isPublic(value)) {
+        return {
+          isValid: true,
+          compact: value,
+          isIndividual: false,
+          isCompany: true,
+        };
+      }
+
       // Juridical RUC
       const [front, end] = strings.splitAt(value, 10);
       if (end === '000') {
