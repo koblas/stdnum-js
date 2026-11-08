@@ -31,4 +31,24 @@ describe('sv/nit', () => {
 
     expect(result.error).toBeInstanceOf(InvalidChecksum);
   });
+
+  it('validate:0614-050707-001-1 (old NIT, sequential below 100)', () => {
+    // Sequential '001' <= '100' must use the old-NIT weights
+    const result = validate('0614-050707-001-1');
+
+    expect(result.isValid && result.compact).toEqual('06140507070011');
+  });
+
+  it('validate:0614-060707-101-0 (new NIT, weighted sum divisible by 11)', () => {
+    // Weighted sum % 11 === 0, so the check digit is (-0 % 11) % 10 = 0
+    const result = validate('0614-060707-101-0');
+
+    expect(result.isValid && result.compact).toEqual('06140607071010');
+  });
+
+  it('validate:0614-060707-101-1', () => {
+    const result = validate('0614-060707-101-1');
+
+    expect(result.error).toBeInstanceOf(InvalidChecksum);
+  });
 });

@@ -25,4 +25,25 @@ describe('ar/cbu', () => {
 
     expect(result.error).toBeInstanceOf(InvalidChecksum);
   });
+
+  // Regression: a check digit of 0 must be accepted. `10 - weightedSum(...)` yields
+  // 10 (not 0) when the weighted sum is 0, so without the `% 10` wrap these valid
+  // numbers were wrongly rejected as InvalidChecksum.
+  it('validate:0720429088000002339140', () => {
+    const result = validate('0720429088000002339140');
+
+    expect(result.isValid && result.compact).toEqual('0720429088000002339140');
+  });
+
+  it('validate:0000000000000000000000', () => {
+    const result = validate('0000000000000000000000');
+
+    expect(result.isValid && result.compact).toEqual('0000000000000000000000');
+  });
+
+  it('validate:0720429088000002339141', () => {
+    const result = validate('0720429088000002339141');
+
+    expect(result.error).toBeInstanceOf(InvalidChecksum);
+  });
 });
