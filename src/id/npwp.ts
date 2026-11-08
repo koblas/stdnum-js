@@ -96,10 +96,10 @@ const impl: Validator = {
     if (!strings.isdigits(value)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
-    if (!NPWP_TAX_IDENTITIES.includes(value.substr(0, 2))) {
+    if (!NPWP_TAX_IDENTITIES.includes(value.slice(0, 2))) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
-    if (!luhnChecksumValidate(value.substr(0, 9))) {
+    if (!luhnChecksumValidate(value.slice(0, 9))) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 

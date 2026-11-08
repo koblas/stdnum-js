@@ -22,7 +22,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
     return [value, err];
   }
   if (value.startsWith('BG')) {
-    return [value.substr(2), null];
+    return [value.slice(2), null];
   }
   return [value, err];
 }

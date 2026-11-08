@@ -50,7 +50,7 @@ const impl: Validator = {
     if (!r.isValid) {
       return r;
     }
-    if (value.substr(2, 3) !== '000') {
+    if (value.slice(2, 5) !== '000') {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 

@@ -26,7 +26,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
     return [value, err];
   }
   if (value.startsWith('UY')) {
-    return [value.substr(2), null];
+    return [value.slice(2), null];
   }
   return [value, err];
 }
@@ -63,13 +63,13 @@ const impl: Validator = {
     if (!strings.isdigits(value)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
-    if (parseInt(value.substr(0, 2), 10) > 21 || value.substr(0, 2) === '00') {
+    if (parseInt(value.slice(0, 2), 10) > 21 || value.slice(0, 2) === '00') {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
-    if (value.substr(2, 6) === '000000') {
+    if (value.slice(2, 8) === '000000') {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
-    if (value.substr(8, 3) !== '001') {
+    if (value.slice(8, 11) !== '001') {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 

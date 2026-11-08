@@ -83,7 +83,7 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
-    const sum = weightedSum(value.substr(0, 12), {
+    const sum = weightedSum(value.slice(0, 12), {
       modulus: 11,
       weights: [2, 3, 4, 5, 6, 7, 8, 9, 2, 3, 4, 5],
     });

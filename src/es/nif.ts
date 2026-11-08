@@ -26,7 +26,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
     return [value, err];
   }
   if (value.startsWith('ES')) {
-    return [value.substr(2), null];
+    return [value.slice(2), null];
   }
 
   return [value, null];
@@ -67,7 +67,7 @@ const impl: Validator = {
       // L: Spanish living outside Spain without DNI
       // M: granted the tax to foreigners who have no NIE
       // these use the old checkdigit algorithm (the DNI one)
-      if (value[value.length - 1] !== dni.calcCheckDigit(value.substr(1))) {
+      if (value[value.length - 1] !== dni.calcCheckDigit(value.slice(1))) {
         return { isValid: false, error: new exceptions.InvalidChecksum() };
       }
       return {

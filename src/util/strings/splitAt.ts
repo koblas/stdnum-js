@@ -9,7 +9,11 @@ export function splitAt(value: string, ...points: number[]): string[] {
     const np = nvalue < 0 ? value.length + nvalue : nvalue;
     const pp = p < 0 ? value.length + p : p;
 
-    return value.substr(pp, np - pp);
+    // Same as the former value.substr(pp, np - pp): a start that is still
+    // negative (a point before the start of a short value) counts from the end
+    const start = pp < 0 ? Math.max(value.length + pp, 0) : pp;
+
+    return value.slice(start, start + Math.max(np - pp, 0));
   });
 
   return parts.filter(v => v.length !== 0);

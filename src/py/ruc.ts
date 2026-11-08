@@ -43,9 +43,7 @@ const impl: Validator = {
   format(input: string): string {
     const [value] = clean(input);
 
-    return `${value.substr(0, value.length - 1)}-${value.substr(
-      value.length - 1,
-    )}`;
+    return `${value.slice(0, value.length - 1)}-${value.slice(value.length - 1)}`;
   },
 
   /**
