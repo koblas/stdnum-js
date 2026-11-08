@@ -64,7 +64,7 @@ function validateOldFormat(value: string): ValidateReturn {
     return { isValid: false, error: new exceptions.InvalidFormat() };
   }
 
-  const [county, serial, year] = value.substr(1).split('/');
+  const [county, serial, year] = value.slice(1).split('/');
 
   if (serial.length > 5) {
     return { isValid: false, error: new exceptions.InvalidLength() };
@@ -103,7 +103,7 @@ function isValidCounty(year: number, county: number): boolean {
 
 function validateNewFormat(value: string): ValidateReturn {
   // new YAAAAXXXXXXJJC format
-  if (!strings.isdigits(value.substr(1))) {
+  if (!strings.isdigits(value.slice(1))) {
     return { isValid: false, error: new exceptions.InvalidFormat() };
   }
   if (value.length !== 14) {
@@ -122,7 +122,7 @@ function validateNewFormat(value: string): ValidateReturn {
 
   // the letter counts as its character code modulo 10
   const sum = weightedSum(
-    String(value.charCodeAt(0) % 10) + value.substr(1, 12),
+    String(value.charCodeAt(0) % 10) + value.slice(1, 13),
     { modulus: 10 },
   );
 

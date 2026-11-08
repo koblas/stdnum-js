@@ -20,10 +20,10 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
     return [value, err];
   }
   if (value.startsWith('BE')) {
-    value = value.substr(2);
+    value = value.slice(2);
   }
   if (value.startsWith('(0)')) {
-    value = `0${value.substr(3)}`;
+    value = `0${value.slice(3)}`;
   }
   if (value.length === 9) {
     value = `0${value}`;

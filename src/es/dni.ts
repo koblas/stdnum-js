@@ -20,7 +20,7 @@ import { Validator, ValidateReturn } from '../types';
 const checkDigits = 'TRWAGMYFPDXBNJZSQVHLCKE';
 
 export function calcCheckDigit(value: string): string {
-  return checkDigits[parseInt(value.substr(0, 8), 10) % 23];
+  return checkDigits[parseInt(value.slice(0, 8), 10) % 23];
 }
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {

@@ -63,7 +63,7 @@ const impl: Validator = {
     const counter: Record<number, number> = {};
 
     value
-      .substr(0, 10)
+      .slice(0, 10)
       .split('')
       .map(v => parseInt(v, 10))
       .forEach(v => {

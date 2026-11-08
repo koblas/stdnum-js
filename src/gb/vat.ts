@@ -20,7 +20,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
     return [value, err];
   }
   if (value.startsWith('GB')) {
-    return [value.substr(2), null];
+    return [value.slice(2), null];
   }
   return [value, null];
 }
@@ -53,10 +53,10 @@ const impl: Validator = {
     }
 
     if (value.length === 5) {
-      if (!strings.isdigits(value.substr(2))) {
+      if (!strings.isdigits(value.slice(2))) {
         return { isValid: false, error: new exceptions.InvalidFormat() };
       }
-      const cvalue = parseInt(value.substr(2), 10);
+      const cvalue = parseInt(value.slice(2), 10);
       if (value.startsWith('GD') && cvalue >= 500) {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
@@ -67,24 +67,24 @@ const impl: Validator = {
       value.length === 11 &&
       (value.startsWith('GD8888') || value.startsWith('HA8888'))
     ) {
-      if (!strings.isdigits(value.substr(6))) {
+      if (!strings.isdigits(value.slice(6))) {
         return { isValid: false, error: new exceptions.InvalidFormat() };
       }
-      const cvalue = parseInt(value.substr(6, 3), 10);
+      const cvalue = parseInt(value.slice(6, 9), 10);
       if (value.startsWith('GD') && cvalue >= 500) {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
       if (value.startsWith('HA') && cvalue < 500) {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
-      if (cvalue % 97 !== parseInt(value.substr(9, 2), 10)) {
+      if (cvalue % 97 !== parseInt(value.slice(9, 11), 10)) {
         return { isValid: false, error: new exceptions.InvalidChecksum() };
       }
     } else if (value.length === 9 || value.length === 12) {
       if (!strings.isdigits(value)) {
         return { isValid: false, error: new exceptions.InvalidFormat() };
       }
-      const sum = weightedSum(value.substr(0, 9), {
+      const sum = weightedSum(value.slice(0, 9), {
         weights: [8, 7, 6, 5, 4, 3, 2, 10, 1],
         modulus: 97,
       });

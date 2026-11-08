@@ -39,7 +39,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
     return [value, err];
   }
   if (value.startsWith('SV')) {
-    return [value.substr(2), err];
+    return [value.slice(2), err];
   }
 
   return [value, err];
