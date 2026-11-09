@@ -61,11 +61,11 @@ const impl: Validator = {
 
     if (value.length === 9 && 'ABH'.includes(value[8])) {
       if (
-        value[7] !== calcCheckDigit(`${value.substr(0, 7)}${value.substr(8)}`)
+        value[7] !== calcCheckDigit(`${value.slice(0, 7)}${value.slice(8)}`)
       ) {
         return { isValid: false, error: new exceptions.InvalidChecksum() };
       }
-    } else if (value[7] !== calcCheckDigit(value.substr(0, 7))) {
+    } else if (value[7] !== calcCheckDigit(value.slice(0, 7))) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 

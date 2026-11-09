@@ -23,7 +23,7 @@ const ALPHABET = 'WABCDEFGHIJKLMNOPQRSTUV';
 export function calcCheckDigit(valueIn: string): string {
   const value = valueIn.padStart(7, '0');
   const d1 = value
-    .substr(0, 7)
+    .slice(0, 7)
     .split('')
     .reduce((acc, vv, idx) => {
       const v = Number.parseInt(vv, 10);
@@ -65,7 +65,7 @@ const impl: Validator = {
     if (value.length !== 8 && value.length !== 9) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
-    if (!strings.isdigits(value[0]) || !strings.isdigits(value.substr(2, 5))) {
+    if (!strings.isdigits(value[0]) || !strings.isdigits(value.slice(2, 7))) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
     const [front, end] = strings.splitAt(value, 7);
@@ -74,12 +74,12 @@ const impl: Validator = {
     }
     if (strings.isdigits(front)) {
       // 7 digits followed by 1 or 2 letters
-      if (value[7] !== calcCheckDigit(`${front}${value.substr(8)}`)) {
+      if (value[7] !== calcCheckDigit(`${front}${value.slice(8)}`)) {
         return { isValid: false, error: new exceptions.InvalidChecksum() };
       }
     } else if ('ABCDEFGHIJKLMNOPQRSTUVWXYZ+*'.includes(value[1])) {
       // old system, second character is number
-      if (value[7] !== calcCheckDigit(`${value.substr(2, 5)}${value[0]}`)) {
+      if (value[7] !== calcCheckDigit(`${value.slice(2, 7)}${value[0]}`)) {
         return { isValid: false, error: new exceptions.InvalidChecksum() };
       }
     } else {

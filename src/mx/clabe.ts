@@ -78,7 +78,7 @@ const impl: Validator = {
 
     const sum =
       (10 -
-        weightedSum(value.substr(0, 17), {
+        weightedSum(value.slice(0, 17), {
           weights: [3, 7, 1],
           modulus: 10,
         })) %

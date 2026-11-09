@@ -23,7 +23,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   }
 
   if (v.startsWith('CL')) {
-    return [v.substr(2), null];
+    return [v.slice(2), null];
   }
 
   return [v, null];

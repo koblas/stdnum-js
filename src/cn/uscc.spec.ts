@@ -31,4 +31,20 @@ describe('cn/uscc', () => {
 
     expect(result.error).toBeInstanceOf(InvalidChecksum);
   });
+
+  // Check character 0 (weighted sum % 31 === 0)
+  test.each(['91340600MA2PBP2120', '911522010783762860'])(
+    'validate:%s',
+    value => {
+      const result = validate(value);
+
+      expect(result.isValid).toEqual(true);
+    },
+  );
+
+  it('validate:91340600MA2PBP2121', () => {
+    const result = validate('91340600MA2PBP2121');
+
+    expect(result.error).toBeInstanceOf(InvalidChecksum);
+  });
 });

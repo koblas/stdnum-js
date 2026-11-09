@@ -16,7 +16,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   }
 
   if (value.startsWith('0000')) {
-    return [value.substr(4), null];
+    return [value.slice(4), null];
   }
 
   return [value, null];

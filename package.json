@@ -1,70 +1,676 @@
 {
   "name": "stdnum",
-  "version": "1.12.6",
+  "version": "1.15.0",
   "description": "Standard Number Validation",
   "files": [
     "README.md",
-    "LICENSE.txt",
+    "LICENSE.md",
     "lib",
-    "src"
+    "src",
+    "!**/*.spec.*"
   ],
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
   "types": "./lib/cjs/index.d.ts",
-  "exports_NOT_YET": {
-    "./": {
-      "import": "./lib/esm/",
-      "require": "./lib/cjs/"
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./lib/cjs/index.d.ts",
+      "node": "./lib/cjs/index.js",
+      "import": "./lib/esm/index.js",
+      "default": "./lib/cjs/index.js"
+    },
+    "./package.json": "./package.json",
+    "./ad": {
+      "types": "./lib/esm/ad/index.d.ts",
+      "node": "./lib/cjs/ad/index.js",
+      "import": "./lib/esm/ad/index.js",
+      "default": "./lib/cjs/ad/index.js"
+    },
+    "./af": {
+      "types": "./lib/esm/af/index.d.ts",
+      "node": "./lib/cjs/af/index.js",
+      "import": "./lib/esm/af/index.js",
+      "default": "./lib/cjs/af/index.js"
+    },
+    "./ai": {
+      "types": "./lib/esm/ai/index.d.ts",
+      "node": "./lib/cjs/ai/index.js",
+      "import": "./lib/esm/ai/index.js",
+      "default": "./lib/cjs/ai/index.js"
+    },
+    "./al": {
+      "types": "./lib/esm/al/index.d.ts",
+      "node": "./lib/cjs/al/index.js",
+      "import": "./lib/esm/al/index.js",
+      "default": "./lib/cjs/al/index.js"
+    },
+    "./am": {
+      "types": "./lib/esm/am/index.d.ts",
+      "node": "./lib/cjs/am/index.js",
+      "import": "./lib/esm/am/index.js",
+      "default": "./lib/cjs/am/index.js"
+    },
+    "./ao": {
+      "types": "./lib/esm/ao/index.d.ts",
+      "node": "./lib/cjs/ao/index.js",
+      "import": "./lib/esm/ao/index.js",
+      "default": "./lib/cjs/ao/index.js"
+    },
+    "./ar": {
+      "types": "./lib/esm/ar/index.d.ts",
+      "node": "./lib/cjs/ar/index.js",
+      "import": "./lib/esm/ar/index.js",
+      "default": "./lib/cjs/ar/index.js"
+    },
+    "./at": {
+      "types": "./lib/esm/at/index.d.ts",
+      "node": "./lib/cjs/at/index.js",
+      "import": "./lib/esm/at/index.js",
+      "default": "./lib/cjs/at/index.js"
+    },
+    "./au": {
+      "types": "./lib/esm/au/index.d.ts",
+      "node": "./lib/cjs/au/index.js",
+      "import": "./lib/esm/au/index.js",
+      "default": "./lib/cjs/au/index.js"
+    },
+    "./aw": {
+      "types": "./lib/esm/aw/index.d.ts",
+      "node": "./lib/cjs/aw/index.js",
+      "import": "./lib/esm/aw/index.js",
+      "default": "./lib/cjs/aw/index.js"
+    },
+    "./az": {
+      "types": "./lib/esm/az/index.d.ts",
+      "node": "./lib/cjs/az/index.js",
+      "import": "./lib/esm/az/index.js",
+      "default": "./lib/cjs/az/index.js"
+    },
+    "./ba": {
+      "types": "./lib/esm/ba/index.d.ts",
+      "node": "./lib/cjs/ba/index.js",
+      "import": "./lib/esm/ba/index.js",
+      "default": "./lib/cjs/ba/index.js"
+    },
+    "./bb": {
+      "types": "./lib/esm/bb/index.d.ts",
+      "node": "./lib/cjs/bb/index.js",
+      "import": "./lib/esm/bb/index.js",
+      "default": "./lib/cjs/bb/index.js"
+    },
+    "./be": {
+      "types": "./lib/esm/be/index.d.ts",
+      "node": "./lib/cjs/be/index.js",
+      "import": "./lib/esm/be/index.js",
+      "default": "./lib/cjs/be/index.js"
+    },
+    "./bg": {
+      "types": "./lib/esm/bg/index.d.ts",
+      "node": "./lib/cjs/bg/index.js",
+      "import": "./lib/esm/bg/index.js",
+      "default": "./lib/cjs/bg/index.js"
+    },
+    "./bh": {
+      "types": "./lib/esm/bh/index.d.ts",
+      "node": "./lib/cjs/bh/index.js",
+      "import": "./lib/esm/bh/index.js",
+      "default": "./lib/cjs/bh/index.js"
+    },
+    "./bo": {
+      "types": "./lib/esm/bo/index.d.ts",
+      "node": "./lib/cjs/bo/index.js",
+      "import": "./lib/esm/bo/index.js",
+      "default": "./lib/cjs/bo/index.js"
+    },
+    "./br": {
+      "types": "./lib/esm/br/index.d.ts",
+      "node": "./lib/cjs/br/index.js",
+      "import": "./lib/esm/br/index.js",
+      "default": "./lib/cjs/br/index.js"
+    },
+    "./by": {
+      "types": "./lib/esm/by/index.d.ts",
+      "node": "./lib/cjs/by/index.js",
+      "import": "./lib/esm/by/index.js",
+      "default": "./lib/cjs/by/index.js"
+    },
+    "./bz": {
+      "types": "./lib/esm/bz/index.d.ts",
+      "node": "./lib/cjs/bz/index.js",
+      "import": "./lib/esm/bz/index.js",
+      "default": "./lib/cjs/bz/index.js"
+    },
+    "./ca": {
+      "types": "./lib/esm/ca/index.d.ts",
+      "node": "./lib/cjs/ca/index.js",
+      "import": "./lib/esm/ca/index.js",
+      "default": "./lib/cjs/ca/index.js"
+    },
+    "./ch": {
+      "types": "./lib/esm/ch/index.d.ts",
+      "node": "./lib/cjs/ch/index.js",
+      "import": "./lib/esm/ch/index.js",
+      "default": "./lib/cjs/ch/index.js"
+    },
+    "./ck": {
+      "types": "./lib/esm/ck/index.d.ts",
+      "node": "./lib/cjs/ck/index.js",
+      "import": "./lib/esm/ck/index.js",
+      "default": "./lib/cjs/ck/index.js"
+    },
+    "./cl": {
+      "types": "./lib/esm/cl/index.d.ts",
+      "node": "./lib/cjs/cl/index.js",
+      "import": "./lib/esm/cl/index.js",
+      "default": "./lib/cjs/cl/index.js"
+    },
+    "./cn": {
+      "types": "./lib/esm/cn/index.d.ts",
+      "node": "./lib/cjs/cn/index.js",
+      "import": "./lib/esm/cn/index.js",
+      "default": "./lib/cjs/cn/index.js"
+    },
+    "./co": {
+      "types": "./lib/esm/co/index.d.ts",
+      "node": "./lib/cjs/co/index.js",
+      "import": "./lib/esm/co/index.js",
+      "default": "./lib/cjs/co/index.js"
+    },
+    "./cr": {
+      "types": "./lib/esm/cr/index.d.ts",
+      "node": "./lib/cjs/cr/index.js",
+      "import": "./lib/esm/cr/index.js",
+      "default": "./lib/cjs/cr/index.js"
+    },
+    "./cu": {
+      "types": "./lib/esm/cu/index.d.ts",
+      "node": "./lib/cjs/cu/index.js",
+      "import": "./lib/esm/cu/index.js",
+      "default": "./lib/cjs/cu/index.js"
+    },
+    "./cw": {
+      "types": "./lib/esm/cw/index.d.ts",
+      "node": "./lib/cjs/cw/index.js",
+      "import": "./lib/esm/cw/index.js",
+      "default": "./lib/cjs/cw/index.js"
+    },
+    "./cy": {
+      "types": "./lib/esm/cy/index.d.ts",
+      "node": "./lib/cjs/cy/index.js",
+      "import": "./lib/esm/cy/index.js",
+      "default": "./lib/cjs/cy/index.js"
+    },
+    "./cz": {
+      "types": "./lib/esm/cz/index.d.ts",
+      "node": "./lib/cjs/cz/index.js",
+      "import": "./lib/esm/cz/index.js",
+      "default": "./lib/cjs/cz/index.js"
+    },
+    "./de": {
+      "types": "./lib/esm/de/index.d.ts",
+      "node": "./lib/cjs/de/index.js",
+      "import": "./lib/esm/de/index.js",
+      "default": "./lib/cjs/de/index.js"
+    },
+    "./dk": {
+      "types": "./lib/esm/dk/index.d.ts",
+      "node": "./lib/cjs/dk/index.js",
+      "import": "./lib/esm/dk/index.js",
+      "default": "./lib/cjs/dk/index.js"
+    },
+    "./do": {
+      "types": "./lib/esm/do/index.d.ts",
+      "node": "./lib/cjs/do/index.js",
+      "import": "./lib/esm/do/index.js",
+      "default": "./lib/cjs/do/index.js"
+    },
+    "./dz": {
+      "types": "./lib/esm/dz/index.d.ts",
+      "node": "./lib/cjs/dz/index.js",
+      "import": "./lib/esm/dz/index.js",
+      "default": "./lib/cjs/dz/index.js"
+    },
+    "./ec": {
+      "types": "./lib/esm/ec/index.d.ts",
+      "node": "./lib/cjs/ec/index.js",
+      "import": "./lib/esm/ec/index.js",
+      "default": "./lib/cjs/ec/index.js"
+    },
+    "./ee": {
+      "types": "./lib/esm/ee/index.d.ts",
+      "node": "./lib/cjs/ee/index.js",
+      "import": "./lib/esm/ee/index.js",
+      "default": "./lib/cjs/ee/index.js"
+    },
+    "./eg": {
+      "types": "./lib/esm/eg/index.d.ts",
+      "node": "./lib/cjs/eg/index.js",
+      "import": "./lib/esm/eg/index.js",
+      "default": "./lib/cjs/eg/index.js"
+    },
+    "./es": {
+      "types": "./lib/esm/es/index.d.ts",
+      "node": "./lib/cjs/es/index.js",
+      "import": "./lib/esm/es/index.js",
+      "default": "./lib/cjs/es/index.js"
+    },
+    "./fi": {
+      "types": "./lib/esm/fi/index.d.ts",
+      "node": "./lib/cjs/fi/index.js",
+      "import": "./lib/esm/fi/index.js",
+      "default": "./lib/cjs/fi/index.js"
+    },
+    "./fj": {
+      "types": "./lib/esm/fj/index.d.ts",
+      "node": "./lib/cjs/fj/index.js",
+      "import": "./lib/esm/fj/index.js",
+      "default": "./lib/cjs/fj/index.js"
+    },
+    "./fo": {
+      "types": "./lib/esm/fo/index.d.ts",
+      "node": "./lib/cjs/fo/index.js",
+      "import": "./lib/esm/fo/index.js",
+      "default": "./lib/cjs/fo/index.js"
+    },
+    "./fr": {
+      "types": "./lib/esm/fr/index.d.ts",
+      "node": "./lib/cjs/fr/index.js",
+      "import": "./lib/esm/fr/index.js",
+      "default": "./lib/cjs/fr/index.js"
+    },
+    "./gb": {
+      "types": "./lib/esm/gb/index.d.ts",
+      "node": "./lib/cjs/gb/index.js",
+      "import": "./lib/esm/gb/index.js",
+      "default": "./lib/cjs/gb/index.js"
+    },
+    "./gd": {
+      "types": "./lib/esm/gd/index.d.ts",
+      "node": "./lib/cjs/gd/index.js",
+      "import": "./lib/esm/gd/index.js",
+      "default": "./lib/cjs/gd/index.js"
+    },
+    "./ge": {
+      "types": "./lib/esm/ge/index.d.ts",
+      "node": "./lib/cjs/ge/index.js",
+      "import": "./lib/esm/ge/index.js",
+      "default": "./lib/cjs/ge/index.js"
+    },
+    "./gh": {
+      "types": "./lib/esm/gh/index.d.ts",
+      "node": "./lib/cjs/gh/index.js",
+      "import": "./lib/esm/gh/index.js",
+      "default": "./lib/cjs/gh/index.js"
+    },
+    "./gn": {
+      "types": "./lib/esm/gn/index.d.ts",
+      "node": "./lib/cjs/gn/index.js",
+      "import": "./lib/esm/gn/index.js",
+      "default": "./lib/cjs/gn/index.js"
+    },
+    "./gr": {
+      "types": "./lib/esm/gr/index.d.ts",
+      "node": "./lib/cjs/gr/index.js",
+      "import": "./lib/esm/gr/index.js",
+      "default": "./lib/cjs/gr/index.js"
+    },
+    "./gt": {
+      "types": "./lib/esm/gt/index.d.ts",
+      "node": "./lib/cjs/gt/index.js",
+      "import": "./lib/esm/gt/index.js",
+      "default": "./lib/cjs/gt/index.js"
+    },
+    "./hk": {
+      "types": "./lib/esm/hk/index.d.ts",
+      "node": "./lib/cjs/hk/index.js",
+      "import": "./lib/esm/hk/index.js",
+      "default": "./lib/cjs/hk/index.js"
+    },
+    "./hr": {
+      "types": "./lib/esm/hr/index.d.ts",
+      "node": "./lib/cjs/hr/index.js",
+      "import": "./lib/esm/hr/index.js",
+      "default": "./lib/cjs/hr/index.js"
+    },
+    "./hu": {
+      "types": "./lib/esm/hu/index.d.ts",
+      "node": "./lib/cjs/hu/index.js",
+      "import": "./lib/esm/hu/index.js",
+      "default": "./lib/cjs/hu/index.js"
+    },
+    "./id": {
+      "types": "./lib/esm/id/index.d.ts",
+      "node": "./lib/cjs/id/index.js",
+      "import": "./lib/esm/id/index.js",
+      "default": "./lib/cjs/id/index.js"
+    },
+    "./ie": {
+      "types": "./lib/esm/ie/index.d.ts",
+      "node": "./lib/cjs/ie/index.js",
+      "import": "./lib/esm/ie/index.js",
+      "default": "./lib/cjs/ie/index.js"
+    },
+    "./il": {
+      "types": "./lib/esm/il/index.d.ts",
+      "node": "./lib/cjs/il/index.js",
+      "import": "./lib/esm/il/index.js",
+      "default": "./lib/cjs/il/index.js"
+    },
+    "./in": {
+      "types": "./lib/esm/in/index.d.ts",
+      "node": "./lib/cjs/in/index.js",
+      "import": "./lib/esm/in/index.js",
+      "default": "./lib/cjs/in/index.js"
+    },
+    "./is": {
+      "types": "./lib/esm/is/index.d.ts",
+      "node": "./lib/cjs/is/index.js",
+      "import": "./lib/esm/is/index.js",
+      "default": "./lib/cjs/is/index.js"
+    },
+    "./it": {
+      "types": "./lib/esm/it/index.d.ts",
+      "node": "./lib/cjs/it/index.js",
+      "import": "./lib/esm/it/index.js",
+      "default": "./lib/cjs/it/index.js"
+    },
+    "./jp": {
+      "types": "./lib/esm/jp/index.d.ts",
+      "node": "./lib/cjs/jp/index.js",
+      "import": "./lib/esm/jp/index.js",
+      "default": "./lib/cjs/jp/index.js"
+    },
+    "./ke": {
+      "types": "./lib/esm/ke/index.d.ts",
+      "node": "./lib/cjs/ke/index.js",
+      "import": "./lib/esm/ke/index.js",
+      "default": "./lib/cjs/ke/index.js"
+    },
+    "./kr": {
+      "types": "./lib/esm/kr/index.d.ts",
+      "node": "./lib/cjs/kr/index.js",
+      "import": "./lib/esm/kr/index.js",
+      "default": "./lib/cjs/kr/index.js"
+    },
+    "./li": {
+      "types": "./lib/esm/li/index.d.ts",
+      "node": "./lib/cjs/li/index.js",
+      "import": "./lib/esm/li/index.js",
+      "default": "./lib/cjs/li/index.js"
+    },
+    "./lt": {
+      "types": "./lib/esm/lt/index.d.ts",
+      "node": "./lib/cjs/lt/index.js",
+      "import": "./lib/esm/lt/index.js",
+      "default": "./lib/cjs/lt/index.js"
+    },
+    "./lu": {
+      "types": "./lib/esm/lu/index.d.ts",
+      "node": "./lib/cjs/lu/index.js",
+      "import": "./lib/esm/lu/index.js",
+      "default": "./lib/cjs/lu/index.js"
+    },
+    "./lv": {
+      "types": "./lib/esm/lv/index.d.ts",
+      "node": "./lib/cjs/lv/index.js",
+      "import": "./lib/esm/lv/index.js",
+      "default": "./lib/cjs/lv/index.js"
+    },
+    "./ma": {
+      "types": "./lib/esm/ma/index.d.ts",
+      "node": "./lib/cjs/ma/index.js",
+      "import": "./lib/esm/ma/index.js",
+      "default": "./lib/cjs/ma/index.js"
+    },
+    "./mc": {
+      "types": "./lib/esm/mc/index.d.ts",
+      "node": "./lib/cjs/mc/index.js",
+      "import": "./lib/esm/mc/index.js",
+      "default": "./lib/cjs/mc/index.js"
+    },
+    "./md": {
+      "types": "./lib/esm/md/index.d.ts",
+      "node": "./lib/cjs/md/index.js",
+      "import": "./lib/esm/md/index.js",
+      "default": "./lib/cjs/md/index.js"
+    },
+    "./me": {
+      "types": "./lib/esm/me/index.d.ts",
+      "node": "./lib/cjs/me/index.js",
+      "import": "./lib/esm/me/index.js",
+      "default": "./lib/cjs/me/index.js"
+    },
+    "./mk": {
+      "types": "./lib/esm/mk/index.d.ts",
+      "node": "./lib/cjs/mk/index.js",
+      "import": "./lib/esm/mk/index.js",
+      "default": "./lib/cjs/mk/index.js"
+    },
+    "./mt": {
+      "types": "./lib/esm/mt/index.d.ts",
+      "node": "./lib/cjs/mt/index.js",
+      "import": "./lib/esm/mt/index.js",
+      "default": "./lib/cjs/mt/index.js"
+    },
+    "./mu": {
+      "types": "./lib/esm/mu/index.d.ts",
+      "node": "./lib/cjs/mu/index.js",
+      "import": "./lib/esm/mu/index.js",
+      "default": "./lib/cjs/mu/index.js"
+    },
+    "./mx": {
+      "types": "./lib/esm/mx/index.d.ts",
+      "node": "./lib/cjs/mx/index.js",
+      "import": "./lib/esm/mx/index.js",
+      "default": "./lib/cjs/mx/index.js"
+    },
+    "./my": {
+      "types": "./lib/esm/my/index.d.ts",
+      "node": "./lib/cjs/my/index.js",
+      "import": "./lib/esm/my/index.js",
+      "default": "./lib/cjs/my/index.js"
+    },
+    "./mz": {
+      "types": "./lib/esm/mz/index.d.ts",
+      "node": "./lib/cjs/mz/index.js",
+      "import": "./lib/esm/mz/index.js",
+      "default": "./lib/cjs/mz/index.js"
+    },
+    "./nl": {
+      "types": "./lib/esm/nl/index.d.ts",
+      "node": "./lib/cjs/nl/index.js",
+      "import": "./lib/esm/nl/index.js",
+      "default": "./lib/cjs/nl/index.js"
+    },
+    "./no": {
+      "types": "./lib/esm/no/index.d.ts",
+      "node": "./lib/cjs/no/index.js",
+      "import": "./lib/esm/no/index.js",
+      "default": "./lib/cjs/no/index.js"
+    },
+    "./nz": {
+      "types": "./lib/esm/nz/index.d.ts",
+      "node": "./lib/cjs/nz/index.js",
+      "import": "./lib/esm/nz/index.js",
+      "default": "./lib/cjs/nz/index.js"
+    },
+    "./pe": {
+      "types": "./lib/esm/pe/index.d.ts",
+      "node": "./lib/cjs/pe/index.js",
+      "import": "./lib/esm/pe/index.js",
+      "default": "./lib/cjs/pe/index.js"
+    },
+    "./pk": {
+      "types": "./lib/esm/pk/index.d.ts",
+      "node": "./lib/cjs/pk/index.js",
+      "import": "./lib/esm/pk/index.js",
+      "default": "./lib/cjs/pk/index.js"
+    },
+    "./pl": {
+      "types": "./lib/esm/pl/index.d.ts",
+      "node": "./lib/cjs/pl/index.js",
+      "import": "./lib/esm/pl/index.js",
+      "default": "./lib/cjs/pl/index.js"
+    },
+    "./pt": {
+      "types": "./lib/esm/pt/index.d.ts",
+      "node": "./lib/cjs/pt/index.js",
+      "import": "./lib/esm/pt/index.js",
+      "default": "./lib/cjs/pt/index.js"
+    },
+    "./py": {
+      "types": "./lib/esm/py/index.d.ts",
+      "node": "./lib/cjs/py/index.js",
+      "import": "./lib/esm/py/index.js",
+      "default": "./lib/cjs/py/index.js"
+    },
+    "./ro": {
+      "types": "./lib/esm/ro/index.d.ts",
+      "node": "./lib/cjs/ro/index.js",
+      "import": "./lib/esm/ro/index.js",
+      "default": "./lib/cjs/ro/index.js"
+    },
+    "./rs": {
+      "types": "./lib/esm/rs/index.d.ts",
+      "node": "./lib/cjs/rs/index.js",
+      "import": "./lib/esm/rs/index.js",
+      "default": "./lib/cjs/rs/index.js"
+    },
+    "./ru": {
+      "types": "./lib/esm/ru/index.d.ts",
+      "node": "./lib/cjs/ru/index.js",
+      "import": "./lib/esm/ru/index.js",
+      "default": "./lib/cjs/ru/index.js"
+    },
+    "./sc": {
+      "types": "./lib/esm/sc/index.d.ts",
+      "node": "./lib/cjs/sc/index.js",
+      "import": "./lib/esm/sc/index.js",
+      "default": "./lib/cjs/sc/index.js"
+    },
+    "./se": {
+      "types": "./lib/esm/se/index.d.ts",
+      "node": "./lib/cjs/se/index.js",
+      "import": "./lib/esm/se/index.js",
+      "default": "./lib/cjs/se/index.js"
+    },
+    "./sg": {
+      "types": "./lib/esm/sg/index.d.ts",
+      "node": "./lib/cjs/sg/index.js",
+      "import": "./lib/esm/sg/index.js",
+      "default": "./lib/cjs/sg/index.js"
+    },
+    "./si": {
+      "types": "./lib/esm/si/index.d.ts",
+      "node": "./lib/cjs/si/index.js",
+      "import": "./lib/esm/si/index.js",
+      "default": "./lib/cjs/si/index.js"
+    },
+    "./sk": {
+      "types": "./lib/esm/sk/index.d.ts",
+      "node": "./lib/cjs/sk/index.js",
+      "import": "./lib/esm/sk/index.js",
+      "default": "./lib/cjs/sk/index.js"
+    },
+    "./sm": {
+      "types": "./lib/esm/sm/index.d.ts",
+      "node": "./lib/cjs/sm/index.js",
+      "import": "./lib/esm/sm/index.js",
+      "default": "./lib/cjs/sm/index.js"
+    },
+    "./sv": {
+      "types": "./lib/esm/sv/index.d.ts",
+      "node": "./lib/cjs/sv/index.js",
+      "import": "./lib/esm/sv/index.js",
+      "default": "./lib/cjs/sv/index.js"
+    },
+    "./th": {
+      "types": "./lib/esm/th/index.d.ts",
+      "node": "./lib/cjs/th/index.js",
+      "import": "./lib/esm/th/index.js",
+      "default": "./lib/cjs/th/index.js"
+    },
+    "./tn": {
+      "types": "./lib/esm/tn/index.d.ts",
+      "node": "./lib/cjs/tn/index.js",
+      "import": "./lib/esm/tn/index.js",
+      "default": "./lib/cjs/tn/index.js"
+    },
+    "./tr": {
+      "types": "./lib/esm/tr/index.d.ts",
+      "node": "./lib/cjs/tr/index.js",
+      "import": "./lib/esm/tr/index.js",
+      "default": "./lib/cjs/tr/index.js"
+    },
+    "./tw": {
+      "types": "./lib/esm/tw/index.d.ts",
+      "node": "./lib/cjs/tw/index.js",
+      "import": "./lib/esm/tw/index.js",
+      "default": "./lib/cjs/tw/index.js"
+    },
+    "./ua": {
+      "types": "./lib/esm/ua/index.d.ts",
+      "node": "./lib/cjs/ua/index.js",
+      "import": "./lib/esm/ua/index.js",
+      "default": "./lib/cjs/ua/index.js"
+    },
+    "./us": {
+      "types": "./lib/esm/us/index.d.ts",
+      "node": "./lib/cjs/us/index.js",
+      "import": "./lib/esm/us/index.js",
+      "default": "./lib/cjs/us/index.js"
+    },
+    "./uy": {
+      "types": "./lib/esm/uy/index.d.ts",
+      "node": "./lib/cjs/uy/index.js",
+      "import": "./lib/esm/uy/index.js",
+      "default": "./lib/cjs/uy/index.js"
+    },
+    "./ve": {
+      "types": "./lib/esm/ve/index.d.ts",
+      "node": "./lib/cjs/ve/index.js",
+      "import": "./lib/esm/ve/index.js",
+      "default": "./lib/cjs/ve/index.js"
+    },
+    "./vn": {
+      "types": "./lib/esm/vn/index.d.ts",
+      "node": "./lib/cjs/vn/index.js",
+      "import": "./lib/esm/vn/index.js",
+      "default": "./lib/cjs/vn/index.js"
+    },
+    "./za": {
+      "types": "./lib/esm/za/index.d.ts",
+      "node": "./lib/cjs/za/index.js",
+      "import": "./lib/esm/za/index.js",
+      "default": "./lib/cjs/za/index.js"
+    },
+    "./lib/esm/*.js": "./lib/esm/*.js",
+    "./lib/esm/*": "./lib/esm/*.js",
+    "./lib/cjs/*.js": "./lib/cjs/*.js",
+    "./lib/cjs/*": "./lib/cjs/*.js",
+    "./src/*": "./src/*",
+    "./*": {
+      "types": "./lib/esm/*.d.ts",
+      "node": "./lib/cjs/*.js",
+      "import": "./lib/esm/*.js",
+      "default": "./lib/cjs/*.js"
     }
-  },
-  "overrides": {
-    "minimatch": "^9.0.7"
-  },
-  "release": {
-    "branches": [
-      "main"
-    ],
-    "plugins": [
-      "@semantic-release/commit-analyzer",
-      "@semantic-release/npm",
-      [
-        "@semantic-release/git",
-        {
-          "assets": [
-            "package.json"
-          ],
-          "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
-        }
-      ]
-    ]
   },
   "scripts": {
     "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "eslint src",
-    "test": "jest",
+    "lint": "eslint src && tsc --noEmit -p tsconfig-lint.json",
+    "test": "vitest run",
     "build": "tsc",
     "prepublishOnly:esm": "tsc -p tsconfig.json",
     "prepublishOnly:cjs": "tsc -p tsconfig-cjs.json",
-    "prepublishOnly": "npm run prepublishOnly:esm && npm run prepublishOnly:cjs"
+    "prepublishOnly": "npm run prepublishOnly:esm && npm run prepublishOnly:cjs",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage",
+    "lint:package": "publint --level error && attw --pack . --entrypoints . && attw --pack . --profile node16 --include-entrypoints gb/nino lib/cjs/gb/nino"
   },
   "publishConfig": {
     "provenance": true
-  },
-  "jest": {
-    "moduleFileExtensions": [
-      "ts",
-      "js"
-    ],
-    "roots": [
-      "<rootDir>/src"
-    ],
-    "transform": {
-      "^.+\\.(ts|tsx)$": "ts-jest"
-    },
-    "testMatch": [
-      "**/__tests__/**/*.+(ts|tsx|js)",
-      "**/?(*.)+(spec|test).+(ts|tsx|js)"
-    ]
   },
   "author": "David Koblas",
   "keywords": [
@@ -81,18 +687,16 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.5",
     "@eslint/js": "^10.0.1",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/git": "^10.0.1",
-    "@types/jest": "^30.0.0",
-    "eslint": "^10.1.0",
+    "@types/node": "^24.19.2",
+    "@vitest/coverage-v8": "^5.0.5",
+    "eslint": "^10.13.0",
     "eslint-config-prettier": "^10.0.1",
-    "jest": "^30.2.0",
     "prettier": "^3.4.2",
-    "prettier-eslint": "^16.3.0",
-    "semantic-release": "^25.0.1",
-    "ts-jest": "^29.1.0",
-    "typescript": "^5.7.3",
-    "typescript-eslint": "^8.57.1"
+    "publint": "^0.3.25",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.71.2",
+    "vitest": "^5.0.5"
   }
 }

@@ -63,14 +63,14 @@ const impl: Validator = {
     const counter: Record<number, number> = {};
 
     value
-      .substr(0, 10)
+      .slice(0, 10)
       .split('')
       .map(v => parseInt(v, 10))
       .forEach(v => {
         counter[v] = (counter[v] ?? 0) + 1;
       });
     const more = Object.values(counter).filter(v => v > 1);
-    if (more.length !== 1 && [2, 3].includes(more[0])) {
+    if (more.length !== 1 || ![2, 3].includes(more[0])) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 

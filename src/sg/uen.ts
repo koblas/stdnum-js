@@ -143,7 +143,7 @@ function validateOther(value: string): ValidateReturn {
 
   const digit =
     alphabet[
-      (weightedSum(value.substr(0, 9), {
+      (weightedSum(value.slice(0, 9), {
         weights: [4, 3, 5, 3, 10, 2, 2, 5, 7],
         modulus: 11,
         alphabet,

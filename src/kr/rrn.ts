@@ -11,10 +11,18 @@
  * Koreans or the issuing agency for foreigners, followed by two digits for the
  * community center number, one serial number and a check digit.
  *
+ * Since October 2020 the six digits after the century/gender digit of a newly
+ * issued (or changed) number are random, so they carry no place of birth and
+ * no computable check digit. The issue date can't be read from the number, so
+ * for anyone born in 2020 or later only the length, digits and birth date are
+ * checked. Replacement numbers issued since 2020 to people born earlier will
+ * still fail the check digit.
+ *
  * Source:
  *   http://www.law.go.kr/lsSc.do?tabMenuId=tab18&p1=&subMenu=1&nwYn=1&section=&tabNo=&query=개인정보+보호법
  *   https://en.wikipedia.org/wiki/Resident_registration_number
  *   https://techscience.org/a/2015092901/
+ *   https://www.fnnews.com/news/202006291754239525
  *
  * PERSON
  */
@@ -76,14 +84,26 @@ const impl: Validator = {
 
     const [dob, century, place, , check] = strings.splitAt(value, 6, 7, 9, 12);
 
-    if (!isValidDateCompactYYYYMMDD(`${centuryPrefix[century]}${dob}`, true)) {
+    const birthDate = `${centuryPrefix[century]}${dob}`;
+    if (!isValidDateCompactYYYYMMDD(birthDate, true)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
+
+    // Numbers issued since October 2020 end in six random digits
+    if (parseInt(birthDate.slice(0, 4), 10) >= 2020) {
+      return {
+        isValid: true,
+        compact: value,
+        isIndividual: true,
+        isCompany: false,
+      };
+    }
+
     if (parseInt(place, 10) > 96) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
-    const sum = weightedSum(value.substr(0, 12), {
+    const sum = weightedSum(value.slice(0, 12), {
       modulus: 11,
       weights: [2, 3, 4, 5, 6, 7, 8, 9, 2, 3, 4, 5],
     });
