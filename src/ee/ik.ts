@@ -61,7 +61,7 @@ export function ikCheckDate(value: string): boolean {
       return false;
   }
 
-  return isValidDateCompactYYYYMMDD(`${century}${value.substr(1, 6)}`, true);
+  return isValidDateCompactYYYYMMDD(`${century}${value.slice(1, 7)}`, true);
 }
 
 const impl: Validator = {

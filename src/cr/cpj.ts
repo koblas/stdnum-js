@@ -94,7 +94,7 @@ const impl: Validator = {
     if (!items) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
-    if (!items.includes(value.substr(1, 3))) {
+    if (!items.includes(value.slice(1, 4))) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 

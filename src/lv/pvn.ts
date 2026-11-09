@@ -62,7 +62,12 @@ const impl: Validator = {
     if (isIndividual) {
       const [dd, mm, yy, century] = strings.splitAt(value, 2, 4, 6, 7);
 
-      if (!isValidDate(`${18 + parseInt(century, 10)}${yy}`, mm, dd, true)) {
+      // Personal codes issued since 2017-07-01 start with 32 and carry no
+      // birth date, so only the check digit applies to them
+      if (
+        !value.startsWith('32') &&
+        !isValidDate(`${18 + parseInt(century, 10)}${yy}`, mm, dd, true)
+      ) {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
 

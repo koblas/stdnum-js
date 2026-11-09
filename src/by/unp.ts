@@ -31,7 +31,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 
   const v2 = PREFIX.reduce(
     (acc: string | null, p) =>
-      acc || (!value.startsWith(p) ? acc : value.substr(p.length)),
+      acc || (!value.startsWith(p) ? acc : value.slice(p.length)),
     null,
   );
 
@@ -67,7 +67,7 @@ const impl: Validator = {
     if (value.length !== 9) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
-    if (!strings.isdigits(value.substr(2))) {
+    if (!strings.isdigits(value.slice(2))) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
     if (!strings.isdigits(value[0]) && !'1234567ABCEHKM'.includes(value[0])) {
@@ -80,9 +80,9 @@ const impl: Validator = {
     const [front, check] = strings.splitAt(value, -1);
 
     let frontClean = front;
-    if (!strings.isdigits(front.substr(0, 2))) {
+    if (!strings.isdigits(front.slice(0, 2))) {
       const vv = String('ABCEHKMOPT'.indexOf(front[1]));
-      frontClean = `${front[0]}${vv}${front.substr(2)}`;
+      frontClean = `${front[0]}${vv}${front.slice(2)}`;
     }
 
     const sum = weightedSum(frontClean, {

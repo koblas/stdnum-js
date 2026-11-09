@@ -43,9 +43,7 @@ const impl: Validator = {
   format(input: string): string {
     const [value] = clean(input);
 
-    return `${value.substr(0, value.length - 1)}-${value.substr(
-      value.length - 1,
-    )}`;
+    return `${value.slice(0, value.length - 1)}-${value.slice(value.length - 1)}`;
   },
 
   /**
@@ -74,7 +72,7 @@ const impl: Validator = {
       .map(x => parseInt(x, 10))
       .reduce((acc, digit, idx) => acc + digit * (idx + 2), 0);
 
-    const digit = String((11 - (sum % 11)) % 10);
+    const digit = String(((11 - (sum % 11)) % 11) % 10);
 
     if (check !== digit) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };

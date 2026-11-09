@@ -9,6 +9,20 @@ export default tseslint.config(
   tseslint.configs.stylistic,
   eslintConfigPrettier,
   {
-    ignores: ['lib/*', '.eslintrc.js', 'release.config.js'],
+    ignores: ['lib/*'],
+  },
+  {
+    rules: {
+      // String.prototype.substr is a legacy (Annex B) method, and its
+      // (start, length) arguments are easy to confuse with substring's
+      // (start, end).
+      'no-restricted-properties': [
+        'error',
+        {
+          property: 'substr',
+          message: 'Use slice() instead (substr is a legacy method).',
+        },
+      ],
+    },
   },
 );

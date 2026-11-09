@@ -87,13 +87,13 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
-    const digit = weightedSum(value.substr(0, 17), {
+    const digit = weightedSum(value.slice(0, 17), {
       weights: [1, 3, 9, 27, 19, 26, 16, 17, 20, 29, 25, 13, 8, 24, 10, 30, 28],
       modulus: 31,
       alphabet,
     });
 
-    if (alphabet[31 - digit] !== check) {
+    if (alphabet[(31 - digit) % 31] !== check) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 

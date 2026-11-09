@@ -114,4 +114,11 @@ describe('be/nn', () => {
     const result = validate(id);
     expect(result.isValid && result.compact).toEqual(id);
   });
+
+  // The check is 97 - (basis % 97), never 98 (which only (basis + check) % 97 accepts)
+  it('validate:20000100198', () => {
+    const result = validate('20000100198');
+
+    expect(result.error).toBeInstanceOf(InvalidChecksum);
+  });
 });

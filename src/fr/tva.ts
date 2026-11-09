@@ -24,7 +24,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
     return [value, err];
   }
   if (value.startsWith('FR')) {
-    return [value.substr(2), null];
+    return [value.slice(2), null];
   }
 
   return [value, null];
@@ -71,7 +71,7 @@ const impl: Validator = {
     }
     // numbers from Monaco are valid TVA but not SIREN
     if (value.substring(2, 5) !== '000') {
-      const r = siren.validate(value.substr(2));
+      const r = siren.validate(value.slice(2));
       if (!r.isValid) {
         return r;
       }

@@ -32,7 +32,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
     return [value, err];
   }
   if (value.startsWith('CY')) {
-    return [value.substr(2), null];
+    return [value.slice(2), null];
   }
 
   return [value, null];

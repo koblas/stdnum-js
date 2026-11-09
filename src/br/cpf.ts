@@ -72,7 +72,7 @@ const impl: Validator = {
     const [front, c1, c2] = strings.splitAt(value, 9, 10);
 
     const d1 = String(computeDigit(front));
-    const d2 = String(computeDigit(value.substr(0, 10)));
+    const d2 = String(computeDigit(value.slice(0, 10)));
 
     if (d1 !== c1 || d2 !== c2) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };

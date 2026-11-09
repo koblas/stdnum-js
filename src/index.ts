@@ -8,12 +8,14 @@ import * as AO from './ao';
 import * as AR from './ar';
 import * as AT from './at';
 import * as AU from './au';
+import * as AW from './aw';
 import * as AZ from './az';
 import * as BA from './ba';
 import * as BB from './bb';
 import * as BD from './bd';
 import * as BE from './be';
 import * as BG from './bg';
+import * as BH from './bh';
 import * as BO from './bo';
 import * as BR from './br';
 import * as BS from './bs';
@@ -22,12 +24,14 @@ import * as BZ from './bz';
 import * as CA from './ca';
 import * as CH from './ch';
 import * as CI from './ci';
+import * as CK from './ck';
 import * as CL from './cl';
 import * as CM from './cm';
 import * as CN from './cn';
 import * as CO from './co';
 import * as CR from './cr';
 import * as CU from './cu';
+import * as CW from './cw';
 import * as CY from './cy';
 import * as CZ from './cz';
 import * as DE from './de';
@@ -48,8 +52,8 @@ import * as GB from './gb';
 import * as GD from './gd';
 import * as GE from './ge';
 import * as GH from './gh';
-import * as GR from './gr';
 import * as GN from './gn';
+import * as GR from './gr';
 import * as GT from './gt';
 import * as GY from './gy';
 import * as HK from './hk';
@@ -106,6 +110,7 @@ import * as RO from './ro';
 import * as RS from './rs';
 import * as RU from './ru';
 import * as SB from './sb';
+import * as SC from './sc';
 import * as SE from './se';
 import * as SG from './sg';
 import * as SI from './si';
@@ -138,8 +143,11 @@ import type { ValidateReturn, Validator } from './types';
 
 export type { Validator } from './types';
 
-// Live an uppercase world, to prevent keyword collisions
-export const stdnum: Record<string, Record<string, Validator>> = {
+// Named per-country exports. Unlike the `stdnum` object below (which eagerly
+// references every country and therefore always bundles all of them), these are
+// tree-shakeable: `import { GB } from 'stdnum'` lets a bundler drop the other
+// countries entirely.
+export {
   AD,
   AF,
   AG,
@@ -150,12 +158,14 @@ export const stdnum: Record<string, Record<string, Validator>> = {
   AR,
   AT,
   AU,
+  AW,
   AZ,
   BA,
   BB,
   BD,
   BE,
   BG,
+  BH,
   BO,
   BR,
   BS,
@@ -164,12 +174,14 @@ export const stdnum: Record<string, Record<string, Validator>> = {
   CA,
   CH,
   CI,
+  CK,
   CL,
   CM,
   CN,
   CO,
   CR,
   CU,
+  CW,
   CY,
   CZ,
   DE,
@@ -190,8 +202,8 @@ export const stdnum: Record<string, Record<string, Validator>> = {
   GD,
   GE,
   GH,
-  GR,
   GN,
+  GR,
   GT,
   GY,
   HK,
@@ -205,8 +217,11 @@ export const stdnum: Record<string, Record<string, Validator>> = {
   IS,
   IT,
   JM,
+  JP,
+  KE,
   KH,
   KN,
+  KR,
   KZ,
   LA,
   LB,
@@ -216,9 +231,6 @@ export const stdnum: Record<string, Record<string, Validator>> = {
   LT,
   LU,
   LV,
-  JP,
-  KE,
-  KR,
   MA,
   MC,
   MD,
@@ -248,6 +260,152 @@ export const stdnum: Record<string, Record<string, Validator>> = {
   RS,
   RU,
   SB,
+  SC,
+  SE,
+  SG,
+  SI,
+  SK,
+  SM,
+  SN,
+  SR,
+  SV,
+  TH,
+  TJ,
+  TM,
+  TN,
+  TO,
+  TR,
+  TT,
+  TW,
+  TZ,
+  UA,
+  UG,
+  US,
+  UY,
+  VC,
+  VE,
+  VN,
+  WS,
+  YE,
+  ZA,
+  ZM,
+};
+
+// Live an uppercase world, to prevent keyword collisions
+export const stdnum: Record<string, Record<string, Validator>> = {
+  AD,
+  AF,
+  AG,
+  AI,
+  AL,
+  AM,
+  AO,
+  AR,
+  AT,
+  AU,
+  AW,
+  AZ,
+  BA,
+  BB,
+  BD,
+  BE,
+  BG,
+  BH,
+  BO,
+  BR,
+  BS,
+  BY,
+  BZ,
+  CA,
+  CH,
+  CI,
+  CK,
+  CL,
+  CM,
+  CN,
+  CO,
+  CR,
+  CU,
+  CW,
+  CY,
+  CZ,
+  DE,
+  DK,
+  DM,
+  DO,
+  DZ,
+  EC,
+  EE,
+  EG,
+  ES,
+  ET,
+  FI,
+  FJ,
+  FO,
+  FR,
+  GB,
+  GD,
+  GE,
+  GH,
+  GN,
+  GR,
+  GT,
+  GY,
+  HK,
+  HR,
+  HT,
+  HU,
+  ID,
+  IE,
+  IL,
+  IN,
+  IS,
+  IT,
+  JM,
+  JP,
+  KE,
+  KH,
+  KN,
+  KR,
+  KZ,
+  LA,
+  LB,
+  LC,
+  LI,
+  LK,
+  LT,
+  LU,
+  LV,
+  MA,
+  MC,
+  MD,
+  ME,
+  MK,
+  MN,
+  MT,
+  MU,
+  MX,
+  MY,
+  MZ,
+  NG,
+  NL,
+  NO,
+  NP,
+  NZ,
+  OM,
+  PE,
+  PG,
+  PH,
+  PK,
+  PL,
+  PT,
+  PY,
+  QA,
+  RO,
+  RS,
+  RU,
+  SB,
+  SC,
   SE,
   SG,
   SI,
@@ -280,14 +438,18 @@ export const stdnum: Record<string, Record<string, Validator>> = {
 
 export const personValidators: Record<string, Validator[]> = {
   AD: [AD.nrt],
+  AF: [AF.tin],
   AI: [AI.tin],
   AL: [AL.nipt],
+  AM: [AM.tin],
   AO: [AO.nif, AO.bi],
   AR: [AR.cuit, AR.dni],
   AT: [AT.vnr],
   AU: [AU.tfn],
+  AW: [AW.tin],
   AZ: [AZ.pin, AZ.tin],
   BA: [BA.jmbg],
+  BB: [BB.tin],
   BD: [BD.nid],
   BE: [BE.bis, BE.insz, BE.nn],
   BG: [BG.egn, BG.pnf, BG.vat],
@@ -296,11 +458,13 @@ export const personValidators: Record<string, Validator[]> = {
   BZ: [BZ.tin],
   CA: [CA.sin],
   CH: [CH.ssn],
+  CK: [CK.tin],
   CL: [CL.run], // which is the same as RUT
   CN: [CN.ric],
   CO: [CO.nit],
   CR: [CR.cpf, CR.cr],
   CU: [CU.ni],
+  CW: [CW.tin],
   CZ: [CZ.rc],
   DE: [DE.idnr, DE.svnr],
   DK: [DK.cpr],
@@ -313,7 +477,8 @@ export const personValidators: Record<string, Validator[]> = {
   FJ: [FJ.tin],
   FR: [FR.nif, FR.nir],
   GB: [GB.nino, GB.utr],
-  GE: [GE.nid],
+  GD: [GD.tin],
+  GE: [GE.nid, GE.tin],
   GH: [GH.tin],
   GR: [GR.amka],
   GT: [GT.cui],
@@ -350,6 +515,7 @@ export const personValidators: Record<string, Validator[]> = {
   RO: [RO.cnp],
   RS: [RS.jmbg],
   RU: [RU.inn],
+  SC: [SC.tin],
   SE: [SE.personnummer],
   SI: [SI.jmbg],
   SK: [SK.rc],
@@ -368,24 +534,32 @@ export const personValidators: Record<string, Validator[]> = {
 
 export const entityValidators: Record<string, Validator[]> = {
   AD: [AD.nrt],
+  AF: [AF.tin],
   AI: [AI.tin],
   AL: [AL.nipt],
+  AM: [AM.tin],
   AO: [AO.nif],
   AR: [AR.cuit],
   AT: [AT.businessid, AT.tin, AT.uid],
   AU: [AU.abn, AU.acn, AU.tfn],
+  AW: [AW.tin],
   AZ: [AZ.tin],
+  BA: [BA.jib],
+  BB: [BB.tin],
   BE: [BE.vat],
   BG: [BG.vat],
+  BH: [BH.vat],
   BR: [BR.cnpj],
   BY: [BY.unp],
   BZ: [BZ.tin],
   CA: [CA.bn],
   CH: [CH.uid, CH.vat],
+  CK: [CK.tin],
   CL: [CL.rut],
   CN: [CN.uscc],
   CO: [CO.nit],
   CR: [CR.cpj],
+  CW: [CW.tin],
   CY: [CY.vat],
   CZ: [CZ.dic],
   DE: [DE.stnr, DE.vat],
@@ -398,6 +572,8 @@ export const entityValidators: Record<string, Validator[]> = {
   FJ: [FJ.tin],
   FR: [FR.siren, FR.siret, FR.tva],
   GB: [GB.vat],
+  GD: [GD.tin],
+  GE: [GE.tin],
   GR: [GR.vat],
   GT: [GT.nit],
   HU: [HU.anum],
@@ -414,9 +590,9 @@ export const entityValidators: Record<string, Validator[]> = {
   LT: [LT.pvm],
   LU: [LU.tva],
   LV: [LV.pvn],
+  MA: [MA.ice, MA.ice9],
   MC: [MC.tva],
   MD: [MD.idno],
-  MA: [MA.ice, MA.ice9],
   MT: [MT.vat],
   MX: [MX.rfc],
   MZ: [MZ.nuit],
@@ -433,6 +609,7 @@ export const entityValidators: Record<string, Validator[]> = {
   RO: [RO.onrc, RO.cui],
   RS: [RS.pib],
   RU: [RU.inn],
+  SC: [SC.tin],
   SE: [SE.orgnr, SE.vat],
   SG: [SG.uen],
   SI: [SI.ddv],
@@ -532,7 +709,7 @@ export function validatePassport(
   countryCode: string,
   value: string,
 ): { checked: false } | ({ checked: true } & ValidateReturn) {
-  const validator = stdnum[countryCode.toLocaleUpperCase()]?.passport;
+  const validator = stdnum[countryCode.toUpperCase()]?.passport;
 
   if (!validator) {
     return { checked: false };
@@ -546,7 +723,7 @@ export function validatePassport(
  * Returns the value unchanged if the country is unsupported.
  */
 export function formatPassport(countryCode: string, value: string): string {
-  const country = stdnum[countryCode.toLocaleUpperCase()];
+  const country = stdnum[countryCode.toUpperCase()];
 
   if (!country || !country.passport) {
     return value;
@@ -560,7 +737,7 @@ export function formatPassport(countryCode: string, value: string): string {
  * Returns the value unchanged if the country is unsupported.
  */
 export function compactPassport(countryCode: string, value: string): string {
-  const country = stdnum[countryCode.toLocaleUpperCase()];
+  const country = stdnum[countryCode.toUpperCase()];
 
   if (!country || !country.passport) {
     return value;

@@ -6,18 +6,29 @@
  * 12 digits and starts with the birth date, followed by a serial and a check
  * digit.
  *
+ * The 10 digit form (YYMMDD-NNNN) leaves out the century: the separator is '-'
+ * until the year someone turns 100 and '+' from then on (Folkbokföringslagen
+ * 1991:481 §18). Because that sign depends on when the number was written down,
+ * the 12 digit form (YYYYMMDDNNNN) is recommended for storage. compact()
+ * returns the 12 digit form; format() returns the 10 digit form for display.
+ * When a 12 digit number is given, its 4 digit year is authoritative and any
+ * separator is ignored.
+ *
  * Source:
  *    https://en.wikipedia.org/wiki/Personal_identity_number_(Sweden)
+ *    Folkbokföringslagen (1991:481) §18
  *
  * PERSON
  */
 
 import * as exceptions from '../exceptions';
-import { isValidDateCompactYYYYMMDD, buildDate, strings } from '../util';
+import { isValidDateCompactYYYYMMDD, strings } from '../util';
 import { Validator, ValidateReturn } from '../types';
 import { luhnChecksumValidate } from '../util/checksum';
 
-const ONE_HUNDRED_YEARS_IN_MS = 100 * 365 * 24 * 60 * 60 * 1_000;
+// Personal identity numbers were introduced in 1947, so no holder can have
+// been born before this.
+const MIN_BIRTH_YEAR = 1800;
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   const [value, err] = strings.cleanUnicode(input, ' :');
@@ -40,41 +51,50 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return [`${a.replace(/[-+]/g, '')}${b}${c}`, null];
 }
 
+/**
+ * Convert a cleaned YYMMDD±NNNN or YYYYMMDD±NNNN value to YYYYMMDDNNNN.
+ * Returns null when the value doesn't have that shape.
+ */
+function toLongForm(value: string): string | null {
+  if (value.length !== 11 && value.length !== 13) {
+    return null;
+  }
+  const sign = value[value.length - 5];
+  const digits = value.slice(0, -5) + value.slice(-4);
+  if (!'-+'.includes(sign) || !strings.isdigits(digits)) {
+    return null;
+  }
+  if (value.length === 13) {
+    return digits;
+  }
+
+  // 10 digit form: the century is the most recent one that doesn't put the
+  // birth year in the future, one further back for '+' (100 or older).
+  const year = new Date().getFullYear();
+  let century = Math.floor(year / 100);
+  if (parseInt(digits.slice(0, 2), 10) > year % 100) {
+    century -= 1;
+  }
+  if (sign === '+') {
+    century -= 1;
+  }
+
+  return `${century}${digits}`;
+}
+
 function formatImpl(input: string): string {
   const [value] = clean(input);
+  const long = toLongForm(value);
 
-  let front,
-      back,
-      sep = '-';
-
-  if (value.length === 12 || value.length === 13) {
-    const [yyyy, mm, dd] = strings.splitAt(value, 0, 4, 6, 8);
-
-    const d = buildDate(yyyy, mm, dd);
-    if (d === null) {
-      // bad date :(
-      return value;
-    }
-
-    if (new Date().getTime() - d.getTime() > ONE_HUNDRED_YEARS_IN_MS) {
-      sep = '+';
-    }
-
-    front = `${yyyy.substring(2)}${mm}${dd}`;
-
-    back = value.substring(value.length - 4);
-  } else if (value.length === 10) {
-    front = value.substring(0, 6);
-    back = value.substring(6);
-  } else if (value.length === 11) {
-    front = value.substring(0, 6);
-    sep = value[6];
-    back = value.substring(7);
-  } else {
+  if (long === null) {
     return value;
   }
 
-  return `${front}${sep}${back}`;
+  // '+' from the calendar year someone turns 100
+  const age = new Date().getFullYear() - parseInt(long.slice(0, 4), 10);
+  const sep = age >= 100 ? '+' : '-';
+
+  return `${long.slice(2, 8)}${sep}${long.slice(8)}`;
 }
 
 const impl: Validator = {
@@ -87,7 +107,7 @@ const impl: Validator = {
       throw err;
     }
 
-    return value;
+    return toLongForm(value) ?? value;
   },
 
   format: formatImpl,
@@ -98,59 +118,39 @@ const impl: Validator = {
     if (error) {
       return { isValid: false, error };
     }
-    let a, b, c;
-    if (value.length === 11) {
-      [a, b, c] = strings.splitAt(value, -5, -4);
-    } else if (value.length === 13) {
-      [, a, b, c] = strings.splitAt(value, -11, -5, -4);
-    } else {
+    if (value.length !== 11 && value.length !== 13) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
-    if (!'-+'.includes(b)) {
+
+    const long = toLongForm(value);
+    if (long === null) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
-    const digits = `${a}${c}`;
-    if (!strings.isdigits(digits)) {
-      return { isValid: false, error: new exceptions.InvalidFormat() };
+
+    if (parseInt(long.slice(0, 4), 10) < MIN_BIRTH_YEAR) {
+      return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
-    let yyyymmdd;
-    if (value.length === 13) {
-      yyyymmdd = value.substring(0, 8);
-    } else {
-      const yymmdd = value.substring(0, 6);
-      const year = new Date().getFullYear();
-      let century = Math.floor(year / 100);
-
-      if (parseInt(yymmdd.substring(0, 2), 10) > year % 100) {
-        century -= 1;
-      }
-      if (b === '+') {
-        century -= 1;
-      }
-
-      yyyymmdd = `${century}${yymmdd}`;
-    }
-
-    // Adjust for coordination numbers ("Samordningsnummer")
+    // Adjust for coordination numbers ("Samordningsnummer"), which add 60 to
+    // the day of birth
     // https://skatteverket.se/servicelankar/otherlanguages/inenglishengelska/individualsandemployees/coordinationnumbers
-    const day = parseInt(yyyymmdd.substring(6, 8), 10);
+    let yyyymmdd = long.slice(0, 8);
+    const day = parseInt(yyyymmdd.slice(6, 8), 10);
     if (day > 60) {
-      yyyymmdd =
-          yyyymmdd.substring(0, 6) + (day - 60).toString().padStart(2, '0');
+      yyyymmdd = yyyymmdd.slice(0, 6) + String(day - 60).padStart(2, '0');
     }
 
     if (!isValidDateCompactYYYYMMDD(yyyymmdd, true)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
-    if (!luhnChecksumValidate(digits)) {
+    if (!luhnChecksumValidate(long.slice(2))) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 
     return {
       isValid: true,
-      compact: formatImpl(input),
+      compact: long,
       isIndividual: true,
       isCompany: false,
     };
@@ -158,4 +158,4 @@ const impl: Validator = {
 };
 
 export const { name, localName, abbreviation, validate, format, compact } =
-    impl;
+  impl;

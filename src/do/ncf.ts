@@ -90,30 +90,30 @@ const impl: Validator = {
       if (!value.startsWith('E')) {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
-      if (!strings.isdigits(value.substr(1))) {
+      if (!strings.isdigits(value.slice(1))) {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
-      if (!ecfTypes.includes(value.substr(1, 2))) {
+      if (!ecfTypes.includes(value.slice(1, 3))) {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
     } else if (value.length === 11) {
       if (!value.startsWith('B')) {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
-      if (!strings.isdigits(value.substr(1))) {
+      if (!strings.isdigits(value.slice(1))) {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
-      if (!ncfTypes.includes(value.substr(1, 2))) {
+      if (!ncfTypes.includes(value.slice(1, 3))) {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
     } else if (value.length === 19) {
       if (!value.startsWith('AP')) {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
-      if (!strings.isdigits(value.substr(2))) {
+      if (!strings.isdigits(value.slice(2))) {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
-      if (!ncfTypes.includes(value.substr(9, 2))) {
+      if (!ncfTypes.includes(value.slice(9, 11))) {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
     } else {

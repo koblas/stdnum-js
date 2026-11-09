@@ -18,7 +18,7 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
     return [value, err];
   }
   if (value.startsWith('DK')) {
-    return [value.substr(2), null];
+    return [value.slice(2), null];
   }
 
   return [value, null];
@@ -54,7 +54,7 @@ const impl: Validator = {
     if (value.length !== 8) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
-    if (!strings.isdigits(value)) {
+    if (!strings.isdigits(value) || value[0] === '0') {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
