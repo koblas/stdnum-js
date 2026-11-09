@@ -2,13 +2,13 @@ import { validate, format } from './passport';
 import { InvalidFormat, InvalidLength } from '../exceptions';
 
 describe('fr/passport', () => {
-  it('format:14CV28142', () => {
-    const result = format('14CV28142');
+  it('format:12AB34567', () => {
+    const result = format('12AB34567');
 
-    expect(result).toEqual('14CV28142');
+    expect(result).toEqual('12AB34567');
   });
 
-  test.each(['14CV28142', '09AB12345'])('validate:%s', value => {
+  test.each(['12AB34567', '09AB12345'])('validate:%s', value => {
     const result = validate(value);
 
     expect(result.isValid).toBeTruthy();

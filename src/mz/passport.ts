@@ -1,10 +1,10 @@
 /**
  * Mozambican Passport Number (Passaporte moçambicano).
  *
- * Format: Mozambican passport number: two letters followed by six digits (documented, e.g. AC036215) or seven digits. The biometric series format is not published.
+ * Format: Mozambican passport number: two letters followed by six digits (documented, e.g. AC123456) or seven digits. The biometric series format is not published.
  *
  * Source
- *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: real passport numbers with future expiry)
+ *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: format cross-check)
  *   https://en.wikipedia.org/wiki/Mozambican_passport
  *   https://www.consilium.europa.eu/prado/en/MOZ-AO-02001/index.html
  *   https://www.icao.int/Meetings/AMC/MRTD-SEMINAR-2010-AFRICA/Documentation/9_MozambiqueImmigration2.pdf

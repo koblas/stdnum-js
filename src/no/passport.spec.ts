@@ -27,7 +27,7 @@ describe('no/passport', () => {
   });
 });
 
-describe('no/passport real-world formats', () => {
+describe('no/passport other formats', () => {
   test.each(['C1234567', 'FG1234567', '12345678'])('validate:%s', value => {
     expect(validate(value).isValid).toBeTruthy();
   });

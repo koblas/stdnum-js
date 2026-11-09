@@ -6,7 +6,7 @@
  * Source
  *   https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2465_2010.htm
  *   https://www.risaralda.gov.co/preguntas-frecuentes/65/pasaportes/
- *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: real passport numbers with future expiry)
+ *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: format cross-check)
  *   https://en.wikipedia.org/wiki/Colombian_passport
  *   https://www.cancilleria.gov.co/en/machine-readable-zone-ordinary-passport
  *   https://www.cancilleria.gov.co/help/faq/passports

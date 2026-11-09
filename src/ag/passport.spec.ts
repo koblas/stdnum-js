@@ -8,7 +8,7 @@ describe('ag/passport', () => {
     expect(result).toEqual('B123456');
   });
 
-  test.each(['B123456', 'A059888'])('validate:%s', value => {
+  test.each(['B123456', 'A654321'])('validate:%s', value => {
     const result = validate(value);
 
     expect(result.isValid).toBeTruthy();

@@ -1,7 +1,7 @@
 /**
  * Azerbaijani Passport Number (Azərbaycan pasportu).
  *
- * Format: Nine-character alphanumeric. Commonly one letter followed by eight digits (e.g. the MRZ document-number example X05000107), or two letters followed by seven digits (e.g. AZE/AA series for diplomatic/service).
+ * Format: Nine-character alphanumeric. Commonly one letter followed by eight digits (e.g. X12345678), or two letters followed by seven digits (e.g. AZE/AA series for diplomatic/service).
  *
  * Source
  *   https://en.wikipedia.org/wiki/Azerbaijani_passport

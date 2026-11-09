@@ -27,8 +27,8 @@ describe('lc/passport', () => {
   });
 });
 
-describe('lc/passport real-world formats', () => {
-  test.each(['RA018981', 'A123456'])('validate:%s', value => {
+describe('lc/passport other formats', () => {
+  test.each(['RA123456', 'A123456'])('validate:%s', value => {
     expect(validate(value).isValid).toBeTruthy();
   });
 });

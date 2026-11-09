@@ -27,7 +27,7 @@ describe('ee/passport', () => {
   });
 });
 
-describe('ee/passport real-world formats', () => {
+describe('ee/passport other formats', () => {
   test.each(['KG1234567', 'K1234567'])('validate:%s', value => {
     expect(validate(value).isValid).toBeTruthy();
   });

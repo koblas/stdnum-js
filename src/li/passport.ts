@@ -1,7 +1,7 @@
 /**
  * Liechtenstein Passport Number (Liechtenstein Pass).
  *
- * Format: One uppercase letter followed by 5 digits (6 characters total), e.g. R00536.
+ * Format: One uppercase letter followed by 5 digits (6 characters total), e.g. R12345.
  *
  * Source
  *   https://danskebank.fi/-/media/pdf/danske-bank/fi/en/national-identifier-list-final.pdf

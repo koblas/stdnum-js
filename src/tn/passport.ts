@@ -1,8 +1,8 @@
 /**
  * Tunisian Passport Number (جواز سفر تونسي).
  *
- * Format: 1 letter followed by 6 digits (7 chars), e.g. Y777777 in the PRADO specimen
- * and every Tunisian passport on the OFAC SDN list (E590976, K989895). 1 letter followed
+ * Format: 1 letter followed by 6 digits (7 chars), e.g. Y777777 in the PRADO specimen,
+ * the same shape as the Tunisian passports on the OFAC SDN list. 1 letter followed
  * by 7 digits (8 chars) is also accepted, as documented by older sources.
  *
  * Source
@@ -10,7 +10,7 @@
  *   https://trustdochub.com/en/product/tunisian-passport-validity/
  *   https://danskebank.fi/-/media/pdf/danske-bank/fi/en/national-identifier-list-final.pdf
  *   https://www.consilium.europa.eu/prado/en/TUN-AO-01001/index.html (specimen Y777777)
-   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: real passport numbers)
+ *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: format cross-check)
  *
  * PERSON
  */

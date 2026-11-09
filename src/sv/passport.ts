@@ -1,10 +1,10 @@
 /**
  * Salvadoran Passport Number (Pasaporte salvadoreño).
  *
- * Format: Salvadoran passport number: one letter followed by six to eight digits (e.g. A123456, C01141422).
+ * Format: Salvadoran passport number: one letter followed by six to eight digits (e.g. A123456, C12345678).
  *
  * Source
- *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: real passport numbers with future expiry)
+ *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: format cross-check)
  *   https://ssf.gob.sv/images/stories/desc_normas_prud_bancos/69_npb4-41_A17.doc
  *   https://www.ssf.gob.sv/images/stories/desc_normas_prud_bancos/64_npb4-41_A12.doc
  *   https://es.wikipedia.org/wiki/Pasaporte_salvadore%C3%B1o

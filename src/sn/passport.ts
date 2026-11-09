@@ -1,10 +1,10 @@
 /**
  * Senegalese Passport Number (Passeport sénégalais).
  *
- * Format: Senegalese passport number: nine digits, or one letter followed by eight digits (e.g. A04447087).
+ * Format: Senegalese passport number: nine digits, or one letter followed by eight digits (e.g. A12345678).
  *
  * Source
- *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: real passport numbers with future expiry)
+ *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: format cross-check)
  *   https://en.wikipedia.org/wiki/Senegalese_passport
  *   https://www.consilium.europa.eu/prado/en/prado-documents/SEN/A/docs-per-category.html
  *   https://sn.usembassy.gov/passports/important-passport-information/

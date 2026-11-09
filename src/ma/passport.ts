@@ -1,10 +1,10 @@
 /**
  * Moroccan Passport Number (جواز سفر مغربي).
  *
- * Format: Moroccan passport number: one or two letters followed by six or seven digits (e.g. UZ6430184, AB123456).
+ * Format: Moroccan passport number: one or two letters followed by six or seven digits (e.g. UZ1234567, AB123456).
  *
  * Source
- *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: real passport numbers with future expiry)
+ *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: format cross-check)
  *   https://en.wikipedia.org/wiki/Moroccan_passport
  *   https://trustdochub.com/en/verify-moroccan-passport/
  *   https://www.consilium.europa.eu/prado/en/MAR-AO-02001/index.html

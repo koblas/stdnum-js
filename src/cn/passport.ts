@@ -5,7 +5,7 @@
  *
  * Source
  *   https://www.thepaper.cn/newsDetail_forward_4186634
- *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: real passport numbers with future expiry)
+ *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: format cross-check)
  *   https://en.wikipedia.org/wiki/Chinese_passport
  *   https://www.fragomen.com/insights/understanding-the-chinese-e-passport.html
  *   https://capetown.china-consulate.gov.cn/eng/lsqz/consularlawsandregulations/lawsandregulationsaboutpassport/200611/t20061102_6620811.htm

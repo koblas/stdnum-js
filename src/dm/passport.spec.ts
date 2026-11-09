@@ -27,8 +27,8 @@ describe('dm/passport', () => {
   });
 });
 
-describe('dm/passport real-world formats', () => {
-  test.each(['RA045652', 'A1234567', 'AB1234567'])('validate:%s', value => {
+describe('dm/passport other formats', () => {
+  test.each(['RA123456', 'A1234567', 'AB1234567'])('validate:%s', value => {
     expect(validate(value).isValid).toBeTruthy();
   });
 });

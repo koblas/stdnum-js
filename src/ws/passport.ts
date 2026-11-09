@@ -1,7 +1,7 @@
 /**
  * Samoan Passport Number (Samoan passport).
  *
- * Format: Letter 'T' followed by 6 digits (e.g. T161001). The U.S. State Department reciprocity page describes Samoan passport serial ranges such as T161001-T171000 and T158501-T161000, all of form T + 6 digits.
+ * Format: Letter 'T' followed by 6 digits (e.g. T123456). The U.S. State Department reciprocity page describes Samoan passport serial ranges such as T161001-T171000 and T158501-T161000, all of form T + 6 digits.
  *
  * Source
  *   https://travel.state.gov/content/travel/en/us-visas/Visa-Reciprocity-and-Civil-Documents-by-Country/Samoa.html

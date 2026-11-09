@@ -27,8 +27,8 @@ describe('sv/passport', () => {
   });
 });
 
-describe('sv/passport real-world formats', () => {
-  test.each(['C01141422', 'A123456'])('validate:%s', value => {
+describe('sv/passport other formats', () => {
+  test.each(['C12345678', 'A123456'])('validate:%s', value => {
     expect(validate(value).isValid).toBeTruthy();
   });
 });

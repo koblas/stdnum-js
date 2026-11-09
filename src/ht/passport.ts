@@ -1,10 +1,10 @@
 /**
  * Haitian Passport Number (Passeport haïtien).
  *
- * Format: Haitian passport number: two letters followed by six or seven digits (e.g. RL123456, PP5201306), or one letter followed by eight digits (e.g. R10097145).
+ * Format: Haitian passport number: two letters followed by six or seven digits (e.g. RL123456, PP1234567), or one letter followed by eight digits (e.g. R12345678).
  *
  * Source
- *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: real passport numbers with future expiry)
+ *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: format cross-check)
  *   https://www.ecoi.net/en/document/1416369.html
  *   https://en.wikipedia.org/wiki/Haitian_passport
  *

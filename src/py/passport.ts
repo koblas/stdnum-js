@@ -1,10 +1,10 @@
 /**
  * Paraguayan Passport Number (Pasaporte paraguayo).
  *
- * Format: Paraguayan passport number. No authoritative format is published; real numbers seen range from 6 to 9 alphanumeric characters (e.g. 1035562, 002301585, D15449), so any 6 to 9 letters or digits are accepted.
+ * Format: Paraguayan passport number. No authoritative format is published; numbers seen in public sources range from 6 to 9 alphanumeric characters (e.g. 1234567, 001234567, D12345), so any 6 to 9 letters or digits are accepted.
  *
  * Source
- *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: real passport numbers with future expiry)
+ *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: format cross-check)
  *   https://en.wikipedia.org/wiki/Paraguayan_passport
  *   https://www.mre.gov.py/index.php/tramites/pasaportes
  *   https://danskebank.fi/-/media/pdf/danske-bank/fi/en/national-identifier-list-final.pdf

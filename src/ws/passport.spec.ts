@@ -2,19 +2,19 @@ import { validate, format } from './passport';
 import { InvalidFormat, InvalidLength } from '../exceptions';
 
 describe('ws/passport', () => {
-  it('format:T161001', () => {
-    const result = format('T161001');
+  it('format:T123456', () => {
+    const result = format('T123456');
 
-    expect(result).toEqual('T161001');
+    expect(result).toEqual('T123456');
   });
 
-  test.each(['T161001', 'T058402'])('validate:%s', value => {
+  test.each(['T123456', 'T654321'])('validate:%s', value => {
     const result = validate(value);
 
     expect(result.isValid).toBeTruthy();
   });
 
-  test.each(['1610010', 'TA61001'])('validate:%s', value => {
+  test.each(['1234567', 'TA12345'])('validate:%s', value => {
     const result = validate(value);
 
     expect(result.error).toBeInstanceOf(InvalidFormat);

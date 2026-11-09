@@ -1,10 +1,10 @@
 /**
  * Bangladeshi Passport Number (বাংলাদেশী পাসপোর্ট).
  *
- * Format: Bangladeshi passport number: two letters followed by seven digits (e.g. AB1234567), or one letter followed by eight digits for e-passports (e.g. B00002095).
+ * Format: Bangladeshi passport number: two letters followed by seven digits (e.g. AB1234567), or one letter followed by eight digits for e-passports (e.g. B12345678).
  *
  * Source
- *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: real passport numbers with future expiry)
+ *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: format cross-check)
  *   https://en.wikipedia.org/wiki/Bangladeshi_passport
  *   https://www.gov.uk/government/publications/bangladesh-country-policy-and-information-notes/country-information-note-documentation-bangladesh-november-2024-accessible
  *   https://www.epassport.gov.bd/

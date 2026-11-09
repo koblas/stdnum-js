@@ -30,7 +30,7 @@ describe('de/passport', () => {
   });
 });
 
-describe('de/passport real-world formats', () => {
+describe('de/passport other formats', () => {
   test.each(['A1234567', 'B1234567'])('validate:%s', value => {
     expect(validate(value).isValid).toBeTruthy();
   });

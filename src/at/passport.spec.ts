@@ -27,7 +27,7 @@ describe('at/passport', () => {
   });
 });
 
-describe('at/passport real-world formats', () => {
+describe('at/passport other formats', () => {
   test.each(['AP1234567', 'A1234567'])('validate:%s', value => {
     expect(validate(value).isValid).toBeTruthy();
   });

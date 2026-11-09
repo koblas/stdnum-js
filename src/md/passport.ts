@@ -1,10 +1,10 @@
 /**
  * Moldovan Passport Number (Pașaport moldovenesc).
  *
- * Format: Moldovan passport number: one or two letters followed by six or seven digits (e.g. AB1893585, A1234567, AB123456).
+ * Format: Moldovan passport number: one or two letters followed by six or seven digits (e.g. AB1234567, A1234567, AB123456).
  *
  * Source
- *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: real passport numbers with future expiry)
+ *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: format cross-check)
  *   https://en.wikipedia.org/wiki/Moldovan_passport
  *   https://mfa.gov.md/en/content/biometric-passport
  *   https://www.consilium.europa.eu/prado/en/prado-documents/mda/a/docs-per-category.html

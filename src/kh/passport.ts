@@ -1,7 +1,7 @@
 /**
  * Cambodian Passport Number (លិខណៈកម្មដេកល្ខ).
  *
- * Format: One uppercase letter (commonly 'N') followed by 7 or 8 digits (e.g. N1707843, N00144521). Total length 8-9 characters.
+ * Format: One uppercase letter (commonly 'N') followed by 7 or 8 digits (e.g. N1234567, N12345678). Total length 8-9 characters.
  *
  * Source
  *   https://en.wikipedia.org/wiki/Cambodian_passport

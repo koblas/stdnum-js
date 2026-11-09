@@ -27,8 +27,8 @@ describe('py/passport', () => {
   });
 });
 
-describe('py/passport real-world formats', () => {
-  test.each(['1035562', '002301585', 'D15449', 'Q568928'])(
+describe('py/passport other formats', () => {
+  test.each(['1234567', '001234567', 'D12345', 'Q123456'])(
     'validate:%s',
     value => {
       expect(validate(value).isValid).toBeTruthy();

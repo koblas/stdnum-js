@@ -8,7 +8,7 @@ describe('tt/nid', () => {
     expect(result).toEqual('1234567890');
   });
 
-  test.each(['1234567890', '1000245768'])('validate:%s', value => {
+  test.each(['1234567890', '9876543210'])('validate:%s', value => {
     const result = validate(value);
 
     expect(result.isValid).toBeTruthy();

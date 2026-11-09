@@ -2,13 +2,13 @@ import { validate, format } from './passport';
 import { InvalidFormat, InvalidLength } from '../exceptions';
 
 describe('gb/passport', () => {
-  it('format:925665416', () => {
-    const result = format('925665416');
+  it('format:987654321', () => {
+    const result = format('987654321');
 
-    expect(result).toEqual('925665416');
+    expect(result).toEqual('987654321');
   });
 
-  test.each(['925665416', '123456789'])('validate:%s', value => {
+  test.each(['987654321', '123456789'])('validate:%s', value => {
     const result = validate(value);
 
     expect(result.isValid).toBeTruthy();

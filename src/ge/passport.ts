@@ -1,10 +1,10 @@
 /**
  * Georgian Passport Number (საქართველოს პასპორტი).
  *
- * Format: Georgian passport number: two digits, two letters and five digits (e.g. 18AD22156), or the older numeric serial of 8 digits with an optional ninth character.
+ * Format: Georgian passport number: two digits, two letters and five digits (e.g. 12AB34567), or the older numeric serial of 8 digits with an optional ninth character.
  *
  * Source
- *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: real passport numbers with future expiry)
+ *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: format cross-check)
  *   https://en.wikipedia.org/wiki/Georgian_passport
  *   https://www.ecoi.net/en/document/1207477.html
  *   https://www.consilium.europa.eu/prado/en/prado-documents/geo/a/docs-per-category.html

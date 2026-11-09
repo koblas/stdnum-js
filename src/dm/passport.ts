@@ -1,10 +1,10 @@
 /**
  * Dominican Passport Number (Dominican passport).
  *
- * Format: Dominican (Commonwealth of Dominica) passport number: one or two letters followed by six or seven digits (e.g. RA045652, A1234567).
+ * Format: Dominican (Commonwealth of Dominica) passport number: one or two letters followed by six or seven digits (e.g. RA123456, A1234567).
  *
  * Source
- *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: real passport numbers with future expiry)
+ *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: format cross-check)
  *   https://danskebank.fi/-/media/pdf/danske-bank/fi/en/national-identifier-list-final.pdf
  *   https://en.wikipedia.org/wiki/Commonwealth_of_Dominica_passport
  *

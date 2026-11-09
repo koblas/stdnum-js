@@ -1,7 +1,7 @@
 /**
  * Angolan Passport Number (Passaporte angolano).
  *
- * Format: Angolan passport number: two letters followed by seven digits for the e-passport issued since 16 December 2025 (Lei n.º 1/26, art. 5.º); previous passports use a type letter (N ordinary, D diplomatic, S service, E foreign nationals) followed by seven digits (e.g. N1473613).
+ * Format: Angolan passport number: two letters followed by seven digits for the e-passport issued since 16 December 2025 (Lei n.º 1/26, art. 5.º); previous passports use a type letter (N ordinary, D diplomatic, S service, E foreign nationals) followed by seven digits (e.g. N1234567).
  *
  * Source
  *   https://lex.ao/docs/assembleia-nacional/2026/lei-n-o-1-26-de-02-de-marco/

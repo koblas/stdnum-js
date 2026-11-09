@@ -27,8 +27,8 @@ describe('kn/passport', () => {
   });
 });
 
-describe('kn/passport real-world formats', () => {
-  test.each(['RE0124671', 'RE138611', 'A123456'])('validate:%s', value => {
+describe('kn/passport other formats', () => {
+  test.each(['RE1234567', 'RE123456', 'A123456'])('validate:%s', value => {
     expect(validate(value).isValid).toBeTruthy();
   });
 });

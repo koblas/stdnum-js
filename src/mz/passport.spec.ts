@@ -27,8 +27,8 @@ describe('mz/passport', () => {
   });
 });
 
-describe('mz/passport real-world formats', () => {
-  test.each(['AC036215', 'AB1234567'])('validate:%s', value => {
+describe('mz/passport other formats', () => {
+  test.each(['AC123456', 'AB1234567'])('validate:%s', value => {
     expect(validate(value).isValid).toBeTruthy();
   });
 });

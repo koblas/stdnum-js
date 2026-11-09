@@ -27,8 +27,8 @@ describe('cn/passport', () => {
   });
 });
 
-describe('cn/passport real-world formats', () => {
-  test.each(['PE3086952', 'EA1234567', 'E12345678', 'G12345678'])(
+describe('cn/passport other formats', () => {
+  test.each(['PE1234567', 'EA1234567', 'E12345678', 'G12345678'])(
     'validate:%s',
     value => {
       expect(validate(value).isValid).toBeTruthy();

@@ -30,8 +30,8 @@ describe('ma/passport', () => {
   });
 });
 
-describe('ma/passport real-world formats', () => {
-  test.each(['UZ6430184', 'AB123456'])('validate:%s', value => {
+describe('ma/passport other formats', () => {
+  test.each(['UZ1234567', 'AB123456'])('validate:%s', value => {
     expect(validate(value).isValid).toBeTruthy();
   });
 });

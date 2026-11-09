@@ -27,8 +27,8 @@ describe('ht/passport', () => {
   });
 });
 
-describe('ht/passport real-world formats', () => {
-  test.each(['PP5201306', 'R10097145', 'RL123456'])('validate:%s', value => {
+describe('ht/passport other formats', () => {
+  test.each(['PP1234567', 'R12345678', 'RL123456'])('validate:%s', value => {
     expect(validate(value).isValid).toBeTruthy();
   });
 });

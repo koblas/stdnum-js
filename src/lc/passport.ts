@@ -1,10 +1,10 @@
 /**
  * Saint Lucian Passport Number (Saint Lucian passport).
  *
- * Format: Saint Lucia passport number: one or two letters followed by six digits (e.g. RA018981, A123456).
+ * Format: Saint Lucia passport number: one or two letters followed by six digits (e.g. RA123456, A123456).
  *
  * Source
- *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: real passport numbers with future expiry)
+ *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: format cross-check)
  *   https://en.wikipedia.org/wiki/Saint_Lucian_passport
  *   https://www.govt.lc/services/issuance-of-passports
  *   https://www.idanalyzer.com/solutions/supported-documents/lc.html

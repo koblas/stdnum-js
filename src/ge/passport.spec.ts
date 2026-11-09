@@ -27,8 +27,8 @@ describe('ge/passport', () => {
   });
 });
 
-describe('ge/passport real-world formats', () => {
-  test.each(['18AD22156', '12345678'])('validate:%s', value => {
+describe('ge/passport other formats', () => {
+  test.each(['12AB34567', '12345678'])('validate:%s', value => {
     expect(validate(value).isValid).toBeTruthy();
   });
 });

@@ -1,10 +1,10 @@
 /**
  * Kittitian and Nevisian Passport Number (Saint Kitts and Nevis passport).
  *
- * Format: Saint Kitts and Nevis passport number: one or two letters followed by six or seven digits (e.g. RE0124671, RE138611).
+ * Format: Saint Kitts and Nevis passport number: one or two letters followed by six or seven digits (e.g. RE1234567, RE123456).
  *
  * Source
- *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: real passport numbers with future expiry)
+ *   https://sanctionslist.ofac.treas.gov/Home/SdnList (OFAC SDN list: format cross-check)
  *   https://en.wikipedia.org/wiki/Saint_Kitts_and_Nevis_passport
  *   https://travel.state.gov/content/travel/en/us-visas/Visa-Reciprocity-and-Civil-Documents-by-Country/SaintKittsandNevis.html
  *   https://www.passportindex.org/passport/saint-kitts-and-nevis/

@@ -27,8 +27,8 @@ describe('bd/passport', () => {
   });
 });
 
-describe('bd/passport real-world formats', () => {
-  test.each(['B00002095', 'AB1234567'])('validate:%s', value => {
+describe('bd/passport other formats', () => {
+  test.each(['B12345678', 'AB1234567'])('validate:%s', value => {
     expect(validate(value).isValid).toBeTruthy();
   });
 });

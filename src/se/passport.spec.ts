@@ -8,7 +8,7 @@ describe('se/passport', () => {
     expect(result).toEqual('12345678');
   });
 
-  test.each(['12345678', '00099912'])('validate:%s', value => {
+  test.each(['12345678', '87654321'])('validate:%s', value => {
     const result = validate(value);
 
     expect(result.isValid).toBeTruthy();
@@ -27,7 +27,7 @@ describe('se/passport', () => {
   });
 });
 
-describe('se/passport real-world formats', () => {
+describe('se/passport other formats', () => {
   test.each(['XA0000001', '12345678'])('validate:%s', value => {
     expect(validate(value).isValid).toBeTruthy();
   });

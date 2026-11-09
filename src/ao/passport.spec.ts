@@ -2,19 +2,19 @@ import { validate, format } from './passport';
 import { InvalidFormat, InvalidLength } from '../exceptions';
 
 describe('ao/passport', () => {
-  it('format:N1473613', () => {
-    const result = format('N1473613');
+  it('format:N1234567', () => {
+    const result = format('N1234567');
 
-    expect(result).toEqual('N1473613');
+    expect(result).toEqual('N1234567');
   });
 
-  test.each(['N1473613', 'D0000001'])('validate:%s', value => {
+  test.each(['N1234567', 'D0000001'])('validate:%s', value => {
     const result = validate(value);
 
     expect(result.isValid).toBeTruthy();
   });
 
-  test.each(['11473613', '111111111'])('validate:%s', value => {
+  test.each(['11234567', '111111111'])('validate:%s', value => {
     const result = validate(value);
 
     expect(result.error).toBeInstanceOf(InvalidFormat);
@@ -27,8 +27,8 @@ describe('ao/passport', () => {
   });
 });
 
-describe('ao/passport real-world formats', () => {
-  test.each(['NA1234567', 'N1473613'])('validate:%s', value => {
+describe('ao/passport other formats', () => {
+  test.each(['NA1234567', 'N1234567'])('validate:%s', value => {
     expect(validate(value).isValid).toBeTruthy();
   });
 });
