@@ -10,6 +10,60 @@
 
 * add de.svnr support ([ee03c72](https://github.com/koblas/stdnum-js/commit/ee03c72e62254c488e5ae3f889b1ee8c823b2cc4))
 
+## [1.16.0](https://github.com/koblas/stdnum-js/compare/v1.15.0...v1.16.0) (2026-11-10)
+
+
+### Features
+
+* **az/tin:** verify the VÖEN check digit ([#213](https://github.com/koblas/stdnum-js/issues/213)) ([8b42a39](https://github.com/koblas/stdnum-js/commit/8b42a39e8131992283b37cb2ba223d2b194f6661))
+* **id/nik:** add Indonesian NIK validator ([5118e0e](https://github.com/koblas/stdnum-js/commit/5118e0e1298edc6ea93d16209523a016ca4804f7))
+* **passport:** add passport number validators ([#175](https://github.com/koblas/stdnum-js/issues/175)) ([d246e0b](https://github.com/koblas/stdnum-js/commit/d246e0b93547748c0abcbcffbcd3d6046fde5a11))
+
+
+### Bug Fixes
+
+* **ad/nrt:** require A and L numbers to be in 700000-799999 ([#216](https://github.com/koblas/stdnum-js/issues/216)) ([69028e0](https://github.com/koblas/stdnum-js/commit/69028e0ee7d193ca2e8f6e187169db680d97ed7f))
+* **at/vnr:** accept overflow dates and reject a leading 0 ([#248](https://github.com/koblas/stdnum-js/issues/248)) ([1731fcb](https://github.com/koblas/stdnum-js/commit/1731fcbd093f7939a78accfc088739242d0865e4))
+* **az/tin:** restore a dropped leading zero on 9-digit numbers ([#226](https://github.com/koblas/stdnum-js/issues/226)) ([27372a1](https://github.com/koblas/stdnum-js/commit/27372a1c8835db907d79d7782dba02bb98c86570))
+* **be/nn:** accept day 00 for an unknown day of birth ([#229](https://github.com/koblas/stdnum-js/issues/229)) ([0245556](https://github.com/koblas/stdnum-js/commit/02455563001c6bc161c1c7873727b54d883b62ba))
+* **be/nn:** reject the BIS month offsets ([#228](https://github.com/koblas/stdnum-js/issues/228)) ([6ee3a65](https://github.com/koblas/stdnum-js/commit/6ee3a658ba16aeb2274b319a2d2a0250dd2d17bb))
+* **be/vat:** require enterprise numbers to start with 0 or 1 ([#212](https://github.com/koblas/stdnum-js/issues/212)) ([8d1156e](https://github.com/koblas/stdnum-js/commit/8d1156ea91a3e59235e67db618a780ea4a8a58b5))
+* **by/unp:** accept Cyrillic letters ([#237](https://github.com/koblas/stdnum-js/issues/237)) ([8e1db0f](https://github.com/koblas/stdnum-js/commit/8e1db0f7f566de5b85ed8b1f0517913759fe5896))
+* **by/unp:** check the first two characters as python-stdnum does ([#235](https://github.com/koblas/stdnum-js/issues/235)) ([052b618](https://github.com/koblas/stdnum-js/commit/052b61897f5af55a14783e1df4939a698e4464ac))
+* **ca/sin:** reject numbers starting with 0 or 8 ([#211](https://github.com/koblas/stdnum-js/issues/211)) ([69d35f7](https://github.com/koblas/stdnum-js/commit/69d35f72d039cd249a3316b734db538cf0981311))
+* **ch/uid:** accept numbers without the CHE prefix ([#238](https://github.com/koblas/stdnum-js/issues/238)) ([1a7d3b4](https://github.com/koblas/stdnum-js/commit/1a7d3b4d6ca7b38b8debf60b224d8c0ae2cb5df4))
+* **cn/ric:** check the province code ([#233](https://github.com/koblas/stdnum-js/issues/233)) ([e2eee80](https://github.com/koblas/stdnum-js/commit/e2eee80344af93af05e22f0522820a56b9b9456f))
+* **cr/cr:** accept 11-digit numbers ([#224](https://github.com/koblas/stdnum-js/issues/224)) ([8750b22](https://github.com/koblas/stdnum-js/commit/8750b2218ba7dcce50dfc72e5916d8fa678fabf9))
+* **cy/vat:** reject numbers starting with 12 ([#251](https://github.com/koblas/stdnum-js/issues/251)) ([410deb2](https://github.com/koblas/stdnum-js/commit/410deb2b8a82812ff59d00aff978565658009df3))
+* **cz/rc:** accept 9-digit numbers from 1880 ([#242](https://github.com/koblas/stdnum-js/issues/242)) ([b1aa9d7](https://github.com/koblas/stdnum-js/commit/b1aa9d7fd70b54392bf729dc535a465d3d96b5a6))
+* **de/stnr:** drop the IdNr digit-repetition rule ([#223](https://github.com/koblas/stdnum-js/issues/223)) ([79f38ac](https://github.com/koblas/stdnum-js/commit/79f38aca67c6c9cc3a24c10a86793cf9d5267ad5))
+* **de/vat:** reject numbers starting with 0 ([#246](https://github.com/koblas/stdnum-js/issues/246)) ([87c5c00](https://github.com/koblas/stdnum-js/commit/87c5c00519e1780c6b161a21326564a0a9cfd719))
+* **do/cedula:** accept numbers issued with a non-matching check digit ([#221](https://github.com/koblas/stdnum-js/issues/221)) ([d4cdd3e](https://github.com/koblas/stdnum-js/commit/d4cdd3ec243241a70a9c563e8ced885d2e977518))
+* **do/ncf:** accept 19-digit NCFs starting with A or P ([#217](https://github.com/koblas/stdnum-js/issues/217)) ([dd82725](https://github.com/koblas/stdnum-js/commit/dd82725c90f7c027303032b1968cb7605771d184))
+* **do/rnc:** accept numbers issued with a non-matching check digit ([#222](https://github.com/koblas/stdnum-js/issues/222)) ([806ec3a](https://github.com/koblas/stdnum-js/commit/806ec3afe9aa1725002f6ea36732715bccb94d84))
+* **ee/ik:** check the birth date ([#230](https://github.com/koblas/stdnum-js/issues/230)) ([26462ae](https://github.com/koblas/stdnum-js/commit/26462ae95020d26616902f4a9d5c6191de5bb669))
+* **es/nif:** require digits in K, L and M numbers ([#244](https://github.com/koblas/stdnum-js/issues/244)) ([57f98e8](https://github.com/koblas/stdnum-js/commit/57f98e8e59f6f3348ebeab240854b6c1620d03fa))
+* **fi/hetu:** reject individual numbers 000 and 001 ([#227](https://github.com/koblas/stdnum-js/issues/227)) ([b32f4e6](https://github.com/koblas/stdnum-js/commit/b32f4e6e7023a41352f325498959509d3bc99e2d))
+* **fr/siret:** accept dots as separators ([#239](https://github.com/koblas/stdnum-js/issues/239)) ([5aa97d4](https://github.com/koblas/stdnum-js/commit/5aa97d4f3aca59aebcec3acd088fa567e9662901))
+* **gb/vat:** reject unknown prefixes on 5-character numbers ([#232](https://github.com/koblas/stdnum-js/issues/232)) ([2a6fea6](https://github.com/koblas/stdnum-js/commit/2a6fea635046e865b13c0a3f44a653da1839372c))
+* **gh/tin:** reject letters in the digits ([#253](https://github.com/koblas/stdnum-js/issues/253)) ([08cfd61](https://github.com/koblas/stdnum-js/commit/08cfd61911fdb49c3c267505b20789f8d538d258))
+* **id/npwp:** accept 16-digit NPWP numbers ([5118e0e](https://github.com/koblas/stdnum-js/commit/5118e0e1298edc6ea93d16209523a016ca4804f7))
+* **id/npwp:** stop rejecting numbers with unlisted entity prefixes ([#218](https://github.com/koblas/stdnum-js/issues/218)) ([763b40b](https://github.com/koblas/stdnum-js/commit/763b40b498bad01b7fb484282c7d6cefb3bc6ff8))
+* **is/kennitala:** require century digit 9 or 0 ([#252](https://github.com/koblas/stdnum-js/issues/252)) ([bc1c05d](https://github.com/koblas/stdnum-js/commit/bc1c05de22945fc4629505d1b9d97e9ab688c531))
+* **it/aic:** require the BASE10 form to start with 0 ([#236](https://github.com/koblas/stdnum-js/issues/236)) ([3f5a7bf](https://github.com/koblas/stdnum-js/commit/3f5a7bf3f3e77a84effacca42e94ceb76f6fd2f8))
+* **it/codicefiscale:** accept the 11-digit form for non-individuals ([#225](https://github.com/koblas/stdnum-js/issues/225)) ([d3bf840](https://github.com/koblas/stdnum-js/commit/d3bf8405c71b60c2d8ca0c914a308299e6a44aec))
+* **it/codicefiscale:** check the birth date ([#231](https://github.com/koblas/stdnum-js/issues/231)) ([2baae42](https://github.com/koblas/stdnum-js/commit/2baae4272e48f68e358382f3473df1e052fe5dae))
+* **mt/vat:** reject numbers starting with 0 ([#245](https://github.com/koblas/stdnum-js/issues/245)) ([b9e3a61](https://github.com/koblas/stdnum-js/commit/b9e3a61b92672c192415e8f48577e2d7fa76f18d))
+* **mu/nid:** check the birth date ([#234](https://github.com/koblas/stdnum-js/issues/234)) ([a3fa014](https://github.com/koblas/stdnum-js/commit/a3fa014ccab3cf060c37a7309e4e92b85dcce165))
+* **my/nric:** reject birth place code 70 ([#250](https://github.com/koblas/stdnum-js/issues/250)) ([cc0f8e8](https://github.com/koblas/stdnum-js/commit/cc0f8e868a09d1812e9d0f0e7550d0e20cd3b41a))
+* **nl/btw:** reject an all-zero number or suffix ([#249](https://github.com/koblas/stdnum-js/issues/249)) ([156903e](https://github.com/koblas/stdnum-js/commit/156903e09ea550a7cd4cd5d513b4c654e10345f0))
+* **nz/bank:** accept more separator layouts ([#240](https://github.com/koblas/stdnum-js/issues/240)) ([6885963](https://github.com/koblas/stdnum-js/commit/68859636b4aeaa2366942e62a6f1fb237b0dbd84))
+* **nz/bank:** add branches from the current Payments NZ register ([#241](https://github.com/koblas/stdnum-js/issues/241)) ([4b592d9](https://github.com/koblas/stdnum-js/commit/4b592d97d8a6714799e015c904164856450fa0b3))
+* **nz/ird:** reject numbers outside the issued range ([#254](https://github.com/koblas/stdnum-js/issues/254)) ([5fa5001](https://github.com/koblas/stdnum-js/commit/5fa5001427a8325855dfbfad9bf1157e17c2c11b))
+* **si/ddv:** reject a leading 0 and check value 11 ([#247](https://github.com/koblas/stdnum-js/issues/247)) ([5dd20ea](https://github.com/koblas/stdnum-js/commit/5dd20ea0096b18a3a0e4ff5cb0beeebe08cf62f2))
+* **sk/dph:** check the third digit, not the first ([#255](https://github.com/koblas/stdnum-js/issues/255)) ([ffd3692](https://github.com/koblas/stdnum-js/commit/ffd3692328e34c5fe90ca3814f8abd9050fc60cb))
+* **uy/rut:** accept registration prefix 22 ([#210](https://github.com/koblas/stdnum-js/issues/210)) ([16818a3](https://github.com/koblas/stdnum-js/commit/16818a3f3438902a88e9c78155d88984f11a47cd))
+
 ## [1.15.0](https://github.com/koblas/stdnum-js/compare/v1.14.0...v1.15.0) (2026-11-08)
 
 
