@@ -5,7 +5,8 @@
  * The Austian Versicherungsnummer is a personal identification number used for
  * social security. The number is 10 digits long and consists of a 3 digit
  * serial, a check digit and 6 digits that usually specify the person's birth
- * date.
+ * date. When a day's numbers run out, days above 31 and months above 12 are
+ * used, so the date is not checked.
  *
  * Sources:
  *   https://de.wikipedia.org/wiki/Sozialversicherungsnummer#Österreich
@@ -14,7 +15,7 @@
  */
 
 import * as exceptions from '../exceptions';
-import { isValidDateCompactDDMMYY, strings, weightedSum } from '../util';
+import { strings, weightedSum } from '../util';
 import { Validator, ValidateReturn } from '../types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
@@ -53,12 +54,12 @@ const impl: Validator = {
     if (!strings.isdigits(value)) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
+    // The serial number starts at 100
+    if (value[0] === '0') {
+      return { isValid: false, error: new exceptions.InvalidFormat() };
+    }
 
     const [front, check, dob] = strings.splitAt(value, 3, 4);
-
-    if (!isValidDateCompactDDMMYY(dob, true)) {
-      return { isValid: false, error: new exceptions.InvalidComponent() };
-    }
 
     const sum = weightedSum(`${front}${dob}`, {
       weights: [3, 7, 9, 5, 8, 4, 2, 1, 6],
