@@ -10,7 +10,13 @@
  * Men are assigned to odd numbers, women assigned to even numbers. The final
  * digit is the checksum.
  *
+ * Only the province (first 2 digits) of the location code is checked, against
+ * the GB/T 2260 province codes. python-stdnum also checks the full 6 digit
+ * county code against a dated list.
+ *
  * Source
+ *   https://github.com/arthurdejong/python-stdnum/blob/master/stdnum/cn/ric.py
+ *   https://zh.wikipedia.org/wiki/中华人民共和国行政区划代码
  *
  * PERSON
  */
@@ -19,6 +25,14 @@ import * as exceptions from '../exceptions';
 import { strings, weightedSum } from '../util';
 import { Validator, ValidateReturn } from '../types';
 import { isValidDateCompactYYYYMMDD } from '../util/isValidDate';
+
+// GB/T 2260 province codes (71 Taiwan, 81 Hong Kong, 82 Macau)
+// prettier-ignore
+const PROVINCES = new Set([
+  '11', '12', '13', '14', '15', '21', '22', '23', '31', '32', '33', '34',
+  '35', '36', '37', '41', '42', '43', '44', '45', '46', '50', '51', '52',
+  '53', '54', '61', '62', '63', '64', '65', '71', '81', '82',
+]);
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' ');
@@ -71,6 +85,9 @@ const impl: Validator = {
 
     if (check !== digit) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
+    }
+    if (!PROVINCES.has(front.slice(0, 2))) {
+      return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
     return {

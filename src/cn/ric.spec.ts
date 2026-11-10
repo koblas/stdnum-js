@@ -1,5 +1,9 @@
 import { validate, format } from './ric';
-import { InvalidLength, InvalidChecksum } from '../exceptions';
+import {
+  InvalidLength,
+  InvalidChecksum,
+  InvalidComponent,
+} from '../exceptions';
 
 describe('cn/ric', () => {
   it('format:360426199101010071', () => {
@@ -18,6 +22,13 @@ describe('cn/ric', () => {
     const result = validate('120103198806018241');
 
     expect(result.isValid && result.compact).toEqual('120103198806018241');
+  });
+
+  // Valid check digit, but 99 is not a province
+  it('validate:990426199101010079', () => {
+    const result = validate('990426199101010079');
+
+    expect(result.error).toBeInstanceOf(InvalidComponent);
   });
 
   it('validate:12345678', () => {
