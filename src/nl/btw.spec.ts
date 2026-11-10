@@ -1,11 +1,25 @@
 import { validate, format } from './btw';
-import { InvalidLength, InvalidChecksum } from '../exceptions';
+import { InvalidLength, InvalidChecksum, InvalidFormat } from '../exceptions';
 
 describe('nl/btw', () => {
   it('format:004495445B01', () => {
     const result = format('004495445B01');
 
     expect(result).toEqual('004495445B01');
+  });
+
+  // Suffix 00
+  it('validate:004495445B00', () => {
+    const result = validate('004495445B00');
+
+    expect(result.error).toBeInstanceOf(InvalidFormat);
+  });
+
+  // Number 000000000 (passes the BSN check)
+  it('validate:000000000B01', () => {
+    const result = validate('000000000B01');
+
+    expect(result.error).toBeInstanceOf(InvalidFormat);
   });
 
   it('validate:004495445B01', () => {
