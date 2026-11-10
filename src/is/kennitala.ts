@@ -4,6 +4,14 @@
  * Module for handling Icelandic personal and organisation identity codes
  * (kennitala).
  *
+ * The number is DDMMYY (40 is added to the day for organisations), two
+ * random digits, a check digit and a century digit (9 for 1900-1999, 0 for
+ * 2000-2099).
+ *
+ * Source
+ *   https://en.wikipedia.org/wiki/Icelandic_identification_number
+ *   https://github.com/arthurdejong/python-stdnum/blob/master/stdnum/is_/kennitala.py
+ *
  * PERSON/ENTITY
  */
 
@@ -48,6 +56,10 @@ const impl: Validator = {
     }
 
     const [dd, mm, yy, , centry] = strings.splitAt(value, 2, 4, 6, 9);
+    // The last digit is the century: 9 for the 1900s, 0 for the 2000s
+    if (centry !== '9' && centry !== '0') {
+      return { isValid: false, error: new exceptions.InvalidFormat() };
+    }
 
     const dayValue = parseInt(dd, 10);
     const isOrg = dayValue > 40;
