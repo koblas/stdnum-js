@@ -14,6 +14,36 @@ describe('nz/bank', () => {
     expect(result.isValid && result.compact).toEqual('0109020068389000');
   });
 
+  it('validate:01-902-0068389-000', () => {
+    const result = validate('01-902-0068389-000');
+
+    expect(result.isValid && result.compact).toEqual('0109020068389000');
+  });
+
+  it('validate:01 902 0068389 00', () => {
+    const result = validate('01 902 0068389 00');
+
+    expect(result.isValid && result.compact).toEqual('0109020068389000');
+  });
+
+  it('validate:01–902–0068389–00', () => {
+    const result = validate('01–902–0068389–00');
+
+    expect(result.isValid && result.compact).toEqual('0109020068389000');
+  });
+
+  it('validate:01-0902-0068-389-00', () => {
+    const result = validate('01-0902-0068-389-00');
+
+    expect(result.isValid && result.compact).toEqual('0109020068389000');
+  });
+
+  it('validate:010902006838900', () => {
+    const result = validate('010902006838900');
+
+    expect(result.isValid && result.compact).toEqual('0109020068389000');
+  });
+
   // Branches from the Payments NZ bank branch register
   it('validate:0220371234560000', () => {
     const result = validate('0220371234560000');

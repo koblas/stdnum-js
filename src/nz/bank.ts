@@ -149,33 +149,31 @@ const algorithms: Record<string, { weights: number[]; modulus: number }> = {
 };
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
-  // We're going to allow '-' or ' ' separators
   const [valueA, err] = strings.cleanUnicode(input, '');
 
   if (err !== null) {
     return [valueA, err];
   }
-  const cvalue = valueA.trim();
+  // Separators are spaces or dashes (cleanUnicode turns en dashes into '-')
+  const parts = valueA.trim().replace(/ /g, '-').split('-');
 
-  // No separtor, keep it simple
-  if (!/[ -]/.test(cvalue)) {
-    return [cvalue, null];
+  // With 4 parts, zero pad each one to its full length
+  if (parts.length === 4) {
+    return [
+      [
+        parts[0].padStart(2, '0'),
+        parts[1].padStart(4, '0'),
+        parts[2].padStart(7, '0'),
+        parts[3].padStart(3, '0'),
+      ].join(''),
+      null,
+    ];
   }
 
-  const parts = cvalue.split(/[ -]/g);
-  if (parts.length !== 4) {
-    return [cvalue, new exceptions.InvalidFormat()];
-  }
+  // Otherwise only the suffix (after the first 13 digits) is zero padded
+  const value = parts.join('');
 
-  return [
-    [
-      parts[0].padStart(2, '0'),
-      parts[1].padStart(4, '0'),
-      parts[2].padStart(7, '0'),
-      parts[3].padStart(3, '0'),
-    ].join(''),
-    null,
-  ];
+  return [`${value.slice(0, 13)}${value.slice(13).padStart(3, '0')}`, null];
 }
 
 const impl: Validator = {
