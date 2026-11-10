@@ -1,11 +1,18 @@
 import { validate, format } from './vat';
-import { InvalidLength, InvalidChecksum } from '../exceptions';
+import { InvalidLength, InvalidChecksum, InvalidFormat } from '../exceptions';
 
 describe('mt/vat', () => {
   it('format:MT 1167-9112', () => {
     const result = format('MT 1167-9112');
 
     expect(result).toEqual('1167-9112');
+  });
+
+  // Valid check digit, but numbers do not start with 0
+  it('validate:01234534', () => {
+    const result = validate('01234534');
+
+    expect(result.error).toBeInstanceOf(InvalidFormat);
   });
 
   it('validate:MT 1167-9112', () => {
