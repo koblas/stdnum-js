@@ -1,5 +1,9 @@
 import { validate, format } from './ird';
-import { InvalidLength, InvalidChecksum } from '../exceptions';
+import {
+  InvalidLength,
+  InvalidChecksum,
+  InvalidComponent,
+} from '../exceptions';
 
 describe('nz/ird', () => {
   it('format:4909185-0', () => {
@@ -18,6 +22,13 @@ describe('nz/ird', () => {
     const result = validate('NZ 4909185-0');
 
     expect(result.isValid && result.compact).toEqual('49091850');
+  });
+
+  // Valid check digit, but below the issued range
+  it('validate:03896099', () => {
+    const result = validate('03896099');
+
+    expect(result.error).toBeInstanceOf(InvalidComponent);
   });
 
   it('validate:123478', () => {
