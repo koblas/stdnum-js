@@ -10,6 +10,10 @@
  * digits followed by 3 digits to identify the local tax office and 3 digits for
  * branch code.
  *
+ * The first 2 digits are not checked against a list of known entity types:
+ * the published lists are incomplete, and real numbers use prefixes (such as
+ * 03, 66, 75 and 90) that they leave out.
+ *
  * Source
  *   https://www.oecd.org/tax/automatic-exchange/crs-implementation-and-assistance/tax-identification-numbers/Indonesia-TIN.pdf
  *   https://metacpan.org/pod/Business::ID::NPWP
@@ -26,41 +30,6 @@ import { luhnChecksumValidate } from '../util/checksum';
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -.');
 }
-
-const NPWP_TAX_IDENTITIES = [
-  '01',
-  '02',
-  '21',
-  '31',
-  '00',
-  '20',
-  '04',
-  '05',
-  '06',
-  '07',
-  '08',
-  '09',
-  '24',
-  '25',
-  '26',
-  '31',
-  '34',
-  '35',
-  '36',
-  '47',
-  '48',
-  '49',
-  '57',
-  '58',
-  '67',
-  '77',
-  '78',
-  '79',
-  '87',
-  '88',
-  '89',
-  '97',
-];
 
 const impl: Validator = {
   name: 'Indonesian VAT Number',
@@ -95,9 +64,6 @@ const impl: Validator = {
     }
     if (!strings.isdigits(value)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
-    }
-    if (!NPWP_TAX_IDENTITIES.includes(value.slice(0, 2))) {
-      return { isValid: false, error: new exceptions.InvalidComponent() };
     }
     if (!luhnChecksumValidate(value.slice(0, 9))) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
