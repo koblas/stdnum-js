@@ -46,7 +46,7 @@ const impl: Validator = {
     if (value.length !== 8) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
-    if (!strings.isdigits(value)) {
+    if (!strings.isdigits(value) || value[0] === '0') {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
@@ -59,7 +59,8 @@ const impl: Validator = {
         modulus: 11,
       });
 
-    if (String(sum % 10) !== check) {
+    // A sum of 0 (check value 11) has no valid check digit; 10 becomes 0
+    if (sum === 11 || String(sum % 10) !== check) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 
