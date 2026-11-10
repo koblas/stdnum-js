@@ -14,6 +14,19 @@ describe('be/nn', () => {
     expect(result).toEqual('88022999990');
   });
 
+  // Day 00: the day of birth was not known
+  it('validate:85070003355', () => {
+    const result = validate('85070003355');
+
+    expect(result.isValid && result.compact).toEqual('85070003355');
+  });
+
+  it('validate:17070003314', () => {
+    const result = validate('17070003314');
+
+    expect(result.isValid && result.compact).toEqual('17070003314');
+  });
+
   it('validate:1', () => {
     const result = validate('1');
 
