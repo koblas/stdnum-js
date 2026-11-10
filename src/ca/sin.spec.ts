@@ -1,5 +1,10 @@
 import { validate, format } from './sin';
-import { InvalidLength, InvalidChecksum, InvalidFormat } from '../exceptions';
+import {
+  InvalidLength,
+  InvalidChecksum,
+  InvalidFormat,
+  InvalidComponent,
+} from '../exceptions';
 
 describe('ca/sin', () => {
   it('format:123456782', () => {
@@ -30,5 +35,17 @@ describe('ca/sin', () => {
     const result = validate('999-999-999');
 
     expect(result.error).toBeInstanceOf(InvalidChecksum);
+  });
+
+  it('validate:823456785', () => {
+    const result = validate('823456785');
+
+    expect(result.error).toBeInstanceOf(InvalidComponent);
+  });
+
+  it('validate:023456783', () => {
+    const result = validate('023456783');
+
+    expect(result.error).toBeInstanceOf(InvalidComponent);
   });
 });
