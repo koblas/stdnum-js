@@ -90,6 +90,11 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
+    // For historical reasons individual numbers start at 002
+    if (parseInt(person, 10) < 2) {
+      return { isValid: false, error: new exceptions.InvalidComponent() };
+    }
+
     const checkable = `${dd}${mm}${yy}${person}`;
     if (CHECK_ALPHA[parseInt(checkable, 10) % CHECK_ALPHA.length] !== check) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };

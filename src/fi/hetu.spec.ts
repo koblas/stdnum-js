@@ -1,5 +1,9 @@
 import { validate, format } from './hetu';
-import { InvalidLength, InvalidChecksum } from '../exceptions';
+import {
+  InvalidLength,
+  InvalidChecksum,
+  InvalidComponent,
+} from '../exceptions';
 
 describe('fi/hetu', () => {
   it('format:131052-308T', () => {
@@ -22,6 +26,24 @@ describe('fi/hetu', () => {
       expect(result.isValid).toEqual(true);
     },
   );
+
+  it('validate:131052-002X', () => {
+    const result = validate('131052-002X');
+
+    expect(result.isValid && result.compact).toEqual('131052-002X');
+  });
+
+  it('validate:131052-001W', () => {
+    const result = validate('131052-001W');
+
+    expect(result.error).toBeInstanceOf(InvalidComponent);
+  });
+
+  it('validate:131052-000V', () => {
+    const result = validate('131052-000V');
+
+    expect(result.error).toBeInstanceOf(InvalidComponent);
+  });
 
   it('validate:12345678', () => {
     const result = validate('12345678');
