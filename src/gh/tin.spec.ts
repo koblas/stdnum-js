@@ -1,5 +1,5 @@
 import { validate, format } from './tin';
-import { InvalidLength, InvalidChecksum } from '../exceptions';
+import { InvalidLength, InvalidChecksum, InvalidFormat } from '../exceptions';
 
 describe('gh/tin', () => {
   it('format:C0000803561', () => {
@@ -26,6 +26,14 @@ describe('gh/tin', () => {
     const result = validate(value);
 
     expect(result.isValid).toEqual(true);
+  });
+
+  // A letter inside the digits, with a check digit that matches when the
+  // letter is ignored
+  it('validate:C00008035C0', () => {
+    const result = validate('C00008035C0');
+
+    expect(result.error).toBeInstanceOf(InvalidFormat);
   });
 
   it('validate:C000080356', () => {

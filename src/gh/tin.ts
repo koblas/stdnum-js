@@ -30,7 +30,8 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -');
 }
 
-const validRe = /^[PCGQV]{1}00[A-Z0-9]{8}$/;
+// The check digit covers digits only, so only the last character can be X
+const validRe = /^[PCGQV]00\d{7}[\dX]$/;
 
 const ALPHABET = '0123456789X';
 
