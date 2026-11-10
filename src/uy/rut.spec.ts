@@ -1,5 +1,9 @@
 import { validate, format } from './rut';
-import { InvalidLength, InvalidChecksum } from '../exceptions';
+import {
+  InvalidLength,
+  InvalidChecksum,
+  InvalidComponent,
+} from '../exceptions';
 
 describe('uy/rut', () => {
   it('format:211003420017', () => {
@@ -18,6 +22,18 @@ describe('uy/rut', () => {
     const result = validate('UY 21 140634 001 1');
 
     expect(result.isValid && result.compact).toEqual('211406340011');
+  });
+
+  it('validate:221234560016', () => {
+    const result = validate('221234560016');
+
+    expect(result.isValid && result.compact).toEqual('221234560016');
+  });
+
+  it('validate:231234560013', () => {
+    const result = validate('231234560013');
+
+    expect(result.error).toBeInstanceOf(InvalidComponent);
   });
 
   it('validate:12345678', () => {

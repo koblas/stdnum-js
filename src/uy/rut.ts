@@ -5,12 +5,13 @@
  * tax purposes.
  *
  * This number consists of 12 digits, the first two indicate the registration
- * number, followed by a 6 digit sequence number, followed by 001 and a check
- * digit.
+ * number (01 to 22), followed by a 6 digit sequence number, followed by 001
+ * and a check digit.
  *
  * Source
  *    https://www.agesic.gub.uy/innovaportal/file/1634/1/modelo_de_datos.pdf (page 71)
  *    https://servicios.dgi.gub.uy/ServiciosEnLinea/dgi--servicios-en-linea--consulta-de-certifcado-unico
+ *    https://github.com/arthurdejong/python-stdnum/commit/0218601 (prefix 22)
  *
  * ENTITY
  */
@@ -63,7 +64,7 @@ const impl: Validator = {
     if (!strings.isdigits(value)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
-    if (parseInt(value.slice(0, 2), 10) > 21 || value.slice(0, 2) === '00') {
+    if (parseInt(value.slice(0, 2), 10) > 22 || value.slice(0, 2) === '00') {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
     if (value.slice(2, 8) === '000000') {
