@@ -69,6 +69,11 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
+    // AIC codes are below 100000000, so the first digit is always 0
+    if (base10[0] !== '0') {
+      return { isValid: false, error: new exceptions.InvalidComponent() };
+    }
+
     const [front, end] = strings.splitAt(base10, -1);
 
     const sum = front

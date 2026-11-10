@@ -76,11 +76,16 @@ const impl: Validator = {
     if (!strings.isdigits(value.slice(2))) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
-    if (!strings.isdigits(value[0]) && !'1234567ABCEHKM'.includes(value[0])) {
+    // The first 2 characters are either both digits or both letters
+    const head = value.slice(0, 2);
+    if (
+      !strings.isdigits(head) &&
+      !head.split('').every(c => 'ABCEHKMOPT'.includes(c))
+    ) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
-    if (!strings.isdigits(value[1]) && !'ABCEHKMOPT'.includes(value[1])) {
-      return { isValid: false, error: new exceptions.InvalidFormat() };
+    if (!'1234567ABCEHKM'.includes(value[0])) {
+      return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
     const [front, check] = strings.splitAt(value, -1);

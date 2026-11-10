@@ -1,5 +1,10 @@
 import { validate, format } from './unp';
-import { InvalidLength, InvalidChecksum } from '../exceptions';
+import {
+  InvalidLength,
+  InvalidChecksum,
+  InvalidComponent,
+  InvalidFormat,
+} from '../exceptions';
 
 describe('by/unp', () => {
   it('format:200988541', () => {
@@ -25,6 +30,27 @@ describe('by/unp', () => {
     const result = validate('МА1953684');
 
     expect(result.isValid && result.compact).toEqual('MA1953684');
+  });
+
+  // First digit 9 is not used (valid check digit)
+  it('validate:912345675', () => {
+    const result = validate('912345675');
+
+    expect(result.error).toBeInstanceOf(InvalidComponent);
+  });
+
+  // First digit 8 is not used (valid check digit)
+  it('validate:812345679', () => {
+    const result = validate('812345679');
+
+    expect(result.error).toBeInstanceOf(InvalidComponent);
+  });
+
+  // A digit and a letter mixed in the first 2 characters (valid check digit)
+  it('validate:7A1234563', () => {
+    const result = validate('7A1234563');
+
+    expect(result.error).toBeInstanceOf(InvalidFormat);
   });
 
   it('validate:12345678', () => {

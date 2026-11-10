@@ -1,4 +1,4 @@
-import { validate, format } from './tin';
+import { validate, format, compact } from './tin';
 import { InvalidLength, InvalidFormat, InvalidChecksum } from '../exceptions';
 
 describe('az/tin', () => {
@@ -6,6 +6,16 @@ describe('az/tin', () => {
     const result = format('123-123-126-1');
 
     expect(result).toEqual('1231231261');
+  });
+
+  it('validate:234567872', () => {
+    const result = validate('234567872');
+
+    expect(result.isValid && result.compact).toEqual('0234567872');
+  });
+
+  it('compact:234567872', () => {
+    expect(compact('234567872')).toEqual('0234567872');
   });
 
   it('validate:1231231261', () => {

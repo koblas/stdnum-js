@@ -9,8 +9,13 @@
  * (part of) the Bundesfinanzamtsnummer (BUFA-Nr.), a district number, a serial
  * number and a check digit.
  *
+ * There is no check digit that can be verified without knowing the tax
+ * office, so only the length and the regional formats are checked. (The
+ * digit-repetition rule of the IdNr does not apply to this number.)
+ *
  * Source
  *    https://de.wikipedia.org/wiki/Steuernummer
+ *    https://github.com/arthurdejong/python-stdnum/blob/master/stdnum/de/stnr.py
  *
  * PERSON/ENTITY
  */
@@ -156,24 +161,6 @@ const impl: Validator = {
     // Make sure it's the same as a region
     if (findMatch(value) === null) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
-    }
-
-    // In the first 10 digits exactly one digit must be repeated two or
-    // three times and other digits can appear only once.
-    // Starting at 2017, the rule is, that within the first ten digits one number has to
-    // appear exactly twice or thrice.
-    const counter: Record<string, number> = {};
-
-    value
-      .substring(0, 10)
-      .split('')
-      .forEach(v => {
-        counter[v] = (counter[v] ?? 0) + 1;
-      });
-    const more = Object.values(counter); // .filter(v => v > 1);
-    if (!more.some(v => v === 2 || v === 3)) {
-      // if (more.length !== 1 && [2, 3].includes(more[0])) {
-      return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
     // if (!mod11mod10Validate(value)) {

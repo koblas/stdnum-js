@@ -1,5 +1,9 @@
 import { validate, format } from './aic';
-import { InvalidLength, InvalidChecksum } from '../exceptions';
+import {
+  InvalidLength,
+  InvalidChecksum,
+  InvalidComponent,
+} from '../exceptions';
 
 describe('it/aic', () => {
   it('format:000307052', () => {
@@ -18,6 +22,20 @@ describe('it/aic', () => {
     const result = validate('009CVD');
 
     expect(result.isValid && result.compact).toEqual('009CVD');
+  });
+
+  // Valid check digit, but does not start with 0
+  it('validate:123456788', () => {
+    const result = validate('123456788');
+
+    expect(result.error).toBeInstanceOf(InvalidComponent);
+  });
+
+  // The same number in BASE32
+  it('validate:3PRM8N', () => {
+    const result = validate('3PRM8N');
+
+    expect(result.error).toBeInstanceOf(InvalidComponent);
   });
 
   it('validate:12345678', () => {
