@@ -1,5 +1,9 @@
 import { validate, format } from './npwp';
-import { InvalidLength, InvalidChecksum } from '../exceptions';
+import {
+  InvalidLength,
+  InvalidChecksum,
+  InvalidComponent,
+} from '../exceptions';
 
 describe('id/npwp', () => {
   it('format:013000666091000', () => {
@@ -30,5 +34,36 @@ describe('id/npwp', () => {
     const result = validate('216090524017001');
 
     expect(result.error).toBeInstanceOf(InvalidChecksum);
+  });
+
+  it('validate:0016090524017000', () => {
+    const result = validate('0016090524017000');
+
+    expect(result.isValid && result.compact).toEqual('0016090524017000');
+  });
+
+  it('validate:0216090524017001', () => {
+    const result = validate('0216090524017001');
+
+    expect(result.error).toBeInstanceOf(InvalidChecksum);
+  });
+
+  it('validate:3171011708450001', () => {
+    const result = validate('3171011708450001');
+
+    expect(result.isValid && result.compact).toEqual('3171011708450001');
+    expect(result.isValid && result.isIndividual).toEqual(true);
+  });
+
+  it('validate:3171013002001234', () => {
+    const result = validate('3171013002001234');
+
+    expect(result.error).toBeInstanceOf(InvalidComponent);
+  });
+
+  it('format:3171011708450001', () => {
+    const result = format('3171011708450001');
+
+    expect(result).toEqual('3171011708450001');
   });
 });
