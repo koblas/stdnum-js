@@ -52,7 +52,7 @@ const impl: Validator = {
     if (error) {
       return { isValid: false, error };
     }
-    if (value.length !== 12) {
+    if (value.length !== 11 && value.length !== 12) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
     if (!strings.isdigits(value)) {
