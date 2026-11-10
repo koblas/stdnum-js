@@ -67,6 +67,9 @@ const impl: Validator = {
       // L: Spanish living outside Spain without DNI
       // M: granted the tax to foreigners who have no NIE
       // these use the old checkdigit algorithm (the DNI one)
+      if (!strings.isdigits(value.slice(1, -1))) {
+        return { isValid: false, error: new exceptions.InvalidFormat() };
+      }
       if (value[value.length - 1] !== dni.calcCheckDigit(value.slice(1))) {
         return { isValid: false, error: new exceptions.InvalidChecksum() };
       }
