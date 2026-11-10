@@ -6,8 +6,15 @@
  * contain the tax office number (3 digits), the type of business (2 digits), a
  * serially assigned value (4 digits) and a single check digit.
  *
+ * The check digit is verified: weights 1, 3, 7, 1, 3, 7, 1, 3, 5 over the
+ * first 9 digits, plus the 9th digit times 5 divided by 10 (rounded down).
+ * python-stdnum does not check it. Of the 231 real-world numbers in
+ * python-stdnum's tests, 228 pass. See
+ * https://github.com/koblas/stdnum-js/issues/91.
+ *
  * Source
  *   https://www.oecd.org/tax/automatic-exchange/crs-implementation-and-assistance/tax-identification-numbers/Korea-TIN.pdf
+ *   https://www.oppadu.com/formulas/business-registration-number-check/ (check digit)
  *
  * ENTITY
  */

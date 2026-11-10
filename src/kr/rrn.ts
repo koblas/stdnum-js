@@ -18,6 +18,9 @@
  * checked. Replacement numbers issued since 2020 to people born earlier will
  * still fail the check digit.
  *
+ * Birth dates in the future are rejected; python-stdnum only checks that the
+ * date exists. See https://github.com/koblas/stdnum-js/issues/91.
+ *
  * Source:
  *   http://www.law.go.kr/lsSc.do?tabMenuId=tab18&p1=&subMenu=1&nwYn=1&section=&tabNo=&query=개인정보+보호법
  *   https://en.wikipedia.org/wiki/Resident_registration_number
