@@ -143,6 +143,7 @@ How you can help! This library currently support about half the countries in the
 | Hungaria               | HU   | ANUM            | Vat                | ANUM (Közösségi adószám, Hungarian VAT number)                                                                                         |
 | Iceland                | IS   | KENNITALA       | Person/Company     | Icelandic personal and organisation identity code                                                                                      |
 | Iceland                | IS   | VSK             | Vat                | Virðisaukaskattsnúmer, Icelandic VAT number                                                                                            |
+| Indonesia              | ID   | NIK             | Person             | NIK (Nomor Induk Kependudukan, Indonesian identity number).                                                                            |
 | Indonesia              | ID   | NPWP            | Person/Company     | NPWP (Nomor Pokok Wajib Pajak, Indonesian VAT Number).                                                                                 |
 | Ireland                | IE   | PPS             | Person             | Personal Public Service Number, Irish personal number                                                                                  |
 | Ireland                | IE   | VAT             | Tax/Vat            | Ireland Value Added Tax ID                                                                                                             |

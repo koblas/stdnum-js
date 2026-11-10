@@ -372,7 +372,7 @@ export const personValidators: Record<string, Validator[]> = {
   HK: [HK.hkid],
   HR: [HR.oib],
   HU: [HU.anum],
-  ID: [ID.npwp],
+  ID: [ID.nik, ID.npwp],
   IE: [IE.pps],
   IL: [IL.idnr],
   IN: [IN.aadhaar],
