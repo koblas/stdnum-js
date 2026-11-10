@@ -18,7 +18,7 @@
  */
 
 import * as exceptions from '../exceptions';
-import { strings } from '../util';
+import { isValidDate, strings } from '../util';
 import { Validator, ValidateReturn } from '../types';
 import * as iva from './iva';
 
@@ -109,6 +109,24 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
   return strings.cleanUnicode(input, ' -:');
 }
 
+// Digits in the date may be replaced by letters (omocodia)
+function dateDigit(c: string): number {
+  const idx = 'LMNPQRSTUV'.indexOf(c);
+
+  return idx === -1 ? parseInt(c, 10) : idx;
+}
+
+// Check the birth date (day + 40 for women); the year is taken from
+// 1920 to 2019, as python-stdnum does
+function validBirthDate(value: string): boolean {
+  const yy = dateDigit(value[6]) * 10 + dateDigit(value[7]);
+  const month = 'ABCDEHLMPRST'.indexOf(value[8]) + 1;
+  const day = (dateDigit(value[9]) * 10 + dateDigit(value[10])) % 40;
+  const year = yy < 20 ? 2000 + yy : 1900 + yy;
+
+  return isValidDate(String(year), String(month), String(day));
+}
+
 const impl: Validator = {
   name: 'Italian Tax Code',
   localName: 'Codice Fiscale',
@@ -162,6 +180,9 @@ const impl: Validator = {
 
     if (CHECK_CODE_CHARS[sum] !== check) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
+    }
+    if (!validBirthDate(value)) {
+      return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
     return {
