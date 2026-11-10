@@ -18,6 +18,26 @@ describe('ad/nrt', () => {
     expect(result.error).toBeInstanceOf(InvalidComponent);
   });
 
+  it('validate("A-700000-B")', () => {
+    const result = validate('A-700000-B');
+    expect(result.isValid && result.compact).toEqual('A700000B');
+  });
+
+  it('validate("L-799999-Z")', () => {
+    const result = validate('L-799999-Z');
+    expect(result.isValid && result.compact).toEqual('L799999Z');
+  });
+
+  it('validate("A-699999-B")', () => {
+    const result = validate('A-699999-B');
+    expect(result.error).toBeInstanceOf(InvalidComponent);
+  });
+
+  it('validate("L-800000-Z")', () => {
+    const result = validate('L-800000-Z');
+    expect(result.error).toBeInstanceOf(InvalidComponent);
+  });
+
   it('format("D059888N")', () => {
     expect(format('D059888N')).toEqual('D-059888-N');
   });
