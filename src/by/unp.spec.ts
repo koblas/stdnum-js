@@ -20,6 +20,13 @@ describe('by/unp', () => {
     expect(result.isValid && result.compact).toEqual('MA1953684');
   });
 
+  // Cyrillic М and А
+  it('validate:МА1953684', () => {
+    const result = validate('МА1953684');
+
+    expect(result.isValid && result.compact).toEqual('MA1953684');
+  });
+
   it('validate:12345678', () => {
     const result = validate('12345678');
 
