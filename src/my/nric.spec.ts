@@ -8,6 +8,13 @@ describe('my/nric', () => {
     expect(result).toEqual('770305-02-1234');
   });
 
+  // Birth place code 70 is not assigned
+  it('validate:810909705540', () => {
+    const result = validate('810909705540');
+
+    expect(result.error).toBeInstanceOf(InvalidComponent);
+  });
+
   it('validate:770305-02-1234', () => {
     const result = validate('770305-02-1234');
 
