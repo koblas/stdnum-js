@@ -25,6 +25,13 @@ describe('by/unp', () => {
     expect(result.isValid && result.compact).toEqual('MA1953684');
   });
 
+  // Cyrillic М and А
+  it('validate:МА1953684', () => {
+    const result = validate('МА1953684');
+
+    expect(result.isValid && result.compact).toEqual('MA1953684');
+  });
+
   // First digit 9 is not used (valid check digit)
   it('validate:912345675', () => {
     const result = validate('912345675');

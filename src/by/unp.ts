@@ -35,7 +35,13 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
     null,
   );
 
-  return [v2 ?? value, null];
+  // Cyrillic letters that look like the Latin letters used in the number
+  const latin = (v2 ?? value).replace(
+    /[АВЕКМНОРСТ]/g,
+    c => 'ABEKMHOPCT'['АВЕКМНОРСТ'.indexOf(c)],
+  );
+
+  return [latin, null];
 }
 
 const impl: Validator = {
