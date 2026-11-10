@@ -1,11 +1,18 @@
 import { validate, format } from './vat';
-import { InvalidLength, InvalidChecksum } from '../exceptions';
+import { InvalidLength, InvalidChecksum, InvalidFormat } from '../exceptions';
 
 describe('de/vat', () => {
   it('format:DE 136,695 976', () => {
     const result = format('DE 136,695 976');
 
     expect(result).toEqual('136695976');
+  });
+
+  // Valid check digit, but numbers do not start with 0
+  it('validate:012345679', () => {
+    const result = validate('012345679');
+
+    expect(result.error).toBeInstanceOf(InvalidFormat);
   });
 
   it('validate:DE136695976', () => {

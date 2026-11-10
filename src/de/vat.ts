@@ -53,7 +53,7 @@ const impl: Validator = {
     if (value.length !== 9) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
-    if (!strings.isdigits(value)) {
+    if (!strings.isdigits(value) || value[0] === '0') {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
