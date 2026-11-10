@@ -3,10 +3,12 @@
  *
  * The IRD number is used by the New Zealand Inland Revenue Department (Te Tari Taake)
  * to identify businesses and individuals for tax purposes. The number consists of 8 or 9 digits
- * where the last digit is a check digit.
+ * where the last digit is a check digit. Valid numbers lie between 10-000-000
+ * and 150-000-000.
  *
  * Source
  *   https://www.ird.govt.nz/
+ *   https://github.com/arthurdejong/python-stdnum/blob/master/stdnum/nz/ird.py (range)
  *   https://www.oecd.org/tax/automatic-exchange/crs-implementation-and-assistance/tax-identification-numbers/New%20Zealand-TIN.pdf
  *
  * PERSON/ENTITY
@@ -63,6 +65,11 @@ const impl: Validator = {
     }
     if (!strings.isdigits(value)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
+    }
+    // Numbers outside this range have not been (or will not soon be) issued
+    const num = parseInt(value, 10);
+    if (num <= 10000000 || num >= 150000000) {
+      return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
     const [frontV, check] = strings.splitAt(value, -1);
