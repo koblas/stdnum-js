@@ -14,6 +14,9 @@
  * the GB/T 2260 province codes. python-stdnum also checks the full 6 digit
  * county code against a dated list.
  *
+ * Birth dates in the future are rejected; python-stdnum only checks that the
+ * date exists. See https://github.com/koblas/stdnum-js/issues/91.
+ *
  * Source
  *   https://github.com/arthurdejong/python-stdnum/blob/master/stdnum/cn/ric.py
  *   https://zh.wikipedia.org/wiki/中华人民共和国行政区划代码

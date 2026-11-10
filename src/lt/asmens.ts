@@ -5,6 +5,9 @@
  * and birth century, the second through seventh denotes the birth date,
  * followed by a three-digit serial and a check digit.
  *
+ * Birth dates in the future are rejected; python-stdnum only checks that the
+ * date exists. See https://github.com/koblas/stdnum-js/issues/91.
+ *
  * Source:
  *   https://lt.wikipedia.org/wiki/Asmens_kodas
  *   https://en.wikipedia.org/wiki/National_identification_number#Lithuania

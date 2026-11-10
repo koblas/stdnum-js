@@ -5,6 +5,9 @@
  * the person was born in, the following 6 digits the birth date, followed by a
  * 3 digit serial and a check digit.
  *
+ * Birth dates in the future are rejected; python-stdnum only checks that the
+ * date exists. See https://github.com/koblas/stdnum-js/issues/91.
+ *
  * Source
  *    https://www.riigiteataja.ee/akt/106032012004
  *

@@ -6,6 +6,9 @@
  * calculation details and https://tarkistusmerkit.teppovuori.fi/tarkmerk.htm#hetu1
  * for historical details.
  *
+ * Birth dates in the future are rejected; python-stdnum only checks that the
+ * date exists. See https://github.com/koblas/stdnum-js/issues/91.
+ *
  * PERSON
  */
 

@@ -8,6 +8,16 @@
  *
  * This number is identical to the Slovak counterpart.
  *
+ * Differences from python-stdnum (see
+ * https://github.com/koblas/stdnum-js/issues/91):
+ *  - When the first 9 digits mod 11 give 10, the check digit 0 is accepted
+ *    only for birth years before 1985, when FSÚ regulation Vk. 2898/1985
+ *    ended that exception. python-stdnum accepts it for any year.
+ *  - Birth dates in the future are rejected.
+ *
+ * Source
+ *   https://www.domzo13.cz/sw/evok/help/born_numbers.html
+ *
  * PERSON
  */
 
