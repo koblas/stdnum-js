@@ -33,6 +33,12 @@
       "import": "./lib/esm/af/index.js",
       "default": "./lib/cjs/af/index.js"
     },
+    "./ag": {
+      "types": "./lib/esm/ag/index.d.ts",
+      "node": "./lib/cjs/ag/index.js",
+      "import": "./lib/esm/ag/index.js",
+      "default": "./lib/cjs/ag/index.js"
+    },
     "./ai": {
       "types": "./lib/esm/ai/index.d.ts",
       "node": "./lib/cjs/ai/index.js",
@@ -99,6 +105,12 @@
       "import": "./lib/esm/bb/index.js",
       "default": "./lib/cjs/bb/index.js"
     },
+    "./bd": {
+      "types": "./lib/esm/bd/index.d.ts",
+      "node": "./lib/cjs/bd/index.js",
+      "import": "./lib/esm/bd/index.js",
+      "default": "./lib/cjs/bd/index.js"
+    },
     "./be": {
       "types": "./lib/esm/be/index.d.ts",
       "node": "./lib/cjs/be/index.js",
@@ -129,6 +141,12 @@
       "import": "./lib/esm/br/index.js",
       "default": "./lib/cjs/br/index.js"
     },
+    "./bs": {
+      "types": "./lib/esm/bs/index.d.ts",
+      "node": "./lib/cjs/bs/index.js",
+      "import": "./lib/esm/bs/index.js",
+      "default": "./lib/cjs/bs/index.js"
+    },
     "./by": {
       "types": "./lib/esm/by/index.d.ts",
       "node": "./lib/cjs/by/index.js",
@@ -153,6 +171,12 @@
       "import": "./lib/esm/ch/index.js",
       "default": "./lib/cjs/ch/index.js"
     },
+    "./ci": {
+      "types": "./lib/esm/ci/index.d.ts",
+      "node": "./lib/cjs/ci/index.js",
+      "import": "./lib/esm/ci/index.js",
+      "default": "./lib/cjs/ci/index.js"
+    },
     "./ck": {
       "types": "./lib/esm/ck/index.d.ts",
       "node": "./lib/cjs/ck/index.js",
@@ -164,6 +188,12 @@
       "node": "./lib/cjs/cl/index.js",
       "import": "./lib/esm/cl/index.js",
       "default": "./lib/cjs/cl/index.js"
+    },
+    "./cm": {
+      "types": "./lib/esm/cm/index.d.ts",
+      "node": "./lib/cjs/cm/index.js",
+      "import": "./lib/esm/cm/index.js",
+      "default": "./lib/cjs/cm/index.js"
     },
     "./cn": {
       "types": "./lib/esm/cn/index.d.ts",
@@ -219,6 +249,12 @@
       "import": "./lib/esm/dk/index.js",
       "default": "./lib/cjs/dk/index.js"
     },
+    "./dm": {
+      "types": "./lib/esm/dm/index.d.ts",
+      "node": "./lib/cjs/dm/index.js",
+      "import": "./lib/esm/dm/index.js",
+      "default": "./lib/cjs/dm/index.js"
+    },
     "./do": {
       "types": "./lib/esm/do/index.d.ts",
       "node": "./lib/cjs/do/index.js",
@@ -254,6 +290,12 @@
       "node": "./lib/cjs/es/index.js",
       "import": "./lib/esm/es/index.js",
       "default": "./lib/cjs/es/index.js"
+    },
+    "./et": {
+      "types": "./lib/esm/et/index.d.ts",
+      "node": "./lib/cjs/et/index.js",
+      "import": "./lib/esm/et/index.js",
+      "default": "./lib/cjs/et/index.js"
     },
     "./fi": {
       "types": "./lib/esm/fi/index.d.ts",
@@ -321,6 +363,12 @@
       "import": "./lib/esm/gt/index.js",
       "default": "./lib/cjs/gt/index.js"
     },
+    "./gy": {
+      "types": "./lib/esm/gy/index.d.ts",
+      "node": "./lib/cjs/gy/index.js",
+      "import": "./lib/esm/gy/index.js",
+      "default": "./lib/cjs/gy/index.js"
+    },
     "./hk": {
       "types": "./lib/esm/hk/index.d.ts",
       "node": "./lib/cjs/hk/index.js",
@@ -332,6 +380,12 @@
       "node": "./lib/cjs/hr/index.js",
       "import": "./lib/esm/hr/index.js",
       "default": "./lib/cjs/hr/index.js"
+    },
+    "./ht": {
+      "types": "./lib/esm/ht/index.d.ts",
+      "node": "./lib/cjs/ht/index.js",
+      "import": "./lib/esm/ht/index.js",
+      "default": "./lib/cjs/ht/index.js"
     },
     "./hu": {
       "types": "./lib/esm/hu/index.d.ts",
@@ -375,6 +429,12 @@
       "import": "./lib/esm/it/index.js",
       "default": "./lib/cjs/it/index.js"
     },
+    "./jm": {
+      "types": "./lib/esm/jm/index.d.ts",
+      "node": "./lib/cjs/jm/index.js",
+      "import": "./lib/esm/jm/index.js",
+      "default": "./lib/cjs/jm/index.js"
+    },
     "./jp": {
       "types": "./lib/esm/jp/index.d.ts",
       "node": "./lib/cjs/jp/index.js",
@@ -387,17 +447,59 @@
       "import": "./lib/esm/ke/index.js",
       "default": "./lib/cjs/ke/index.js"
     },
+    "./kh": {
+      "types": "./lib/esm/kh/index.d.ts",
+      "node": "./lib/cjs/kh/index.js",
+      "import": "./lib/esm/kh/index.js",
+      "default": "./lib/cjs/kh/index.js"
+    },
+    "./kn": {
+      "types": "./lib/esm/kn/index.d.ts",
+      "node": "./lib/cjs/kn/index.js",
+      "import": "./lib/esm/kn/index.js",
+      "default": "./lib/cjs/kn/index.js"
+    },
     "./kr": {
       "types": "./lib/esm/kr/index.d.ts",
       "node": "./lib/cjs/kr/index.js",
       "import": "./lib/esm/kr/index.js",
       "default": "./lib/cjs/kr/index.js"
     },
+    "./kz": {
+      "types": "./lib/esm/kz/index.d.ts",
+      "node": "./lib/cjs/kz/index.js",
+      "import": "./lib/esm/kz/index.js",
+      "default": "./lib/cjs/kz/index.js"
+    },
+    "./la": {
+      "types": "./lib/esm/la/index.d.ts",
+      "node": "./lib/cjs/la/index.js",
+      "import": "./lib/esm/la/index.js",
+      "default": "./lib/cjs/la/index.js"
+    },
+    "./lb": {
+      "types": "./lib/esm/lb/index.d.ts",
+      "node": "./lib/cjs/lb/index.js",
+      "import": "./lib/esm/lb/index.js",
+      "default": "./lib/cjs/lb/index.js"
+    },
+    "./lc": {
+      "types": "./lib/esm/lc/index.d.ts",
+      "node": "./lib/cjs/lc/index.js",
+      "import": "./lib/esm/lc/index.js",
+      "default": "./lib/cjs/lc/index.js"
+    },
     "./li": {
       "types": "./lib/esm/li/index.d.ts",
       "node": "./lib/cjs/li/index.js",
       "import": "./lib/esm/li/index.js",
       "default": "./lib/cjs/li/index.js"
+    },
+    "./lk": {
+      "types": "./lib/esm/lk/index.d.ts",
+      "node": "./lib/cjs/lk/index.js",
+      "import": "./lib/esm/lk/index.js",
+      "default": "./lib/cjs/lk/index.js"
     },
     "./lt": {
       "types": "./lib/esm/lt/index.d.ts",
@@ -447,6 +549,12 @@
       "import": "./lib/esm/mk/index.js",
       "default": "./lib/cjs/mk/index.js"
     },
+    "./mn": {
+      "types": "./lib/esm/mn/index.d.ts",
+      "node": "./lib/cjs/mn/index.js",
+      "import": "./lib/esm/mn/index.js",
+      "default": "./lib/cjs/mn/index.js"
+    },
     "./mt": {
       "types": "./lib/esm/mt/index.d.ts",
       "node": "./lib/cjs/mt/index.js",
@@ -477,6 +585,12 @@
       "import": "./lib/esm/mz/index.js",
       "default": "./lib/cjs/mz/index.js"
     },
+    "./ng": {
+      "types": "./lib/esm/ng/index.d.ts",
+      "node": "./lib/cjs/ng/index.js",
+      "import": "./lib/esm/ng/index.js",
+      "default": "./lib/cjs/ng/index.js"
+    },
     "./nl": {
       "types": "./lib/esm/nl/index.d.ts",
       "node": "./lib/cjs/nl/index.js",
@@ -489,17 +603,41 @@
       "import": "./lib/esm/no/index.js",
       "default": "./lib/cjs/no/index.js"
     },
+    "./np": {
+      "types": "./lib/esm/np/index.d.ts",
+      "node": "./lib/cjs/np/index.js",
+      "import": "./lib/esm/np/index.js",
+      "default": "./lib/cjs/np/index.js"
+    },
     "./nz": {
       "types": "./lib/esm/nz/index.d.ts",
       "node": "./lib/cjs/nz/index.js",
       "import": "./lib/esm/nz/index.js",
       "default": "./lib/cjs/nz/index.js"
     },
+    "./om": {
+      "types": "./lib/esm/om/index.d.ts",
+      "node": "./lib/cjs/om/index.js",
+      "import": "./lib/esm/om/index.js",
+      "default": "./lib/cjs/om/index.js"
+    },
     "./pe": {
       "types": "./lib/esm/pe/index.d.ts",
       "node": "./lib/cjs/pe/index.js",
       "import": "./lib/esm/pe/index.js",
       "default": "./lib/cjs/pe/index.js"
+    },
+    "./pg": {
+      "types": "./lib/esm/pg/index.d.ts",
+      "node": "./lib/cjs/pg/index.js",
+      "import": "./lib/esm/pg/index.js",
+      "default": "./lib/cjs/pg/index.js"
+    },
+    "./ph": {
+      "types": "./lib/esm/ph/index.d.ts",
+      "node": "./lib/cjs/ph/index.js",
+      "import": "./lib/esm/ph/index.js",
+      "default": "./lib/cjs/ph/index.js"
     },
     "./pk": {
       "types": "./lib/esm/pk/index.d.ts",
@@ -525,6 +663,12 @@
       "import": "./lib/esm/py/index.js",
       "default": "./lib/cjs/py/index.js"
     },
+    "./qa": {
+      "types": "./lib/esm/qa/index.d.ts",
+      "node": "./lib/cjs/qa/index.js",
+      "import": "./lib/esm/qa/index.js",
+      "default": "./lib/cjs/qa/index.js"
+    },
     "./ro": {
       "types": "./lib/esm/ro/index.d.ts",
       "node": "./lib/cjs/ro/index.js",
@@ -542,6 +686,12 @@
       "node": "./lib/cjs/ru/index.js",
       "import": "./lib/esm/ru/index.js",
       "default": "./lib/cjs/ru/index.js"
+    },
+    "./sb": {
+      "types": "./lib/esm/sb/index.d.ts",
+      "node": "./lib/cjs/sb/index.js",
+      "import": "./lib/esm/sb/index.js",
+      "default": "./lib/cjs/sb/index.js"
     },
     "./sc": {
       "types": "./lib/esm/sc/index.d.ts",
@@ -579,6 +729,18 @@
       "import": "./lib/esm/sm/index.js",
       "default": "./lib/cjs/sm/index.js"
     },
+    "./sn": {
+      "types": "./lib/esm/sn/index.d.ts",
+      "node": "./lib/cjs/sn/index.js",
+      "import": "./lib/esm/sn/index.js",
+      "default": "./lib/cjs/sn/index.js"
+    },
+    "./sr": {
+      "types": "./lib/esm/sr/index.d.ts",
+      "node": "./lib/cjs/sr/index.js",
+      "import": "./lib/esm/sr/index.js",
+      "default": "./lib/cjs/sr/index.js"
+    },
     "./sv": {
       "types": "./lib/esm/sv/index.d.ts",
       "node": "./lib/cjs/sv/index.js",
@@ -591,11 +753,29 @@
       "import": "./lib/esm/th/index.js",
       "default": "./lib/cjs/th/index.js"
     },
+    "./tj": {
+      "types": "./lib/esm/tj/index.d.ts",
+      "node": "./lib/cjs/tj/index.js",
+      "import": "./lib/esm/tj/index.js",
+      "default": "./lib/cjs/tj/index.js"
+    },
+    "./tm": {
+      "types": "./lib/esm/tm/index.d.ts",
+      "node": "./lib/cjs/tm/index.js",
+      "import": "./lib/esm/tm/index.js",
+      "default": "./lib/cjs/tm/index.js"
+    },
     "./tn": {
       "types": "./lib/esm/tn/index.d.ts",
       "node": "./lib/cjs/tn/index.js",
       "import": "./lib/esm/tn/index.js",
       "default": "./lib/cjs/tn/index.js"
+    },
+    "./to": {
+      "types": "./lib/esm/to/index.d.ts",
+      "node": "./lib/cjs/to/index.js",
+      "import": "./lib/esm/to/index.js",
+      "default": "./lib/cjs/to/index.js"
     },
     "./tr": {
       "types": "./lib/esm/tr/index.d.ts",
@@ -603,17 +783,35 @@
       "import": "./lib/esm/tr/index.js",
       "default": "./lib/cjs/tr/index.js"
     },
+    "./tt": {
+      "types": "./lib/esm/tt/index.d.ts",
+      "node": "./lib/cjs/tt/index.js",
+      "import": "./lib/esm/tt/index.js",
+      "default": "./lib/cjs/tt/index.js"
+    },
     "./tw": {
       "types": "./lib/esm/tw/index.d.ts",
       "node": "./lib/cjs/tw/index.js",
       "import": "./lib/esm/tw/index.js",
       "default": "./lib/cjs/tw/index.js"
     },
+    "./tz": {
+      "types": "./lib/esm/tz/index.d.ts",
+      "node": "./lib/cjs/tz/index.js",
+      "import": "./lib/esm/tz/index.js",
+      "default": "./lib/cjs/tz/index.js"
+    },
     "./ua": {
       "types": "./lib/esm/ua/index.d.ts",
       "node": "./lib/cjs/ua/index.js",
       "import": "./lib/esm/ua/index.js",
       "default": "./lib/cjs/ua/index.js"
+    },
+    "./ug": {
+      "types": "./lib/esm/ug/index.d.ts",
+      "node": "./lib/cjs/ug/index.js",
+      "import": "./lib/esm/ug/index.js",
+      "default": "./lib/cjs/ug/index.js"
     },
     "./us": {
       "types": "./lib/esm/us/index.d.ts",
@@ -627,6 +825,12 @@
       "import": "./lib/esm/uy/index.js",
       "default": "./lib/cjs/uy/index.js"
     },
+    "./vc": {
+      "types": "./lib/esm/vc/index.d.ts",
+      "node": "./lib/cjs/vc/index.js",
+      "import": "./lib/esm/vc/index.js",
+      "default": "./lib/cjs/vc/index.js"
+    },
     "./ve": {
       "types": "./lib/esm/ve/index.d.ts",
       "node": "./lib/cjs/ve/index.js",
@@ -639,11 +843,29 @@
       "import": "./lib/esm/vn/index.js",
       "default": "./lib/cjs/vn/index.js"
     },
+    "./ws": {
+      "types": "./lib/esm/ws/index.d.ts",
+      "node": "./lib/cjs/ws/index.js",
+      "import": "./lib/esm/ws/index.js",
+      "default": "./lib/cjs/ws/index.js"
+    },
+    "./ye": {
+      "types": "./lib/esm/ye/index.d.ts",
+      "node": "./lib/cjs/ye/index.js",
+      "import": "./lib/esm/ye/index.js",
+      "default": "./lib/cjs/ye/index.js"
+    },
     "./za": {
       "types": "./lib/esm/za/index.d.ts",
       "node": "./lib/cjs/za/index.js",
       "import": "./lib/esm/za/index.js",
       "default": "./lib/cjs/za/index.js"
+    },
+    "./zm": {
+      "types": "./lib/esm/zm/index.d.ts",
+      "node": "./lib/cjs/zm/index.js",
+      "import": "./lib/esm/zm/index.js",
+      "default": "./lib/cjs/zm/index.js"
     },
     "./lib/esm/*.js": "./lib/esm/*.js",
     "./lib/esm/*": "./lib/esm/*.js",

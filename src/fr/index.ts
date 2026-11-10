@@ -3,3 +3,5 @@ export * as nir from './nir';
 export * as siren from './siren';
 export * as siret from './siret';
 export * as tva from './tva';
+
+export * as passport from './passport';
