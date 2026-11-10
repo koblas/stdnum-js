@@ -69,6 +69,10 @@ const impl: Validator = {
     if (!strings.isdigits(a) || !strings.isdigits(c)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
+    // Neither the number nor the suffix after the B can be all zeros
+    if (parseInt(a, 10) === 0 || parseInt(c, 10) === 0) {
+      return { isValid: false, error: new exceptions.InvalidFormat() };
+    }
     if (b !== 'B') {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
