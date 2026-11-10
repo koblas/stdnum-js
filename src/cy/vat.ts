@@ -75,6 +75,10 @@ const impl: Validator = {
     if (!alphabet.includes(check)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
+    // Numbers starting with 12 are not issued (as python-stdnum)
+    if (front.startsWith('12')) {
+      return { isValid: false, error: new exceptions.InvalidComponent() };
+    }
 
     const sum = front
       .split('')

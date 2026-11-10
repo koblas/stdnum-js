@@ -1,11 +1,22 @@
 import { validate, format } from './vat';
-import { InvalidLength, InvalidChecksum } from '../exceptions';
+import {
+  InvalidLength,
+  InvalidChecksum,
+  InvalidComponent,
+} from '../exceptions';
 
 describe('cy/vat', () => {
   it('format:CY-10259033P', () => {
     const result = format('CY-10259033P');
 
     expect(result).toEqual('10259033P');
+  });
+
+  // Valid check letter, but numbers do not start with 12
+  it('validate:12345678F', () => {
+    const result = validate('12345678F');
+
+    expect(result.error).toBeInstanceOf(InvalidComponent);
   });
 
   it('validate:CY-10259033P', () => {
