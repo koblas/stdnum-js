@@ -5,7 +5,8 @@
  * entities for tax purposes.
  *
  * This number consists of one letter indicating the type of entity, then 6
- * digits, followed by a check letter.
+ * digits, followed by a check letter. Numbers starting with F must be below
+ * 700000 and numbers starting with A or L must be between 700000 and 799999.
  *
  * More information:
  * https://www.oecd.org/tax/automatic-exchange/crs-implementation-and-assistance/tax-identification-numbers/Andorra-TIN.pdf
@@ -70,7 +71,8 @@ const impl: Validator = {
     if (v[0] === 'F' && mid > '699999') {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
-    if ('AL'.includes(v[0]) && mid > '699999' && mid < '800000') {
+    // A and L numbers must be in the range 700000 to 799999
+    if ('AL'.includes(v[0]) && !(mid > '699999' && mid < '800000')) {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
