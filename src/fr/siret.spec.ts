@@ -24,6 +24,12 @@ describe('fr/siret', () => {
   //   expect(result.isValid && result.compact).toEqual('73282932000074');
   // });
 
+  it('validate:732.829.320.00074', () => {
+    const result = validate('732.829.320.00074');
+
+    expect(result.isValid && result.compact).toEqual('73282932000074');
+  });
+
   it('validate:12345678', () => {
     const result = validate('12345678');
 
