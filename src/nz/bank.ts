@@ -46,7 +46,7 @@ const bankData: Record<
     branches: [
       [1, 999],
       [1200, 1299],
-      [2025, 2053],
+      [2025, 2055],
     ],
   },
   '04': { algorithm: 'AB', branches: [[2014, 2024]] },
