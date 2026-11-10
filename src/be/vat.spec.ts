@@ -1,5 +1,9 @@
 import { validate, format } from './vat';
-import { InvalidLength, InvalidChecksum } from '../exceptions';
+import {
+  InvalidLength,
+  InvalidChecksum,
+  InvalidComponent,
+} from '../exceptions';
 
 describe('be/vat', () => {
   it('format:403019261', () => {
@@ -42,5 +46,17 @@ describe('be/vat', () => {
     const result = validate('BE431150351');
 
     expect(result.error).toBeInstanceOf(InvalidChecksum);
+  });
+
+  it('validate:BE 1000000021', () => {
+    const result = validate('BE 1000000021');
+
+    expect(result.isValid && result.compact).toEqual('1000000021');
+  });
+
+  it('validate:BE2000021323', () => {
+    const result = validate('BE2000021323');
+
+    expect(result.error).toBeInstanceOf(InvalidComponent);
   });
 });

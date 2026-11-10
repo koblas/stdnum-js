@@ -3,7 +3,11 @@
  *
  * The enterprise number (ondernemingsnummer) is a unique identifier of
  * companies within the Belgian administrative services. It was previously
- * the VAT ID number. The number consists of 10 digits.
+ * the VAT ID number. The number consists of 10 digits, starting with 0 or 1,
+ * and ends with a mod-97 check.
+ *
+ * Source
+ *   https://github.com/arthurdejong/python-stdnum/issues/488 (first digit)
  *
  * ENTITY
  */
@@ -63,6 +67,10 @@ const impl: Validator = {
     }
     if (!strings.isdigits(value)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
+    }
+
+    if (value[0] !== '0' && value[0] !== '1') {
+      return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
     const [front, sum] = strings.splitAt(value, -2);
