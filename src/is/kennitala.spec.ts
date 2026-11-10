@@ -1,6 +1,7 @@
 import { validate, format } from './kennitala';
 import {
   InvalidLength,
+  InvalidFormat,
   InvalidChecksum,
   InvalidComponent,
 } from '../exceptions';
@@ -10,6 +11,13 @@ describe('is/kennitala', () => {
     const result = format('4504013150');
 
     expect(result).toEqual('450401-3150');
+  });
+
+  // Valid check digit, but the century digit must be 9 or 0
+  it('validate:1201743391', () => {
+    const result = validate('1201743391');
+
+    expect(result.error).toBeInstanceOf(InvalidFormat);
   });
 
   it('validate:450401-3150', () => {
