@@ -97,6 +97,9 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
+    if (!ikCheckDate(value)) {
+      return { isValid: false, error: new exceptions.InvalidComponent() };
+    }
     if (!ikCheck(value)) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }

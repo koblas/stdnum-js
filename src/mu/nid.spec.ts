@@ -1,5 +1,9 @@
 import { validate, format } from './nid';
-import { InvalidLength, InvalidChecksum } from '../exceptions';
+import {
+  InvalidLength,
+  InvalidChecksum,
+  InvalidComponent,
+} from '../exceptions';
 
 describe('mu/nid', () => {
   it('format:M090497290349B', () => {
@@ -18,6 +22,20 @@ describe('mu/nid', () => {
     const result = validate('L2207971502833');
 
     expect(result.isValid && result.compact).toEqual('L2207971502833');
+  });
+
+  // Day 32, with a valid check character
+  it('validate:M3204972903495', () => {
+    const result = validate('M3204972903495');
+
+    expect(result.error).toBeInstanceOf(InvalidComponent);
+  });
+
+  // Month 13, with a valid check character
+  it('validate:M091397290349A', () => {
+    const result = validate('M091397290349A');
+
+    expect(result.error).toBeInstanceOf(InvalidComponent);
   });
 
   it('validate:12345678', () => {

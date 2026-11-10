@@ -59,6 +59,10 @@ const impl: Validator = {
     if (!validStructure(value)) {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
+    // Months above 12 (+20, +40) are only used by BIS numbers
+    if (parseInt(value.slice(2, 4), 10) > 12) {
+      return { isValid: false, error: new exceptions.InvalidComponent() };
+    }
 
     if (!validChecksum(value)) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };

@@ -8,6 +8,12 @@ describe('ch/uid', () => {
     expect(result).toEqual('CHE-100.155.212');
   });
 
+  it('validate:100.155.212', () => {
+    const result = validate('100.155.212');
+
+    expect(result.isValid && result.compact).toEqual('CHE100155212');
+  });
+
   it('validate:CHE109910570', () => {
     const result = validate('CHE109910570');
 

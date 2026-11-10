@@ -1,5 +1,6 @@
 import { validate, format } from './rnc';
 import { InvalidLength, InvalidChecksum, InvalidFormat } from '../exceptions';
+import { RNC_WHITELIST } from './rnc-whitelist';
 
 describe('do/rnc', () => {
   it('format:101850043', () => {
@@ -36,5 +37,13 @@ describe('do/rnc', () => {
     const result = validate('101850042');
 
     expect(result.error).toBeInstanceOf(InvalidChecksum);
+  });
+
+  // Read from the data file rather than written out here.
+  it('accepts every whitelisted number', () => {
+    expect(RNC_WHITELIST.size).toBe(23);
+    for (const value of RNC_WHITELIST) {
+      expect(validate(value).isValid).toBe(true);
+    }
   });
 });

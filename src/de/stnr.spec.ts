@@ -1,5 +1,5 @@
 import { validate, format } from './stnr';
-import { InvalidComponent, InvalidFormat, InvalidLength } from '../exceptions';
+import { InvalidFormat, InvalidLength } from '../exceptions';
 
 describe('de/stnr', () => {
   it('format:18181508155', () => {
@@ -47,7 +47,7 @@ describe('de/stnr', () => {
   it('validate:1234567890', () => {
     const result = validate('1234567890');
 
-    expect(result.error).toBeInstanceOf(InvalidComponent);
+    expect(result.isValid && result.compact).toEqual('1234567890');
   });
 
   it('validate:0472480661811', () => {

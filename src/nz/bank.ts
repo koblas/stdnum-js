@@ -10,6 +10,10 @@
  * Source
  *   http://www.paymentsnz.co.nz/clearing-systems/bulk-electronic-clearing-system
  *   https://www.ird.govt.nz/resources/d/8/d8e49dce-1bda-4875-8acf-9ebf908c6e17/rwt-nrwt-spec-2014.pdf
+ *   https://www.paymentsnz.co.nz/resources/industry-registers/bank-branch-register/ (branches)
+ *
+ * Branches are checked against the allocated ranges, not the current branch
+ * register, because accounts keep their numbers when a branch closes.
  *
  * BANK
  */
@@ -34,6 +38,7 @@ const bankData: Record<
       [1, 999],
       [1100, 1199],
       [1800, 1899],
+      [6150, 6150],
     ],
   },
   '02': {
@@ -41,8 +46,11 @@ const bankData: Record<
     branches: [
       [1, 999],
       [1200, 1299],
+      [2025, 2055],
     ],
   },
+  '04': { algorithm: 'AB', branches: [[2014, 2024]] },
+  '05': { algorithm: 'X', branches: [[8884, 8889]] },
   '03': {
     algorithm: 'AB',
     branches: [
@@ -51,6 +59,8 @@ const bankData: Record<
       [1500, 1599],
       [1700, 1799],
       [1900, 1999],
+      [5050, 5050],
+      [7355, 7355],
     ],
   },
   '06': {
@@ -62,6 +72,7 @@ const bankData: Record<
   },
   '08': { algorithm: 'D', branches: [[6500, 6599]] },
   '09': { algorithm: 'E', branches: [[0, 0]] },
+  '10': { algorithm: 'AB', branches: [[5165, 5169]] },
   '11': {
     algorithm: 'AB',
     branches: [
@@ -99,6 +110,7 @@ const bankData: Record<
   '33': { algorithm: 'F', branches: [[6700, 6799]] },
   '35': { algorithm: 'AB', branches: [[2400, 2499]] },
   '38': { algorithm: 'AB', branches: [[9000, 9499]] },
+  '88': { algorithm: 'X', branches: [[8800, 8805]] },
 };
 
 const algorithms: Record<string, { weights: number[]; modulus: number }> = {
