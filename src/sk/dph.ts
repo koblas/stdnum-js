@@ -2,9 +2,12 @@
  * IČ DPH (IČ pre daň z pridanej hodnoty, Slovak VAT number).
  *
  * The IČ DPH (Identifikačné číslo pre daň z pridanej hodnoty) is a 10-digit
- * number used for VAT purposes. It has a straightforward checksum.
+ * number used for VAT purposes. It has a straightforward checksum: the number
+ * is divisible by 11. The first digit is not 0 and the third digit is one of
+ * 2, 3, 4, 7, 8 or 9.
  *
  * Source
+ *   https://github.com/arthurdejong/python-stdnum/blob/master/stdnum/sk/dph.py
  *
  * ENTITY
  */
@@ -50,8 +53,9 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
-    if (!'234789'.includes(value[0])) {
-      return { isValid: false, error: new exceptions.InvalidComponent() };
+    // The first digit is not 0 and the third is one of 2, 3, 4, 7, 8, 9
+    if (value[0] === '0' || !'234789'.includes(value[2])) {
+      return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
     if (parseInt(value, 10) % 11 !== 0) {
