@@ -2,6 +2,13 @@ import { validate, format } from './bis';
 import { InvalidLength, InvalidChecksum, InvalidFormat } from '../exceptions';
 
 describe('be/bis', () => {
+  // Day 00: the day of birth was not known
+  it('validate:85470003344', () => {
+    const result = validate('85470003344');
+
+    expect(result.isValid && result.compact).toEqual('85470003344');
+  });
+
   it('format:88 22 29-999.70', () => {
     const result = format('88 02 29-999.70');
 

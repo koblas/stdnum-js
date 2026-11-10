@@ -50,7 +50,16 @@ function isUnknownDob(dob: string): boolean {
 
   const [yy, mm, dd] = toDateArray(dob);
 
-  return strings.isdigits(yy) && mm === '00' && strings.isdigits(dd);
+  if (!strings.isdigits(yy) || !strings.isdigits(dd)) {
+    return false;
+  }
+  // An unknown month (and day) is written as 00
+  if (mm === '00') {
+    return true;
+  }
+  // An unknown day of a known month is written as 00
+  const month = parseInt(mm, 10);
+  return dd === '00' && month >= 1 && month <= 12;
 }
 
 function toChecksumBasis(year: number, baseNumber: string): number {

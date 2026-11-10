@@ -19,6 +19,19 @@ describe('be/nn', () => {
     expect(result).toEqual('88022999990');
   });
 
+  // Day 00: the day of birth was not known
+  it('validate:85070003355', () => {
+    const result = validate('85070003355');
+
+    expect(result.isValid && result.compact).toEqual('85070003355');
+  });
+
+  it('validate:17070003314', () => {
+    const result = validate('17070003314');
+
+    expect(result.isValid && result.compact).toEqual('17070003314');
+  });
+
   // A valid BIS number (unknown date of birth, month + 40), not a national number
   it('validate:00400100184', () => {
     const result = validate('00400100184');

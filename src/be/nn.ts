@@ -11,6 +11,11 @@
  * date, seperated by sex (odd for male and even for females respectively). The
  * final 2 digits form a check number based on the 9 preceding digits.
  *
+ * A month or day that was not known when the number was assigned is written
+ * as 00. Unlike python-stdnum, a day past the end of the month (such as 02-30)
+ * is rejected: python-stdnum treats it as an unknown day, but the IBZ rules
+ * only use 00 for that.
+ *
  * Source
  *  https://nl.wikipedia.org/wiki/Rijksregisternummer
  *  https://fr.wikipedia.org/wiki/Numéro_de_registre_national
