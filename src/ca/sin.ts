@@ -6,9 +6,13 @@
  * issued to temporary workers who are neither Canadian citizens nor permanent
  * residents.
  *
+ * Numbers starting with 0 (CRA-assigned temporary or individual tax numbers)
+ * or 8 (business numbers) are not SINs.
+ *
  * Source:
  *    https://www.canada.ca/en/employment-social-development/services/sin.html
  *    https://en.wikipedia.org/wiki/Social_Insurance_Number
+ *    https://github.com/arthurdejong/python-stdnum/commit/3848318
  *
  * PERSON
  */
@@ -55,6 +59,9 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidFormat() };
     }
 
+    if (value[0] === '0' || value[0] === '8') {
+      return { isValid: false, error: new exceptions.InvalidComponent() };
+    }
     if (!luhnChecksumValidate(value)) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
