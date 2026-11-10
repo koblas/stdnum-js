@@ -26,6 +26,30 @@ describe('do/ncf', () => {
     expect(result.error).toBeInstanceOf(InvalidComponent);
   });
 
+  it('validate:A020010210100000005', () => {
+    const result = validate('A020010210100000005');
+
+    expect(result.isValid && result.compact).toEqual('A020010210100000005');
+  });
+
+  it('validate:P020010210100000005', () => {
+    const result = validate('P020010210100000005');
+
+    expect(result.isValid && result.compact).toEqual('P020010210100000005');
+  });
+
+  it('validate:AP20010210100000005', () => {
+    const result = validate('AP20010210100000005');
+
+    expect(result.error).toBeInstanceOf(InvalidComponent);
+  });
+
+  it('validate:A010010019900000004', () => {
+    const result = validate('A010010019900000004');
+
+    expect(result.error).toBeInstanceOf(InvalidComponent);
+  });
+
   it('validate:Z0100', () => {
     const result = validate('Z0100');
 
