@@ -20,6 +20,24 @@ describe('id/npwp', () => {
     expect(result.isValid && result.compact).toEqual('016090524017000');
   });
 
+  it('validate:031234560012000', () => {
+    const result = validate('031234560012000');
+
+    expect(result.isValid && result.compact).toEqual('031234560012000');
+  });
+
+  it('validate:751234568012000', () => {
+    const result = validate('751234568012000');
+
+    expect(result.isValid && result.compact).toEqual('751234568012000');
+  });
+
+  it('validate:901234567012000', () => {
+    const result = validate('901234567012000');
+
+    expect(result.isValid && result.compact).toEqual('901234567012000');
+  });
+
   it('validate:12345678', () => {
     const result = validate('12345678');
 
