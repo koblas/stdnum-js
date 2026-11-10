@@ -24,6 +24,13 @@ describe('cz/rc', () => {
     expect(result.isValid && result.compact).toEqual('991231123');
   });
 
+  // 9 digits with year 80: born in 1880
+  it('validate:800101/123', () => {
+    const result = validate('800101/123');
+
+    expect(result.isValid && result.compact).toEqual('800101123');
+  });
+
   it('validate:1103492745', () => {
     const result = validate('1103492745');
 

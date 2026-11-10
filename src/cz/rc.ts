@@ -67,7 +67,7 @@ const impl: Validator = {
     const mon = (parseInt(mm, 10) % 50) % 20;
     let year = parseInt(yy, 10) + 1900;
     if (value.length === 9) {
-      if (year > 1980) {
+      if (year >= 1980) {
         year -= 100;
       }
       if (year > 1953) {
