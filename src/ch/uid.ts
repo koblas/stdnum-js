@@ -20,7 +20,14 @@ import { Validator, ValidateReturn } from '../types';
 import { weightedSum } from '../util/checksum';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
-  return strings.cleanUnicode(input, ' -.');
+  const [value, err] = strings.cleanUnicode(input, ' -.');
+
+  // The CHE prefix is often left out
+  if (value.length === 9 && strings.isdigits(value)) {
+    return [`CHE${value}`, err];
+  }
+
+  return [value, err];
 }
 
 const impl: Validator = {

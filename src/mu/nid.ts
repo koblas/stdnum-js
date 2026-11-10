@@ -20,7 +20,7 @@
  */
 
 import * as exceptions from '../exceptions';
-import { strings } from '../util';
+import { isValidDate, strings } from '../util';
 import { Validator, ValidateReturn } from '../types';
 import { weightedSum } from '../util/checksum';
 
@@ -74,6 +74,12 @@ const impl: Validator = {
 
     if (ALPHABET[(17 - sum) % 17] !== check) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
+    }
+
+    // DDMMYY birth date; the century is not encoded
+    const [dd, mm, yy] = strings.splitAt(value.slice(1, 7), 2, 4);
+    if (!isValidDate(`20${yy}`, mm, dd)) {
+      return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
     return {

@@ -46,6 +46,19 @@ describe('it/codicefiscale', () => {
     expect(result.error).toBeInstanceOf(InvalidComponent);
   });
 
+  it('validate:01234560017', () => {
+    const result = validate('01234560017');
+
+    expect(result.isValid && result.compact).toEqual('01234560017');
+    expect(result.isValid && result.isCompany).toBe(true);
+  });
+
+  it('validate:01234560018', () => {
+    const result = validate('01234560018');
+
+    expect(result.error).toBeInstanceOf(InvalidChecksum);
+  });
+
   it('validate:12345678', () => {
     const result = validate('12345678');
 

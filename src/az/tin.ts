@@ -4,7 +4,8 @@
  * The number consists of 10 digits. The first two digits are the code of the
  * territorial administrative unit, followed by a six digit serial number, a
  * check digit, and a final digit for the legal status (1 for legal persons,
- * 2 for natural persons).
+ * 2 for natural persons). A 9 digit number is taken to have lost its leading
+ * 0, as python-stdnum does.
  *
  * Source
  *   https://www.oecd.org/tax/automatic-exchange/crs-implementation-and-assistance/tax-identification-numbers/Azerbaijan-TIN.pdf
@@ -19,7 +20,10 @@ import { strings, weightedSum } from '../util';
 import { Validator, ValidateReturn } from '../types';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
-  return strings.cleanUnicode(input, ' -');
+  const [value, err] = strings.cleanUnicode(input, ' -');
+
+  // A leading 0 is sometimes left out
+  return [value.length === 9 ? `0${value}` : value, err];
 }
 
 const impl: Validator = {

@@ -14,6 +14,18 @@ describe('cr/cr', () => {
     expect(result.isValid && result.compact).toEqual('155812994816');
   });
 
+  it('validate:15581299481', () => {
+    const result = validate('15581299481');
+
+    expect(result.isValid && result.compact).toEqual('15581299481');
+  });
+
+  it('validate:30123456789', () => {
+    const result = validate('30123456789');
+
+    expect(result.error).toBeInstanceOf(InvalidComponent);
+  });
+
   it('validate:12345678', () => {
     const result = validate('12345678');
 

@@ -12,6 +12,7 @@
  *
  * Source
  *   https://it.m.wikipedia.org/wiki/Codice_fiscale
+ *   https://github.com/arthurdejong/python-stdnum/blob/master/stdnum/it/codicefiscale.py
  *
  * PERSON
  */
@@ -19,6 +20,7 @@
 import * as exceptions from '../exceptions';
 import { isValidDate, strings } from '../util';
 import { Validator, ValidateReturn } from '../types';
+import * as iva from './iva';
 
 const checkRe =
   /^[A-Z]{6}[0-9LMNPQRSTUV]{2}[ABCDEHLMPRST]{1}[0-9LMNPQRSTUV]{2}[A-Z]{1}[0-9LMNPQRSTUV]{3}[A-Z]{1}$/;
@@ -150,6 +152,14 @@ const impl: Validator = {
 
     if (error) {
       return { isValid: false, error };
+    }
+    if (value.length === 11) {
+      // Non-individuals use their Partita IVA
+      const result = iva.validate(value);
+
+      return result.isValid
+        ? { ...result, isIndividual: false, isCompany: true }
+        : result;
     }
     if (value.length !== 16) {
       return { isValid: false, error: new exceptions.InvalidLength() };

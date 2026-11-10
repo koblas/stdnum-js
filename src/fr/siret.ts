@@ -19,7 +19,7 @@ import { luhnChecksumValidate, weightedSum } from '../util/checksum';
 import { validate as sirenValidate } from './siren';
 
 function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
-  return strings.cleanUnicode(input, ' -/');
+  return strings.cleanUnicode(input, ' -/.');
 }
 
 const impl: Validator = {

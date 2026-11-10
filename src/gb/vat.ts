@@ -57,10 +57,10 @@ const impl: Validator = {
         return { isValid: false, error: new exceptions.InvalidFormat() };
       }
       const cvalue = parseInt(value.slice(2), 10);
-      if (value.startsWith('GD') && cvalue >= 500) {
-        return { isValid: false, error: new exceptions.InvalidComponent() };
-      }
-      if (value.startsWith('HA') && cvalue < 500) {
+      // GD: government department (below 500), HA: health authority (500 up)
+      const government = value.startsWith('GD') && cvalue < 500;
+      const health = value.startsWith('HA') && cvalue >= 500;
+      if (!government && !health) {
         return { isValid: false, error: new exceptions.InvalidComponent() };
       }
     } else if (

@@ -1,5 +1,10 @@
 import { validate, format } from './nn';
-import { InvalidLength, InvalidChecksum, InvalidFormat } from '../exceptions';
+import {
+  InvalidLength,
+  InvalidChecksum,
+  InvalidFormat,
+  InvalidComponent,
+} from '../exceptions';
 
 describe('be/nn', () => {
   it('format:88 02 29-999.90', () => {
@@ -12,6 +17,13 @@ describe('be/nn', () => {
     const result = format('88022999990');
 
     expect(result).toEqual('88022999990');
+  });
+
+  // A valid BIS number (unknown date of birth, month + 40), not a national number
+  it('validate:00400100184', () => {
+    const result = validate('00400100184');
+
+    expect(result.error).toBeInstanceOf(InvalidComponent);
   });
 
   it('validate:1', () => {
