@@ -48,6 +48,30 @@ describe('be/vat', () => {
     expect(result.error).toBeInstanceOf(InvalidChecksum);
   });
 
+  it('validate:1000002197', () => {
+    const result = validate('1000002197');
+
+    expect(result.isValid && result.compact).toEqual('1000002197');
+  });
+
+  it('validate:1000002100', () => {
+    const result = validate('1000002100');
+
+    expect(result.error).toBeInstanceOf(InvalidChecksum);
+  });
+
+  it('validate:1000002001', () => {
+    const result = validate('1000002001');
+
+    expect(result.isValid && result.compact).toEqual('1000002001');
+  });
+
+  it('validate:1000002098', () => {
+    const result = validate('1000002098');
+
+    expect(result.error).toBeInstanceOf(InvalidChecksum);
+  });
+
   it('validate:BE 1000000021', () => {
     const result = validate('BE 1000000021');
 
