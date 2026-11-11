@@ -26,6 +26,8 @@ const impl: Validator = {
   name: 'Moldavian Company Identification Number',
   localName: 'Unique State Identification Number',
   abbreviation: 'IDNO',
+  examples: ['1008600038413'],
+  formats: ['nnnnnnnnnnnnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -74,5 +76,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

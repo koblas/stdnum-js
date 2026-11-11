@@ -30,6 +30,8 @@ const impl: Validator = {
   name: 'Ecuadorian Personal Identity Code',
   localName: 'Cédula de Identidad',
   abbreviation: 'CI',
+  examples: ['1714307103'],
+  formats: ['nnnnnnnnn-n'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -88,5 +90,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

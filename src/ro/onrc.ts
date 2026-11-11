@@ -142,6 +142,15 @@ const impl: Validator = {
   name: 'Romanian Trade Register Identifier',
   localName: 'Ordine din Registrul Comerţului',
   abbreviation: 'NRC',
+  examples: ['J52/750/2012', 'F05/1055/2013', 'J2025007112004'],
+  formats: [
+    'ann/nnn/nnnn',
+    'ann/nnnn/nnnn',
+    'annnnnnnnnnnnn',
+    'ann/nn/nnnn',
+    'ann/nnnnn/nnnn',
+    'ann/n/nnnn',
+  ],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -177,5 +186,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

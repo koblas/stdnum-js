@@ -26,6 +26,8 @@ const impl: Validator = {
   name: 'Finnish VAT Number',
   localName: 'Arvonlisäveronumero Mervärdesskattenummer',
   abbreviation: 'ALV nro',
+  examples: ['20774740'],
+  formats: ['nnnnnnnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -72,5 +74,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

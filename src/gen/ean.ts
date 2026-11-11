@@ -18,6 +18,8 @@ const impl: Validator = {
   name: 'International Article Number',
   localName: 'International Article Number',
   abbreviation: 'EAN',
+  examples: ['73513537', '9780471117094', '98412345678908'],
+  formats: ['nnnnnnnn', 'nnnnnnnnnnnnn', 'nnnnnnnnnnnnnn', 'nnnnnnnnnnnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -67,5 +69,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

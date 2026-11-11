@@ -22,6 +22,8 @@ const impl: Validator = {
   name: 'Bulgarian Personal Identity Codes',
   localName: 'Единен граждански номер',
   abbreviation: 'ЕГН (EGN)',
+  examples: ['7523169263'],
+  formats: ['nnnnnnnnnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -89,5 +91,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

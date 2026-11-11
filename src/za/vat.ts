@@ -19,6 +19,8 @@ const impl: Validator = {
   name: 'South African VAT Number',
   localName: 'Value Added Tax Number',
   abbreviation: 'VAT.',
+  examples: ['4999999999'],
+  formats: ['nnnnnnnnnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -60,5 +62,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

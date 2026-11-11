@@ -29,6 +29,18 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 const impl: Validator = {
   name: 'Austrian Company Register Number',
   localName: 'Company Register Number',
+  examples: ['122119M'],
+  formats: [
+    'nnnnnna',
+    'nnnnna',
+    'nnnnnnna',
+    'nnnna',
+    'nnnnnnnna',
+    'nnna',
+    'nnnnnnnnna',
+    'na',
+    'nna',
+  ],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -69,5 +81,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

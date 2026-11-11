@@ -32,6 +32,8 @@ const impl: Validator = {
   name: 'South Korean Business Registration Number',
   localName: '사업자 등록 번호',
   abbreviation: 'BRN',
+  examples: ['1168200276'],
+  formats: ['nnn-nn-nnnnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -94,5 +96,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

@@ -36,6 +36,8 @@ const impl = {
   abbreviation: '',
   localName: '',
   name: 'Tax Code',
+  examples: ['9000503', '20000503AA'],
+  formats: ['9nnnnnn', 'nnnnnnnnaa'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -93,6 +95,14 @@ const impl = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;
 export default impl;

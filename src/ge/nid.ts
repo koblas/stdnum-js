@@ -26,6 +26,8 @@ const impl: Validator = {
   name: 'Personal Number',
   localName: 'პირადი ნომერი',
   abbreviation: 'NID',
+  examples: ['01234567890'],
+  formats: ['nnnnnnnnnnn'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -68,5 +70,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

@@ -39,8 +39,7 @@ interface ValidateFail {
 }
 
 export type ValidateReturn = { error?: ValidationError } & (
-  | ValidateSuccess
-  | ValidateFail
+  ValidateSuccess | ValidateFail
 );
 
 export interface Validator {
@@ -62,6 +61,20 @@ export interface Validator {
    * The short/acronym or abbreviation of the validator
    */
   abbreviation?: string;
+
+  /**
+   * Valid example numbers in compact form, for documentation and as UI hints
+   * (for example "Enter your TFN, e.g. 123 456 782").
+   */
+  examples?: string[];
+
+  /**
+   * The shapes of the format() output, in IBAN registry notation: `n` is a
+   * digit, `a` an upper case letter (A-Z), `c` a digit or upper case letter,
+   * and any other character is literal. A number that comes in several shapes
+   * (such as different lengths) has one pattern per shape.
+   */
+  formats?: string[];
 
   /**
    * Convert the number to the minimal representation.

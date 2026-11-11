@@ -27,6 +27,8 @@ const impl: Validator = {
   name: 'Mozambican National Identity Document',
   localName: 'Bilhete de Identidade',
   abbreviation: 'BI',
+  examples: ['110504162779A'],
+  formats: ['nnnnnnnnnnnna'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -62,5 +64,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

@@ -39,6 +39,8 @@ const impl: Validator = {
   name: 'Argentinian VAT Number',
   localName: 'Código Único de Identificación Tributaria',
   abbreviation: 'CUIT',
+  examples: ['20055361682'],
+  formats: ['nn-nnnnnnnn-n'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -98,5 +100,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

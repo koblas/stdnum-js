@@ -25,6 +25,8 @@ const impl: Validator = {
   name: 'Single Banking Code',
   localName: 'Clave Bancaria Uniforme',
   abbreviation: 'CBU',
+  examples: ['2850590940090418135201'],
+  formats: ['nnnnnnnn nnnnnnnnnnnnnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -94,5 +96,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

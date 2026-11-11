@@ -33,6 +33,8 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 const impl: Validator = {
   name: 'Indian Digital Resident Personal Identity Number',
   localName: 'Aadhaar',
+  examples: ['234123412346'],
+  formats: ['nnnn nnnn nnnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -81,5 +83,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

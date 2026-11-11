@@ -37,6 +37,8 @@ const impl: Validator = {
   name: 'Albanian VAT Number',
   localName: 'Numri i Identifikimit për Personin e Tatueshëm',
   abbreviation: 'NIPT',
+  examples: ['J91402501L'],
+  formats: ['annnnnnnna'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -107,5 +109,13 @@ const impl: Validator = {
     };
   },
 };
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

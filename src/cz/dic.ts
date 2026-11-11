@@ -65,6 +65,8 @@ const impl: Validator = {
   name: 'Czech VAT Number',
   localName: 'Daňové identifikační číslo',
   abbreviation: 'DIČ',
+  examples: ['25123891', '687836437'],
+  formats: ['nnnnnnnn', 'nnnnnnnnn', 'nnnnnnnnnn'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -128,5 +130,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

@@ -42,6 +42,8 @@ const impl = {
   name: 'UI Number',
   localName: '中華民國國民身分證',
   abbreviation: 'UI',
+  examples: ['AB00501503'],
+  formats: ['aannnnnnnn'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -106,6 +108,14 @@ const impl = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;
 export default impl;

@@ -24,6 +24,8 @@ const impl: Validator = {
   name: 'Latvian VAT Number',
   localName: 'Pievienotās Vērtības Nodokļa',
   abbreviation: 'PVN',
+  examples: ['40003521600', '16117519997'],
+  formats: ['nnnn nnnn nnn', 'nnnnnn-nnnnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -103,5 +105,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

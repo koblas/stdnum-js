@@ -26,6 +26,8 @@ const impl: Validator = {
   name: 'Georgian Tax Identification Number',
   localName: 'საგადასახადო საიდენტიფიკაციო ნომერი',
   abbreviation: 'TIN',
+  examples: ['123456789', '01234567890'],
+  formats: ['nnnnnnnnn', 'nnnnnnnnnnn'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -67,5 +69,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

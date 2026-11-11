@@ -30,6 +30,8 @@ const impl: Validator = {
   name: 'Hong Kong Identity Card Number',
   localName: '香港身份證',
   abbreviation: 'HKID',
+  examples: ['AB9876543', 'G123456A', 'A5555550'],
+  formats: ['aannnnnnc', 'annnnnnc'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -86,5 +88,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

@@ -18,6 +18,8 @@ const impl: Validator = {
   name: 'Finnish Business Identifier',
   localName: 'Yritys- ja yhteisötunnus',
   abbreviation: 'Y-tunnus',
+  examples: ['20774740'],
+  formats: ['nnnnnnn-n'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -45,5 +47,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

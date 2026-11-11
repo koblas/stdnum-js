@@ -29,6 +29,15 @@ const impl: Validator = {
   name: 'United Kingdom (and Isle of Man) VAT Number',
   localName: 'Value Added Tax Registration Number',
   abbreviation: 'VAT Reg No',
+  examples: ['980780684', 'GD100'],
+  formats: [
+    'nnn nnnn nn',
+    'nnn nnnn nnnnn',
+    'GDn nn',
+    'HAn nn',
+    'GD8 888n nnnn',
+    'HA8 888n nnnn',
+  ],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -108,5 +117,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

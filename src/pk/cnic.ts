@@ -42,6 +42,8 @@ const impl: Validator = {
   name: 'Pakistani Computerized National Identification Number',
   localName: 'Computerized National Identification Number',
   abbreviation: 'CNIC',
+  examples: ['5410498905786'],
+  formats: ['nnnnn-nnnnnnn-n'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -93,5 +95,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

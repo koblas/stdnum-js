@@ -23,6 +23,8 @@ const impl: Validator = {
   name: 'Turkish Tax Identification Number',
   localName: 'Vergi Kimlik Numarası',
   abbreviation: 'VKN',
+  examples: ['4540536920'],
+  formats: ['nnnnnnnnnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -83,5 +85,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

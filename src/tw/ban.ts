@@ -23,6 +23,8 @@ const impl = {
   abbreviation: 'BAN',
   name: 'Taiwanese Unified Business Number',
   localName: '統一編號',
+  examples: ['00501503'],
+  formats: ['nnnnnnnn'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -62,6 +64,14 @@ const impl = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;
 export default impl;

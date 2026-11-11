@@ -23,6 +23,8 @@ const impl: Validator = {
   name: 'Barbados Tax Identification Number',
   localName: 'Tax Identification Number',
   abbreviation: 'TIN',
+  examples: ['1000000000001'],
+  formats: ['nnnnnnnnnnnnn'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -65,5 +67,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

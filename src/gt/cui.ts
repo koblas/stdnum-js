@@ -48,6 +48,8 @@ const impl: Validator = {
   name: 'Guatemala Identity Number',
   localName: 'Código Único de Identificación',
   abbreviation: 'CUI',
+  examples: ['1587564440904'],
+  formats: ['nnnn-nnnnn-nnnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -106,5 +108,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

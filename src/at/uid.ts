@@ -33,6 +33,8 @@ const impl: Validator = {
   name: 'Austrian VAT Number',
   localName: 'Umsatzsteuer-Identifikationsnummer',
   abbreviation: 'UID',
+  examples: ['U13585627'],
+  formats: ['Unnnnnnnn'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -80,5 +82,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

@@ -36,6 +36,8 @@ const impl: Validator = {
   name: 'Spanish VAT Number',
   localName: 'Número de Identificación Fiscal',
   abbreviation: 'NIF',
+  examples: ['B58378431', '54362315K', 'X5253868R'],
+  formats: ['c-nnnnnnnc'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -94,5 +96,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

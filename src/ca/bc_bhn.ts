@@ -31,6 +31,8 @@ const impl: Validator = {
   name: 'British Columbia Personal Health Number',
   localName: 'British Columbia Personal Health Number',
   abbreviation: 'BC_BHN',
+  examples: ['9698658215'],
+  formats: ['nnnn nnn nnn'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -84,5 +86,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

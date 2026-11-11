@@ -24,6 +24,8 @@ const impl: Validator = {
   name: 'Polish National Identification Number',
   localName: 'Powszechny Elektroniczny System Ewidencji Ludności',
   abbreviation: 'PESEL',
+  examples: ['44051401359'],
+  formats: ['nnnnnnnnnnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -93,5 +95,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

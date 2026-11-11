@@ -49,6 +49,8 @@ const impl: Validator = {
   name: 'El Salvador Tax Number',
   localName: 'Número de Identificación Tributaria',
   abbreviation: 'NIT',
+  examples: ['06140507071048'],
+  formats: ['nnnn-nnnnnn-nnn-n'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -114,5 +116,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

@@ -61,6 +61,8 @@ const impl: Validator = {
   name: 'Costa Rica Tax Number',
   localName: 'Cédula de Persona Jurídica',
   abbreviation: 'CPJ',
+  examples: ['4000042138'],
+  formats: ['n-nnn-nnnnnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -107,5 +109,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

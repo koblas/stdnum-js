@@ -45,6 +45,8 @@ const impl: Validator = {
   name: 'Chinese Resident Identity Card Number',
   localName: '居民身份证',
   abbreviation: 'RIC No',
+  examples: ['360426199101010071'],
+  formats: ['nnnnnnnnnnnnnnnnnc'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -102,5 +104,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

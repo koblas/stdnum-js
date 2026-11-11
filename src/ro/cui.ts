@@ -28,6 +28,18 @@ const impl: Validator = {
   name: 'Romanian Company Identifier',
   localName: 'Codul Unic de Înregistrare',
   abbreviation: 'CUI',
+  examples: ['18547290'],
+  formats: [
+    'nnn nnn nn',
+    'nnn nnn n',
+    'nnn nnn nnn',
+    'nnn nnn',
+    'nnn nnn nnnn',
+    'nnn nn',
+    'nn',
+    'nnn',
+    'nnn n',
+  ],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -79,5 +91,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

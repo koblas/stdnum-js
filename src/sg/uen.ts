@@ -168,6 +168,8 @@ const impl: Validator = {
   name: 'Singapore Unique Entity Number',
   localName: 'Unique Entity Number',
   abbreviation: 'UEN',
+  examples: ['T01FC6132D', '00192200M', '197401143C'],
+  formats: ['cnnccnnnna', 'nnnnnnnna'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -205,5 +207,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

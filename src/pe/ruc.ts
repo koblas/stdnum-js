@@ -25,6 +25,8 @@ const impl: Validator = {
   name: 'Peruvian Company Tax Number',
   localName: 'Registro Único de Contribuyentes',
   abbreviation: 'RUC',
+  examples: ['20512333797'],
+  formats: ['nnnnnnnnnnn'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -80,5 +82,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

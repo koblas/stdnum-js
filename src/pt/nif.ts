@@ -24,6 +24,8 @@ const impl: Validator = {
   name: 'Portuguese Tax Identification Number',
   localName: 'Número de Identificação Fiscal',
   abbreviation: 'NIF',
+  examples: ['501964843'],
+  formats: ['nnn nnn nnn'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -61,7 +63,7 @@ const impl: Validator = {
       modulus: 11,
     });
 
-    if (String((11 - sum) % 11 % 10) !== check) {
+    if (String(((11 - sum) % 11) % 10) !== check) {
       return { isValid: false, error: new exceptions.InvalidChecksum() };
     }
 
@@ -74,5 +76,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

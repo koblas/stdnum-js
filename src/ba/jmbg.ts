@@ -20,6 +20,8 @@ const impl: Validator = {
   name: 'Bosnia Unique Master Citizen Number',
   localName: 'Jedinstveni matični broj građana',
   abbreviation: 'JMBG',
+  examples: ['0101006500006'],
+  formats: ['nnnnnnnnnnnnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -81,5 +83,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

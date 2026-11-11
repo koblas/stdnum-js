@@ -22,6 +22,8 @@ const impl: Validator = {
   name: 'Belgian Social Security Identification Number',
   localName: 'Identificatienummer van de Sociale Zekerheid',
   abbreviation: 'INSZ, NISS',
+  examples: ['88022999990'],
+  formats: ['nnnnnnnnnnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -51,5 +53,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

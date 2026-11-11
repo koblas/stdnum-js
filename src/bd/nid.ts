@@ -24,6 +24,8 @@ const impl: Validator = {
   name: 'National Identity Card Number',
   localName: 'জাতীয় পরিচয়পত্র (Jatiya Porichoypatra)',
   abbreviation: 'NID',
+  examples: ['1234567890', '1990123456789', '19901234567890123'],
+  formats: ['nnnnnnnnnn', 'nnnnnnnnnnnnn', 'nnnnnnnnnnnnnnnnn'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -66,5 +68,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

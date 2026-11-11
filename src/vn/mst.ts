@@ -39,6 +39,8 @@ const impl: Validator = {
   name: 'Vietnamese Tax Number',
   localName: 'Mã số thuế',
   abbreviation: 'MST',
+  examples: ['0100112437', '0312687878001'],
+  formats: ['nnnnnnnnnn', 'nnnnnnnnnn-nnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -96,5 +98,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

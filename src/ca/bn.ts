@@ -27,6 +27,8 @@ const impl: Validator = {
   name: 'Canadian Business Number',
   localName: 'Business Number',
   abbreviation: 'BN',
+  examples: ['123026635RC0001', '123026635'],
+  formats: ['nnnnn nnnn aa nnnn', 'nnnnn nnnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -84,5 +86,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

@@ -37,6 +37,8 @@ const impl: Validator = {
   name: 'Inland Revenue Department Number',
   localName: 'Te Tari Taake',
   abbreviation: 'IRD',
+  examples: ['49091850'],
+  formats: ['nn-nnn-nnn', 'nn-nnn-nnnn'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -105,5 +107,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

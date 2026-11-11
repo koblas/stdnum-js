@@ -80,6 +80,8 @@ const impl: Validator = {
   name: 'Spanish Social Security Number',
   localName: 'Número de Seguridad Social',
   abbreviation: 'NSS',
+  examples: ['281234567840'],
+  formats: ['nn-nnnnnnnnnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -128,5 +130,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

@@ -40,6 +40,8 @@ const impl: Validator = {
   name: 'Irish VAT Number',
   localName: 'Cáin Bhreisluacha',
   abbreviation: 'CBL',
+  examples: ['6433435OA', '6433435F', '8D79739I'],
+  formats: ['ncnnnnnaa', 'ncnnnnna'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -95,5 +97,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

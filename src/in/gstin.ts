@@ -80,6 +80,8 @@ const impl: Validator = {
   name: 'Indian VAT Number',
   localName: 'Goods and Services Tax Identification Number',
   abbreviation: 'GSTIN',
+  examples: ['27AAPFU0939F1ZV', '29AAGCB7383J1Z4'],
+  formats: ['nnaaaaannnnacZc'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -152,5 +154,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

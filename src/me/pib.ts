@@ -22,6 +22,8 @@ const impl: Validator = {
   name: 'Montenegro tax number',
   localName: 'Poreski Identifikacioni Broj',
   abbreviation: 'PIB',
+  examples: ['02000989'],
+  formats: ['nnnnnnnn'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -73,5 +75,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

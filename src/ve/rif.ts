@@ -33,6 +33,8 @@ const impl: Validator = {
   name: 'Venezuelan VAT Number',
   localName: 'Registro Único de Información Fiscal',
   abbreviation: 'RIF',
+  examples: ['V114702834'],
+  formats: ['a-nnnnnnnn-n'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -88,5 +90,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

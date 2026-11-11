@@ -100,6 +100,8 @@ function formatImpl(input: string): string {
 const impl: Validator = {
   name: 'Swedish Personal Identity Number',
   localName: 'Personnummer',
+  examples: ['198803200016', '188803200016'],
+  formats: ['nnnnnn-nnnn', 'nnnnnn+nnnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -157,5 +159,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

@@ -78,6 +78,8 @@ const impl: Validator = {
   name: 'Indonesian Identity Number',
   localName: 'Nomor Induk Kependudukan',
   abbreviation: 'NIK',
+  examples: ['3273015708900001'],
+  formats: ['nnnnnnnnnnnnnnnn'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -131,5 +133,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

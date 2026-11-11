@@ -28,6 +28,20 @@ const impl: Validator = {
   name: 'Guatemala Tax Number',
   localName: 'Número de Identificación Tributaria',
   abbreviation: 'NIT',
+  examples: ['39525503', '576937K', '71080'],
+  formats: [
+    'nnnnnnn-c',
+    'nnnnnn-c',
+    'nnnn-c',
+    'nnnnnnnn-c',
+    'nnnnn-c',
+    'nnn-c',
+    'nnnnnnnnn-c',
+    'nn-c',
+    'nnnnnnnnnn-c',
+    'n-c',
+    'nnnnnnnnnnn-c',
+  ],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -82,5 +96,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

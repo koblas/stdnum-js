@@ -27,6 +27,23 @@ VAT, Person and Tax identifiers.
 
 All country validators are in the "namespace" of the ISO country code.
 
+## Examples and formats
+
+Each validator also lists example numbers and the shape of its formatted
+output, for placeholder text ("e.g. 390.533.447-05") or input masks:
+
+    console.log(stdnum.BR.cpf.examples); // ['39053344705']
+    console.log(stdnum.BR.cpf.formats); // ['nnn.nnn.nnn-nn']
+    console.log(stdnum.BR.cpf.format(stdnum.BR.cpf.examples[0])); // '390.533.447-05'
+
+`examples` are valid numbers in compact form. `formats` describe what
+`format()` returns, in IBAN registry style: `n` is a digit, `a` an upper case
+letter (A-Z), `c` a digit or upper case letter, and any other character is
+literal (so `CHE-nnn.nnn.nnn` starts with the letters `CHE`). A number that
+comes in several shapes, such as different lengths, has one pattern per shape.
+The patterns describe shape only: a number that fits a pattern can still fail
+`validate()`, for example on its check digit.
+
 ## Bundle size: tree-shakeable imports
 
 The `stdnum` object eagerly references every country, so importing it bundles
