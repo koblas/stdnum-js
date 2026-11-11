@@ -10,6 +10,19 @@
 
 * add de.svnr support ([ee03c72](https://github.com/koblas/stdnum-js/commit/ee03c72e62254c488e5ae3f889b1ee8c823b2cc4))
 
+## [1.17.0](https://github.com/koblas/stdnum-js/compare/v1.16.0...v1.17.0) (2026-11-11)
+
+
+### Features
+
+* add examples and format patterns to validators ([#108](https://github.com/koblas/stdnum-js/issues/108)) ([#258](https://github.com/koblas/stdnum-js/issues/258)) ([3598e84](https://github.com/koblas/stdnum-js/commit/3598e84f3cbda37ca678b7676bc3cf213c2ed1cd))
+* add validateVat ([#50](https://github.com/koblas/stdnum-js/issues/50)) ([#257](https://github.com/koblas/stdnum-js/issues/257)) ([22318d9](https://github.com/koblas/stdnum-js/commit/22318d98b076d3a183e2750dcbc0f19367eae68b))
+
+
+### Bug Fixes
+
+* **kr/rrn:** skip the check digit for alien registration numbers ([#256](https://github.com/koblas/stdnum-js/issues/256)) ([791779a](https://github.com/koblas/stdnum-js/commit/791779a0f8e8cf3093fe6591d11e4dec8b59646f))
+
 ## [1.16.0](https://github.com/koblas/stdnum-js/compare/v1.15.0...v1.16.0) (2026-11-10)
 
 
