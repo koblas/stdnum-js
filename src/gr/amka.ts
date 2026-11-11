@@ -25,6 +25,8 @@ const impl: Validator = {
   name: 'Greek Social Security Number',
   localName: 'Αριθμός Μητρώου Κοινωνικής Ασφάλισης',
   abbreviation: 'AMKA',
+  examples: ['01013099997'],
+  formats: ['nnnnnnnnnnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -72,5 +74,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

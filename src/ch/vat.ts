@@ -30,6 +30,13 @@ const impl: Validator = {
   name: 'Swiss VAT Number',
   localName: 'Mehrwertsteuernummer',
   abbreviation: 'MWST/TVA/IVA',
+  examples: ['CHE107787577IVA'],
+  formats: [
+    'CHE-nnn.nnn.nnn MWST',
+    'CHE-nnn.nnn.nnn TVA',
+    'CHE-nnn.nnn.nnn IVA',
+    'CHE-nnn.nnn.nnn TPV',
+  ],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -79,5 +86,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

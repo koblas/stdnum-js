@@ -40,6 +40,8 @@ const impl = {
   localName: '中華民國國民身分證',
   abbreviation: 'NATID',
   name: 'National ID Number',
+  examples: ['A200501505'],
+  formats: ['annnnnnnnn'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -104,6 +106,14 @@ const impl = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;
 export default impl;

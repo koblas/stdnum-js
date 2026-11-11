@@ -19,6 +19,8 @@ const impl: Validator = {
   name: 'Angola Tax Identification Number',
   localName: 'Número de Identificação Fiscal',
   abbreviation: 'NIF',
+  examples: ['0000000001', '003534962LA033'],
+  formats: ['nnnnnnnnnn', 'nnnnnnnnnaannn'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -68,5 +70,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

@@ -21,7 +21,17 @@ const impl: Validator = {
   name: 'Slovene Unique Master Citizen Number',
   localName: 'Enotna Matična Številka Občana',
   abbreviation: 'EMŠO',
+  examples: ['0101006500006'],
+  formats: ['nnnnnnnnnnnnn'],
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

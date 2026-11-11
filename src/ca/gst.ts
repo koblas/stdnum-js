@@ -30,6 +30,8 @@ const impl: Validator = {
   name: 'Goods and service Tax Number',
   localName: 'Goods and service Tax Number',
   abbreviation: 'GST',
+  examples: ['754039725RT0001'],
+  formats: ['nnnnnnnnnaannnn'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -66,5 +68,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

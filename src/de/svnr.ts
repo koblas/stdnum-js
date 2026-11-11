@@ -83,6 +83,8 @@ const impl: Validator = {
   name: 'German Pension Insurance Number',
   localName: 'Sozialversicherungsnummer',
   abbreviation: 'SVNR',
+  examples: ['15070649C103'],
+  formats: ['nn nnnnnn a nnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -154,5 +156,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

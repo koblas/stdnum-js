@@ -25,6 +25,8 @@ const impl: Validator = {
   name: 'Polish Statistical Identificaiton Number',
   localName: 'Rejestr Gospodarki Narodowej',
   abbreviation: 'REGON',
+  examples: ['123456785', '12345678512347'],
+  formats: ['nnnnnnnnn', 'nnnnnnnnnnnnnn'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -84,5 +86,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

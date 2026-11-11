@@ -24,6 +24,8 @@ const impl: Validator = {
   name: 'Thailand Taxpayer Identification Number',
   localName: '',
   abbreviation: 'TIN',
+  examples: ['1112034563562', '0135559012628'],
+  formats: ['n-nnnn-nnnnn-nn-n', 'n-nn-n-nnn-nnnnn-n'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -52,5 +54,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

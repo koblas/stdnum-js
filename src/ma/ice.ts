@@ -25,6 +25,8 @@ const impl: Validator = {
   name: 'Moroccan Company Establishment Identification Number',
   localName: "Identifiant Commun de l'Entreprises",
   abbreviation: 'ICE',
+  examples: ['001512572000078'],
+  formats: ['nnnnnnnnnnnnnnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -68,5 +70,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

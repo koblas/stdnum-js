@@ -64,6 +64,8 @@ const impl: Validator = {
   name: 'Dominican Republic Receipt Number',
   localName: 'Números de Comprobante Fiscal',
   abbreviation: 'NCF',
+  examples: ['E310000000005', 'B0100000005', 'A020010210100000005'],
+  formats: ['annnnnnnnnnnn', 'annnnnnnnnn', 'annnnnnnnnnnnnnnnnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -129,5 +131,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

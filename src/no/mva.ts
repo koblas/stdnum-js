@@ -23,6 +23,8 @@ const impl: Validator = {
   name: 'Norwegian VAT Number',
   localName: 'Merverdiavgift',
   abbreviation: 'MVA',
+  examples: ['995525828MVA'],
+  formats: ['NO nnn nnn nnn MVA'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -76,5 +78,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

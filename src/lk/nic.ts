@@ -1,14 +1,13 @@
 /**
  * The National Identity Card (abbreviation: NIC) is the identity document in use in Sri Lanka.
  * It is compulsory for all Sri Lankan citizens who are fifteen years of age and older to have their NICs.
- * NICs are issued by the Department for Registration of Persons. 
+ * NICs are issued by the Department for Registration of Persons.
  * The Registration of Persons Act No.32 of 1968 as amended by Act Nos 28 and 37 of 1971 and Act No.11 of 1981 legislates the issuance and usage of NICs.
  *
- * 
+ *
  * source:
  * https://en.wikipedia.org/wiki/National_identity_card_(Sri_Lanka)
  */
-
 
 import * as exceptions from '../exceptions';
 import { strings } from '../util';
@@ -21,6 +20,8 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 const impl: Validator = {
   name: 'Sri Lankan National Identity Card Number',
   localName: 'NIC Number',
+  examples: ['199439848733', '942281632V'],
+  formats: ['nnnnnnnnnnnn', 'nnnnnnnnnv', 'nnnnnnnnnx'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -44,13 +45,16 @@ const impl: Validator = {
       return { isValid: false, error };
     }
 
-    if(value.length!==10 && value.length!==12 ){
+    if (value.length !== 10 && value.length !== 12) {
       return { isValid: false, error: new exceptions.InvalidLength() };
     }
 
     // Check if NIC matches the specified patterns (check for both old format & new format )
     if (!/^[\d]{9}[vVxX]$|^[\d]{12}$/.test(value)) {
-      return { isValid: false, error: new exceptions.InvalidFormat('Invalid NIC format') };
+      return {
+        isValid: false,
+        error: new exceptions.InvalidFormat('Invalid NIC format'),
+      };
     }
 
     return {
@@ -62,4 +66,5 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, validate, format, compact } = impl;
+export const { name, localName, examples, formats, validate, format, compact } =
+  impl;

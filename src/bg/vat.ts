@@ -49,6 +49,8 @@ const impl: Validator = {
   name: 'Bulgarian VAT Number',
   localName: 'Идентификационен номер по ДДС',
   abbreviation: 'ДДС номер',
+  examples: ['175074752', '1234567890'],
+  formats: ['nnnnnnnnn', 'nnnnnnnnnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -91,5 +93,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

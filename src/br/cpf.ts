@@ -34,6 +34,8 @@ const impl: Validator = {
   name: 'Brazilian National Identifier',
   localName: 'Cadastro de Pessoas Físicas',
   abbreviation: 'CPF',
+  examples: ['39053344705'],
+  formats: ['nnn.nnn.nnn-nn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -87,5 +89,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

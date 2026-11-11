@@ -38,6 +38,15 @@ const impl: Validator = {
   name: 'Bolivian National Identity Card',
   localName: 'Cédula de Identidad',
   abbreviation: 'CI',
+  examples: ['1234567SC', '12345678LP', '1234567SC1'],
+  formats: [
+    'nnnnnnn-aa',
+    'nnnnnnnn-aa',
+    'nnnnnnn-aa-c',
+    'nnnnnnnn-aa-c',
+    'nnnnnnn-aa-cc',
+    'nnnnnnnn-aa-cc',
+  ],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -138,5 +147,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

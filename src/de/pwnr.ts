@@ -154,6 +154,12 @@ const impl: Validator = {
   name: 'German Personalausweisnummer',
   localName: 'Personalausweisnummer',
   abbreviation: 'PwNr',
+  examples: [
+    'T22000129364081252010315D4',
+    '122000129764081251710319D8',
+    '2406055684',
+  ],
+  formats: ['cccccccccn nnnnnnn nnnnnnn a n', 'cccccccccn', 'cccccccccn a'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -186,5 +192,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

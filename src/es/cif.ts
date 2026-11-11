@@ -27,6 +27,8 @@ const impl: Validator = {
   name: 'Spanish Company Tax Number',
   localName: 'Código de Identificación Fiscal',
   abbreviation: 'CIF',
+  examples: ['J99216582', 'Q2876031B'],
+  formats: ['a-nnnnnnn-c'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -80,5 +82,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

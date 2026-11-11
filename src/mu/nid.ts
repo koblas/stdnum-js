@@ -36,6 +36,8 @@ const impl: Validator = {
   name: 'Mauritian National Identifier',
   localName: 'National Identifier',
   abbreviation: 'NID',
+  examples: ['M090497290349B', 'L2207971502833'],
+  formats: ['annnnnnnnnnnnc'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -91,5 +93,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

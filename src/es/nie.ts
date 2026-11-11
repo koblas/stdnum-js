@@ -26,6 +26,8 @@ const impl: Validator = {
   name: 'Spanish Foreign Number',
   localName: 'Número de Identificación de Extranjero',
   abbreviation: 'NIE',
+  examples: ['X2482300W'],
+  formats: ['a-nnnnnnn-a'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -75,5 +77,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

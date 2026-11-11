@@ -20,6 +20,19 @@ const impl: Validator = {
   name: 'Romanian VAT Number',
   localName: 'Codul de Identificare Fiscală',
   abbreviation: 'CIF',
+  examples: ['18547290', '1630615123457'],
+  formats: [
+    'nnn nnn nn',
+    'nnn nnn nnnnnnn',
+    'nnn nnn n',
+    'nnn nnn nnn',
+    'nnn nnn',
+    'nnn nnn nnnn',
+    'nnn nn',
+    'nn',
+    'nnn',
+    'nnn n',
+  ],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -58,5 +71,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

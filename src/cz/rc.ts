@@ -33,6 +33,8 @@ const impl: Validator = {
   name: 'Czech Birth Number',
   localName: 'Rodné číslo',
   abbreviation: 'RČ',
+  examples: ['7103192745', '991231123'],
+  formats: ['nnnnnn/nnnn', 'nnnnnn/nnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -101,5 +103,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

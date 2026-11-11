@@ -25,6 +25,8 @@ const impl: Validator = {
   name: 'South African Identity Document Number',
   localName: 'Identity Document Number',
   abbreviation: 'IDNR',
+  examples: ['7503305044089'],
+  formats: ['nnnnnnnnnnnnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -80,5 +82,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

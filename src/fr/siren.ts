@@ -21,6 +21,8 @@ const impl: Validator = {
   name: 'French Company Identification Number',
   localName: "Système d'Identification du Répertoire des Entreprises",
   abbreviation: 'SIREN',
+  examples: ['552008443'],
+  formats: ['nnn nnn nnn'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -64,5 +66,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

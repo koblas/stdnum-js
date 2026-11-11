@@ -155,6 +155,8 @@ const impl: Validator = {
   name: 'Mexican Personal Identification',
   localName: 'Clave Única de Registro de Población',
   abbreviation: 'CURP',
+  examples: ['BOXW310820HNERXN09', 'MASI050805MVZRLRA8'],
+  formats: ['aaaannnnnnaaaaaacn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -257,5 +259,13 @@ export function getBirthDate(input: string): Date | null {
   return validBirthdate(date) ? date : null;
 }
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

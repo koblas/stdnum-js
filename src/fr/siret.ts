@@ -26,6 +26,8 @@ const impl: Validator = {
   name: 'French Company Establishment Identification Number',
   localName: "Système d'Identification du Répertoire des Établissements",
   abbreviation: 'SIRET',
+  examples: ['73282932000074'],
+  formats: ['nnn nnn nnn nnnnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -82,5 +84,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

@@ -29,6 +29,8 @@ const impl: Validator = {
   name: 'Tunisian Passport Number',
   localName: 'جواز سفر تونسي',
   abbreviation: 'Passport',
+  examples: ['X1234567', 'Y777777'],
+  formats: ['annnnnnn', 'annnnnn'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -71,5 +73,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

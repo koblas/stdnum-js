@@ -24,6 +24,16 @@ const impl: Validator = {
   name: 'Colombian Tax Identification Number',
   localName: 'Número de Identificación Tributaria',
   abbreviation: 'NIT',
+  examples: ['2131234321', '10184648519'],
+  formats: [
+    'nnn.nnn.nnn-n',
+    'nnn.nnn.nnn-nn',
+    'nnn.nnn.nnn-nnn',
+    'nnn.nnn.nnn-nnnn',
+    'nnn.nnn.nnn-nnnnn',
+    'nnn.nnn.nnn-nnnnnn',
+    'nnn.nnn.nnn-nnnnnnn',
+  ],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -81,5 +91,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

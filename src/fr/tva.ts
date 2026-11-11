@@ -37,6 +37,8 @@ const impl: Validator = {
   name: 'French VAT Number',
   localName: "Numéro d'Identification à la Taxe sur la Valeur Ajoutée",
   abbreviation: 'n°TVA',
+  examples: ['40303265045', 'K7399859412', '4Z123456782'],
+  formats: ['cc nnn nnn nnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -121,5 +123,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

@@ -33,6 +33,8 @@ const impl: Validator = {
   name: 'French Personal Identification Number',
   localName: 'Numéro d’Inscription au RNIPP',
   abbreviation: 'NIR',
+  examples: ['295109912611193', '186022A21532523'],
+  formats: ['n nn nn nc nnn nnn nn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -97,5 +99,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

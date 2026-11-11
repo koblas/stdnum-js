@@ -25,6 +25,8 @@ const impl: Validator = {
   name: 'Ukrainian Unified State Register of Enterprises and Organizations',
   localName: 'Єдиного державного реєстру підприємств та організацій України',
   abbreviation: 'ЄДРПОУ',
+  examples: ['32855961'],
+  formats: ['nnnnnnnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -84,5 +86,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

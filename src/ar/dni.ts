@@ -24,6 +24,8 @@ const impl: Validator = {
   name: 'Argentinian National Identity Document',
   localName: 'Documento Nacional de Identidad',
   abbreviation: 'DNI',
+  examples: ['20123456'],
+  formats: ['nn.nnn.nnn', 'n.nnn.nnn'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -68,5 +70,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

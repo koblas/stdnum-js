@@ -41,6 +41,8 @@ const impl: Validator = {
   name: 'Malaysian National Registration Identity Card Number',
   localName: 'National Registration Identity Card Number',
   abbreviation: 'NRIC No.',
+  examples: ['770305021234'],
+  formats: ['nnnnnn-nn-nnnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -88,5 +90,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

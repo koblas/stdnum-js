@@ -48,6 +48,8 @@ const impl: Validator = {
   name: 'Costa Rica Physical Person ID Number',
   localName: 'Cédula de Persona Física',
   abbreviation: 'CPF',
+  examples: ['0701610395'],
+  formats: ['nn-nnnn-nnnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -89,5 +91,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

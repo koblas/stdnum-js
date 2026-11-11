@@ -54,6 +54,8 @@ const impl: Validator = {
   name: 'Chinese Unified Social Credit Code',
   localName: '统一社会信用代码',
   abbreviation: 'USCC',
+  examples: ['91110000600037341L', '91340600MA2PBP2120', '911522010783762860'],
+  formats: ['nnnnnnnncccccccccc'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -106,5 +108,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

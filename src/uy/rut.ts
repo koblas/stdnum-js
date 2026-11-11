@@ -36,6 +36,8 @@ const impl: Validator = {
   name: 'Uruguayan Tax Number',
   localName: 'Registro Único Tributario',
   abbreviation: 'RUT',
+  examples: ['211003420017'],
+  formats: ['nn-nnnnnn-nnn-n'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -96,5 +98,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

@@ -123,6 +123,8 @@ const impl: Validator = {
   name: 'German Tax Number',
   localName: 'Steuernummer',
   abbreviation: ' St.-Nr.',
+  examples: ['18181508155', '1420331601'],
+  formats: ['nnn/nnn/nnnn n', 'nn/nnn/nnnn n'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -176,5 +178,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

@@ -84,6 +84,8 @@ const impl: Validator = {
   name: 'Tunisia tax number',
   localName: 'Matricule Fiscal',
   abbreviation: 'MF',
+  examples: ['1496298TPN000', '0000121J'],
+  formats: ['nnnnnnn/a/a/a/nnn', 'nnnnnnn/a'],
 
   compact(input: string): string {
     const [value, error] = compactImpl(input);
@@ -165,5 +167,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

@@ -70,6 +70,8 @@ const impl: Validator = {
   name: 'South Korean Resident Registration Number',
   localName: '주민등록번호',
   abbreviation: 'RRN',
+  examples: ['9710139019902'],
+  formats: ['nnnnnn-nnnnnnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -141,5 +143,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

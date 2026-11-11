@@ -24,6 +24,8 @@ const impl: Validator = {
   name: "Ukrainian Registration Number of the Taxpayer's Registration Card",
   localName: 'Реєстраційний номер облікової картки платника податків',
   abbreviation: 'РНОКПП',
+  examples: ['1759013776'],
+  formats: ['nnnnnnnnnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -73,5 +75,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

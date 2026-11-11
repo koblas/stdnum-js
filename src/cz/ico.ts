@@ -32,6 +32,8 @@ const impl: Validator = {
   name: 'Czech Company Identification Number',
   localName: 'Identifikační číslo osoby',
   abbreviation: 'IČO',
+  examples: ['25596641'],
+  formats: ['nnnnnnnn'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -77,5 +79,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

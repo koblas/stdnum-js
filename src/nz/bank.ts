@@ -179,6 +179,8 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 const impl: Validator = {
   name: 'New Zealand Bank Account Number',
   localName: 'Bank Account Number',
+  examples: ['0109020068389000'],
+  formats: ['nn-nnnn-nnnnnnn-nnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -244,5 +246,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

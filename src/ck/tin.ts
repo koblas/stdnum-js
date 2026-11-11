@@ -23,6 +23,8 @@ const impl: Validator = {
   name: 'Cook Islands Tax Identification Number',
   localName: 'RMD Number',
   abbreviation: 'RMD',
+  examples: ['12345'],
+  formats: ['nnnnn'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -62,5 +64,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

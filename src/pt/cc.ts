@@ -27,6 +27,8 @@ const impl: Validator = {
   name: 'Portuguese Identity number',
   localName: 'Número de Cartão de Cidadão',
   abbreviation: 'CC',
+  examples: ['000000000ZZ4'],
+  formats: ['nnnnnnnn n ccn'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -70,5 +72,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

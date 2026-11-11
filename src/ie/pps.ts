@@ -30,6 +30,8 @@ const impl: Validator = {
   name: 'Irish Personal Number',
   localName: 'Personal Public Service Number',
   abbreviation: 'PPS',
+  examples: ['6433435F', '6433435FT'],
+  formats: ['nnnnnnna', 'nnnnnnnaa'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -78,5 +80,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

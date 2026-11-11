@@ -27,9 +27,9 @@ function validLength(value: string): boolean {
 }
 
 function isValidPrefix(prefix: string): boolean {
-  const invalidChars = ["D", "F", "I", "Q", "U", "V"];
-  const invalidSecondChar = "O";
-  const invalidPrefixes = ["BG", "GB", "KN", "NK", "NT", "TN", "ZZ"];
+  const invalidChars = ['D', 'F', 'I', 'Q', 'U', 'V'];
+  const invalidSecondChar = 'O';
+  const invalidPrefixes = ['BG', 'GB', 'KN', 'NK', 'NT', 'TN', 'ZZ'];
 
   if (invalidChars.includes(prefix[0]) || invalidChars.includes(prefix[1])) {
     return false;
@@ -54,6 +54,8 @@ const impl: Validator = {
   name: 'United Kingdom National Insurance Number',
   localName: 'National Insurance Number',
   abbreviation: 'NINO',
+  examples: ['HH012345D', 'HH012345'],
+  formats: ['aannnnnna', 'aannnnnn'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -93,5 +95,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

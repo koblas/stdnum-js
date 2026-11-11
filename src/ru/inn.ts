@@ -23,6 +23,8 @@ const impl: Validator = {
   name: 'Russian Tax Identifier',
   localName: 'Идентификационный номер налогоплательщика',
   abbreviation: 'ИНН',
+  examples: ['123456789047', '1234567894'],
+  formats: ['nnnnnnnnnnnn', 'nnnnnnnnnn'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -102,5 +104,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

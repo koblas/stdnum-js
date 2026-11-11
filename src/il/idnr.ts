@@ -24,6 +24,17 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
 const impl: Validator = {
   name: 'Israeli Identify Number',
   localName: 'Mispar Zehut, מספר זהות',
+  examples: ['39337423'],
+  formats: [
+    'nnnnnnnn-n',
+    'nnnnnnn-n',
+    'nnnnnn-n',
+    'nnnnn-n',
+    'nnnn-n',
+    'nnn-n',
+    'nn-n',
+    'n-n',
+  ],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -66,5 +77,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

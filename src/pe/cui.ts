@@ -25,6 +25,8 @@ const impl: Validator = {
   name: 'Peruvian Personal Identification Card',
   localName: 'Cédula Única de Identidad',
   abbreviation: 'CUI',
+  examples: ['101174102', '10812543H'],
+  formats: ['nnnnnnnn-c', 'nnnnnnnn'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -81,5 +83,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

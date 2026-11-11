@@ -27,6 +27,8 @@ const impl: Validator = {
   name: 'Thailand Memorandum of Association Number',
   localName: '',
   abbreviation: 'MOA',
+  examples: ['0993000133978'],
+  formats: ['n-nn-n-nnn-nnnnn-n'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -81,5 +83,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

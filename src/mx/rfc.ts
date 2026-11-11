@@ -84,6 +84,8 @@ const impl: Validator = {
   name: 'Mexican Tax Number',
   localName: 'Registro Federal de Contribuyentes',
   abbreviation: 'RFC',
+  examples: ['GODE561231GR8', 'MAB9307148T4', 'MHTR93041179A'],
+  formats: ['aaaa nnnnnn ccc', 'aaa nnnnnn ccc', 'aaaa nnnnnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -147,5 +149,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

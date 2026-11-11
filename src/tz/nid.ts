@@ -26,6 +26,8 @@ const impl: Validator = {
   name: 'National Identification Number',
   localName: 'Namba ya Kitambulisho cha Taifa',
   abbreviation: 'NIN',
+  examples: ['19850312123456789012'],
+  formats: ['nnnnnnnnnnnnnnnnnnnn'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -68,5 +70,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

@@ -42,6 +42,8 @@ const impl: Validator = {
   name: 'Indonesian VAT Number',
   localName: 'Nomor Pokok Wajib Pajak',
   abbreviation: 'NPWP',
+  examples: ['013000666091000', '0016090524017000'],
+  formats: ['nn.nnn.nnn.n-nnn.nnn', 'nnnnnnnnnnnnnnnn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -97,5 +99,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

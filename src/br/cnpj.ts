@@ -45,6 +45,8 @@ const impl: Validator = {
   name: 'Brazilian Company Identifier',
   localName: 'Cadastro Nacional da Pessoa Jurídica',
   abbreviation: 'CNPJ',
+  examples: ['16727230000197', '12ABC34501DE35'],
+  formats: ['cc.ccc.ccc/cccc-nn'],
   compact(input: string): string {
     const [value, err] = clean(input);
 
@@ -98,5 +100,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

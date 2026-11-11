@@ -30,6 +30,8 @@ const impl: Validator = {
   name: 'Taiwanese Business Administration Number',
   localName: '',
   abbreviation: 'UBN',
+  examples: ['00501503'],
+  formats: ['nnnnnnnn'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -85,5 +87,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;

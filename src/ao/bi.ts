@@ -24,6 +24,8 @@ const impl: Validator = {
   name: 'Angola Identity Card',
   localName: 'Bilhete de Identidade',
   abbreviation: 'BI',
+  examples: ['000204688CA010'],
+  formats: ['nnnnnnnnnaannn'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -63,5 +65,13 @@ const impl: Validator = {
   },
 };
 
-export const { name, localName, abbreviation, validate, format, compact } =
-  impl;
+export const {
+  name,
+  localName,
+  abbreviation,
+  examples,
+  formats,
+  validate,
+  format,
+  compact,
+} = impl;
