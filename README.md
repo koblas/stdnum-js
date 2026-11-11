@@ -48,6 +48,30 @@ Subpaths follow the source layout: `stdnum/<country>/<number>` (e.g.
 `stdnum/it/codicefiscale`), and `stdnum/<country>` for a whole country's
 validators.
 
+Tree-shaking the root `stdnum` entry works because `package.json` declares
+`"sideEffects": false`: anything you import from it that you don't use, such as
+the `stdnum` object or the validator tables below, can be dropped by the
+bundler.
+
+## Validating by country code
+
+When the country is only known at runtime, these functions pick the
+validators for an ISO 3166-1 alpha-2 country code (case-insensitive):
+
+    import { validatePerson, validateEntity, validateVat } from 'stdnum';
+
+    validatePerson('BR', '390.533.447-05'); // personal ID numbers
+    validateEntity('US', '12-3456789'); // business and tax numbers
+    validateVat('DE', 'DE136695976'); // VAT numbers
+
+Each returns `{ checked: true, isValid, matchedValidators }` when it knows the
+country, and `{ checked: false }` when it does not.
+
+`validateVat` covers the countries in the `euVat` table: the EU member states
+plus some non-EU countries (such as AD and CH). It only pulls in those VAT
+validators, so it adds far less to a bundle than `validateEntity`, which
+references every country's business validators.
+
 ## Supported Countries and Numbers
 
 How you can help! This library currently support about half the countries in the world. It would be great if we can get to 100%. Submit an issue with any reference documentation and I'll do my best to integrate it, bonus points if you can get detailed descriptions of checksums or other validation criteria.

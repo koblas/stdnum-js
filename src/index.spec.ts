@@ -30,3 +30,49 @@ describe('index exports', () => {
     expect(lib.stdnum.AI.tin.validate('12345-67890').isValid).toBe(true);
   });
 });
+
+describe('validateVat', () => {
+  // Valid and invalid values are taken from the country specs.
+  it.each([
+    ['DE', 'DE136695976', lib.DE.vat], // src/de/vat.spec.ts
+    ['FR', '40303265045', lib.FR.tva], // src/fr/tva.spec.ts
+    ['CH', 'CHE-107.787.577 IVA', lib.CH.vat], // src/ch/vat.spec.ts, non-EU
+  ])('accepts a valid %s VAT number', (country, value, validator) => {
+    expect(lib.validateVat(country, value)).toEqual({
+      checked: true,
+      isValid: true,
+      matchedValidators: [validator],
+    });
+  });
+
+  it('rejects an invalid VAT number', () => {
+    // Bad check digit, per src/fr/tva.spec.ts.
+    expect(lib.validateVat('FR', '84 323 140 391')).toEqual({
+      checked: true,
+      isValid: false,
+      matchedValidators: [],
+    });
+  });
+
+  it('accepts a lowercase country code', () => {
+    expect(lib.validateVat('de', 'DE136695976').isValid).toBe(true);
+    expect(lib.validateVat('fr', '84 323 140 391')).toEqual({
+      checked: true,
+      isValid: false,
+      matchedValidators: [],
+    });
+  });
+
+  it('does not check an unknown country', () => {
+    expect(lib.validateVat('XX', '40303265045')).toEqual({ checked: false });
+    expect(lib.validateVat('XX', '40303265045')).toEqual(
+      lib.validateEntity('XX', '40303265045'),
+    );
+  });
+
+  it('does not check a country that has entity validators but no VAT entry', () => {
+    // Valid US EIN, per src/us/ein.spec.ts.
+    expect(lib.validateEntity('US', '123-45-6789').isValid).toBe(true);
+    expect(lib.validateVat('US', '123-45-6789')).toEqual({ checked: false });
+  });
+});

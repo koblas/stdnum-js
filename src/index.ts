@@ -698,6 +698,32 @@ export function validateEntity(
 }
 
 /**
+ * Apply the VAT validator for a given country to validate a VAT number.
+ *
+ * Covers the countries in `euVat`, which besides the EU member states
+ * includes some non-EU countries (such as AD and CH). A country that is not
+ * in `euVat` returns `{ checked: false }`, the same result `validateEntity`
+ * gives for a country it does not know.
+ *
+ * This only reads `euVat`, so a bundler can leave out the much larger
+ * `stdnum`, `personValidators` and `entityValidators` tables.
+ */
+export function validateVat(
+  country: string,
+  value: string,
+): { checked: boolean; isValid?: boolean; matchedValidators?: Validator[] } {
+  const vset = euVat[country.toUpperCase()];
+
+  if (!vset || vset.length === 0) {
+    return { checked: false };
+  }
+
+  const match = vset.filter(grp => grp.validate(value).isValid);
+
+  return { checked: true, isValid: match.length > 0, matchedValidators: match };
+}
+
+/**
  * Validate a passport number for a given country.
  * Like validatePerson, returns `{ checked: false }` when the country has no
  * passport validator, so the caller decides what to do with the value.
