@@ -3,8 +3,8 @@
  *
  * The RRN (resident registration number, 주민등록번호) is a 13-digit number
  * issued to all residents of the Republic of Korea. Foreigners residing in the
- * Republic of Korea receive an alien registration number (ARN) which follows
- * the same encoding pattern.
+ * Republic of Korea receive an alien registration number (ARN) which has the
+ * same layout, but no published check digit (see below).
  *
  * The first six digits code the date of birth. The seventh digit encodes the
  * century and gender. The next four digits encode the place of birth for
@@ -21,11 +21,22 @@
  * Birth dates in the future are rejected; python-stdnum only checks that the
  * date exists. See https://github.com/koblas/stdnum-js/issues/91.
  *
+ * For an alien registration number (century/gender digit 5 to 8) only the
+ * length, digits and birth date are checked. The Enforcement Decree of the
+ * Immigration Act (Article 40-3) defines it as 13 digits showing the date of
+ * birth, sex and registering office, and leaves the rest of the scheme to the
+ * Minister of Justice, who hasn't published it. The check digit formula
+ * isn't public: python-stdnum applies the RRN formula, other validators add
+ * 2 to it, and neither cites a source. This differs from python-stdnum, see
+ * https://github.com/koblas/stdnum-js/issues/91.
+ *
  * Source:
  *   http://www.law.go.kr/lsSc.do?tabMenuId=tab18&p1=&subMenu=1&nwYn=1&section=&tabNo=&query=개인정보+보호법
  *   https://en.wikipedia.org/wiki/Resident_registration_number
  *   https://techscience.org/a/2015092901/
  *   https://www.fnnews.com/news/202006291754239525
+ *   https://www.law.go.kr/LSW//lumLsLinkPop.do?lspttninfSeq=82633&chrClsCd=010202
+ *   https://overseas.mofa.go.kr/hn-ko/brd/m_6364/view.do?seq=918639
  *
  * PERSON
  */
@@ -51,6 +62,9 @@ const centuryPrefix: Record<string, number> = {
   8: 20,
   9: 18,
 };
+
+// Century/gender digits of alien registration numbers
+const ARN_CENTURY = new Set(['5', '6', '7', '8']);
 
 const impl: Validator = {
   name: 'South Korean Resident Registration Number',
@@ -92,8 +106,12 @@ const impl: Validator = {
       return { isValid: false, error: new exceptions.InvalidComponent() };
     }
 
-    // Numbers issued since October 2020 end in six random digits
-    if (parseInt(birthDate.slice(0, 4), 10) >= 2020) {
+    // Numbers issued since October 2020 end in six random digits, and the
+    // check digit of alien registration numbers isn't published
+    if (
+      parseInt(birthDate.slice(0, 4), 10) >= 2020 ||
+      ARN_CENTURY.has(century)
+    ) {
       return {
         isValid: true,
         compact: value,

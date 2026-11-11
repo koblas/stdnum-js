@@ -65,4 +65,24 @@ describe('kr/rrn', () => {
 
     expect(result.error).toBeInstanceOf(InvalidChecksum);
   });
+
+  // Alien registration numbers (7th digit 5-8): no published check digit
+  // formula, so only the length, digits and birth date are checked
+  test.each([
+    '850126-6401473', // passes the RRN formula
+    '850126-6401475', // passes the "RRN + 2" formula used by some validators
+    '850126-5991470', // office code above 96
+    '050126-7401470',
+    '050126-8401471',
+  ])('validate:%s', value => {
+    const result = validate(value);
+
+    expect(result.isValid && result.isIndividual).toEqual(true);
+  });
+
+  test.each(['851326-6401473', '991231-7401470'])('validate:%s', value => {
+    const result = validate(value);
+
+    expect(result.error).toBeInstanceOf(InvalidComponent);
+  });
 });
