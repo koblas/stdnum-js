@@ -12,6 +12,14 @@ describe('in/pan', () => {
     const result = validate('ACUPA7085R');
 
     expect(result.isValid && result.compact).toEqual('ACUPA7085R');
+    expect(result.isValid && result.isIndividual).toEqual(true);
+  });
+
+  it('validate:AAPFU0939F', () => {
+    const result = validate('AAPFU0939F');
+
+    expect(result.isValid && result.isCompany).toEqual(true);
+    expect(result.isValid && result.isIndividual).toEqual(false);
   });
 
   it('validate:ABMPA32111', () => {
