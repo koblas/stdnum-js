@@ -10,6 +10,13 @@
 
 * add de.svnr support ([ee03c72](https://github.com/koblas/stdnum-js/commit/ee03c72e62254c488e5ae3f889b1ee8c823b2cc4))
 
+## [1.17.2](https://github.com/koblas/stdnum-js/compare/v1.17.1...v1.17.2) (2026-11-16)
+
+
+### Bug Fixes
+
+* **nz/ird:** raise the upper limit to 200,000,000 ([#266](https://github.com/koblas/stdnum-js/issues/266)) ([eaa1d11](https://github.com/koblas/stdnum-js/commit/eaa1d111d355f1cb61769809bd219272096f7f6c)), closes [#265](https://github.com/koblas/stdnum-js/issues/265)
+
 ## [1.17.1](https://github.com/koblas/stdnum-js/compare/v1.17.0...v1.17.1) (2026-11-12)
 
 
