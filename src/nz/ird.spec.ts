@@ -31,6 +31,26 @@ describe('nz/ird', () => {
     expect(result.error).toBeInstanceOf(InvalidComponent);
   });
 
+  // Valid since Inland Revenue raised the upper limit to 200,000,000 (2026)
+  it('validate:150000009', () => {
+    const result = validate('150000009');
+
+    expect(result.isValid && result.compact).toEqual('150000009');
+  });
+
+  it('validate:199-999-990', () => {
+    const result = validate('199-999-990');
+
+    expect(result.isValid && result.compact).toEqual('199999990');
+  });
+
+  // Valid check digit, but above the upper limit
+  it('validate:200000005', () => {
+    const result = validate('200000005');
+
+    expect(result.error).toBeInstanceOf(InvalidComponent);
+  });
+
   it('validate:123478', () => {
     const result = validate('123478');
 
