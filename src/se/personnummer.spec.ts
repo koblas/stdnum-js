@@ -137,4 +137,10 @@ describe('se/personnummer', () => {
 
     expect(result.error).toBeInstanceOf(InvalidChecksum);
   });
+
+  it('validate:empty', () => {
+    for (const input of ['', ' ', ':']) {
+      expect(validate(input).error).toBeInstanceOf(InvalidLength);
+    }
+  });
 });

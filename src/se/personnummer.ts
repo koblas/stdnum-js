@@ -46,9 +46,12 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
       ? `${value.slice(0, -4)}-${value.slice(-4)}`
       : value;
 
-  const [a, b, c] = strings.splitAt(separated, -5, -4);
-
-  return [`${a.replace(/[-+]/g, '')}${b}${c}`, null];
+  // Plain slices: splitAt drops empty parts, so a short value left `a`
+  // undefined and threw.
+  return [
+    `${separated.slice(0, -5).replace(/[-+]/g, '')}${separated.slice(-5)}`,
+    null,
+  ];
 }
 
 /**
