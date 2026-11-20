@@ -51,4 +51,10 @@ describe('nl/btw', () => {
 
     expect(result.error).toBeInstanceOf(InvalidChecksum);
   });
+
+  it('validate:empty', () => {
+    for (const input of ['', ' ', 'NL', '-']) {
+      expect(validate(input).error).toBeInstanceOf(InvalidLength);
+    }
+  });
 });

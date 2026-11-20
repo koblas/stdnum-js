@@ -31,9 +31,9 @@ function clean(input: string): ReturnType<typeof strings.cleanUnicode> {
     return [value, err];
   }
 
-  const [a, b] = strings.splitAt(value, -3);
-
-  return [`${a.padStart(9, '0')}${b}`, null];
+  // Plain slices: splitAt drops empty parts, so a short value left `a`
+  // undefined and threw.
+  return [`${value.slice(0, -3).padStart(9, '0')}${value.slice(-3)}`, null];
 }
 
 const impl: Validator = {
