@@ -43,7 +43,7 @@ const impl: Validator = {
   localName: 'Te Tari Taake',
   abbreviation: 'IRD',
   examples: ['49091850'],
-  formats: ['nn-nnn-nnn', 'nn-nnn-nnnn'],
+  formats: ['nn-nnn-nnn', 'nnn-nnn-nnn'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -57,8 +57,9 @@ const impl: Validator = {
 
   format(input: string): string {
     const [value] = clean(input);
+    const front = value.length === 9 ? 3 : 2;
 
-    return strings.splitAt(value, 2, 5).join('-');
+    return strings.splitAt(value, front, front + 3).join('-');
   },
 
   validate(input: string): ValidateReturn {

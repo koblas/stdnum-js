@@ -12,6 +12,18 @@ describe('nz/ird', () => {
     expect(result).toEqual('49-091-850');
   });
 
+  it('format:049091850', () => {
+    const result = format('049091850');
+
+    expect(result).toEqual('049-091-850');
+  });
+
+  it('format:150000009', () => {
+    const result = format('150000009');
+
+    expect(result).toEqual('150-000-009');
+  });
+
   it('validate:4909185-0', () => {
     const result = validate('4909185-0');
 
