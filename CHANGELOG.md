@@ -10,6 +10,13 @@
 
 * add de.svnr support ([ee03c72](https://github.com/koblas/stdnum-js/commit/ee03c72e62254c488e5ae3f889b1ee8c823b2cc4))
 
+## [1.17.3](https://github.com/koblas/stdnum-js/compare/v1.17.2...v1.17.3) (2026-11-20)
+
+
+### Bug Fixes
+
+* **nl/btw, se/personnummer:** return invalid for empty input instead of throwing ([#269](https://github.com/koblas/stdnum-js/issues/269)) ([b32eda8](https://github.com/koblas/stdnum-js/commit/b32eda8b3aa07a07872dbc72fefc5e82d4867766))
+
 ## [1.17.2](https://github.com/koblas/stdnum-js/compare/v1.17.1...v1.17.2) (2026-11-16)
 
 
