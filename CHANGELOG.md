@@ -10,6 +10,13 @@
 
 * add de.svnr support ([ee03c72](https://github.com/koblas/stdnum-js/commit/ee03c72e62254c488e5ae3f889b1ee8c823b2cc4))
 
+## [1.17.4](https://github.com/koblas/stdnum-js/compare/v1.17.3...v1.17.4) (2026-11-20)
+
+
+### Bug Fixes
+
+* **nz/ird:** format 9-digit numbers as nnn-nnn-nnn ([#271](https://github.com/koblas/stdnum-js/issues/271)) ([a2cfc80](https://github.com/koblas/stdnum-js/commit/a2cfc808ca920b2e565a4f3061dc89a255fa659f))
+
 ## [1.17.3](https://github.com/koblas/stdnum-js/compare/v1.17.2...v1.17.3) (2026-11-20)
 
 
