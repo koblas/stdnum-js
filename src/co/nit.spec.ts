@@ -8,6 +8,24 @@ describe('co/nit', () => {
     expect(result).toEqual('213.123.432-1');
   });
 
+  it('format:15.252.525-0', () => {
+    const result = format('15.252.525-0');
+
+    expect(result).toEqual('15.252.525-0');
+  });
+
+  it('format:10184648519', () => {
+    const result = format('10184648519');
+
+    expect(result).toEqual('1.018.464.851-9');
+  });
+
+  it('format:1234567-8', () => {
+    const result = format('1234567-8');
+
+    expect(result).toEqual('1.234.567-8');
+  });
+
   it('validate:213.123.432-1', () => {
     const result = validate('213.123.432-1');
 
