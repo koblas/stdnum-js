@@ -25,15 +25,7 @@ const impl: Validator = {
   localName: 'Número de Identificación Tributaria',
   abbreviation: 'NIT',
   examples: ['2131234321', '10184648519'],
-  formats: [
-    'nnn.nnn.nnn-n',
-    'nnn.nnn.nnn-nn',
-    'nnn.nnn.nnn-nnn',
-    'nnn.nnn.nnn-nnnn',
-    'nnn.nnn.nnn-nnnnn',
-    'nnn.nnn.nnn-nnnnnn',
-    'nnn.nnn.nnn-nnnnnnn',
-  ],
+  formats: ['n.nnn.nnn-n', 'nn.nnn.nnn-n', 'nnn.nnn.nnn-n', 'n.nnn.nnn.nnn-n'],
 
   compact(input: string): string {
     const [value, err] = clean(input);
@@ -48,9 +40,15 @@ const impl: Validator = {
   format(input: string): string {
     const [value] = clean(input);
 
-    const [p1, p2, p3, p4] = strings.splitAt(value, 3, 6, 9);
+    const [front, check] = strings.splitAt(value, -1);
 
-    return `${p1}.${p2}.${p3}-${p4}`;
+    // Group the digits before the check digit in threes, from the right
+    const groups = [];
+    for (let end = front.length; end > 0; end -= 3) {
+      groups.push(front.slice(Math.max(0, end - 3), end));
+    }
+
+    return `${groups.reverse().join('.')}-${check}`;
   },
 
   /**
