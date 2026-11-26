@@ -10,6 +10,13 @@
 
 * add de.svnr support ([ee03c72](https://github.com/koblas/stdnum-js/commit/ee03c72e62254c488e5ae3f889b1ee8c823b2cc4))
 
+## [1.17.5](https://github.com/koblas/stdnum-js/compare/v1.17.4...v1.17.5) (2026-11-26)
+
+
+### Bug Fixes
+
+* **co/nit:** group format() digits from the right and keep a single check digit ([#274](https://github.com/koblas/stdnum-js/issues/274)) ([5fa7678](https://github.com/koblas/stdnum-js/commit/5fa7678bb604e4057848484a21efff66ce03fe7d))
+
 ## [1.17.4](https://github.com/koblas/stdnum-js/compare/v1.17.3...v1.17.4) (2026-11-20)
 
 
